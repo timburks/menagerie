@@ -1,0 +1,25 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: github.com-rest
+  labels:
+    categories: development
+    provider: github.com
+data:
+  displayName: GitHub REST API
+  versions:
+    - metadata:
+        name: 2022-11-28
+      data:
+        displayName: 2022-11-28
+        state: production
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: docs
+            displayName: Developer Documentation
+            uri: https://docs.github.com/en/rest

@@ -1,0 +1,32 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: github.com-graphql
+  labels:
+    categories: development
+    provider: github.com
+data:
+  displayName: GitHub GraphQL API
+  versions:
+    - metadata:
+        name: default
+      data:
+        displayName: default
+        state: production
+        specs:
+          - metadata:
+              name: graphql
+            data:
+              filename: schema.docs.graphql
+              mimeType: application/x.graphql+gzip
+              sourceURI: https://docs.github.com/public/schema.docs.graphql
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: docs
+            displayName: Developer Documentation
+            uri: https://docs.github.com/en/graphql

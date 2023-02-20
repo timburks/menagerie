@@ -12,6 +12,7 @@ data:
         name: 1.0.0
       data:
         displayName: 1.0.0
+        state: production
         specs:
           - metadata:
               name: openapi
