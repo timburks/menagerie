@@ -7,12 +7,6 @@ metadata:
     provider: github.com
 data:
   displayName: GitHub REST API
-  versions:
-    - metadata:
-        name: 2022-11-28
-      data:
-        displayName: 2022-11-28
-        state: production
   artifacts:
     - kind: ReferenceList
       metadata:

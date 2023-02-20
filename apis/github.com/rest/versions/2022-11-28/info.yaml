@@ -1,0 +1,15 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: 2022-11-28
+  parent: apis/github.com-rest
+data:
+  displayName: 2022-11-28
+  state: production
+  specs:
+    - metadata:
+        name: openapi
+      data:
+        filename: api.github.com.2022-11-28.yaml
+        mimeType: application/x.openapi+gzip;version=3.0.3
+        sourceURI: https://raw.githubusercontent.com/github/rest-api-description/main/descriptions/api.github.com/api.github.com.2022-11-28.yaml
