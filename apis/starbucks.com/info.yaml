@@ -1,0 +1,19 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: starbucks.com
+  labels:
+    categories: commerce
+    provider: starbucks.com
+data:
+  displayName: Starbucks API
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: blog
+            displayName: Blog post about the Starbucks API
+            uri: https://blog.tendigi.com/starbucks-should-really-make-their-apis-public-6b64a1c2e923

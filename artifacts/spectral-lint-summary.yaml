@@ -1,0 +1,13 @@
+apiVersion: apigeeregistry/v1
+kind: ScoreCardDefinition
+metadata:
+  name: spectral-lint-summary
+data:
+  displayName: Spectral Lint Summary
+  description: Summary of Spectral lint scores.
+  targetResource:
+    pattern: apis/-/versions/-/specs/-
+    filter: ""
+  scorePatterns:
+    - $resource.spec/artifacts/score-spectral-lint-errors
+    - $resource.spec/artifacts/score-spectral-lint-warnings

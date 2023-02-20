@@ -1,0 +1,19 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: panerabread.com
+  labels:
+    categories: commerce
+    provider: panerabread.com
+data:
+  displayName: Panera API
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: portal
+            displayName: Panera Bread Developer Portal
+            uri: https://developer.panerabread.com/

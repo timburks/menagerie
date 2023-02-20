@@ -1,0 +1,31 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: spotify.com
+  labels:
+    categories: media
+    provider: spotify.com
+data:
+  displayName: Spotify Web API
+  versions:
+    - metadata:
+        name: 1.0.0
+      data:
+        displayName: 1.0.0
+        specs:
+          - metadata:
+              name: openapi
+            data:
+              filename: openapi.yaml
+              mimeType: application/x.openapi+gzip;version=3.0.3
+              sourceURI: https://developer.spotify.com/_data/documentation/web-api/reference/open-api-schema.yml
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: portal
+            displayName: Spotify Developer Portal
+            uri: https://developer.spotify.com/
