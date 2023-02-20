@@ -1,0 +1,21 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: twitter.com-ads
+  labels:
+    categories: advertising
+    provider: twitter.com
+data:
+  displayName: Twitter Ads API
+  description: |
+    The Twitter Ads API connects developers to Twitter's advertising platform to build solutions to meet the needs of Twitter's advertisers around the world.
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: docs
+            displayName: Official API Documentation
+            uri: https://developer.twitter.com/en/docs/twitter-ads-api

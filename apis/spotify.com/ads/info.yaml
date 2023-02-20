@@ -1,0 +1,37 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: spotify.com-ads
+  labels:
+    categories: media
+    provider: spotify.com
+data:
+  displayName: Spotify Ads API
+  versions:
+    - metadata:
+        name: 1.4
+      data:
+        displayName: 1.4
+        artifacts:
+          - kind: ReferenceList
+            metadata:
+              name: related
+            data:
+              displayName: Related Links
+              references:
+                - id: docs
+                  displayName: Release Notes
+                  uri: https://developer.spotify.com/documentation/ads-api/#release-notes
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: portal
+            displayName: Spotify Developer Portal
+            uri: https://developer.spotify.com/
+          - id: docs
+            displayName: Developer Documentation
+            uri: https://developer.spotify.com/documentation/ads-api/

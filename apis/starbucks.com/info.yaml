@@ -7,6 +7,7 @@ metadata:
     provider: starbucks.com
 data:
   displayName: Starbucks API
+  description: Starbucks currently does not have any public APIs.
   artifacts:
     - kind: ReferenceList
       metadata:
@@ -14,6 +15,9 @@ data:
       data:
         displayName: Related Links
         references:
-          - id: blog
-            displayName: Blog post about the Starbucks API
+          - id: blog-tendigi
+            displayName: Starbucks should really make their APIs public
             uri: https://blog.tendigi.com/starbucks-should-really-make-their-apis-public-6b64a1c2e923
+          - id: blog-samcurry
+            displayName: Hacking Starbucks and Accessing Nearly 100 Million Customer Records
+            uri: https://samcurry.net/hacking-starbucks/

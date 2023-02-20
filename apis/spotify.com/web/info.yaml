@@ -1,7 +1,7 @@
 apiVersion: apigeeregistry/v1
 kind: API
 metadata:
-  name: spotify.com
+  name: spotify.com-web
   labels:
     categories: media
     provider: spotify.com
