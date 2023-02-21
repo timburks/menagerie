@@ -1,0 +1,10 @@
+apiVersion: apigeeregistry/v1
+kind: ReferenceList
+metadata:
+  name: related
+data:
+  displayName: Related Links
+  references:
+    - id: repo
+      displayName: Git Repository
+      uri: https://github.com/timburks/menage
