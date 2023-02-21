@@ -1,0 +1,22 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: twilio.com-oauth
+  labels:
+    categories: telecom
+    provider: twilio.com
+data:
+  displayName: Twilio Oauth API
+  description: This is the public Twilio REST API.
+  versions:
+    - metadata:
+        name: v1
+      data:
+        displayName: v1
+        state: production
+        specs:
+          - metadata:
+              name: openapi
+            data:
+              filename: twilio_oauth_v1.yaml
+              mimeType: application/x.openapi+gzip;version=3.0.1

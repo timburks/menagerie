@@ -1,0 +1,22 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: twilio.com-api
+  labels:
+    categories: telecom
+    provider: twilio.com
+data:
+  displayName: Twilio API
+  description: This is the public Twilio REST API.
+  versions:
+    - metadata:
+        name: v2010
+      data:
+        displayName: v2010
+        state: production
+        specs:
+          - metadata:
+              name: openapi
+            data:
+              filename: twilio_api_v2010.yaml
+              mimeType: application/x.openapi+gzip;version=3.0.1

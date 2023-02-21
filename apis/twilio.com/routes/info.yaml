@@ -1,0 +1,22 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: twilio.com-routes
+  labels:
+    categories: telecom
+    provider: twilio.com
+data:
+  displayName: Twilio Routes API
+  description: This is the public Twilio REST API.
+  versions:
+    - metadata:
+        name: v2
+      data:
+        displayName: v2
+        state: production
+        specs:
+          - metadata:
+              name: openapi
+            data:
+              filename: twilio_routes_v2.yaml
+              mimeType: application/x.openapi+gzip;version=3.0.1
