@@ -1,4 +1,4 @@
-# Ménage à APIs
+# Ménage à APIs (household of APIs)
 
 A curated registry of APIs.
 
