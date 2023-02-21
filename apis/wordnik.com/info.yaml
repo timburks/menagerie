@@ -1,0 +1,32 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: wordnik.com
+  labels:
+    categories: reference
+    provider: wordnik.com
+data:
+  displayName: Wordnik API
+  versions:
+    - metadata:
+        name: 4.0
+      data:
+        displayName: 4.0
+        state: production
+        specs:
+          - metadata:
+              name: openapi
+            data:
+              filename: swagger.json
+              mimeType: application/x.openapi+gzip;version=2.0
+              sourceURI: https://developer.wordnik.com/api-docs/swagger.json
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: portal
+            displayName: Wordnik Developer Portal
+            uri: https://developer.wordnik.com/
