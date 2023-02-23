@@ -4,7 +4,7 @@ metadata:
   name: github.com-rest
   labels:
     categories: development
-    provider: github.com
+    provider: github-com
 data:
   displayName: GitHub REST API
   artifacts:

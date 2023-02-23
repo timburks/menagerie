@@ -4,7 +4,7 @@ metadata:
   name: twilio.com-chat
   labels:
     categories: telecom
-    provider: twilio.com
+    provider: twilio-com
 data:
   displayName: Twilio Chat API
   description: This is the public Twilio REST API.

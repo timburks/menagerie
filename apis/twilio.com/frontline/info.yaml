@@ -4,7 +4,7 @@ metadata:
   name: twilio.com-frontline
   labels:
     categories: telecom
-    provider: twilio.com
+    provider: twilio-com
 data:
   displayName: Twilio Frontline API
   description: This is the public Twilio REST API.

@@ -4,7 +4,7 @@ metadata:
   name: twitter.com-twitter
   labels:
     categories: media
-    provider: twitter.com
+    provider: twitter-com
 data:
   displayName: Twitter API
   description: |

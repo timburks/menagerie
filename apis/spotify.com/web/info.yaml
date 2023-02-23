@@ -4,7 +4,7 @@ metadata:
   name: spotify.com-web
   labels:
     categories: media
-    provider: spotify.com
+    provider: spotify-com
 data:
   displayName: Spotify Web API
   versions:

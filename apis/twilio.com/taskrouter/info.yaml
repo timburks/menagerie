@@ -4,7 +4,7 @@ metadata:
   name: twilio.com-taskrouter
   labels:
     categories: telecom
-    provider: twilio.com
+    provider: twilio-com
 data:
   displayName: Twilio Taskrouter API
   description: This is the public Twilio REST API.

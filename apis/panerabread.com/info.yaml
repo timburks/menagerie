@@ -4,7 +4,7 @@ metadata:
   name: panerabread.com
   labels:
     categories: commerce
-    provider: panerabread.com
+    provider: panerabread-com
 data:
   displayName: Panera API
   artifacts:

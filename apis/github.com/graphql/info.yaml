@@ -4,7 +4,7 @@ metadata:
   name: github.com-graphql
   labels:
     categories: development
-    provider: github.com
+    provider: github-com
 data:
   displayName: GitHub GraphQL API
   versions:

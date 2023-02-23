@@ -4,7 +4,7 @@ metadata:
   name: starbucks.com
   labels:
     categories: commerce
-    provider: starbucks.com
+    provider: starbucks-com
 data:
   displayName: Starbucks API
   description: Starbucks currently does not have any public APIs.
