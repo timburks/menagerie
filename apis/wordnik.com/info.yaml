@@ -4,7 +4,7 @@ metadata:
   name: wordnik.com
   labels:
     categories: reference
-    provider: wordnik.com
+    provider: wordnik-com
 data:
   displayName: Wordnik API
   versions:

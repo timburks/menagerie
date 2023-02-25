@@ -1,0 +1,21 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: walgreens.com-rxrefill
+  labels:
+    categories: retail
+    provider: walgreens-com
+data:
+  displayName: Walgreens Pharmacy Prescription API
+  description: |
+    The Walgreens Pharmacy Prescription API allows users of third-party applications to quickly order refills of prescriptions originally filled at one of the 8,200+ Walgreens pharmacies. Your app users can order refills in seconds, as well transfer non-Walgreens prescriptions to their nearest Walgreens to be notified when their prescription order is ready for pick up. The health care focused Pharmacy Prescription API is designed to increase prescription compliance and aid in personal health management through automated refill alerts and a streamlining of the refill process. By offering easy prescription refills through this health management API, Walgreens hopes to further increase health care adherence by reaching a wider audience through third party health care apps.
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: docs
+            displayName: Official API Documentation
+            uri: https://developer.walgreens.com/sites/default/files/v1_RXRefillAPI.html

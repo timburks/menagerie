@@ -4,7 +4,7 @@ metadata:
   name: spotify.com-ads
   labels:
     categories: media
-    provider: spotify.com
+    provider: spotify-com
 data:
   displayName: Spotify Ads API
   versions:

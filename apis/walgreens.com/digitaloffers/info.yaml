@@ -1,0 +1,21 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: walgreens.com-digitaloffers
+  labels:
+    categories: retail
+    provider: walgreens-com
+data:
+  displayName: Walgreens Digital Offers API
+  description: |
+    The Digital Offers API enables third party integrations to fetch, search, and clip digital coupons directly to Walgreens customers Balance Rewards Cards. Once a coupon is clipped to a customers card the offer will be auto-magically applied the next time they checkout with any applicable items on walgreens.com or in any one of our thousands of Walgreens Stores
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: docs
+            displayName: Official API Documentation
+            uri: https://developer.walgreens.com/sites/default/files/v1_DigitalOffersAPI.html

@@ -4,7 +4,7 @@ metadata:
   name: twilio.com-insights
   labels:
     categories: telecom
-    provider: twilio.com
+    provider: twilio-com
 data:
   displayName: Twilio Insights API
   description: This is the public Twilio REST API.

@@ -1,0 +1,21 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: ieee.org-metadatasearch
+  labels:
+    categories: education
+    provider: ieee-org
+data:
+  displayName: IEEE Metadata Search API
+  description: |
+    Query and retrieve metadata records including abstracts for more than 5 million documents in IEEE Xplore® including Journals, Conference Proceedings, Books, Courses and Standards. The Metadata API supports both simple and Boolean searches.
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: docs
+            displayName: Official API Documentation
+            uri: https://developer.ieee.org/docs

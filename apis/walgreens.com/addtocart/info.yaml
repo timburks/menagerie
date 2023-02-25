@@ -1,0 +1,21 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: walgreens.com-addtocart
+  labels:
+    categories: retail
+    provider: walgreens-com
+data:
+  displayName: Walgreens Add to Cart API
+  description: |
+    The Walgreens Add to Cart API allows users of third-party applications and websites to quickly add products to a cart on Walgreens.com and then transfer that customer to checkout that cart. This retail focused Add to Cart API is designed to increase customer interaction inside of your third-party retail shopping experience. By combining this API with our Digital Offers API you can allow customers to clip coupons for, and add products to a cart on walgreens.com to complete their checkout.
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: docs
+            displayName: Official API Documentation
+            uri: https://developer.walgreens.com/sites/default/files/v1_AddToCartAPI.html

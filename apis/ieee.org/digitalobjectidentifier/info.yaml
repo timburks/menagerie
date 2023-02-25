@@ -1,0 +1,21 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: ieee.org-digitalobjectidentifier
+  labels:
+    categories: education
+    provider: ieee-org
+data:
+  displayName: IEEE Digital Object Identifier API
+  description: |
+    Query up to 25 DOI (Digital Object Identifier) numbers and retrieve metadata records including abstracts.
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: docs
+            displayName: Official API Documentation
+            uri: https://developer.ieee.org/docs

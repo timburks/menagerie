@@ -4,7 +4,7 @@ metadata:
   name: twilio.com-pricing
   labels:
     categories: telecom
-    provider: twilio.com
+    provider: twilio-com
 data:
   displayName: Twilio Pricing API
   description: This is the public Twilio REST API.
