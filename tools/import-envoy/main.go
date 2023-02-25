@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"github.com/apigee/registry/cmd/registry/compress"
+	"github.com/apigee/registry/pkg/encoding"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/descriptorpb"
 )
@@ -27,21 +28,17 @@ var deps = []string{
 	"https://github.com/open-telemetry/opentelemetry-proto",
 	"https://github.com/prometheus/client_model",
 }
-var out = "out"
+var out = "envoyproxy.io"
 
 func main() {
-
 	err := fetchDependencies(dir, deps)
 	if err != nil {
 		panic(err)
 	}
-
 	allProtos, err := listAllProtos(dir)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("%d protos\n", len(allProtos))
-
 	apis, err := scanDirectoryForAPIs(filepath.Join(dir, top))
 	if err != nil {
 		panic(err)
@@ -54,6 +51,7 @@ func main() {
 	}
 }
 
+// Build a list of all proto files in a directory.
 func listAllProtos(dir string) ([]string, error) {
 	protos := make([]string, 0)
 	err := filepath.Walk(dir, func(p string, info os.FileInfo, err error) error {
@@ -69,8 +67,9 @@ func listAllProtos(dir string) ([]string, error) {
 		return nil
 	})
 	return protos, err
-
 }
+
+// Use git clone to fetch a list of repo dependencies.
 func fetchDependencies(dir string, deps []string) error {
 	err := os.MkdirAll(dir, 0777)
 	if err != nil {
@@ -81,10 +80,10 @@ func fetchDependencies(dir string, deps []string) error {
 		d = parts[0]
 		target := filepath.Join(dir, filepath.Base(d))
 		if exists(target) {
-			fmt.Printf("reusing %s\n", target)
+			//fmt.Printf("reusing %s\n", target)
 			continue
 		}
-		fmt.Printf("fetching %s into %s\n", d, target)
+		//fmt.Printf("fetching %s into %s\n", d, target)
 		cmd := exec.Command("git", "clone", d)
 		cmd.Dir = dir
 		if out, err := cmd.CombinedOutput(); err != nil {
@@ -95,7 +94,7 @@ func fetchDependencies(dir string, deps []string) error {
 	return nil
 }
 
-// exists returns whether the given file or directory exists
+// Return true if a file exists.
 func exists(path string) bool {
 	_, err := os.Stat(path)
 	return err == nil
@@ -118,7 +117,7 @@ func scanDirectoryForAPIs(start string) ([]string, error) {
 			return nil
 		}
 		apis = append(apis, container)
-		return nil
+		return filepath.SkipDir
 	})
 	if err != nil {
 		return nil, err
@@ -126,9 +125,9 @@ func scanDirectoryForAPIs(start string) ([]string, error) {
 	return apis, nil
 }
 
+// Compile an API description and create Registry YAML.
 func compileAPI(container string, allProtos []string) error {
-	fmt.Printf("compile %+v\n", container)
-
+	//fmt.Printf("compile %+v\n", container)
 	protos := make([]string, 0)
 	err := filepath.Walk(container, func(p string, info os.FileInfo, err error) error {
 		if err != nil {
@@ -150,19 +149,15 @@ func compileAPI(container string, allProtos []string) error {
 	if err != nil {
 		return err
 	}
-
 	// Collect the listed files.
 	tempDir, err := os.MkdirTemp("", "proto-collect-")
 	if err != nil {
 		return err
 	}
 	defer os.RemoveAll(tempDir)
-
 	for _, a := range all {
-		fmt.Printf("--- %s\n", a)
 		for _, p := range allProtos {
 			if strings.HasSuffix(p, a) {
-				fmt.Printf("---   found at %s\n", p)
 				err := copyFile(p, filepath.Join(tempDir, a))
 				if err != nil {
 					return err
@@ -170,22 +165,89 @@ func compileAPI(container string, allProtos []string) error {
 				break
 			}
 		}
-
 	}
 	contents, err := compress.ZipArchiveOfPath(tempDir, tempDir, true)
 	if err != nil {
 		return err
 	}
-	err = os.MkdirAll(out, 0777)
+	// Save the API
+	apiDir := strings.TrimPrefix(container, dir+"/"+top+"/")
+	versionID := filepath.Base(apiDir)
+	apiID := strings.ReplaceAll(filepath.Dir(apiDir), "/", "-")
+	apiID = strings.ReplaceAll(apiID, "_", "-")
+	err = os.MkdirAll(filepath.Join(out, apiID, versionID), 0777)
 	if err != nil {
 		return err
 	}
-	filename := strings.TrimPrefix(container, "deps/")
-	name := filepath.Join(out, strings.ReplaceAll(filename, "/", "-")+".zip")
+	specfilename := "protos" // strings.TrimPrefix(container, "deps/")
+	name := filepath.Join(out, apiID, versionID, strings.ReplaceAll(specfilename, "/", "-")+".zip")
 	os.WriteFile(name, contents.Bytes(), 0664)
+
+	apiVersion := &encoding.ApiVersion{
+		Header: encoding.Header{
+			ApiVersion: encoding.RegistryV1,
+			Kind:       "Version",
+			Metadata: encoding.Metadata{
+				Parent: "apis/envoyproxy.io-" + apiID,
+				Name:   versionID,
+			},
+		},
+		Data: encoding.ApiVersionData{
+			ApiSpecs: []*encoding.ApiSpec{
+				{
+					Header: encoding.Header{
+						Metadata: encoding.Metadata{
+							Name: "protos",
+						},
+					},
+					Data: encoding.ApiSpecData{
+						FileName: "protos.zip",
+						MimeType: "application/x.proto+zip",
+					},
+				},
+			},
+		},
+	}
+	b, err := encoding.EncodeYAML(apiVersion)
+	if err != nil {
+		return err
+	}
+	name = filepath.Join(out, apiID, versionID, "info.yaml")
+	err = os.WriteFile(name, b, 0664)
+	if err != nil {
+		return err
+	}
+
+	api := &encoding.Api{
+		Header: encoding.Header{
+			ApiVersion: encoding.RegistryV1,
+			Kind:       "API",
+			Metadata: encoding.Metadata{
+				Name: "envoyproxy.io-" + apiID,
+				Labels: map[string]string{
+					"provider":   "envoyproxy-io",
+					"categories": "networking",
+				},
+			},
+		},
+		Data: encoding.ApiData{
+			DisplayName: displayName(apiID),
+		},
+	}
+	b, err = encoding.EncodeYAML(api)
+	if err != nil {
+		return err
+	}
+	name = filepath.Join(out, apiID, "info.yaml")
+	err = os.WriteFile(name, b, 0664)
+	if err != nil {
+		return err
+	}
+
 	return err
 }
 
+// Copy a file from one path to another, ensuring that the destination directory exists.
 func copyFile(src, dest string) error {
 	dir := filepath.Dir(dest)
 	err := os.MkdirAll(dir, 0777)
@@ -249,4 +311,41 @@ func protosFromFileDescriptorSet(filename string) ([]string, error) {
 	}
 	sort.Strings(filenames)
 	return filenames, nil
+}
+
+func displayName(name string) string {
+	name = strings.ReplaceAll(name, "_", "-")
+	parts := strings.Split(name, "-")
+
+	for i, p := range parts {
+		parts[i] = capitalize(p)
+	}
+
+	out := strings.Join(parts, " ") + " API"
+	fmt.Printf("%s\n", out)
+	return out
+}
+
+func capitalize(s string) string {
+	switch s {
+	case "to":
+		return s
+	case "grpc":
+		return "gRPC"
+	case "gzip":
+		return "GZip"
+	case "oauth":
+		return "OAuth"
+	case "oauth2":
+		return "OAuth2"
+	case "mysql":
+		return "MySQL"
+	case "rocketmq":
+		return "RocketMQ"
+	case "api", "aws", "cors", "csrf", "dlb", "dns", "dst", "gcp", "http", "http1",
+		"ip", "jwt", "qat", "rbac", "s2a", "sip", "sni", "src",
+		"ssl", "sxg", "tcp", "tls", "tra", "udp", "vcl", "wasm":
+		return strings.ToTitle(s)
+	}
+	return strings.Title(s)
 }
