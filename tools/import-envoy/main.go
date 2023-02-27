@@ -18,6 +18,9 @@ import (
 
 var dir = "deps"
 var top = "data-plane-api"
+var provider = "envoyproxy.io"
+
+// List source repos. If a string follows ";", it is the proto path in the repo.
 var deps = []string{
 	"https://github.com/bufbuild/protoc-gen-validate",
 	"https://github.com/census-instrumentation/opencensus-proto;src",
@@ -44,9 +47,9 @@ func main() {
 		panic(err)
 	}
 	for _, api := range apis {
-		err := compileAPI(api, allProtos)
+		err := describeAPI(api, allProtos)
 		if err != nil {
-			log.Fatalf("error compiling %s: %s", api, err)
+			log.Fatalf("error processing %s: %s", api, err)
 		}
 	}
 }
@@ -76,14 +79,12 @@ func fetchDependencies(dir string, deps []string) error {
 		return err
 	}
 	for _, d := range deps {
-		parts := strings.Split(d, ";")
+		parts := strings.Split(d, ";") // the second part is the path to the protos
 		d = parts[0]
 		target := filepath.Join(dir, filepath.Base(d))
 		if exists(target) {
-			//fmt.Printf("reusing %s\n", target)
 			continue
 		}
-		//fmt.Printf("fetching %s into %s\n", d, target)
 		cmd := exec.Command("git", "clone", d)
 		cmd.Dir = dir
 		if out, err := cmd.CombinedOutput(); err != nil {
@@ -100,10 +101,10 @@ func exists(path string) bool {
 	return err == nil
 }
 
-// The pattern of an API version directory.
-var versionDirectory = regexp.MustCompile("v.*[1-9]+.*")
-
+// Find all of the directories matching a version name, these should be imported.
 func scanDirectoryForAPIs(start string) ([]string, error) {
+	// The pattern of an API version directory.
+	versionDirectory := regexp.MustCompile("v.*[1-9]+.*")
 	apis := make([]string, 0)
 	err := filepath.Walk(start, func(p string, info os.FileInfo, err error) error {
 		if err != nil {
@@ -126,8 +127,8 @@ func scanDirectoryForAPIs(start string) ([]string, error) {
 }
 
 // Compile an API description and create Registry YAML.
-func compileAPI(container string, allProtos []string) error {
-	//fmt.Printf("compile %+v\n", container)
+func describeAPI(container string, allProtos []string) error {
+	// First get all of the protos in the specified container.
 	protos := make([]string, 0)
 	err := filepath.Walk(container, func(p string, info os.FileInfo, err error) error {
 		if err != nil {
@@ -144,17 +145,18 @@ func compileAPI(container string, allProtos []string) error {
 	if err != nil {
 		return err
 	}
-	//fmt.Printf("protos: %+v\n", protos)
+	// Compile the protos and get a list of everything they import.
 	all, err := referencedProtos(protos, "")
 	if err != nil {
 		return err
 	}
-	// Collect the listed files.
+	// Collect the listed files and put them in a zip archive.
 	tempDir, err := os.MkdirTemp("", "proto-collect-")
 	if err != nil {
 		return err
 	}
 	defer os.RemoveAll(tempDir)
+	// (Finding the files is tricky)
 	for _, a := range all {
 		for _, p := range allProtos {
 			if strings.HasSuffix(p, a) {
@@ -166,38 +168,44 @@ func compileAPI(container string, allProtos []string) error {
 			}
 		}
 	}
-	contents, err := compress.ZipArchiveOfPath(tempDir, tempDir, true)
+	contents, err := compress.ZipArchiveOfPath(tempDir, tempDir+"/", true)
 	if err != nil {
 		return err
 	}
-	// Save the API
-	apiDir := strings.TrimPrefix(container, dir+"/"+top+"/")
-	versionID := filepath.Base(apiDir)
-	apiID := strings.ReplaceAll(filepath.Dir(apiDir), "/", "-")
+	// Get the apiID and versionID for use in Registry YAML.
+	localApiDir := strings.TrimPrefix(container, dir+"/"+top+"/")
+	apiID := strings.ReplaceAll(filepath.Dir(localApiDir), "/", "-")
 	apiID = strings.ReplaceAll(apiID, "_", "-")
+	versionID := filepath.Base(localApiDir)
+	// Make the directory for the API and version YAML.
 	err = os.MkdirAll(filepath.Join(out, apiID, versionID), 0777)
 	if err != nil {
 		return err
 	}
+	// Save the zipped protos.
 	specfilename := "protos" // strings.TrimPrefix(container, "deps/")
 	name := filepath.Join(out, apiID, versionID, strings.ReplaceAll(specfilename, "/", "-")+".zip")
 	os.WriteFile(name, contents.Bytes(), 0664)
-
+	// Build and save info.yaml for the version.
 	apiVersion := &encoding.ApiVersion{
 		Header: encoding.Header{
 			ApiVersion: encoding.RegistryV1,
 			Kind:       "Version",
 			Metadata: encoding.Metadata{
-				Parent: "apis/envoyproxy.io-" + apiID,
+				Parent: "apis/" + provider + "-" + apiID,
 				Name:   versionID,
 			},
 		},
 		Data: encoding.ApiVersionData{
+			DisplayName: versionID,
 			ApiSpecs: []*encoding.ApiSpec{
 				{
 					Header: encoding.Header{
 						Metadata: encoding.Metadata{
 							Name: "protos",
+							Annotations: map[string]string{
+								"path": strings.TrimPrefix(container, "deps/"+top+"/"),
+							},
 						},
 					},
 					Data: encoding.ApiSpecData{
@@ -217,15 +225,15 @@ func compileAPI(container string, allProtos []string) error {
 	if err != nil {
 		return err
 	}
-
+	// Build and save info.yaml for the API.
 	api := &encoding.Api{
 		Header: encoding.Header{
 			ApiVersion: encoding.RegistryV1,
 			Kind:       "API",
 			Metadata: encoding.Metadata{
-				Name: "envoyproxy.io-" + apiID,
+				Name: provider + "-" + apiID,
 				Labels: map[string]string{
-					"provider":   "envoyproxy-io",
+					"provider":   strings.ReplaceAll(provider, ".", "-"),
 					"categories": "networking",
 				},
 			},
@@ -243,8 +251,8 @@ func compileAPI(container string, allProtos []string) error {
 	if err != nil {
 		return err
 	}
-
-	return err
+	// Done!
+	return nil
 }
 
 // Copy a file from one path to another, ensuring that the destination directory exists.
@@ -262,6 +270,7 @@ func copyFile(src, dest string) error {
 }
 
 // Get all the protos that are referenced in the compilation of a list of protos.
+// "root" is the root directory for the compilation.
 func referencedProtos(protos []string, root string) ([]string, error) {
 	tempDir, err := os.MkdirTemp("", "proto-import-")
 	if err != nil {
@@ -313,6 +322,7 @@ func protosFromFileDescriptorSet(filename string) ([]string, error) {
 	return filenames, nil
 }
 
+// Guess a good display name for an API.
 func displayName(name string) string {
 	name = strings.ReplaceAll(name, "_", "-")
 	parts := strings.Split(name, "-")
@@ -321,11 +331,14 @@ func displayName(name string) string {
 		parts[i] = capitalize(p)
 	}
 
-	out := strings.Join(parts, " ") + " API"
-	fmt.Printf("%s\n", out)
+	out := strings.Join(parts, " ")
+	if !strings.HasSuffix(out, " API") {
+		out += " API"
+	}
 	return out
 }
 
+// Try to capitalize a name sensibly.
 func capitalize(s string) string {
 	switch s {
 	case "to":
