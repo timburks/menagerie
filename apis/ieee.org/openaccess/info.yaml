@@ -1,0 +1,21 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: ieee.org-openaccess
+  labels:
+    categories: education
+    provider: ieee-org
+data:
+  displayName: IEEE Open Access API
+  description: |
+    Query and retrieve full-text articles designated as Open Access.
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: docs
+            displayName: Official API Documentation
+            uri: https://developer.ieee.org/docs

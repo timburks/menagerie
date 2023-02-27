@@ -1,0 +1,21 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: walgreens.com-photoprints
+  labels:
+    categories: retail
+    provider: walgreens-com
+data:
+  displayName: Walgreens Photo Prints API
+  description: |
+    The Walgreens HTML Checkout PhotoPrints API gives the ability for customers of third party mobile photo applications to print photos from their mobile devices and pick them up at their local Walgreens store.
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: docs
+            displayName: Official API Documentation
+            uri: https://developer.walgreens.com/sites/default/files/v1_PhotoPrintsHTMLCheckout.html

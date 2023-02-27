@@ -1,0 +1,15 @@
+apiVersion: apigeeregistry/v1
+kind: AttributesDefinition
+metadata:
+  name: origin
+data:
+  description: "The secret origins of this API"
+  attributes:
+  - name: creator
+    title: Creator
+  - name: "creator-email"
+    title: "Creator Email"
+  - name: hometown
+    title: Hometown
+  - name: website
+    title: Website

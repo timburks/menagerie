@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Attributes
+metadata:
+  parent: apis/wordnik.com
+  name: origin
+data:
+  definitionName: projects/menagerie/locations/global/artifacts/origin
+  values:
+    creator: "Erin McKean"
+    creator-email: "erin@wordnik.com"
+    hometown: "Portland, OR"
+    website: "[Wordnik](https://wordnik.com)"

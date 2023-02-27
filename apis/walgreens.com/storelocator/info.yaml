@@ -1,0 +1,21 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: walgreens.com-storelocator
+  labels:
+    categories: retail
+    provider: walgreens-com
+data:
+  displayName: Walgreens Store Locator API
+  description: |
+    The Store Locator API enables third party integrations to fetch, search, and filter realtime dynamic store location information about any of our thousands of store locations and their associated services.
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: docs
+            displayName: Official API Documentation
+            uri: https://developer.walgreens.com/sites/default/files/v1_StoreLocatorAPI.html

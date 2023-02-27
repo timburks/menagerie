@@ -1,0 +1,21 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: walgreens.com-healthychoices
+  labels:
+    categories: retail
+    provider: walgreens-com
+data:
+  displayName: Walgreens Healthy Choices API
+  description: |
+    The Balance Rewards API enables qualified partners to connect into Walgreens to share individual member health and wellness information to be eligible to receive Balance Rewards points for completing 4-week physical activity and healthy lifestyle challenges. The API is designed to enable partners to seamlessly share individual health and lifestyle activity (Data Sharing), and create or validate user memberships (Authentication).
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: docs
+            displayName: Official API Documentation
+            uri: https://developer.walgreens.com/sites/default/files/v1_HealthyChoicesAPI.html

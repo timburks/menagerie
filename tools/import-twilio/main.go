@@ -11,14 +11,14 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/apigee/registry/pkg/models"
+	"github.com/apigee/registry/pkg/encoding"
 	yaml "gopkg.in/yaml.v3"
 )
 
 var output = "output"
 
 func main() {
-	apis := make(map[string]*models.Api)
+	apis := make(map[string]*encoding.Api)
 	filepath.WalkDir("twilio-oai/spec/yaml",
 		func(path string, entry fs.DirEntry, err error) error {
 			if err != nil {
@@ -70,19 +70,19 @@ func main() {
 			}
 			api := apis[apiID]
 			if api == nil {
-				api = &models.Api{
-					Header: models.Header{
+				api = &encoding.Api{
+					Header: encoding.Header{
 						ApiVersion: "apigeeregistry/v1",
 						Kind:       "API",
-						Metadata: models.Metadata{
+						Metadata: encoding.Metadata{
 							Name: "twilio.com-" + apiID,
 							Labels: map[string]string{
 								"categories": "telecom",
-								"provider":   "twilio.com",
+								"provider":   "twilio-com",
 							},
 						},
 					},
-					Data: models.ApiData{
+					Data: encoding.ApiData{
 						DisplayName: *title,
 						Description: *description,
 					},
@@ -90,23 +90,23 @@ func main() {
 				apis[apiID] = api
 			}
 			api.Data.ApiVersions = append(api.Data.ApiVersions,
-				&models.ApiVersion{
-					Header: models.Header{
-						Metadata: models.Metadata{
+				&encoding.ApiVersion{
+					Header: encoding.Header{
+						Metadata: encoding.Metadata{
 							Name: versionID,
 						},
 					},
-					Data: models.ApiVersionData{
+					Data: encoding.ApiVersionData{
 						DisplayName: versionID,
 						State:       "production",
-						ApiSpecs: []*models.ApiSpec{
+						ApiSpecs: []*encoding.ApiSpec{
 							{
-								Header: models.Header{
-									Metadata: models.Metadata{
+								Header: encoding.Header{
+									Metadata: encoding.Metadata{
 										Name: "openapi",
 									},
 								},
-								Data: models.ApiSpecData{
+								Data: encoding.ApiSpecData{
 									FileName: filename,
 									MimeType: "application/x.openapi+gzip;version=" + *openapi,
 								},
