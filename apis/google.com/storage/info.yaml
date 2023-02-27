@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-storage
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Storage JSON API
+  description: Stores and retrieves potentially large, immutable data objects.

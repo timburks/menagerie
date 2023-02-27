@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-libraryagent
+  labels:
+    provider: google-com
+data:
+  displayName: Google Library Agent API
+  description: A simple Google Example Library API.

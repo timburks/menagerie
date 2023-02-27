@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-datastore
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Datastore API
+  description: 'Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application. '

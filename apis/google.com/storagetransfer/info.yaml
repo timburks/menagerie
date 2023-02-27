@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-storagetransfer
+  labels:
+    provider: google-com
+data:
+  displayName: Google Storage Transfer API
+  description: 'Transfers data from external data sources to a Google Cloud Storage bucket or between Google Cloud Storage buckets. '

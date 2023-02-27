@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-chromepolicy
+  labels:
+    provider: google-com
+data:
+  displayName: Google Chrome Policy API
+  description: The Chrome Policy API is a suite of services that allows Chrome administrators to control the policies applied to their managed Chrome OS devices and Chrome browsers.

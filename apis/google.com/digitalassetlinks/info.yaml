@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-digitalassetlinks
+  labels:
+    provider: google-com
+data:
+  displayName: Google Digital Asset Links API
+  description: Discovers relationships between online assets such as websites or mobile apps.

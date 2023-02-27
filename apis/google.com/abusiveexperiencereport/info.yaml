@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-abusiveexperiencereport
+  labels:
+    provider: google-com
+data:
+  displayName: Google Abusive Experience Report API
+  description: Views Abusive Experience Report data, and gets a list of sites that have a significant number of abusive experiences.

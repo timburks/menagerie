@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-domains
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Domains API
+  description: Enables management and configuration of domain names.

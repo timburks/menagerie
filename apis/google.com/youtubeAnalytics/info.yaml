@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-youtubeAnalytics
+  labels:
+    provider: google-com
+data:
+  displayName: Google YouTube Analytics API
+  description: Retrieves your YouTube Analytics data.

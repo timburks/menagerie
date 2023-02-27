@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-travelimpactmodel
+  labels:
+    provider: google-com
+data:
+  displayName: Google Travel Impact Model API
+  description: Travel Impact Model API lets you query travel carbon emission estimates.

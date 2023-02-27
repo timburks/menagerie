@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-transcoder
+  labels:
+    provider: google-com
+data:
+  displayName: Google Transcoder API
+  description: 'This API converts video files into formats suitable for consumer distribution. For more information, see the Transcoder API overview. '

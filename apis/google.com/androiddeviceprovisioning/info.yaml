@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-androiddeviceprovisioning
+  labels:
+    provider: google-com
+data:
+  displayName: Google Android Device Provisioning Partner API
+  description: Automates Android zero-touch enrollment for device resellers, customers, and EMMs.

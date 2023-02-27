@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-discoveryengine
+  labels:
+    provider: google-com
+data:
+  displayName: Google Discovery Engine API
+  description: Discovery Engine API.

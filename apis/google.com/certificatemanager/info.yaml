@@ -1,0 +1,8 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-certificatemanager
+  labels:
+    provider: google-com
+data:
+  displayName: Google Certificate Manager API

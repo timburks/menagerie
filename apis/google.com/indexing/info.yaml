@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-indexing
+  labels:
+    provider: google-com
+data:
+  displayName: Google Indexing API
+  description: Notifies Google when your web pages change.

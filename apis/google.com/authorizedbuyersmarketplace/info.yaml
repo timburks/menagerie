@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-authorizedbuyersmarketplace
+  labels:
+    provider: google-com
+data:
+  displayName: Google Authorized Buyers Marketplace API
+  description: The Authorized Buyers Marketplace API lets buyers programmatically discover inventory; propose, retrieve and negotiate deals with publishers.

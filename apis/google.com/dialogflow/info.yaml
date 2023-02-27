@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-dialogflow
+  labels:
+    provider: google-com
+data:
+  displayName: Google Dialogflow API
+  description: Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).

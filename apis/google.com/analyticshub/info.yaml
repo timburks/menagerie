@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-analyticshub
+  labels:
+    provider: google-com
+data:
+  displayName: Google Analytics Hub API
+  description: Exchange data and analytics assets securely and efficiently.

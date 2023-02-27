@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-bigquerydatatransfer
+  labels:
+    provider: google-com
+data:
+  displayName: Google BigQuery Data Transfer API
+  description: Schedule queries or transfer external data from SaaS applications to Google BigQuery on a regular basis.

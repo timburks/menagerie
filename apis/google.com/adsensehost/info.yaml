@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-adsensehost
+  labels:
+    provider: google-com
+data:
+  displayName: Google AdSense Host API
+  description: Generates performance reports, generates ad codes, and provides publisher management capabilities for AdSense Hosts.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-acceleratedmobilepageurl
+  labels:
+    provider: google-com
+data:
+  displayName: Google Accelerated Mobile Pages (AMP) URL API
+  description: 'Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s). '

@@ -1,0 +1,8 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-area120tables
+  labels:
+    provider: google-com
+data:
+  displayName: Google Area120 Tables API

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-clouddebugger
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Debugger API
+  description: 'Examines the call stack and variables of a running application without stopping or slowing it down. '

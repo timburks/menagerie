@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-books
+  labels:
+    provider: google-com
+data:
+  displayName: Google Books API
+  description: The Google Books API allows clients to access the Google Books repository.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-groupsmigration
+  labels:
+    provider: google-com
+data:
+  displayName: Google Groups Migration API
+  description: The Groups Migration API allows domain administrators to archive emails into Google groups.

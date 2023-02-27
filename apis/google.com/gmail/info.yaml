@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-gmail
+  labels:
+    provider: google-com
+data:
+  displayName: Google Gmail API
+  description: The Gmail API lets you view and manage Gmail mailbox data like threads, messages, and labels.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-identitytoolkit
+  labels:
+    provider: google-com
+data:
+  displayName: Google Identity Toolkit API
+  description: Help the third party sites to implement federated login.

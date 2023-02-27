@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-adsense
+  labels:
+    provider: google-com
+data:
+  displayName: Google AdSense Management API
+  description: The AdSense Management API allows publishers to access their inventory and run earnings and performance reports.

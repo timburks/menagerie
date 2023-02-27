@@ -1,0 +1,13 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v2
+  parent: apis/google.com-adsense
+data:
+  displayName: v2
+  specs:
+    - metadata:
+        name: discovery
+      data:
+        filename: discovery.json
+        mimeType: application/x.discovery+gzip

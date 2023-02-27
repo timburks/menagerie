@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-spanner
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Spanner API
+  description: Cloud Spanner is a managed, mission-critical, globally consistent and scalable relational database service.

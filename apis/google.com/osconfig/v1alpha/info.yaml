@@ -1,0 +1,13 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v1alpha
+  parent: apis/google.com-osconfig
+data:
+  displayName: v1alpha
+  specs:
+    - metadata:
+        name: discovery
+      data:
+        filename: discovery.json
+        mimeType: application/x.discovery+gzip

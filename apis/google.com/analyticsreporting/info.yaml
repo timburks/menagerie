@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-analyticsreporting
+  labels:
+    provider: google-com
+data:
+  displayName: Google Analytics Reporting API
+  description: Accesses Analytics report data.

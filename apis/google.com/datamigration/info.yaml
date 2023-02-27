@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-datamigration
+  labels:
+    provider: google-com
+data:
+  displayName: Google Database Migration API
+  description: Manage Cloud Database Migration Service resources on Google Cloud Platform.

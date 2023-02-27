@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-bigqueryreservation
+  labels:
+    provider: google-com
+data:
+  displayName: Google BigQuery Reservation API
+  description: A service to modify your BigQuery flat-rate reservations.

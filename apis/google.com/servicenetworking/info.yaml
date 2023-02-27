@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-servicenetworking
+  labels:
+    provider: google-com
+data:
+  displayName: Google Service Networking API
+  description: Provides automatic management of network configurations necessary for certain services.

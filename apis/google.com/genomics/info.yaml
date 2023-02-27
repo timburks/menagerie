@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-genomics
+  labels:
+    provider: google-com
+data:
+  displayName: Google Genomics API
+  description: Uploads, processes, queries, and searches Genomics data in the cloud.

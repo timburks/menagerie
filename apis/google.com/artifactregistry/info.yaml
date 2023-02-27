@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-artifactregistry
+  labels:
+    provider: google-com
+data:
+  displayName: Google Artifact Registry API
+  description: Store and manage build artifacts in a scalable and integrated service built on Google infrastructure.

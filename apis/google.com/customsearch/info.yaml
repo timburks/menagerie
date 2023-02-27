@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-customsearch
+  labels:
+    provider: google-com
+data:
+  displayName: Google Custom Search API
+  description: Searches over a website or collection of websites

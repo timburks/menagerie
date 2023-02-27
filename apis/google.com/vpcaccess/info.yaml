@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-vpcaccess
+  labels:
+    provider: google-com
+data:
+  displayName: Google Serverless VPC Access API
+  description: API for managing VPC access connectors.

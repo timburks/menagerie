@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-versionhistory
+  labels:
+    provider: google-com
+data:
+  displayName: Google versionhistory.googleapis.com API
+  description: Version History API - Prod

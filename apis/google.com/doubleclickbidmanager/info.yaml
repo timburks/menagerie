@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-doubleclickbidmanager
+  labels:
+    provider: google-com
+data:
+  displayName: Google DoubleClick Bid Manager API
+  description: DoubleClick Bid Manager API allows users to manage and create campaigns and reports.

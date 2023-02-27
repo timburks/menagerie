@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-driveactivity
+  labels:
+    provider: google-com
+data:
+  displayName: Google Drive Activity API
+  description: Provides a historical view of activity in Google Drive.

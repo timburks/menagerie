@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-composer
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Composer API
+  description: Manages Apache Airflow environments on Google Cloud Platform.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-bigqueryconnection
+  labels:
+    provider: google-com
+data:
+  displayName: Google BigQuery Connection API
+  description: Allows users to manage BigQuery connections to external data sources.

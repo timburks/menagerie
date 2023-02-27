@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-drive
+  labels:
+    provider: google-com
+data:
+  displayName: Google Drive API
+  description: Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.

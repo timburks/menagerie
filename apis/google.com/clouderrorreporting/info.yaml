@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-clouderrorreporting
+  labels:
+    provider: google-com
+data:
+  displayName: Google Error Reporting API
+  description: 'Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors. '

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-containeranalysis
+  labels:
+    provider: google-com
+data:
+  displayName: Google Container Analysis API
+  description: An implementation of the Grafeas API, which stores, and enables querying and retrieval of critical metadata about all of your software artifacts.

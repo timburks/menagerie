@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-accesscontextmanager
+  labels:
+    provider: google-com
+data:
+  displayName: Google Access Context Manager API
+  description: An API for setting attribute based access control to requests to Google Cloud services.

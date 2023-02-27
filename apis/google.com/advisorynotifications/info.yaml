@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-advisorynotifications
+  labels:
+    provider: google-com
+data:
+  displayName: Google Advisory Notifications API
+  description: An API for accessing Advisory Notifications in Google Cloud

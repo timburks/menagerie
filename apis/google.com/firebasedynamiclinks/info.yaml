@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-firebasedynamiclinks
+  labels:
+    provider: google-com
+data:
+  displayName: Google Firebase Dynamic Links API
+  description: Programmatically creates and manages Firebase Dynamic Links.

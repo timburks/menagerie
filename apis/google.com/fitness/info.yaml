@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-fitness
+  labels:
+    provider: google-com
+data:
+  displayName: Google Fitness API
+  description: The Fitness API for managing users' fitness tracking data.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-drivelabels
+  labels:
+    provider: google-com
+data:
+  displayName: Google Drive Labels API
+  description: An API for managing Drive Labels

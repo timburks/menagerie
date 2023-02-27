@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-adexchangebuyer2
+  labels:
+    provider: google-com
+data:
+  displayName: Google Ad Exchange Buyer API II
+  description: Accesses the latest features for managing Authorized Buyers accounts, Real-Time Bidding configurations and auction metrics, and Marketplace programmatic deals.

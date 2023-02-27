@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-adexperiencereport
+  labels:
+    provider: google-com
+data:
+  displayName: Google Ad Experience Report API
+  description: Views Ad Experience Report data, and gets a list of sites that have a significant number of annoying ads.

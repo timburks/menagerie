@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-workflowexecutions
+  labels:
+    provider: google-com
+data:
+  displayName: Google Workflow Executions API
+  description: Execute workflows created with Workflows API.

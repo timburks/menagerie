@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-playcustomapp
+  labels:
+    provider: google-com
+data:
+  displayName: Google Play Custom App Publishing API
+  description: API to create and publish custom Android apps

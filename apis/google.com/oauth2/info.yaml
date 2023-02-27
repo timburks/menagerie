@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-oauth2
+  labels:
+    provider: google-com
+data:
+  displayName: Google OAuth2 API
+  description: Obtains end-user authorization grants for use with other Google APIs.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-androidmanagement
+  labels:
+    provider: google-com
+data:
+  displayName: Google Android Management API
+  description: The Android Management API provides remote enterprise management of Android devices and apps.

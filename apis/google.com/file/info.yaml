@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-file
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Filestore API
+  description: The Cloud Filestore API is used for creating and managing cloud file servers.

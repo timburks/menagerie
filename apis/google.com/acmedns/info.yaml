@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-acmedns
+  labels:
+    provider: google-com
+data:
+  displayName: Google ACME DNS API
+  description: Google Domains ACME DNS API that allows users to complete ACME DNS-01 challenges for a domain.

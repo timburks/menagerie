@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-gmailpostmastertools
+  labels:
+    provider: google-com
+data:
+  displayName: Google Gmail Postmaster Tools API
+  description: The Postmaster Tools API is a RESTful API that provides programmatic access to email traffic metrics (like spam reports, delivery errors etc) otherwise available through the Gmail Postmaster Tools UI currently.

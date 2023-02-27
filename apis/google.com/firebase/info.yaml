@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-firebase
+  labels:
+    provider: google-com
+data:
+  displayName: Google Firebase Management API
+  description: The Firebase Management API enables programmatic setup and management of Firebase projects, including a project's Firebase resources and Firebase apps.

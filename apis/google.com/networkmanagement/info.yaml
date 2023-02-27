@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-networkmanagement
+  labels:
+    provider: google-com
+data:
+  displayName: Google Network Management API
+  description: The Network Management API provides a collection of network performance monitoring and diagnostic capabilities.

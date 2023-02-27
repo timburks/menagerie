@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-analytics
+  labels:
+    provider: google-com
+data:
+  displayName: Google Analytics API
+  description: Views and manages your Google Analytics data.

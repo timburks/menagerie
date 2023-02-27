@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-vmmigration
+  labels:
+    provider: google-com
+data:
+  displayName: Google VM Migration API
+  description: 'Use the Migrate to Virtual Machines API to programmatically migrate workloads. '

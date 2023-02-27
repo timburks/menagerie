@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-readerrevenuesubscriptionlinking
+  labels:
+    provider: google-com
+data:
+  displayName: Google Reader Revenue Subscription Linking API
+  description: readerrevenuesubscriptionlinking.googleapis.com API.

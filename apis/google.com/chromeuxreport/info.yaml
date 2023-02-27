@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-chromeuxreport
+  labels:
+    provider: google-com
+data:
+  displayName: Google Chrome UX Report API
+  description: 'The Chrome UX Report API lets you view real user experience data for millions of websites. '

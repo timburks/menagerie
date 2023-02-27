@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-verifiedaccess
+  labels:
+    provider: google-com
+data:
+  displayName: Google Chrome Verified Access API
+  description: API for Verified Access chrome extension to provide credential verification for chrome devices connecting to an enterprise network

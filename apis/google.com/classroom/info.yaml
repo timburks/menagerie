@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-classroom
+  labels:
+    provider: google-com
+data:
+  displayName: Google Classroom API
+  description: Manages classes, rosters, and invitations in Google Classroom.

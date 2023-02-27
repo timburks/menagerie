@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-docs
+  labels:
+    provider: google-com
+data:
+  displayName: Google Docs API
+  description: Reads and writes Google Docs documents.

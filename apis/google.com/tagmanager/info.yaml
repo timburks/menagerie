@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-tagmanager
+  labels:
+    provider: google-com
+data:
+  displayName: Google Tag Manager API
+  description: This API allows clients to access and modify container and tag configuration.

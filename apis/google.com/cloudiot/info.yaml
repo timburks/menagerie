@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-cloudiot
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud IoT API
+  description: 'Registers and manages IoT (Internet of Things) devices that connect to the Google Cloud Platform. '

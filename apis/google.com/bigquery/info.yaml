@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-bigquery
+  labels:
+    provider: google-com
+data:
+  displayName: Google BigQuery API
+  description: A data platform for customers to create, manage, share and query data.

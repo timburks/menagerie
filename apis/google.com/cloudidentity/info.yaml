@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-cloudidentity
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Identity API
+  description: API for provisioning and managing identity resources.

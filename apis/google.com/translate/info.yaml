@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-translate
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Translation API
+  description: Integrates text translation into your website or application.

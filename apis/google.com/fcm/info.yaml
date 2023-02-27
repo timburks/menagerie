@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-fcm
+  labels:
+    provider: google-com
+data:
+  displayName: Google Firebase Cloud Messaging API
+  description: FCM send API that provides a cross-platform messaging solution to reliably deliver messages at no cost.

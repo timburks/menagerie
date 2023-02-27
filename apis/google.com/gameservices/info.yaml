@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-gameservices
+  labels:
+    provider: google-com
+data:
+  displayName: Google Game Services API
+  description: Deploy and manage infrastructure for global multiplayer gaming experiences.

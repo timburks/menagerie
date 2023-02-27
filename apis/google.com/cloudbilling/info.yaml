@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-cloudbilling
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Billing API
+  description: Allows developers to manage billing for their Google Cloud Platform projects programmatically.

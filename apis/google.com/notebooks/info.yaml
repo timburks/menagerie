@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-notebooks
+  labels:
+    provider: google-com
+data:
+  displayName: Google Notebooks API
+  description: Notebooks API is used to manage notebook resources in Google Cloud.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-videointelligence
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Video Intelligence API
+  description: Detects objects, explicit content, and scene changes in videos. It also specifies the region for annotation and transcribes speech to text. Supports both asynchronous API and streaming API.

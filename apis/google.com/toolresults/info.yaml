@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-toolresults
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Tool Results API
+  description: API to publish and access results from developer tools.

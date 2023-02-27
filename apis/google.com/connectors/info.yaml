@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-connectors
+  labels:
+    provider: google-com
+data:
+  displayName: Google Connectors API
+  description: Enables users to create and manage connections to Google Cloud services and third-party business applications using the Connectors interface.

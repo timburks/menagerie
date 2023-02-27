@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-ml
+  labels:
+    provider: google-com
+data:
+  displayName: Google AI Platform Training & Prediction API
+  description: An API to enable creating and using machine learning models.

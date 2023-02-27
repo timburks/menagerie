@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-dataflow
+  labels:
+    provider: google-com
+data:
+  displayName: Google Dataflow API
+  description: Manages Google Cloud Dataflow projects on Google Cloud Platform.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-keep
+  labels:
+    provider: google-com
+data:
+  displayName: Google Keep API
+  description: The Google Keep API is used in an enterprise environment to manage Google Keep content and resolve issues identified by cloud security software.

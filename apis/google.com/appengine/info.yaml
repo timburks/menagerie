@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-appengine
+  labels:
+    provider: google-com
+data:
+  displayName: Google App Engine Admin API
+  description: Provisions and manages developers' App Engine applications.

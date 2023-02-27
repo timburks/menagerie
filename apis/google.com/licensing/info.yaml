@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-licensing
+  labels:
+    provider: google-com
+data:
+  displayName: Google Enterprise License Manager API
+  description: The Google Enterprise License Manager API lets you manage Google Workspace and related licenses for all users of a customer that you manage.

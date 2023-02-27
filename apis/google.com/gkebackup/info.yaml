@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-gkebackup
+  labels:
+    provider: google-com
+data:
+  displayName: Google Backup for GKE API
+  description: Backup for GKE is a managed Kubernetes workload backup and restore service for GKE clusters.

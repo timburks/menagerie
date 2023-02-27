@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-firebaseappcheck
+  labels:
+    provider: google-com
+data:
+  displayName: Google Firebase App Check API
+  description: Firebase App Check works alongside other Firebase services to help protect your backend resources from abuse, such as billing fraud or phishing.

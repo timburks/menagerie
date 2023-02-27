@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-cloudfunctions
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Functions API
+  description: Manages lightweight user-provided functions executed in response to events.

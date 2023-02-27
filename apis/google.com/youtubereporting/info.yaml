@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-youtubereporting
+  labels:
+    provider: google-com
+data:
+  displayName: Google YouTube Reporting API
+  description: Schedules reporting jobs containing your YouTube Analytics data and downloads the resulting bulk data reports in the form of CSV files.

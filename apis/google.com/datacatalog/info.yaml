@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-datacatalog
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Data Catalog API
+  description: 'A fully managed and highly scalable data discovery and metadata management service. '

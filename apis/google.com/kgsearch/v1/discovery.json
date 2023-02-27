@@ -1,0 +1,184 @@
+{
+  "id": "kgsearch:v1",
+  "description": "Searches the Google Knowledge Graph for entities.",
+  "parameters": {
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "location": "query",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "description": "Returns response with indentations and line breaks.",
+      "location": "query",
+      "default": "true"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "access_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth access token."
+    },
+    "key": {
+      "type": "string",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "location": "query"
+    },
+    "oauth_token": {
+      "type": "string",
+      "description": "OAuth 2.0 token for the current user.",
+      "location": "query"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "type": "string",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
+      "location": "query",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "alt": {
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "description": "Data format for response.",
+      "default": "json",
+      "location": "query",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    }
+  },
+  "resources": {
+    "entities": {
+      "methods": {
+        "search": {
+          "id": "kgsearch.entities.search",
+          "httpMethod": "GET",
+          "parameters": {
+            "prefix": {
+              "description": "Enables prefix match against names and aliases of entities",
+              "type": "boolean",
+              "location": "query"
+            },
+            "query": {
+              "description": "The literal query string for search.",
+              "type": "string",
+              "location": "query"
+            },
+            "indent": {
+              "description": "Enables indenting of json results.",
+              "type": "boolean",
+              "location": "query"
+            },
+            "types": {
+              "location": "query",
+              "type": "string",
+              "repeated": true,
+              "description": "Restricts returned entities with these types, e.g. Person (as defined in http://schema.org/Person). If multiple types are specified, returned entities will contain one or more of these types."
+            },
+            "ids": {
+              "type": "string",
+              "description": "The list of entity id to be used for search instead of query string. To specify multiple ids in the HTTP request, repeat the parameter in the URL as in ...?ids=A&ids=B",
+              "repeated": true,
+              "location": "query"
+            },
+            "limit": {
+              "location": "query",
+              "type": "integer",
+              "description": "Limits the number of entities to be returned.",
+              "format": "int32"
+            },
+            "languages": {
+              "repeated": true,
+              "location": "query",
+              "type": "string",
+              "description": "The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'."
+            }
+          },
+          "description": "Searches Knowledge Graph for entities that match the constraints. A list of matched entities will be returned in response, which will be in JSON-LD format and compatible with http://schema.org",
+          "response": {
+            "$ref": "SearchResponse"
+          },
+          "path": "v1/entities:search",
+          "parameterOrder": [],
+          "flatPath": "v1/entities:search"
+        }
+      }
+    }
+  },
+  "documentationLink": "https://developers.google.com/knowledge-graph/",
+  "version_module": true,
+  "mtlsRootUrl": "https://kgsearch.mtls.googleapis.com/",
+  "ownerName": "Google",
+  "version": "v1",
+  "batchPath": "batch",
+  "title": "Knowledge Graph Search API",
+  "kind": "discovery#restDescription",
+  "basePath": "",
+  "revision": "20230219",
+  "rootUrl": "https://kgsearch.googleapis.com/",
+  "protocol": "rest",
+  "name": "kgsearch",
+  "servicePath": "",
+  "ownerDomain": "google.com",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
+  "schemas": {
+    "SearchResponse": {
+      "id": "SearchResponse",
+      "description": "Response message includes the context and a list of matching results which contain the detail of associated entities.",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "description": "The schema type of top-level JSON-LD object, e.g. ItemList.",
+          "type": "any"
+        },
+        "@context": {
+          "description": "The local context applicable for the response. See more details at http://www.w3.org/TR/json-ld/#context-definitions.",
+          "type": "any"
+        },
+        "itemListElement": {
+          "description": "The item list of search results.",
+          "items": {
+            "type": "any"
+          },
+          "type": "array"
+        }
+      }
+    }
+  },
+  "discoveryVersion": "v1",
+  "baseUrl": "https://kgsearch.googleapis.com/"
+}

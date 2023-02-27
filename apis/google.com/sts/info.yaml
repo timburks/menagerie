@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-sts
+  labels:
+    provider: google-com
+data:
+  displayName: Google Security Token Service API
+  description: The Security Token Service exchanges Google or third-party credentials for a short-lived access token to Google Cloud resources.

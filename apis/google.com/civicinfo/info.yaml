@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-civicinfo
+  labels:
+    provider: google-com
+data:
+  displayName: Google Civic Information API
+  description: Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.

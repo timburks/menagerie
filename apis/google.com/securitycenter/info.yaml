@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-securitycenter
+  labels:
+    provider: google-com
+data:
+  displayName: Google Security Command Center API
+  description: Security Command Center API provides access to temporal views of assets and findings within an organization.

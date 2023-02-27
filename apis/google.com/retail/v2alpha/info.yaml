@@ -1,0 +1,13 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v2alpha
+  parent: apis/google.com-retail
+data:
+  displayName: v2alpha
+  specs:
+    - metadata:
+        name: discovery
+      data:
+        filename: discovery.json
+        mimeType: application/x.discovery+gzip

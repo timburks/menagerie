@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-accessapproval
+  labels:
+    provider: google-com
+data:
+  displayName: Google Access Approval API
+  description: An API for controlling access to data by Google personnel.

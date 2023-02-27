@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-compute
+  labels:
+    provider: google-com
+data:
+  displayName: Google Compute Engine API
+  description: 'Creates and runs virtual machines on Google Cloud Platform. '

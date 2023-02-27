@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-gamesManagement
+  labels:
+    provider: google-com
+data:
+  displayName: Google Play Game Management
+  description: The Google Play Game Management API allows developers to manage resources from the Google Play Game service.

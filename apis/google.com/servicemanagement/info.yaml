@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-servicemanagement
+  labels:
+    provider: google-com
+data:
+  displayName: Google Service Management API
+  description: Google Service Management allows service producers to publish their services on Google Cloud Platform so that they can be discovered and used by service consumers.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-tpu
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud TPU API
+  description: TPU API provides customers with access to Google TPU technology.

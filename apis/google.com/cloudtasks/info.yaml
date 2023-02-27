@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-cloudtasks
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Tasks API
+  description: Manages the execution of large numbers of distributed requests.

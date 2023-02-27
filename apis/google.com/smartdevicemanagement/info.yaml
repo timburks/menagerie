@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-smartdevicemanagement
+  labels:
+    provider: google-com
+data:
+  displayName: Google Smart Device Management API
+  description: Allow select enterprise partners to access, control, and manage Google and Nest devices programmatically.

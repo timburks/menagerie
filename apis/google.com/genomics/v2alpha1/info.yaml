@@ -1,0 +1,13 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v2alpha1
+  parent: apis/google.com-genomics
+data:
+  displayName: v2alpha1
+  specs:
+    - metadata:
+        name: discovery
+      data:
+        filename: discovery.json
+        mimeType: application/x.discovery+gzip

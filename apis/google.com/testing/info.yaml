@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-testing
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Testing API
+  description: Allows developers to run automated tests for their mobile applications on Google infrastructure.

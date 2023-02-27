@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-dfareporting
+  labels:
+    provider: google-com
+data:
+  displayName: Google Campaign Manager 360 API
+  description: Build applications to efficiently manage large or complex trafficking, reporting, and attribution workflows for Campaign Manager 360.

@@ -1,0 +1,13 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v1management
+  parent: apis/google.com-gamesManagement
+data:
+  displayName: v1management
+  specs:
+    - metadata:
+        name: discovery
+      data:
+        filename: discovery.json
+        mimeType: application/x.discovery+gzip

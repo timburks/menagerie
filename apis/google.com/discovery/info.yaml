@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-discovery
+  labels:
+    provider: google-com
+data:
+  displayName: Google API Discovery Service
+  description: Provides information about other Google APIs, such as what APIs are available, the resource, and method details for each API.

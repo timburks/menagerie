@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-servicedirectory
+  labels:
+    provider: google-com
+data:
+  displayName: Google Service Directory API
+  description: 'Service Directory is a platform for discovering, publishing, and connecting services. '

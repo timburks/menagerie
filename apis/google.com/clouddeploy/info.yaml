@@ -1,0 +1,8 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-clouddeploy
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Deploy API

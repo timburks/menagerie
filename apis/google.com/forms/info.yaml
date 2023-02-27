@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-forms
+  labels:
+    provider: google-com
+data:
+  displayName: Google Forms API
+  description: Reads and writes Google Forms and responses.

@@ -1,0 +1,8 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-contactcenteraiplatform
+  labels:
+    provider: google-com
+data:
+  displayName: Google Contact Center AI Platform API

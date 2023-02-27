@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-billingbudgets
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Billing Budget API
+  description: The Cloud Billing Budget API stores Cloud Billing budgets, which define a budget plan and the rules to execute as spend is tracked against that plan.

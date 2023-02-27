@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-manufacturers
+  labels:
+    provider: google-com
+data:
+  displayName: Google Manufacturer Center API
+  description: Public API for managing Manufacturer Center related data.

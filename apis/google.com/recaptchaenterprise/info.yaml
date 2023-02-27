@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-recaptchaenterprise
+  labels:
+    provider: google-com
+data:
+  displayName: Google reCAPTCHA Enterprise API
+  description: Help protect your website from fraudulent activity, spam, and abuse without creating friction.

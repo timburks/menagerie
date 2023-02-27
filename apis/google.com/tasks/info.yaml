@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-tasks
+  labels:
+    provider: google-com
+data:
+  displayName: Google Tasks API
+  description: The Google Tasks API lets you manage your tasks and task lists.

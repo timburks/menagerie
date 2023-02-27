@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-cloudbuild
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Build API
+  description: Creates and manages builds on Google Cloud Platform.

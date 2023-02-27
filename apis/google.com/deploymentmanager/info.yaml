@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-deploymentmanager
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Deployment Manager V2 API
+  description: The Google Cloud Deployment Manager v2 API provides services for configuring, deploying, and viewing Google Cloud services and APIs via templates which specify deployments of Cloud resources.

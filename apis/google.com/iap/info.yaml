@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-iap
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Identity-Aware Proxy API
+  description: Controls access to cloud applications running on Google Cloud Platform.

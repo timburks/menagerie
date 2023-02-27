@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-webfonts
+  labels:
+    provider: google-com
+data:
+  displayName: Google Web Fonts Developer API
+  description: The Google Web Fonts Developer API lets you retrieve information about web fonts served by Google.

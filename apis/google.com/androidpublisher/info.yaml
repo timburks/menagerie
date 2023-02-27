@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-androidpublisher
+  labels:
+    provider: google-com
+data:
+  displayName: Google Play Android Developer API
+  description: 'Lets Android application developers access their Google Play accounts. At a high level, the expected workflow is to "insert" an Edit, make changes as necessary, and then "commit" it. '

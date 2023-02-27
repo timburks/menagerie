@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-calendar
+  labels:
+    provider: google-com
+data:
+  displayName: Google Calendar API
+  description: Manipulates events and other calendar data.

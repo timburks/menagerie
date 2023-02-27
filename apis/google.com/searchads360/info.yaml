@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-searchads360
+  labels:
+    provider: google-com
+data:
+  displayName: Google Search Ads 360 Reporting API
+  description: The Search Ads 360 API allows developers to automate downloading reports from Search Ads 360.

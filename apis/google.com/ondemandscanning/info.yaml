@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-ondemandscanning
+  labels:
+    provider: google-com
+data:
+  displayName: Google On-Demand Scanning API
+  description: A service to scan container images for vulnerabilities.

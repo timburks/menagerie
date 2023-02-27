@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-iamcredentials
+  labels:
+    provider: google-com
+data:
+  displayName: Google IAM Service Account Credentials API
+  description: 'Creates short-lived credentials for impersonating IAM service accounts. To enable this API, you must enable the IAM API (iam.googleapis.com). '

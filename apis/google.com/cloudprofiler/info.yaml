@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-cloudprofiler
+  labels:
+    provider: google-com
+data:
+  displayName: Google Stackdriver Profiler API
+  description: Manages continuous profiling information.

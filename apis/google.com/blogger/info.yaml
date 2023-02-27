@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-blogger
+  labels:
+    provider: google-com
+data:
+  displayName: Google Blogger API
+  description: The Blogger API provides access to posts, comments and pages of a Blogger blog.

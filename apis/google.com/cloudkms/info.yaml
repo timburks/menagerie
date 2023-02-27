@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-cloudkms
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Key Management Service (KMS) API
+  description: 'Manages keys and performs cryptographic operations in a central cloud service, for direct use by other cloud resources and applications. '

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-serviceconsumermanagement
+  labels:
+    provider: google-com
+data:
+  displayName: Google Service Consumer Management API
+  description: Manages the service consumers of a Service Infrastructure service.

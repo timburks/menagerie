@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-games
+  labels:
+    provider: google-com
+data:
+  displayName: Google Play Game Services
+  description: The Google Play games service allows developers to enhance games with social leaderboards, achievements, game state, sign-in with Google, and more.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-firebasedatabase
+  labels:
+    provider: google-com
+data:
+  displayName: Google Firebase Realtime Database API
+  description: The Firebase Realtime Database API enables programmatic provisioning and management of Realtime Database instances.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-siteVerification
+  labels:
+    provider: google-com
+data:
+  displayName: Google Site Verification API
+  description: Verifies ownership of websites or domains with Google.

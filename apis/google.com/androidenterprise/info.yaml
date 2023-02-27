@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-androidenterprise
+  labels:
+    provider: google-com
+data:
+  displayName: Google Play EMM API
+  description: Manages the deployment of apps to Android Enterprise devices.

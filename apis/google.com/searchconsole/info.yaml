@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-searchconsole
+  labels:
+    provider: google-com
+data:
+  displayName: Google Search Console API
+  description: The Search Console API provides access to both Search Console data (verified users only) and to public information on an URL basis (anyone)

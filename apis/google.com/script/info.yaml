@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-script
+  labels:
+    provider: google-com
+data:
+  displayName: Google Apps Script API
+  description: 'Manages and executes Google Apps Script projects. '

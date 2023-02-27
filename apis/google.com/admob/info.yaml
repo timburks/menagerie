@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-admob
+  labels:
+    provider: google-com
+data:
+  displayName: Google AdMob API
+  description: 'The AdMob API allows publishers to programmatically get information about their AdMob account. '

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-osconfig
+  labels:
+    provider: google-com
+data:
+  displayName: Google OS Config API
+  description: OS management tools that can be used for patch management, patch compliance, and configuration management on VM instances.

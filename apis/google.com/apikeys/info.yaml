@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-apikeys
+  labels:
+    provider: google-com
+data:
+  displayName: Google API Keys API
+  description: Manages the API keys associated with developer projects.

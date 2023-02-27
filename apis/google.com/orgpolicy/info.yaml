@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-orgpolicy
+  labels:
+    provider: google-com
+data:
+  displayName: Google Organization Policy API
+  description: The Org Policy API allows users to configure governance rules on their GCP resources across the Cloud Resource Hierarchy.

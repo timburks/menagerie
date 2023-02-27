@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-firebaseml
+  labels:
+    provider: google-com
+data:
+  displayName: Google Firebase ML API
+  description: Access custom machine learning models hosted via Firebase ML.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-people
+  labels:
+    provider: google-com
+data:
+  displayName: Google People API
+  description: Provides access to information about profiles and contacts.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-domainsrdap
+  labels:
+    provider: google-com
+data:
+  displayName: Google Domains RDAP API
+  description: Read-only public API that lets users search for information about domain names.

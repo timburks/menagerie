@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-fcmdata
+  labels:
+    provider: google-com
+data:
+  displayName: Google Firebase Cloud Messaging Data API
+  description: Provides additional information about Firebase Cloud Messaging (FCM) message sends and deliveries.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-datapipelines
+  labels:
+    provider: google-com
+data:
+  displayName: Google Data pipelines API
+  description: Data Pipelines provides an interface for creating, updating, and managing recurring Data Analytics jobs.

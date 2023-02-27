@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-firebasestorage
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud Storage for Firebase API
+  description: The Cloud Storage for Firebase API enables programmatic management of Cloud Storage buckets for use in Firebase projects

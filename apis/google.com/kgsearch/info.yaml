@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-kgsearch
+  labels:
+    provider: google-com
+data:
+  displayName: Google Knowledge Graph Search API
+  description: Searches the Google Knowledge Graph for entities.

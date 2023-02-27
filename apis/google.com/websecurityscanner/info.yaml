@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-websecurityscanner
+  labels:
+    provider: google-com
+data:
+  displayName: Google Web Security Scanner API
+  description: Scans your Compute and App Engine apps for common web vulnerabilities.

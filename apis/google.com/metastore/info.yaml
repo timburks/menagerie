@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-metastore
+  labels:
+    provider: google-com
+data:
+  displayName: Google Dataproc Metastore API
+  description: The Dataproc Metastore API is used to manage the lifecycle and configuration of metastore services.

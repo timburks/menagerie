@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-workflows
+  labels:
+    provider: google-com
+data:
+  displayName: Google Workflows API
+  description: Manage workflow definitions. To execute workflows and manage executions, see the Workflows Executions API.

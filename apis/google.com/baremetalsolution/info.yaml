@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-baremetalsolution
+  labels:
+    provider: google-com
+data:
+  displayName: Google Bare Metal Solution API
+  description: Provides ways to manage Bare Metal Solution hardware installed in a regional extension located near a Google Cloud data center.

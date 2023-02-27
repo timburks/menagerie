@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-oslogin
+  labels:
+    provider: google-com
+data:
+  displayName: Google Cloud OS Login API
+  description: You can use OS Login to manage access to your VM instances using IAM roles.

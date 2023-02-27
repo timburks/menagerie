@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-groupssettings
+  labels:
+    provider: google-com
+data:
+  displayName: Google Groups Settings API
+  description: Manages permission levels and related settings of a group.

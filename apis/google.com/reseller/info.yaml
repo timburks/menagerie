@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-reseller
+  labels:
+    provider: google-com
+data:
+  displayName: Google Workspace Reseller API
+  description: Perform common functions that are available on the Channel Services console at scale, like placing orders and viewing customer information

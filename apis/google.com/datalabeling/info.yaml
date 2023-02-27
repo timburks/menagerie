@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-datalabeling
+  labels:
+    provider: google-com
+data:
+  displayName: Google Data Labeling API
+  description: Public API for Google Cloud AI Data Labeling Service.

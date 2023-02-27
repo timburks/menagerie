@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-batch
+  labels:
+    provider: google-com
+data:
+  displayName: Google Batch API
+  description: An API to manage the running of batch jobs on Google Cloud Platform.

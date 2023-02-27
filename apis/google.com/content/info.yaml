@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-content
+  labels:
+    provider: google-com
+data:
+  displayName: Google Content API for Shopping
+  description: Manage your product listings and accounts for Google Shopping

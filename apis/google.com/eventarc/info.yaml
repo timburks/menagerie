@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-eventarc
+  labels:
+    provider: google-com
+data:
+  displayName: Google Eventarc API
+  description: Build event-driven applications on Google Cloud Platform.

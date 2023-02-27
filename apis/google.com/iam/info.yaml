@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-iam
+  labels:
+    provider: google-com
+data:
+  displayName: Google Identity and Access Management (IAM) API
+  description: 'Manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls. '
