@@ -1,0 +1,450 @@
+{
+  "protocol": "rest",
+  "schemas": {
+    "DatedValue": {
+      "properties": {
+        "date": {
+          "description": "The date that the datapoint corresponds to. This represents a month value if the day field is not set.",
+          "$ref": "Date"
+        },
+        "value": {
+          "type": "string",
+          "description": "The value of the datapoint.",
+          "format": "int64"
+        }
+      },
+      "description": "Represents a single datapoint in the timeseries, where each datapoint is a date-value pair.",
+      "type": "object",
+      "id": "DatedValue"
+    },
+    "SearchKeywordCount": {
+      "type": "object",
+      "properties": {
+        "insightsValue": {
+          "$ref": "InsightsValue",
+          "description": "One of either: 1) The sum of the number of unique users that used the keyword in a month, aggregated for each month requested. 2) A threshold that indicates that the actual value is below this threshold."
+        },
+        "searchKeyword": {
+          "description": "The lower-cased string that the user entered.",
+          "type": "string"
+        }
+      },
+      "id": "SearchKeywordCount",
+      "description": "Represents a single search keyword and its value."
+    },
+    "TimeSeries": {
+      "type": "object",
+      "description": "Represents a timeseries.",
+      "properties": {
+        "datedValues": {
+          "type": "array",
+          "items": {
+            "$ref": "DatedValue"
+          },
+          "description": "List of datapoints in the timeseries, where each datapoint is a date-value pair."
+        }
+      },
+      "id": "TimeSeries"
+    },
+    "ListSearchKeywordImpressionsMonthlyResponse": {
+      "id": "ListSearchKeywordImpressionsMonthlyResponse",
+      "properties": {
+        "nextPageToken": {
+          "type": "string",
+          "format": "byte",
+          "description": "A token indicating the last paginated result returned. This can be used by succeeding requests to get the next \"page\" of keywords. It will only be present when there are more results to be returned."
+        },
+        "searchKeywordsCounts": {
+          "type": "array",
+          "items": {
+            "$ref": "SearchKeywordCount"
+          },
+          "description": "Search terms which have been used to find a business."
+        }
+      },
+      "type": "object",
+      "description": "Represents the response for ListSearchKeywordImpressionsMonthly."
+    },
+    "GetDailyMetricsTimeSeriesResponse": {
+      "type": "object",
+      "id": "GetDailyMetricsTimeSeriesResponse",
+      "description": "Represents the response for GetDailyMetricsTimeSeries.",
+      "properties": {
+        "timeSeries": {
+          "description": "The daily time series.",
+          "$ref": "TimeSeries"
+        }
+      }
+    },
+    "Date": {
+      "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
+      "type": "object",
+      "properties": {
+        "month": {
+          "type": "integer",
+          "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
+          "format": "int32"
+        },
+        "day": {
+          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "year": {
+          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "id": "Date"
+    },
+    "InsightsValue": {
+      "properties": {
+        "value": {
+          "format": "int64",
+          "type": "string",
+          "description": "Represents the actual value."
+        },
+        "threshold": {
+          "format": "int64",
+          "type": "string",
+          "description": "Represents the threshold below which the actual value falls."
+        }
+      },
+      "type": "object",
+      "id": "InsightsValue",
+      "description": "Represents an insights value."
+    }
+  },
+  "canonicalName": "Business Profile Performance",
+  "documentationLink": "https://developers.google.com/my-business/",
+  "version": "v1",
+  "resources": {
+    "locations": {
+      "methods": {
+        "getDailyMetricsTimeSeries": {
+          "flatPath": "v1/locations/{locationsId}:getDailyMetricsTimeSeries",
+          "path": "v1/{+name}:getDailyMetricsTimeSeries",
+          "parameters": {
+            "dailyRange.startDate.day": {
+              "location": "query",
+              "type": "integer",
+              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+              "format": "int32"
+            },
+            "dailyRange.endDate.month": {
+              "format": "int32",
+              "type": "integer",
+              "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
+              "location": "query"
+            },
+            "dailyMetric": {
+              "enumDescriptions": [
+                "Represents the default unknown value.",
+                "Business impressions on Google Maps on Desktop devices. Multiple impressions by a unique user within a single day are counted as a single impression.",
+                "Business impressions on Google Search on Desktop devices. Multiple impressions by a unique user within a single day are counted as a single impression.",
+                "Business impressions on Google Maps on Mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression.",
+                "Business impressions on Google Search on Mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression.",
+                "The number of message conversations received on the business profile.",
+                "The number of times a direction request was requested to the business location.",
+                "The number of times the business profile call button was clicked.",
+                "The number of times the business profile website was clicked.",
+                "The number of bookings received from the business profile.",
+                "The number of food orders received from the business profile.",
+                "The number of clicks to view or interact with the menu content on the business profile. Multiple clicks by a unique user within a single day are counted as 1."
+              ],
+              "enum": [
+                "DAILY_METRIC_UNKNOWN",
+                "BUSINESS_IMPRESSIONS_DESKTOP_MAPS",
+                "BUSINESS_IMPRESSIONS_DESKTOP_SEARCH",
+                "BUSINESS_IMPRESSIONS_MOBILE_MAPS",
+                "BUSINESS_IMPRESSIONS_MOBILE_SEARCH",
+                "BUSINESS_CONVERSATIONS",
+                "BUSINESS_DIRECTION_REQUESTS",
+                "CALL_CLICKS",
+                "WEBSITE_CLICKS",
+                "BUSINESS_BOOKINGS",
+                "BUSINESS_FOOD_ORDERS",
+                "BUSINESS_FOOD_MENU_CLICKS"
+              ],
+              "type": "string",
+              "description": "Required. The metric to retrieve time series.",
+              "location": "query"
+            },
+            "dailySubEntityType.timeOfDay.hours": {
+              "description": "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time.",
+              "format": "int32",
+              "location": "query",
+              "type": "integer"
+            },
+            "dailySubEntityType.dayOfWeek": {
+              "description": "Represents the day of the week. Eg: MONDAY.",
+              "type": "string",
+              "location": "query",
+              "enumDescriptions": [
+                "The day of the week is unspecified.",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+              ],
+              "enum": [
+                "DAY_OF_WEEK_UNSPECIFIED",
+                "MONDAY",
+                "TUESDAY",
+                "WEDNESDAY",
+                "THURSDAY",
+                "FRIDAY",
+                "SATURDAY",
+                "SUNDAY"
+              ]
+            },
+            "dailyRange.startDate.year": {
+              "format": "int32",
+              "location": "query",
+              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+              "type": "integer"
+            },
+            "dailyRange.endDate.day": {
+              "location": "query",
+              "format": "int32",
+              "type": "integer",
+              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant."
+            },
+            "dailySubEntityType.timeOfDay.seconds": {
+              "type": "integer",
+              "location": "query",
+              "description": "Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.",
+              "format": "int32"
+            },
+            "dailyRange.endDate.year": {
+              "format": "int32",
+              "location": "query",
+              "type": "integer",
+              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."
+            },
+            "dailyRange.startDate.month": {
+              "type": "integer",
+              "format": "int32",
+              "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
+              "location": "query"
+            },
+            "dailySubEntityType.timeOfDay.nanos": {
+              "type": "integer",
+              "description": "Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.",
+              "format": "int32",
+              "location": "query"
+            },
+            "dailySubEntityType.timeOfDay.minutes": {
+              "format": "int32",
+              "description": "Minutes of hour of day. Must be from 0 to 59.",
+              "type": "integer",
+              "location": "query"
+            },
+            "name": {
+              "required": true,
+              "location": "path",
+              "pattern": "^locations/[^/]+$",
+              "type": "string",
+              "description": "Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id."
+            }
+          },
+          "httpMethod": "GET",
+          "parameterOrder": [
+            "name"
+          ],
+          "response": {
+            "$ref": "GetDailyMetricsTimeSeriesResponse"
+          },
+          "id": "businessprofileperformance.locations.getDailyMetricsTimeSeries",
+          "description": " Returns the values for each date from a given time range that are associated with the specific daily metric. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345:getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&daily_range.start_date.year=2022&daily_range.start_date.month=1&daily_range.start_date.day=1&daily_range.end_date.year=2022&daily_range.end_date.month=3&daily_range.end_date.day=31`"
+        }
+      },
+      "resources": {
+        "searchkeywords": {
+          "resources": {
+            "impressions": {
+              "resources": {
+                "monthly": {
+                  "methods": {
+                    "list": {
+                      "flatPath": "v1/locations/{locationsId}/searchkeywords/impressions/monthly",
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "path": "v1/{+parent}/searchkeywords/impressions/monthly",
+                      "httpMethod": "GET",
+                      "response": {
+                        "$ref": "ListSearchKeywordImpressionsMonthlyResponse"
+                      },
+                      "id": "businessprofileperformance.locations.searchkeywords.impressions.monthly.list",
+                      "description": "Returns the search keywords used to find a business in search or maps. Each search keyword is accompanied by impressions which are aggregated on a monthly basis. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345/searchkeywords/impressions/monthly?monthly_range.start_month.year=2022&monthly_range.start_month.month=1&monthly_range.end_month.year=2022&monthly_range.end_month.month=3`",
+                      "parameters": {
+                        "monthlyRange.startMonth.year": {
+                          "type": "integer",
+                          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+                          "location": "query",
+                          "format": "int32"
+                        },
+                        "monthlyRange.endMonth.month": {
+                          "format": "int32",
+                          "location": "query",
+                          "type": "integer",
+                          "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."
+                        },
+                        "pageToken": {
+                          "location": "query",
+                          "format": "byte",
+                          "type": "string",
+                          "description": "Optional. A token indicating the next paginated result to be returned."
+                        },
+                        "monthlyRange.endMonth.year": {
+                          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+                          "location": "query",
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "monthlyRange.startMonth.day": {
+                          "format": "int32",
+                          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+                          "location": "query",
+                          "type": "integer"
+                        },
+                        "pageSize": {
+                          "type": "integer",
+                          "location": "query",
+                          "description": "Optional. The number of results requested. The default page size is 100. Page size can be set to a maximum of 100.",
+                          "format": "int32"
+                        },
+                        "parent": {
+                          "required": true,
+                          "type": "string",
+                          "location": "path",
+                          "pattern": "^locations/[^/]+$",
+                          "description": "Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id."
+                        },
+                        "monthlyRange.endMonth.day": {
+                          "format": "int32",
+                          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+                          "location": "query",
+                          "type": "integer"
+                        },
+                        "monthlyRange.startMonth.month": {
+                          "type": "integer",
+                          "format": "int32",
+                          "location": "query",
+                          "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "fullyEncodeReservedExpansion": true,
+  "title": "Business Profile Performance API",
+  "ownerDomain": "google.com",
+  "batchPath": "batch",
+  "name": "businessprofileperformance",
+  "rootUrl": "https://businessprofileperformance.googleapis.com/",
+  "basePath": "",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "baseUrl": "https://businessprofileperformance.googleapis.com/",
+  "id": "businessprofileperformance:v1",
+  "parameters": {
+    "quotaUser": {
+      "location": "query",
+      "type": "string",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "enum": [
+        "1",
+        "2"
+      ],
+      "type": "string",
+      "description": "V1 error format.",
+      "location": "query"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "location": "query",
+      "type": "string"
+    },
+    "uploadType": {
+      "location": "query",
+      "type": "string",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "access_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth access token."
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query",
+      "type": "boolean"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "type": "string",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+    },
+    "alt": {
+      "default": "json",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "description": "Data format for response.",
+      "location": "query",
+      "type": "string",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    },
+    "fields": {
+      "location": "query",
+      "type": "string",
+      "description": "Selector specifying which fields to include in a partial response."
+    }
+  },
+  "version_module": true,
+  "mtlsRootUrl": "https://businessprofileperformance.mtls.googleapis.com/",
+  "revision": "20230227",
+  "discoveryVersion": "v1",
+  "kind": "discovery#restDescription",
+  "description": "The Business Profile Performance API allows merchants to fetch performance reports about their business profile on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.",
+  "servicePath": "",
+  "ownerName": "Google"
+}

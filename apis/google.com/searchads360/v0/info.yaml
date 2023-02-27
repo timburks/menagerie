@@ -5,9 +5,3 @@ metadata:
   parent: apis/google.com-searchads360
 data:
   displayName: v0
-  specs:
-    - metadata:
-        name: discovery
-      data:
-        filename: discovery.json
-        mimeType: application/x.discovery+gzip

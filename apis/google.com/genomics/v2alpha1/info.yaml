@@ -5,9 +5,3 @@ metadata:
   parent: apis/google.com-genomics
 data:
   displayName: v2alpha1
-  specs:
-    - metadata:
-        name: discovery
-      data:
-        filename: discovery.json
-        mimeType: application/x.discovery+gzip

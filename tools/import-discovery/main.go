@@ -112,22 +112,23 @@ func readDoc(discoveryRestUrl string) error {
 		},
 		Data: encoding.ApiVersionData{
 			DisplayName: *versionID,
-			ApiSpecs: []*encoding.ApiSpec{
-				{
-					Header: encoding.Header{
-						Metadata: encoding.Metadata{
-							Name: "discovery",
-						},
-					},
-					Data: encoding.ApiSpecData{
-						MimeType: "application/x.discovery+gzip",
-						FileName: "discovery.json",
-					},
-				},
-			},
 		},
 	}
-	err = os.MkdirAll(filepath.Join(*ownerDomain, *apiID, *versionID), 0777)
+	spec := &encoding.ApiSpec{
+		Header: encoding.Header{
+			ApiVersion: "apigeeregistry/v1",
+			Kind:       "Spec",
+			Metadata: encoding.Metadata{
+				Parent: "apis/" + *ownerDomain + "-" + *apiID + "/versions/" + *versionID,
+				Name:   "discovery",
+			},
+		},
+		Data: encoding.ApiSpecData{
+			MimeType: "application/x.discovery+gzip",
+			FileName: "discovery.json",
+		},
+	}
+	err = os.MkdirAll(filepath.Join(*ownerDomain, *apiID, *versionID, "discovery"), 0777)
 	if err != nil {
 		return err
 	}
@@ -147,7 +148,15 @@ func readDoc(discoveryRestUrl string) error {
 	if err != nil {
 		return err
 	}
-	err = os.WriteFile(filepath.Join(*ownerDomain, *apiID, *versionID, "discovery.json"), body, 0666)
+	b, err = encoding.EncodeYAML(spec)
+	if err != nil {
+		return err
+	}
+	err = os.WriteFile(filepath.Join(*ownerDomain, *apiID, *versionID, "discovery", "info.yaml"), b, 0666)
+	if err != nil {
+		return err
+	}
+	err = os.WriteFile(filepath.Join(*ownerDomain, *apiID, *versionID, "discovery", "discovery.json"), body, 0666)
 	if err != nil {
 		return err
 	}

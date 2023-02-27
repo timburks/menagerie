@@ -5,9 +5,3 @@ metadata:
   parent: apis/google.com-binaryauthorization
 data:
   displayName: v1
-  specs:
-    - metadata:
-        name: discovery
-      data:
-        filename: discovery.json
-        mimeType: application/x.discovery+gzip

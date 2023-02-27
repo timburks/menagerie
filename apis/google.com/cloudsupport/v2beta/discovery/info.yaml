@@ -1,0 +1,8 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: discovery
+  parent: apis/google.com-cloudsupport/versions/v2beta
+data:
+  filename: discovery.json
+  mimeType: application/x.discovery+gzip

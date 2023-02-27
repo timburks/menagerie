@@ -1,0 +1,8 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: discovery
+  parent: apis/google.com-bigtableadmin/versions/v2
+data:
+  filename: discovery.json
+  mimeType: application/x.discovery+gzip
