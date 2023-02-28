@@ -6,7 +6,6 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"regexp"
 	"sort"
 	"strings"
 
@@ -14,6 +13,7 @@ import (
 	"github.com/apigee/registry/pkg/encoding"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/descriptorpb"
+	yaml "gopkg.in/yaml.v3"
 )
 
 var dir = "deps"
@@ -35,16 +35,48 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	apis, err := scanDirectoryForAPIs(filepath.Join(dir, top))
+
+	index, err := readIndex(filepath.Join(dir, top))
 	if err != nil {
 		panic(err)
 	}
-	for _, api := range apis {
-		err := describeAPI(api, allProtos)
+	fmt.Printf("%d APIs\n", len(index.APIs))
+	for _, api := range index.APIs {
+		err := describeAPI(api, filepath.Join(dir, top), allProtos)
 		if err != nil {
 			log.Fatalf("error processing %s: %s", api, err)
 		}
 	}
+}
+
+type ApiIndex struct {
+	APIs []*ApiIndexEntry `yaml:"apis"`
+}
+
+type ApiIndexEntry struct {
+	Id                  string   `yaml:"id"`
+	Directory           string   `yaml:"directory"`
+	Version             string   `yaml:"version"`
+	MajorVersion        string   `yaml:"majorVersion"`
+	HostName            string   `yaml:"hostName"`
+	Title               string   `yaml:"title"`
+	Description         string   `yaml:"description"`
+	ImportDirectories   []string `yaml:"importDirectories"`
+	ConfigFile          string   `yaml:"configFile"`
+	NameInServiceConfig string   `yaml:"nameInServiceConfig"`
+}
+
+func readIndex(dir string) (*ApiIndex, error) {
+	p := filepath.Join(dir, "api-index-v1.json")
+	bytes, err := os.ReadFile(p)
+	if err != nil {
+		return nil, err
+	}
+	index := &ApiIndex{}
+	if err := yaml.Unmarshal(bytes, index); err != nil {
+		return nil, err
+	}
+	return index, nil
 }
 
 // Build a list of all proto files in a directory.
@@ -94,36 +126,18 @@ func exists(path string) bool {
 	return err == nil
 }
 
-// Find all of the directories matching a version name, these should be imported.
-func scanDirectoryForAPIs(start string) ([]string, error) {
-	// The pattern of an API version directory.
-	versionDirectory := regexp.MustCompile("v.*[1-9]+.*")
-	apis := make([]string, 0)
-	err := filepath.Walk(start, func(p string, info os.FileInfo, err error) error {
-		if err != nil {
-			return err
-		}
-		container := p
-		if !info.IsDir() {
-			return nil
-		}
-		if !versionDirectory.MatchString(container) {
-			return nil
-		}
-		apis = append(apis, container)
-		return filepath.SkipDir
-	})
-	if err != nil {
-		return nil, err
-	}
-	return apis, nil
-}
-
 // Compile an API description and create Registry YAML.
-func describeAPI(container string, allProtos []string) error {
-	// First get all of the protos in the specified container.
+func describeAPI(apiIndex *ApiIndexEntry, root string, allProtos []string) error {
+	bytes, err := yaml.Marshal(apiIndex)
+	if err != nil {
+		return err
+	}
+	fmt.Printf("%s\n", bytes)
+	container := filepath.Join(root, apiIndex.Directory)
+	log.Printf("%s\n", container)
+	// Get all of the protos in the specified container.
 	protos := make([]string, 0)
-	err := filepath.Walk(container, func(p string, info os.FileInfo, err error) error {
+	err = filepath.Walk(container, func(p string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
@@ -140,6 +154,7 @@ func describeAPI(container string, allProtos []string) error {
 	}
 	// Skip APIs with no protos.
 	if len(protos) == 0 {
+		log.Printf("%s has no protos!", apiIndex.Title)
 		return nil
 	}
 	// Compile the protos and get a list of everything they import.
@@ -165,23 +180,29 @@ func describeAPI(container string, allProtos []string) error {
 			}
 		}
 	}
+	// If we have service config, copy that into the archive.
+	serviceConfigPath := filepath.Join(container, apiIndex.ConfigFile)
+	localPath := filepath.Join(tempDir, apiIndex.Directory, apiIndex.ConfigFile)
+	err = copyFile(serviceConfigPath, localPath)
+	if err != nil {
+		return err
+	}
 	contents, err := compress.ZipArchiveOfPath(tempDir, tempDir+"/", true)
 	if err != nil {
 		return err
 	}
 	// Get the apiID and versionID for use in Registry YAML.
-	localApiDir := strings.TrimPrefix(container, dir+"/"+top+"/")
-	apiID := strings.ReplaceAll(filepath.Dir(localApiDir), "/", "-")
-	apiID = strings.ReplaceAll(apiID, "_", "-")
-	versionID := filepath.Base(localApiDir)
+	apiID := strings.TrimSuffix(apiIndex.NameInServiceConfig, ".googleapis.com")
+	versionID := apiIndex.Version
+	specID := "protos"
 	// Make the directory for the API and version YAML.
-	err = os.MkdirAll(filepath.Join(out, apiID, versionID), 0777)
+	err = os.MkdirAll(filepath.Join(out, apiID, versionID, specID), 0777)
 	if err != nil {
 		return err
 	}
 	// Save the zipped protos.
 	specfilename := "protos" // strings.TrimPrefix(container, "deps/")
-	name := filepath.Join(out, apiID, versionID, strings.ReplaceAll(specfilename, "/", "-")+".zip")
+	name := filepath.Join(out, apiID, versionID, specID, specfilename+".zip")
 	os.WriteFile(name, contents.Bytes(), 0664)
 	// Build and save info.yaml for the version.
 	apiVersion := &encoding.ApiVersion{
@@ -195,22 +216,6 @@ func describeAPI(container string, allProtos []string) error {
 		},
 		Data: encoding.ApiVersionData{
 			DisplayName: versionID,
-			ApiSpecs: []*encoding.ApiSpec{
-				{
-					Header: encoding.Header{
-						Metadata: encoding.Metadata{
-							Name: "protos",
-							Annotations: map[string]string{
-								"path": strings.TrimPrefix(container, "deps/"+top+"/"),
-							},
-						},
-					},
-					Data: encoding.ApiSpecData{
-						FileName: "protos.zip",
-						MimeType: "application/x.proto+zip",
-					},
-				},
-			},
 		},
 	}
 	b, err := encoding.EncodeYAML(apiVersion)
@@ -218,6 +223,35 @@ func describeAPI(container string, allProtos []string) error {
 		return err
 	}
 	name = filepath.Join(out, apiID, versionID, "info.yaml")
+	err = os.WriteFile(name, b, 0664)
+	if err != nil {
+		return err
+	}
+	// Build and save info.yaml for the spec.
+	apiSpec := &encoding.ApiSpec{
+		Header: encoding.Header{
+			ApiVersion: encoding.RegistryV1,
+			Kind:       "Spec",
+			Metadata: encoding.Metadata{
+				Parent: "apis/" + provider + "-" + apiID + "/versions/" + versionID,
+				Name:   specID,
+				Annotations: map[string]string{
+					"config":    apiIndex.ConfigFile,
+					"directory": apiIndex.Directory,
+					"host":      apiIndex.HostName,
+				},
+			},
+		},
+		Data: encoding.ApiSpecData{
+			FileName: "protos.zip",
+			MimeType: "application/x.proto+zip",
+		},
+	}
+	b, err = encoding.EncodeYAML(apiSpec)
+	if err != nil {
+		return err
+	}
+	name = filepath.Join(out, apiID, versionID, specID, "info.yaml")
 	err = os.WriteFile(name, b, 0664)
 	if err != nil {
 		return err
@@ -235,7 +269,7 @@ func describeAPI(container string, allProtos []string) error {
 			},
 		},
 		Data: encoding.ApiData{
-			DisplayName: displayName(apiID),
+			DisplayName: displayName(apiIndex.Title),
 		},
 	}
 	b, err = encoding.EncodeYAML(api)
@@ -318,43 +352,9 @@ func protosFromFileDescriptorSet(filename string) ([]string, error) {
 	return filenames, nil
 }
 
-// Guess a good display name for an API.
 func displayName(name string) string {
-	name = strings.ReplaceAll(name, "_", "-")
-	parts := strings.Split(name, "-")
-
-	for i, p := range parts {
-		parts[i] = capitalize(p)
+	if !strings.HasPrefix(name, "Google") {
+		name = "Google " + name
 	}
-
-	out := strings.Join(parts, " ")
-	if !strings.HasSuffix(out, " API") {
-		out += " API"
-	}
-	return out
-}
-
-// Try to capitalize a name sensibly.
-func capitalize(s string) string {
-	switch s {
-	case "to":
-		return s
-	case "grpc":
-		return "gRPC"
-	case "gzip":
-		return "GZip"
-	case "oauth":
-		return "OAuth"
-	case "oauth2":
-		return "OAuth2"
-	case "mysql":
-		return "MySQL"
-	case "rocketmq":
-		return "RocketMQ"
-	case "api", "aws", "cors", "csrf", "dlb", "dns", "dst", "gcp", "http", "http1",
-		"ip", "jwt", "qat", "rbac", "s2a", "sip", "sni", "src",
-		"ssl", "sxg", "tcp", "tls", "tra", "udp", "vcl", "wasm":
-		return strings.ToTitle(s)
-	}
-	return strings.Title(s)
+	return name
 }
