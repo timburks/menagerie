@@ -1,374 +1,54 @@
 {
   "id": "mybusinessplaceactions:v1",
-  "protocol": "rest",
-  "version_module": true,
-  "servicePath": "",
-  "documentationLink": "https://developers.google.com/my-business/",
-  "title": "My Business Place Actions API",
-  "batchPath": "batch",
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
-  "parameters": {
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "callback": {
-      "type": "string",
-      "location": "query",
-      "description": "JSONP"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "type": "string",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "location": "query",
-      "default": "true"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "location": "query"
-    },
-    "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "default": "json",
-      "description": "Data format for response.",
-      "type": "string",
-      "location": "query",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ]
-    },
-    "quotaUser": {
-      "type": "string",
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
-    },
-    "uploadType": {
-      "type": "string",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "location": "query"
-    }
-  },
-  "ownerDomain": "google.com",
-  "mtlsRootUrl": "https://mybusinessplaceactions.mtls.googleapis.com/",
-  "name": "mybusinessplaceactions",
   "revision": "20230228",
-  "kind": "discovery#restDescription",
-  "discoveryVersion": "v1",
-  "resources": {
-    "locations": {
-      "resources": {
-        "placeActionLinks": {
-          "methods": {
-            "delete": {
-              "response": {
-                "$ref": "Empty"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "id": "mybusinessplaceactions.locations.placeActionLinks.delete",
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "Required. The resource name of the place action link to remove from the location.",
-                  "type": "string",
-                  "required": true,
-                  "pattern": "^locations/[^/]+/placeActionLinks/[^/]+$"
-                }
-              },
-              "description": "Deletes a place action link from the specified location.",
-              "flatPath": "v1/locations/{locationsId}/placeActionLinks/{placeActionLinksId}",
-              "httpMethod": "DELETE",
-              "path": "v1/{+name}"
-            },
-            "patch": {
-              "request": {
-                "$ref": "PlaceActionLink"
-              },
-              "description": "Updates the specified place action link and returns it.",
-              "parameterOrder": [
-                "name"
-              ],
-              "path": "v1/{+name}",
-              "flatPath": "v1/locations/{locationsId}/placeActionLinks/{placeActionLinksId}",
-              "id": "mybusinessplaceactions.locations.placeActionLinks.patch",
-              "parameters": {
-                "updateMask": {
-                  "description": "Required. The specific fields to update. The only editable fields are `uri`, `place_action_type` and `is_preferred`. If the updated link already exists at the same location with the same `place_action_type` and `uri`, fails with an `ALREADY_EXISTS` error.",
-                  "format": "google-fieldmask",
-                  "type": "string",
-                  "location": "query"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Optional. The resource name, in the format `locations/{location_id}/placeActionLinks/{place_action_link_id}`. The name field will only be considered in UpdatePlaceActionLink and DeletePlaceActionLink requests for updating and deleting links respectively. However, it will be ignored in CreatePlaceActionLink request, where `place_action_link_id` will be assigned by the server on successful creation of a new link and returned as part of the response.",
-                  "required": true,
-                  "pattern": "^locations/[^/]+/placeActionLinks/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "response": {
-                "$ref": "PlaceActionLink"
-              },
-              "httpMethod": "PATCH"
-            },
-            "create": {
-              "response": {
-                "$ref": "PlaceActionLink"
-              },
-              "flatPath": "v1/locations/{locationsId}/placeActionLinks",
-              "path": "v1/{+parent}/placeActionLinks",
-              "parameters": {
-                "parent": {
-                  "type": "string",
-                  "description": "Required. The resource name of the location where to create this place action link. `locations/{location_id}`.",
-                  "pattern": "^locations/[^/]+$",
-                  "location": "path",
-                  "required": true
-                }
-              },
-              "description": "Creates a place action link associated with the specified location, and returns it. The request is considered duplicate if the `parent`, `place_action_link.uri` and `place_action_link.place_action_type` are the same as a previous request.",
-              "id": "mybusinessplaceactions.locations.placeActionLinks.create",
-              "parameterOrder": [
-                "parent"
-              ],
-              "request": {
-                "$ref": "PlaceActionLink"
-              },
-              "httpMethod": "POST"
-            },
-            "get": {
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "name"
-              ],
-              "description": "Gets the specified place action link.",
-              "id": "mybusinessplaceactions.locations.placeActionLinks.get",
-              "response": {
-                "$ref": "PlaceActionLink"
-              },
-              "path": "v1/{+name}",
-              "flatPath": "v1/locations/{locationsId}/placeActionLinks/{placeActionLinksId}",
-              "parameters": {
-                "name": {
-                  "description": "Required. The name of the place action link to fetch.",
-                  "pattern": "^locations/[^/]+/placeActionLinks/[^/]+$",
-                  "required": true,
-                  "type": "string",
-                  "location": "path"
-                }
-              }
-            },
-            "list": {
-              "id": "mybusinessplaceactions.locations.placeActionLinks.list",
-              "parameterOrder": [
-                "parent"
-              ],
-              "description": "Lists the place action links for the specified location.",
-              "path": "v1/{+parent}/placeActionLinks",
-              "response": {
-                "$ref": "ListPlaceActionLinksResponse"
-              },
-              "parameters": {
-                "pageToken": {
-                  "location": "query",
-                  "type": "string",
-                  "description": "Optional. If specified, returns the next page of place action links."
-                },
-                "parent": {
-                  "type": "string",
-                  "location": "path",
-                  "description": "Required. The name of the location whose place action links will be listed. `locations/{location_id}`.",
-                  "required": true,
-                  "pattern": "^locations/[^/]+$"
-                },
-                "filter": {
-                  "description": "Optional. A filter constraining the place action links to return. The response includes entries that match the filter. We support only the following filter: 1. place_action_type=XYZ where XYZ is a valid PlaceActionType.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "description": "Optional. How many place action links to return per page. Default of 10. The minimum is 1.",
-                  "location": "query",
-                  "type": "integer",
-                  "format": "int32"
-                }
-              },
-              "httpMethod": "GET",
-              "flatPath": "v1/locations/{locationsId}/placeActionLinks"
-            }
-          }
-        }
-      }
-    },
-    "placeActionTypeMetadata": {
-      "methods": {
-        "list": {
-          "id": "mybusinessplaceactions.placeActionTypeMetadata.list",
-          "parameters": {
-            "pageSize": {
-              "format": "int32",
-              "type": "integer",
-              "location": "query",
-              "description": "Optional. How many action types to include per page. Default is 10, minimum is 1."
-            },
-            "languageCode": {
-              "description": "Optional. The IETF BCP-47 code of language to get display names in. If this language is not available, they will be provided in English.",
-              "location": "query",
-              "type": "string"
-            },
-            "pageToken": {
-              "type": "string",
-              "location": "query",
-              "description": "Optional. If specified, the next page of place action type metadata is retrieved. The `pageToken` is returned when a call to `placeActionTypeMetadata.list` returns more results than can fit into the requested page size."
-            },
-            "filter": {
-              "type": "string",
-              "location": "query",
-              "description": "Optional. A filter constraining the place action types to return metadata for. The response includes entries that match the filter. We support only the following filters: 1. location=XYZ where XYZ is a string indicating the resource name of a location, in the format `locations/{location_id}`. 2. region_code=XYZ where XYZ is a Unicode CLDR region code to find available action types. If no filter is provided, all place action types are returned."
-            }
-          },
-          "description": "Returns the list of available place action types for a location or country.",
-          "path": "v1/placeActionTypeMetadata",
-          "flatPath": "v1/placeActionTypeMetadata",
-          "parameterOrder": [],
-          "response": {
-            "$ref": "ListPlaceActionTypeMetadataResponse"
-          },
-          "httpMethod": "GET"
-        }
-      }
-    }
-  },
+  "baseUrl": "https://mybusinessplaceactions.googleapis.com/",
+  "version": "v1",
   "schemas": {
-    "ListPlaceActionLinksResponse": {
-      "id": "ListPlaceActionLinksResponse",
-      "description": "Response message for PlaceActions.ListPlaceActionLinks.",
-      "properties": {
-        "nextPageToken": {
-          "description": "If there are more place action links than the requested page size, then this field is populated with a token to fetch the next page of results.",
-          "type": "string"
-        },
-        "placeActionLinks": {
-          "type": "array",
-          "items": {
-            "$ref": "PlaceActionLink"
-          },
-          "description": "The returned list of place action links."
-        }
-      },
-      "type": "object"
-    },
-    "Empty": {
-      "type": "object",
-      "id": "Empty",
-      "properties": {},
-      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }"
-    },
     "ListPlaceActionTypeMetadataResponse": {
-      "description": "Response message for PlaceActions.ListPlaceActionTypeMetadata.",
-      "type": "object",
       "properties": {
-        "nextPageToken": {
-          "description": "If the number of action types exceeded the requested page size, this field will be populated with a token to fetch the next page on a subsequent call to `placeActionTypeMetadata.list`. If there are no more results, this field will not be present in the response.",
-          "type": "string"
-        },
         "placeActionTypeMetadata": {
           "items": {
             "$ref": "PlaceActionTypeMetadata"
           },
           "description": "A collection of metadata for the available place action types.",
           "type": "array"
-        }
-      },
-      "id": "ListPlaceActionTypeMetadataResponse"
-    },
-    "PlaceActionTypeMetadata": {
-      "properties": {
-        "placeActionType": {
-          "enumDescriptions": [
-            "Not specified.",
-            "The action type is booking an appointment.",
-            "The action type is booking an online appointment.",
-            "The action type is making a dining reservation.",
-            "The action type is ordering food for delivery and/or takeout.",
-            "The action type is ordering food for delivery.",
-            "The action type is ordering food for takeout.",
-            "The action type is shopping, that can be delivery and/or pickup."
-          ],
-          "type": "string",
-          "description": "The place action type.",
-          "enum": [
-            "PLACE_ACTION_TYPE_UNSPECIFIED",
-            "APPOINTMENT",
-            "ONLINE_APPOINTMENT",
-            "DINING_RESERVATION",
-            "FOOD_ORDERING",
-            "FOOD_DELIVERY",
-            "FOOD_TAKEOUT",
-            "SHOP_ONLINE"
-          ]
         },
-        "displayName": {
-          "type": "string",
-          "description": "The localized display name for the attribute, if available; otherwise, the English display name."
+        "nextPageToken": {
+          "description": "If the number of action types exceeded the requested page size, this field will be populated with a token to fetch the next page on a subsequent call to `placeActionTypeMetadata.list`. If there are no more results, this field will not be present in the response.",
+          "type": "string"
         }
       },
-      "description": "Metadata for supported place action types.",
-      "id": "PlaceActionTypeMetadata",
+      "type": "object",
+      "id": "ListPlaceActionTypeMetadataResponse",
+      "description": "Response message for PlaceActions.ListPlaceActionTypeMetadata."
+    },
+    "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+      "properties": {},
+      "id": "Empty",
       "type": "object"
     },
     "PlaceActionLink": {
       "description": "Represents a place action link and its attributes.",
+      "id": "PlaceActionLink",
       "type": "object",
       "properties": {
-        "isEditable": {
-          "type": "boolean",
-          "description": "Output only. Indicates whether this link can be edited by the client.",
+        "createTime": {
+          "type": "string",
+          "format": "google-datetime",
+          "description": "Output only. The time when the place action link was created.",
           "readOnly": true
         },
-        "uri": {
-          "description": "Required. The link uri. The same uri can be reused for different action types across different locations. However, only one place action link is allowed for each unique combination of (uri, place action type, location).",
-          "type": "string"
+        "updateTime": {
+          "description": "Output only. The time when the place action link was last modified.",
+          "readOnly": true,
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "isEditable": {
+          "description": "Output only. Indicates whether this link can be edited by the client.",
+          "readOnly": true,
+          "type": "boolean"
         },
         "placeActionType": {
           "type": "string",
@@ -395,50 +75,370 @@
           ]
         },
         "name": {
-          "description": "Optional. The resource name, in the format `locations/{location_id}/placeActionLinks/{place_action_link_id}`. The name field will only be considered in UpdatePlaceActionLink and DeletePlaceActionLink requests for updating and deleting links respectively. However, it will be ignored in CreatePlaceActionLink request, where `place_action_link_id` will be assigned by the server on successful creation of a new link and returned as part of the response.",
-          "type": "string"
-        },
-        "createTime": {
-          "readOnly": true,
           "type": "string",
-          "description": "Output only. The time when the place action link was created.",
-          "format": "google-datetime"
+          "description": "Optional. The resource name, in the format `locations/{location_id}/placeActionLinks/{place_action_link_id}`. The name field will only be considered in UpdatePlaceActionLink and DeletePlaceActionLink requests for updating and deleting links respectively. However, it will be ignored in CreatePlaceActionLink request, where `place_action_link_id` will be assigned by the server on successful creation of a new link and returned as part of the response."
+        },
+        "uri": {
+          "type": "string",
+          "description": "Required. The link uri. The same uri can be reused for different action types across different locations. However, only one place action link is allowed for each unique combination of (uri, place action type, location)."
+        },
+        "isPreferred": {
+          "description": "Optional. Whether this link is preferred by the merchant. Only one link can be marked as preferred per place action type at a location. If a future request marks a different link as preferred for the same place action type, then the current preferred link (if any exists) will lose its preference.",
+          "type": "boolean"
         },
         "providerType": {
-          "description": "Output only. Specifies the provider type.",
-          "readOnly": true,
           "enumDescriptions": [
             "Not specified.",
             "A 1P provider such as a merchant, or an agency on behalf of a merchant.",
             "A 3P aggregator, such as a `Reserve with Google` partner."
           ],
-          "type": "string",
+          "description": "Output only. Specifies the provider type.",
           "enum": [
             "PROVIDER_TYPE_UNSPECIFIED",
             "MERCHANT",
             "AGGREGATOR_3P"
-          ]
-        },
-        "updateTime": {
+          ],
+          "readOnly": true,
+          "type": "string"
+        }
+      }
+    },
+    "ListPlaceActionLinksResponse": {
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
           "type": "string",
-          "description": "Output only. The time when the place action link was last modified.",
-          "format": "google-datetime",
-          "readOnly": true
+          "description": "If there are more place action links than the requested page size, then this field is populated with a token to fetch the next page of results."
         },
-        "isPreferred": {
-          "description": "Optional. Whether this link is preferred by the merchant. Only one link can be marked as preferred per place action type at a location. If a future request marks a different link as preferred for the same place action type, then the current preferred link (if any exists) will lose its preference.",
-          "type": "boolean"
+        "placeActionLinks": {
+          "type": "array",
+          "items": {
+            "$ref": "PlaceActionLink"
+          },
+          "description": "The returned list of place action links."
         }
       },
-      "id": "PlaceActionLink"
+      "id": "ListPlaceActionLinksResponse",
+      "description": "Response message for PlaceActions.ListPlaceActionLinks."
+    },
+    "PlaceActionTypeMetadata": {
+      "description": "Metadata for supported place action types.",
+      "properties": {
+        "placeActionType": {
+          "type": "string",
+          "enumDescriptions": [
+            "Not specified.",
+            "The action type is booking an appointment.",
+            "The action type is booking an online appointment.",
+            "The action type is making a dining reservation.",
+            "The action type is ordering food for delivery and/or takeout.",
+            "The action type is ordering food for delivery.",
+            "The action type is ordering food for takeout.",
+            "The action type is shopping, that can be delivery and/or pickup."
+          ],
+          "enum": [
+            "PLACE_ACTION_TYPE_UNSPECIFIED",
+            "APPOINTMENT",
+            "ONLINE_APPOINTMENT",
+            "DINING_RESERVATION",
+            "FOOD_ORDERING",
+            "FOOD_DELIVERY",
+            "FOOD_TAKEOUT",
+            "SHOP_ONLINE"
+          ],
+          "description": "The place action type."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The localized display name for the attribute, if available; otherwise, the English display name."
+        }
+      },
+      "type": "object",
+      "id": "PlaceActionTypeMetadata"
     }
   },
-  "baseUrl": "https://mybusinessplaceactions.googleapis.com/",
   "rootUrl": "https://mybusinessplaceactions.googleapis.com/",
+  "ownerDomain": "google.com",
+  "description": "The My Business Place Actions API provides an interface for managing place action links of a location on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.",
+  "discoveryVersion": "v1",
+  "batchPath": "batch",
   "ownerName": "Google",
+  "resources": {
+    "placeActionTypeMetadata": {
+      "methods": {
+        "list": {
+          "parameters": {
+            "pageSize": {
+              "type": "integer",
+              "location": "query",
+              "description": "Optional. How many action types to include per page. Default is 10, minimum is 1.",
+              "format": "int32"
+            },
+            "pageToken": {
+              "description": "Optional. If specified, the next page of place action type metadata is retrieved. The `pageToken` is returned when a call to `placeActionTypeMetadata.list` returns more results than can fit into the requested page size.",
+              "location": "query",
+              "type": "string"
+            },
+            "languageCode": {
+              "description": "Optional. The IETF BCP-47 code of language to get display names in. If this language is not available, they will be provided in English.",
+              "type": "string",
+              "location": "query"
+            },
+            "filter": {
+              "location": "query",
+              "description": "Optional. A filter constraining the place action types to return metadata for. The response includes entries that match the filter. We support only the following filters: 1. location=XYZ where XYZ is a string indicating the resource name of a location, in the format `locations/{location_id}`. 2. region_code=XYZ where XYZ is a Unicode CLDR region code to find available action types. If no filter is provided, all place action types are returned.",
+              "type": "string"
+            }
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "path": "v1/placeActionTypeMetadata",
+          "flatPath": "v1/placeActionTypeMetadata",
+          "id": "mybusinessplaceactions.placeActionTypeMetadata.list",
+          "response": {
+            "$ref": "ListPlaceActionTypeMetadataResponse"
+          },
+          "description": "Returns the list of available place action types for a location or country."
+        }
+      }
+    },
+    "locations": {
+      "resources": {
+        "placeActionLinks": {
+          "methods": {
+            "get": {
+              "parameterOrder": [
+                "name"
+              ],
+              "flatPath": "v1/locations/{locationsId}/placeActionLinks/{placeActionLinksId}",
+              "id": "mybusinessplaceactions.locations.placeActionLinks.get",
+              "path": "v1/{+name}",
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the place action link to fetch.",
+                  "pattern": "^locations/[^/]+/placeActionLinks/[^/]+$",
+                  "type": "string",
+                  "required": true,
+                  "location": "path"
+                }
+              },
+              "response": {
+                "$ref": "PlaceActionLink"
+              },
+              "description": "Gets the specified place action link.",
+              "httpMethod": "GET"
+            },
+            "create": {
+              "httpMethod": "POST",
+              "request": {
+                "$ref": "PlaceActionLink"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "id": "mybusinessplaceactions.locations.placeActionLinks.create",
+              "parameters": {
+                "parent": {
+                  "pattern": "^locations/[^/]+$",
+                  "description": "Required. The resource name of the location where to create this place action link. `locations/{location_id}`.",
+                  "type": "string",
+                  "location": "path",
+                  "required": true
+                }
+              },
+              "description": "Creates a place action link associated with the specified location, and returns it. The request is considered duplicate if the `parent`, `place_action_link.uri` and `place_action_link.place_action_type` are the same as a previous request.",
+              "response": {
+                "$ref": "PlaceActionLink"
+              },
+              "flatPath": "v1/locations/{locationsId}/placeActionLinks",
+              "path": "v1/{+parent}/placeActionLinks"
+            },
+            "list": {
+              "flatPath": "v1/locations/{locationsId}/placeActionLinks",
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "ListPlaceActionLinksResponse"
+              },
+              "id": "mybusinessplaceactions.locations.placeActionLinks.list",
+              "parameterOrder": [
+                "parent"
+              ],
+              "description": "Lists the place action links for the specified location.",
+              "path": "v1/{+parent}/placeActionLinks",
+              "parameters": {
+                "filter": {
+                  "type": "string",
+                  "description": "Optional. A filter constraining the place action links to return. The response includes entries that match the filter. We support only the following filter: 1. place_action_type=XYZ where XYZ is a valid PlaceActionType.",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "format": "int32",
+                  "location": "query",
+                  "type": "integer",
+                  "description": "Optional. How many place action links to return per page. Default of 10. The minimum is 1."
+                },
+                "pageToken": {
+                  "description": "Optional. If specified, returns the next page of place action links.",
+                  "location": "query",
+                  "type": "string"
+                },
+                "parent": {
+                  "location": "path",
+                  "description": "Required. The name of the location whose place action links will be listed. `locations/{location_id}`.",
+                  "required": true,
+                  "pattern": "^locations/[^/]+$",
+                  "type": "string"
+                }
+              }
+            },
+            "patch": {
+              "httpMethod": "PATCH",
+              "description": "Updates the specified place action link and returns it.",
+              "request": {
+                "$ref": "PlaceActionLink"
+              },
+              "flatPath": "v1/locations/{locationsId}/placeActionLinks/{placeActionLinksId}",
+              "parameterOrder": [
+                "name"
+              ],
+              "path": "v1/{+name}",
+              "id": "mybusinessplaceactions.locations.placeActionLinks.patch",
+              "parameters": {
+                "name": {
+                  "required": true,
+                  "description": "Optional. The resource name, in the format `locations/{location_id}/placeActionLinks/{place_action_link_id}`. The name field will only be considered in UpdatePlaceActionLink and DeletePlaceActionLink requests for updating and deleting links respectively. However, it will be ignored in CreatePlaceActionLink request, where `place_action_link_id` will be assigned by the server on successful creation of a new link and returned as part of the response.",
+                  "type": "string",
+                  "pattern": "^locations/[^/]+/placeActionLinks/[^/]+$",
+                  "location": "path"
+                },
+                "updateMask": {
+                  "type": "string",
+                  "description": "Required. The specific fields to update. The only editable fields are `uri`, `place_action_type` and `is_preferred`. If the updated link already exists at the same location with the same `place_action_type` and `uri`, fails with an `ALREADY_EXISTS` error.",
+                  "location": "query",
+                  "format": "google-fieldmask"
+                }
+              },
+              "response": {
+                "$ref": "PlaceActionLink"
+              }
+            },
+            "delete": {
+              "id": "mybusinessplaceactions.locations.placeActionLinks.delete",
+              "path": "v1/{+name}",
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Required. The resource name of the place action link to remove from the location.",
+                  "type": "string",
+                  "pattern": "^locations/[^/]+/placeActionLinks/[^/]+$",
+                  "required": true
+                }
+              },
+              "flatPath": "v1/locations/{locationsId}/placeActionLinks/{placeActionLinksId}",
+              "description": "Deletes a place action link from the specified location.",
+              "httpMethod": "DELETE",
+              "parameterOrder": [
+                "name"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "version_module": true,
+  "servicePath": "",
+  "name": "mybusinessplaceactions",
+  "title": "My Business Place Actions API",
   "fullyEncodeReservedExpansion": true,
   "basePath": "",
-  "description": "The My Business Place Actions API provides an interface for managing place action links of a location on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.",
-  "version": "v1",
-  "canonicalName": "My Business Place Actions"
+  "canonicalName": "My Business Place Actions",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "documentationLink": "https://developers.google.com/my-business/",
+  "parameters": {
+    "alt": {
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "location": "query",
+      "default": "json"
+    },
+    "callback": {
+      "description": "JSONP",
+      "location": "query",
+      "type": "string"
+    },
+    "fields": {
+      "location": "query",
+      "type": "string",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "type": "string",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "location": "query"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "location": "query",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "location": "query",
+      "type": "string"
+    },
+    "oauth_token": {
+      "location": "query",
+      "type": "string",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "location": "query",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "description": "V1 error format.",
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
+    }
+  },
+  "mtlsRootUrl": "https://mybusinessplaceactions.mtls.googleapis.com/",
+  "protocol": "rest",
+  "kind": "discovery#restDescription"
 }

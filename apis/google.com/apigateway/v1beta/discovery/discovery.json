@@ -1,92 +1,5 @@
 {
-  "batchPath": "batch",
-  "baseUrl": "https://apigateway.googleapis.com/",
-  "protocol": "rest",
-  "id": "apigateway:v1beta",
-  "basePath": "",
-  "documentationLink": "https://cloud.google.com/api-gateway/docs",
-  "fullyEncodeReservedExpansion": true,
-  "kind": "discovery#restDescription",
-  "discoveryVersion": "v1",
-  "version": "v1beta",
-  "parameters": {
-    "key": {
-      "type": "string",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "type": "string",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "location": "query",
-      "description": "V1 error format.",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
-    },
-    "alt": {
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "location": "query",
-      "default": "json",
-      "description": "Data format for response."
-    },
-    "upload_protocol": {
-      "type": "string",
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "location": "query",
-      "type": "string"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "location": "query",
-      "type": "string"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "location": "query",
-      "type": "string"
-    },
-    "oauth_token": {
-      "type": "string",
-      "description": "OAuth 2.0 token for the current user.",
-      "location": "query"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "default": "true",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "location": "query"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    }
-  },
-  "title": "API Gateway API",
+  "description": "",
   "auth": {
     "oauth2": {
       "scopes": {
@@ -96,127 +9,1143 @@
       }
     }
   },
+  "baseUrl": "https://apigateway.googleapis.com/",
+  "documentationLink": "https://cloud.google.com/api-gateway/docs",
+  "ownerName": "Google",
+  "title": "API Gateway API",
+  "rootUrl": "https://apigateway.googleapis.com/",
+  "mtlsRootUrl": "https://apigateway.mtls.googleapis.com/",
+  "revision": "20230208",
+  "ownerDomain": "google.com",
+  "parameters": {
+    "key": {
+      "type": "string",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "location": "query"
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "type": "string"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "location": "query",
+      "type": "string"
+    },
+    "uploadType": {
+      "type": "string",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "location": "query"
+    },
+    "access_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth access token."
+    },
+    "alt": {
+      "default": "json",
+      "description": "Data format for response.",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "type": "string",
+      "location": "query",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "location": "query",
+      "default": "true"
+    },
+    "upload_protocol": {
+      "type": "string",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "location": "query"
+    }
+  },
+  "kind": "discovery#restDescription",
+  "name": "apigateway",
+  "discoveryVersion": "v1",
+  "batchPath": "batch",
+  "basePath": "",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "fullyEncodeReservedExpansion": true,
+  "resources": {
+    "projects": {
+      "resources": {
+        "locations": {
+          "resources": {
+            "apis": {
+              "resources": {
+                "configs": {
+                  "methods": {
+                    "patch": {
+                      "request": {
+                        "$ref": "ApigatewayApiConfig"
+                      },
+                      "path": "v1beta/{+name}",
+                      "response": {
+                        "$ref": "ApigatewayOperation"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "id": "apigateway.projects.locations.apis.configs.patch",
+                      "parameters": {
+                        "name": {
+                          "location": "path",
+                          "required": true,
+                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
+                          "type": "string",
+                          "description": "Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}"
+                        },
+                        "updateMask": {
+                          "description": "Field mask is used to specify the fields to be overwritten in the ApiConfig resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.",
+                          "format": "google-fieldmask",
+                          "location": "query",
+                          "type": "string"
+                        }
+                      },
+                      "description": "Updates the parameters of a single ApiConfig.",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}",
+                      "httpMethod": "PATCH"
+                    },
+                    "list": {
+                      "parameters": {
+                        "parent": {
+                          "required": true,
+                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
+                          "description": "Required. Parent resource of the API Config, of the form: `projects/*/locations/global/apis/*`",
+                          "location": "path",
+                          "type": "string"
+                        },
+                        "filter": {
+                          "location": "query",
+                          "description": "Filter.",
+                          "type": "string"
+                        },
+                        "pageSize": {
+                          "type": "integer",
+                          "format": "int32",
+                          "location": "query",
+                          "description": "Page size."
+                        },
+                        "orderBy": {
+                          "type": "string",
+                          "description": "Order by parameters.",
+                          "location": "query"
+                        },
+                        "pageToken": {
+                          "description": "Page token.",
+                          "location": "query",
+                          "type": "string"
+                        }
+                      },
+                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs",
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "description": "Lists ApiConfigs in a given project and location.",
+                      "id": "apigateway.projects.locations.apis.configs.list",
+                      "path": "v1beta/{+parent}/configs",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "httpMethod": "GET",
+                      "response": {
+                        "$ref": "ApigatewayListApiConfigsResponse"
+                      }
+                    },
+                    "create": {
+                      "response": {
+                        "$ref": "ApigatewayOperation"
+                      },
+                      "httpMethod": "POST",
+                      "parameters": {
+                        "parent": {
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
+                          "description": "Required. Parent resource of the API Config, of the form: `projects/*/locations/global/apis/*`",
+                          "location": "path"
+                        },
+                        "apiConfigId": {
+                          "type": "string",
+                          "location": "query",
+                          "description": "Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource."
+                        }
+                      },
+                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs",
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "request": {
+                        "$ref": "ApigatewayApiConfig"
+                      },
+                      "path": "v1beta/{+parent}/configs",
+                      "id": "apigateway.projects.locations.apis.configs.create",
+                      "description": "Creates a new ApiConfig in a given project and location."
+                    },
+                    "setIamPolicy": {
+                      "response": {
+                        "$ref": "ApigatewayPolicy"
+                      },
+                      "parameterOrder": [
+                        "resource"
+                      ],
+                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}:setIamPolicy",
+                      "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                      "parameters": {
+                        "resource": {
+                          "location": "path",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
+                          "required": true,
+                          "type": "string",
+                          "description": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field."
+                        }
+                      },
+                      "id": "apigateway.projects.locations.apis.configs.setIamPolicy",
+                      "request": {
+                        "$ref": "ApigatewaySetIamPolicyRequest"
+                      },
+                      "path": "v1beta/{+resource}:setIamPolicy",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "httpMethod": "POST"
+                    },
+                    "testIamPermissions": {
+                      "parameterOrder": [
+                        "resource"
+                      ],
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "resource": {
+                          "description": "REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                          "required": true,
+                          "location": "path",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
+                          "type": "string"
+                        }
+                      },
+                      "path": "v1beta/{+resource}:testIamPermissions",
+                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}:testIamPermissions",
+                      "httpMethod": "POST",
+                      "request": {
+                        "$ref": "ApigatewayTestIamPermissionsRequest"
+                      },
+                      "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                      "response": {
+                        "$ref": "ApigatewayTestIamPermissionsResponse"
+                      },
+                      "id": "apigateway.projects.locations.apis.configs.testIamPermissions"
+                    },
+                    "get": {
+                      "response": {
+                        "$ref": "ApigatewayApiConfig"
+                      },
+                      "path": "v1beta/{+name}",
+                      "httpMethod": "GET",
+                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}",
+                      "description": "Gets details of a single ApiConfig.",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "view": {
+                          "description": "Specifies which fields of the API Config are returned in the response. Defaults to `BASIC` view.",
+                          "enumDescriptions": [
+                            "",
+                            "Do not include configuration source files.",
+                            "Include configuration source files."
+                          ],
+                          "type": "string",
+                          "location": "query",
+                          "enum": [
+                            "CONFIG_VIEW_UNSPECIFIED",
+                            "BASIC",
+                            "FULL"
+                          ]
+                        },
+                        "name": {
+                          "location": "path",
+                          "type": "string",
+                          "required": true,
+                          "description": "Required. Resource name of the form: `projects/*/locations/global/apis/*/configs/*`",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$"
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "id": "apigateway.projects.locations.apis.configs.get"
+                    },
+                    "delete": {
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "response": {
+                        "$ref": "ApigatewayOperation"
+                      },
+                      "id": "apigateway.projects.locations.apis.configs.delete",
+                      "description": "Deletes a single ApiConfig.",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "httpMethod": "DELETE",
+                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}",
+                      "path": "v1beta/{+name}",
+                      "parameters": {
+                        "name": {
+                          "type": "string",
+                          "required": true,
+                          "description": "Required. Resource name of the form: `projects/*/locations/global/apis/*/configs/*`",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
+                          "location": "path"
+                        }
+                      }
+                    },
+                    "getIamPolicy": {
+                      "parameterOrder": [
+                        "resource"
+                      ],
+                      "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}:getIamPolicy",
+                      "response": {
+                        "$ref": "ApigatewayPolicy"
+                      },
+                      "parameters": {
+                        "resource": {
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
+                          "location": "path",
+                          "description": "REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field."
+                        },
+                        "options.requestedPolicyVersion": {
+                          "location": "query",
+                          "description": "Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+                          "format": "int32",
+                          "type": "integer"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "id": "apigateway.projects.locations.apis.configs.getIamPolicy",
+                      "httpMethod": "GET",
+                      "path": "v1beta/{+resource}:getIamPolicy"
+                    }
+                  }
+                }
+              },
+              "methods": {
+                "get": {
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "path": "v1beta/{+name}",
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "name": {
+                      "description": "Required. Resource name of the form: `projects/*/locations/global/apis/*`",
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$"
+                    }
+                  },
+                  "description": "Gets details of a single Api.",
+                  "response": {
+                    "$ref": "ApigatewayApi"
+                  },
+                  "id": "apigateway.projects.locations.apis.get",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "getIamPolicy": {
+                  "id": "apigateway.projects.locations.apis.getIamPolicy",
+                  "path": "v1beta/{+resource}:getIamPolicy",
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}:getIamPolicy",
+                  "parameters": {
+                    "resource": {
+                      "description": "REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                      "location": "path",
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
+                      "required": true
+                    },
+                    "options.requestedPolicyVersion": {
+                      "format": "int32",
+                      "type": "integer",
+                      "location": "query",
+                      "description": "Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
+                    }
+                  },
+                  "response": {
+                    "$ref": "ApigatewayPolicy"
+                  },
+                  "parameterOrder": [
+                    "resource"
+                  ],
+                  "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "setIamPolicy": {
+                  "parameters": {
+                    "resource": {
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
+                      "required": true,
+                      "location": "path",
+                      "description": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field."
+                    }
+                  },
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "resource"
+                  ],
+                  "response": {
+                    "$ref": "ApigatewayPolicy"
+                  },
+                  "request": {
+                    "$ref": "ApigatewaySetIamPolicyRequest"
+                  },
+                  "path": "v1beta/{+resource}:setIamPolicy",
+                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}:setIamPolicy",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "id": "apigateway.projects.locations.apis.setIamPolicy"
+                },
+                "delete": {
+                  "id": "apigateway.projects.locations.apis.delete",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}",
+                  "parameters": {
+                    "name": {
+                      "description": "Required. Resource name of the form: `projects/*/locations/global/apis/*`",
+                      "required": true,
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
+                      "type": "string"
+                    }
+                  },
+                  "response": {
+                    "$ref": "ApigatewayOperation"
+                  },
+                  "httpMethod": "DELETE",
+                  "path": "v1beta/{+name}",
+                  "description": "Deletes a single Api.",
+                  "parameterOrder": [
+                    "name"
+                  ]
+                },
+                "create": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "POST",
+                  "path": "v1beta/{+parent}/apis",
+                  "request": {
+                    "$ref": "ApigatewayApi"
+                  },
+                  "parameters": {
+                    "parent": {
+                      "description": "Required. Parent resource of the API, of the form: `projects/*/locations/global`",
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    },
+                    "apiId": {
+                      "type": "string",
+                      "description": "Required. Identifier to assign to the API. Must be unique within scope of the parent resource.",
+                      "location": "query"
+                    }
+                  },
+                  "response": {
+                    "$ref": "ApigatewayOperation"
+                  },
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis",
+                  "description": "Creates a new Api in a given project and location.",
+                  "id": "apigateway.projects.locations.apis.create"
+                },
+                "testIamPermissions": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "path": "v1beta/{+resource}:testIamPermissions",
+                  "parameterOrder": [
+                    "resource"
+                  ],
+                  "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                  "response": {
+                    "$ref": "ApigatewayTestIamPermissionsResponse"
+                  },
+                  "parameters": {
+                    "resource": {
+                      "description": "REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
+                      "location": "path",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "httpMethod": "POST",
+                  "id": "apigateway.projects.locations.apis.testIamPermissions",
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}:testIamPermissions",
+                  "request": {
+                    "$ref": "ApigatewayTestIamPermissionsRequest"
+                  }
+                },
+                "list": {
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "response": {
+                    "$ref": "ApigatewayListApisResponse"
+                  },
+                  "description": "Lists Apis in a given project and location.",
+                  "id": "apigateway.projects.locations.apis.list",
+                  "path": "v1beta/{+parent}/apis",
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "orderBy": {
+                      "location": "query",
+                      "type": "string",
+                      "description": "Order by parameters."
+                    },
+                    "parent": {
+                      "type": "string",
+                      "location": "path",
+                      "description": "Required. Parent resource of the API, of the form: `projects/*/locations/global`",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "required": true
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "description": "Page token.",
+                      "location": "query"
+                    },
+                    "pageSize": {
+                      "description": "Page size.",
+                      "type": "integer",
+                      "format": "int32",
+                      "location": "query"
+                    },
+                    "filter": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "Filter."
+                    }
+                  }
+                },
+                "patch": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "id": "apigateway.projects.locations.apis.patch",
+                  "response": {
+                    "$ref": "ApigatewayOperation"
+                  },
+                  "httpMethod": "PATCH",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}",
+                  "description": "Updates the parameters of a single Api.",
+                  "request": {
+                    "$ref": "ApigatewayApi"
+                  },
+                  "parameters": {
+                    "updateMask": {
+                      "format": "google-fieldmask",
+                      "type": "string",
+                      "location": "query",
+                      "description": "Field mask is used to specify the fields to be overwritten in the Api resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten."
+                    },
+                    "name": {
+                      "description": "Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}",
+                      "location": "path",
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
+                      "required": true
+                    }
+                  },
+                  "path": "v1beta/{+name}"
+                }
+              }
+            },
+            "gateways": {
+              "methods": {
+                "delete": {
+                  "httpMethod": "DELETE",
+                  "parameters": {
+                    "name": {
+                      "description": "Required. Resource name of the form: `projects/*/locations/*/gateways/*`",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                      "required": true,
+                      "type": "string",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}",
+                  "description": "Deletes a single Gateway.",
+                  "path": "v1beta/{+name}",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "id": "apigateway.projects.locations.gateways.delete",
+                  "response": {
+                    "$ref": "ApigatewayOperation"
+                  }
+                },
+                "setIamPolicy": {
+                  "parameterOrder": [
+                    "resource"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "path": "v1beta/{+resource}:setIamPolicy",
+                  "id": "apigateway.projects.locations.gateways.setIamPolicy",
+                  "parameters": {
+                    "resource": {
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                      "description": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                      "required": true,
+                      "location": "path"
+                    }
+                  },
+                  "response": {
+                    "$ref": "ApigatewayPolicy"
+                  },
+                  "httpMethod": "POST",
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}:setIamPolicy",
+                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                  "request": {
+                    "$ref": "ApigatewaySetIamPolicyRequest"
+                  }
+                },
+                "get": {
+                  "path": "v1beta/{+name}",
+                  "description": "Gets details of a single Gateway.",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "httpMethod": "GET",
+                  "id": "apigateway.projects.locations.gateways.get",
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                      "location": "path",
+                      "type": "string",
+                      "description": "Required. Resource name of the form: `projects/*/locations/*/gateways/*`"
+                    }
+                  },
+                  "response": {
+                    "$ref": "ApigatewayGateway"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}"
+                },
+                "getIamPolicy": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                  "parameters": {
+                    "options.requestedPolicyVersion": {
+                      "type": "integer",
+                      "description": "Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+                      "location": "query",
+                      "format": "int32"
+                    },
+                    "resource": {
+                      "description": "REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                      "location": "path",
+                      "type": "string",
+                      "required": true
+                    }
+                  },
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}:getIamPolicy",
+                  "httpMethod": "GET",
+                  "path": "v1beta/{+resource}:getIamPolicy",
+                  "id": "apigateway.projects.locations.gateways.getIamPolicy",
+                  "response": {
+                    "$ref": "ApigatewayPolicy"
+                  },
+                  "parameterOrder": [
+                    "resource"
+                  ]
+                },
+                "testIamPermissions": {
+                  "request": {
+                    "$ref": "ApigatewayTestIamPermissionsRequest"
+                  },
+                  "httpMethod": "POST",
+                  "parameters": {
+                    "resource": {
+                      "required": true,
+                      "location": "path",
+                      "description": "REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$"
+                    }
+                  },
+                  "parameterOrder": [
+                    "resource"
+                  ],
+                  "id": "apigateway.projects.locations.gateways.testIamPermissions",
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}:testIamPermissions",
+                  "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                  "response": {
+                    "$ref": "ApigatewayTestIamPermissionsResponse"
+                  },
+                  "path": "v1beta/{+resource}:testIamPermissions",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "patch": {
+                  "response": {
+                    "$ref": "ApigatewayOperation"
+                  },
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}",
+                  "request": {
+                    "$ref": "ApigatewayGateway"
+                  },
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
+                      "required": true,
+                      "type": "string",
+                      "description": "Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}"
+                    },
+                    "updateMask": {
+                      "format": "google-fieldmask",
+                      "location": "query",
+                      "type": "string",
+                      "description": "Field mask is used to specify the fields to be overwritten in the Gateway resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten."
+                    }
+                  },
+                  "httpMethod": "PATCH",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "path": "v1beta/{+name}",
+                  "description": "Updates the parameters of a single Gateway.",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "id": "apigateway.projects.locations.gateways.patch"
+                },
+                "list": {
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways",
+                  "path": "v1beta/{+parent}/gateways",
+                  "parameters": {
+                    "parent": {
+                      "required": true,
+                      "description": "Required. Parent resource of the Gateway, of the form: `projects/*/locations/*`",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "type": "string"
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "Page token."
+                    },
+                    "pageSize": {
+                      "location": "query",
+                      "description": "Page size.",
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "filter": {
+                      "location": "query",
+                      "description": "Filter.",
+                      "type": "string"
+                    },
+                    "orderBy": {
+                      "description": "Order by parameters.",
+                      "type": "string",
+                      "location": "query"
+                    }
+                  },
+                  "response": {
+                    "$ref": "ApigatewayListGatewaysResponse"
+                  },
+                  "description": "Lists Gateways in a given project and location.",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "id": "apigateway.projects.locations.gateways.list"
+                },
+                "create": {
+                  "description": "Creates a new Gateway in a given project and location.",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "id": "apigateway.projects.locations.gateways.create",
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways",
+                  "parameters": {
+                    "parent": {
+                      "type": "string",
+                      "description": "Required. Parent resource of the Gateway, of the form: `projects/*/locations/*`",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "required": true,
+                      "location": "path"
+                    },
+                    "gatewayId": {
+                      "description": "Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.",
+                      "type": "string",
+                      "location": "query"
+                    }
+                  },
+                  "response": {
+                    "$ref": "ApigatewayOperation"
+                  },
+                  "path": "v1beta/{+parent}/gateways",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "request": {
+                    "$ref": "ApigatewayGateway"
+                  },
+                  "httpMethod": "POST"
+                }
+              }
+            },
+            "operations": {
+              "methods": {
+                "get": {
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "required": true,
+                      "description": "The name of the operation resource.",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "type": "string"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "response": {
+                    "$ref": "ApigatewayOperation"
+                  },
+                  "path": "v1beta/{+name}",
+                  "httpMethod": "GET",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                  "id": "apigateway.projects.locations.operations.get"
+                },
+                "list": {
+                  "path": "v1beta/{+name}/operations",
+                  "parameters": {
+                    "pageToken": {
+                      "description": "The standard list page token.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string",
+                      "required": true,
+                      "description": "The name of the operation's parent resource.",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    },
+                    "pageSize": {
+                      "location": "query",
+                      "format": "int32",
+                      "description": "The standard list page size.",
+                      "type": "integer"
+                    },
+                    "filter": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "The standard list filter."
+                    }
+                  },
+                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
+                  "id": "apigateway.projects.locations.operations.list",
+                  "response": {
+                    "$ref": "ApigatewayListOperationsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "cancel": {
+                  "httpMethod": "POST",
+                  "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "path": "v1beta/{+name}:cancel",
+                  "id": "apigateway.projects.locations.operations.cancel",
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                  "parameters": {
+                    "name": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "required": true,
+                      "location": "path",
+                      "type": "string",
+                      "description": "The name of the operation resource to be cancelled."
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "request": {
+                    "$ref": "ApigatewayCancelOperationRequest"
+                  }
+                },
+                "delete": {
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "id": "apigateway.projects.locations.operations.delete",
+                  "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                  "httpMethod": "DELETE",
+                  "path": "v1beta/{+name}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "required": true,
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "description": "The name of the operation resource to be deleted."
+                    }
+                  },
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}"
+                }
+              }
+            }
+          },
+          "methods": {
+            "get": {
+              "id": "apigateway.projects.locations.get",
+              "httpMethod": "GET",
+              "path": "v1beta/{+name}",
+              "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}",
+              "parameters": {
+                "name": {
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path",
+                  "description": "Resource name for the location.",
+                  "type": "string",
+                  "required": true
+                }
+              },
+              "response": {
+                "$ref": "ApigatewayLocation"
+              },
+              "description": "Gets information about a location.",
+              "parameterOrder": [
+                "name"
+              ],
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            },
+            "list": {
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "path": "v1beta/{+name}/locations",
+              "response": {
+                "$ref": "ApigatewayListLocationsResponse"
+              },
+              "id": "apigateway.projects.locations.list",
+              "parameters": {
+                "pageToken": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page."
+                },
+                "filter": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160)."
+                },
+                "name": {
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path",
+                  "required": true,
+                  "description": "The resource that owns the locations collection, if applicable.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "format": "int32",
+                  "location": "query",
+                  "description": "The maximum number of results to return. If not set, the service selects a default.",
+                  "type": "integer"
+                }
+              },
+              "flatPath": "v1beta/projects/{projectsId}/locations",
+              "description": "Lists information about the supported locations for this service."
+            }
+          }
+        }
+      }
+    }
+  },
   "schemas": {
     "ApigatewayListGatewaysResponse": {
-      "type": "object",
+      "description": "Response message for ApiGatewayService.ListGateways",
       "properties": {
-        "nextPageToken": {
-          "description": "Next page token.",
-          "type": "string"
-        },
         "gateways": {
-          "description": "Gateways.",
+          "type": "array",
           "items": {
             "$ref": "ApigatewayGateway"
           },
-          "type": "array"
+          "description": "Gateways."
         },
         "unreachableLocations": {
-          "type": "array",
-          "description": "Locations that could not be reached.",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "Locations that could not be reached.",
+          "type": "array"
+        },
+        "nextPageToken": {
+          "description": "Next page token.",
+          "type": "string"
         }
       },
       "id": "ApigatewayListGatewaysResponse",
-      "description": "Response message for ApiGatewayService.ListGateways"
+      "type": "object"
     },
-    "ApigatewayGateway": {
-      "type": "object",
-      "description": "A Gateway is an API-aware HTTP proxy. It performs API-Method and/or API-Consumer specific actions based on an API Config such as authentication, policy enforcement, and backend selection.",
-      "id": "ApigatewayGateway",
+    "ApigatewayOperation": {
       "properties": {
-        "displayName": {
-          "type": "string",
-          "description": "Optional. Display name."
+        "response": {
+          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          }
         },
-        "apiConfig": {
-          "description": "Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}",
-          "type": "string"
+        "metadata": {
+          "type": "object",
+          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          }
         },
-        "updateTime": {
-          "type": "string",
-          "description": "Output only. Updated time.",
-          "format": "google-datetime",
-          "readOnly": true
+        "error": {
+          "description": "The error result of the operation in case of failure or cancellation.",
+          "$ref": "ApigatewayStatus"
+        },
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+          "type": "boolean"
         },
         "name": {
-          "type": "string",
-          "description": "Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}",
-          "readOnly": true
-        },
-        "labels": {
-          "description": "Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "createTime": {
-          "format": "google-datetime",
-          "description": "Output only. Created time.",
-          "type": "string",
-          "readOnly": true
-        },
-        "defaultHostname": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`."
-        },
-        "state": {
-          "readOnly": true,
-          "enumDescriptions": [
-            "Gateway does not have a state yet.",
-            "Gateway is being created.",
-            "Gateway is running and ready for requests.",
-            "Gateway creation failed.",
-            "Gateway is being deleted.",
-            "Gateway is being updated."
-          ],
-          "description": "Output only. The current state of the Gateway.",
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "CREATING",
-            "ACTIVE",
-            "FAILED",
-            "DELETING",
-            "UPDATING"
-          ],
+          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
           "type": "string"
         }
-      }
-    },
-    "ApigatewayTestIamPermissionsResponse": {
-      "description": "Response message for `TestIamPermissions` method.",
-      "properties": {
-        "permissions": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is allowed."
-        }
       },
-      "type": "object",
-      "id": "ApigatewayTestIamPermissionsResponse"
-    },
-    "ApigatewayTestIamPermissionsRequest": {
-      "description": "Request message for `TestIamPermissions` method.",
-      "id": "ApigatewayTestIamPermissionsRequest",
-      "type": "object",
-      "properties": {
-        "permissions": {
-          "type": "array",
-          "description": "The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
+      "id": "ApigatewayOperation",
+      "description": "This resource represents a long-running operation that is the result of a network API call.",
+      "type": "object"
     },
     "ApigatewayGatewayConfig": {
-      "id": "ApigatewayGatewayConfig",
       "type": "object",
       "properties": {
         "backendConfig": {
@@ -224,239 +1153,49 @@
           "description": "Required. Backend settings that are applied to all backends of the Gateway."
         }
       },
+      "id": "ApigatewayGatewayConfig",
       "description": "Configuration settings for Gateways."
     },
-    "Empty": {
-      "type": "object",
-      "properties": {},
-      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
-      "id": "Empty"
-    },
-    "ApigatewayBackendConfig": {
+    "ApigatewayApiConfig": {
       "properties": {
-        "googleServiceAccount": {
-          "description": "Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend). This may either be the Service Account's email (i.e. \"{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com\") or its full resource name (i.e. \"projects/{PROJECT}/accounts/{UNIQUE_ID}\"). This is most often used when the backend is a GCP resource such as a Cloud Run Service or an IAP-secured service. Note that this token is always sent as an authorization header bearer token. The audience of the OIDC token is configured in the associated Service Config in the BackendRule option (https://github.com/googleapis/googleapis/blob/master/google/api/backend.proto#L125).",
-          "type": "string"
-        }
-      },
-      "description": "Configuration for all backends.",
-      "type": "object",
-      "id": "ApigatewayBackendConfig"
-    },
-    "ApigatewaySetIamPolicyRequest": {
-      "description": "Request message for `SetIamPolicy` method.",
-      "id": "ApigatewaySetIamPolicyRequest",
-      "type": "object",
-      "properties": {
-        "policy": {
-          "$ref": "ApigatewayPolicy",
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them."
-        },
-        "updateMask": {
-          "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`",
-          "type": "string",
-          "format": "google-fieldmask"
-        }
-      }
-    },
-    "ApigatewayPolicy": {
-      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
-      "id": "ApigatewayPolicy",
-      "properties": {
-        "auditConfigs": {
-          "items": {
-            "$ref": "ApigatewayAuditConfig"
-          },
-          "description": "Specifies cloud audit logging configuration for this policy.",
-          "type": "array"
-        },
-        "etag": {
-          "description": "`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.",
-          "format": "byte",
-          "type": "string"
-        },
-        "version": {
-          "format": "int32",
-          "description": "Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-          "type": "integer"
-        },
-        "bindings": {
-          "type": "array",
-          "items": {
-            "$ref": "ApigatewayBinding"
-          },
-          "description": "Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`."
-        }
-      },
-      "type": "object"
-    },
-    "ApigatewayListOperationsResponse": {
-      "id": "ApigatewayListOperationsResponse",
-      "description": "The response message for Operations.ListOperations.",
-      "properties": {
-        "operations": {
-          "description": "A list of operations that matches the specified filter in the request.",
-          "type": "array",
-          "items": {
-            "$ref": "ApigatewayOperation"
-          }
-        },
-        "nextPageToken": {
-          "type": "string",
-          "description": "The standard List next-page token."
-        }
-      },
-      "type": "object"
-    },
-    "ApigatewayExpr": {
-      "type": "object",
-      "id": "ApigatewayExpr",
-      "description": "Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() \u003c 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\" expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description: \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.",
-      "properties": {
-        "location": {
-          "description": "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.",
-          "type": "string"
-        },
-        "expression": {
-          "description": "Textual representation of an expression in Common Expression Language syntax.",
-          "type": "string"
-        },
-        "title": {
-          "type": "string",
-          "description": "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression."
-        },
-        "description": {
-          "description": "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.",
-          "type": "string"
-        }
-      }
-    },
-    "ApigatewayOperationMetadata": {
-      "id": "ApigatewayOperationMetadata",
-      "type": "object",
-      "properties": {
-        "statusMessage": {
-          "description": "Output only. Human-readable status of the operation, if any.",
-          "type": "string",
-          "readOnly": true
-        },
-        "diagnostics": {
-          "readOnly": true,
-          "items": {
-            "$ref": "ApigatewayOperationMetadataDiagnostic"
-          },
-          "type": "array",
-          "description": "Output only. Diagnostics generated during processing of configuration source files."
-        },
-        "requestedCancellation": {
-          "type": "boolean",
-          "readOnly": true,
-          "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`."
-        },
-        "apiVersion": {
-          "description": "Output only. API version used to start the operation.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "verb": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. Name of the verb executed by the operation."
-        },
-        "createTime": {
-          "description": "Output only. The time the operation was created.",
-          "readOnly": true,
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "endTime": {
-          "readOnly": true,
-          "format": "google-datetime",
-          "description": "Output only. The time the operation finished running.",
-          "type": "string"
-        },
-        "target": {
-          "readOnly": true,
-          "type": "string",
-          "description": "Output only. Server-defined resource path for the target of the operation."
-        }
-      },
-      "description": "Represents the metadata of the long-running operation."
-    },
-    "ApigatewayApiConfigGrpcServiceDefinition": {
-      "properties": {
-        "source": {
-          "type": "array",
-          "items": {
-            "$ref": "ApigatewayApiConfigFile"
-          },
-          "description": "Optional. Uncompiled proto files associated with the descriptor set, used for display purposes (server-side compilation is not supported). These should match the inputs to 'protoc' command used to generate file_descriptor_set."
-        },
-        "fileDescriptorSet": {
-          "description": "Input only. File descriptor set, generated by protoc. To generate, use protoc with imports and source info included. For an example test.proto file, the following command would put the value in a new file named out.pb. $ protoc --include_imports --include_source_info test.proto -o out.pb",
-          "$ref": "ApigatewayApiConfigFile"
-        }
-      },
-      "type": "object",
-      "description": "A gRPC service definition.",
-      "id": "ApigatewayApiConfigGrpcServiceDefinition"
-    },
-    "ApigatewayOperationMetadataDiagnostic": {
-      "id": "ApigatewayOperationMetadataDiagnostic",
-      "properties": {
-        "message": {
-          "description": "The diagnostic message.",
-          "type": "string"
-        },
-        "location": {
-          "description": "Location of the diagnostic.",
-          "type": "string"
-        }
-      },
-      "description": "Diagnostic information from configuration processing.",
-      "type": "object"
-    },
-    "ApigatewayLocation": {
-      "properties": {
-        "metadata": {
-          "type": "object",
-          "description": "Service-specific metadata. For example the available capacity at the given location.",
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
-          }
-        },
         "name": {
           "type": "string",
-          "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`"
+          "readOnly": true,
+          "description": "Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}"
         },
-        "displayName": {
-          "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+        "openapiDocuments": {
+          "type": "array",
+          "items": {
+            "$ref": "ApigatewayApiConfigOpenApiDocument"
+          },
+          "description": "Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included."
+        },
+        "gatewayServiceAccount": {
+          "description": "Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.",
           "type": "string"
         },
-        "labels": {
-          "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "locationId": {
-          "type": "string",
-          "description": "The canonical id for this location. For example: `\"us-east1\"`."
-        }
-      },
-      "type": "object",
-      "description": "A resource that represents Google Cloud Platform location.",
-      "id": "ApigatewayLocation"
-    },
-    "ApigatewayApi": {
-      "id": "ApigatewayApi",
-      "description": "An API that can be served by one or more Gateways.",
-      "properties": {
-        "managedService": {
-          "type": "string",
-          "description": "Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API."
+        "state": {
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "CREATING",
+            "ACTIVE",
+            "FAILED",
+            "DELETING",
+            "UPDATING",
+            "ACTIVATING"
+          ],
+          "readOnly": true,
+          "description": "Output only. State of the API Config.",
+          "enumDescriptions": [
+            "API Config does not have a state yet.",
+            "API Config is being created and deployed to the API Controller.",
+            "API Config is ready for use by Gateways.",
+            "API Config creation failed.",
+            "API Config is being deleted.",
+            "API Config is being updated.",
+            "API Config settings are being activated in downstream systems. API Configs in this state cannot be used by Gateways."
+          ],
+          "type": "string"
         },
         "displayName": {
           "type": "string",
@@ -464,140 +1203,104 @@
         },
         "updateTime": {
           "format": "google-datetime",
+          "type": "string",
           "description": "Output only. Updated time.",
-          "readOnly": true,
-          "type": "string"
+          "readOnly": true
         },
-        "name": {
+        "serviceConfigId": {
           "readOnly": true,
-          "description": "Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}",
+          "description": "Output only. The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).",
           "type": "string"
         },
         "createTime": {
           "type": "string",
-          "format": "google-datetime",
+          "readOnly": true,
           "description": "Output only. Created time.",
-          "readOnly": true
-        },
-        "state": {
-          "type": "string",
-          "description": "Output only. State of the API.",
-          "enumDescriptions": [
-            "API does not have a state yet.",
-            "API is being created.",
-            "API is active.",
-            "API creation failed.",
-            "API is being deleted.",
-            "API is being updated."
-          ],
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "CREATING",
-            "ACTIVE",
-            "FAILED",
-            "DELETING",
-            "UPDATING"
-          ],
-          "readOnly": true
+          "format": "google-datetime"
         },
         "labels": {
-          "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources"
+          "description": "Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources",
+          "type": "object"
+        },
+        "gatewayConfig": {
+          "description": "Immutable. Gateway specific configuration.",
+          "$ref": "ApigatewayGatewayConfig"
+        },
+        "managedServiceConfigs": {
+          "description": "Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using \"last one wins\" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.",
+          "items": {
+            "$ref": "ApigatewayApiConfigFile"
+          },
+          "type": "array"
+        },
+        "grpcServices": {
+          "description": "Optional. gRPC service definition files. If specified, openapi_documents must not be included.",
+          "items": {
+            "$ref": "ApigatewayApiConfigGrpcServiceDefinition"
+          },
+          "type": "array"
         }
       },
+      "id": "ApigatewayApiConfig",
+      "description": "An API Configuration is a combination of settings for both the Managed Service and Gateways serving this API Config.",
       "type": "object"
     },
     "ApigatewayListApiConfigsResponse": {
+      "description": "Response message for ApiGatewayService.ListApiConfigs",
       "properties": {
-        "apiConfigs": {
-          "items": {
-            "$ref": "ApigatewayApiConfig"
-          },
-          "type": "array",
-          "description": "API Configs."
-        },
-        "nextPageToken": {
-          "description": "Next page token.",
-          "type": "string"
-        },
-        "unreachableLocations": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array",
-          "description": "Locations that could not be reached."
-        }
-      },
-      "id": "ApigatewayListApiConfigsResponse",
-      "type": "object",
-      "description": "Response message for ApiGatewayService.ListApiConfigs"
-    },
-    "ApigatewayListApisResponse": {
-      "properties": {
-        "apis": {
-          "type": "array",
-          "items": {
-            "$ref": "ApigatewayApi"
-          },
-          "description": "APIs."
-        },
-        "nextPageToken": {
-          "type": "string",
-          "description": "Next page token."
-        },
         "unreachableLocations": {
           "items": {
             "type": "string"
           },
           "description": "Locations that could not be reached.",
           "type": "array"
-        }
-      },
-      "type": "object",
-      "description": "Response message for ApiGatewayService.ListApis",
-      "id": "ApigatewayListApisResponse"
-    },
-    "ApigatewayStatus": {
-      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
-      "properties": {
-        "message": {
-          "type": "string",
-          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."
         },
-        "code": {
-          "format": "int32",
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "type": "integer"
-        },
-        "details": {
+        "apiConfigs": {
           "type": "array",
           "items": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "any",
-              "description": "Properties of the object. Contains field @type with type URL."
-            }
+            "$ref": "ApigatewayApiConfig"
           },
-          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use."
+          "description": "API Configs."
+        },
+        "nextPageToken": {
+          "description": "Next page token.",
+          "type": "string"
         }
       },
-      "type": "object",
-      "id": "ApigatewayStatus"
+      "id": "ApigatewayListApiConfigsResponse",
+      "type": "object"
+    },
+    "ApigatewayListOperationsResponse": {
+      "id": "ApigatewayListOperationsResponse",
+      "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        },
+        "operations": {
+          "type": "array",
+          "description": "A list of operations that matches the specified filter in the request.",
+          "items": {
+            "$ref": "ApigatewayOperation"
+          }
+        }
+      },
+      "description": "The response message for Operations.ListOperations.",
+      "type": "object"
     },
     "ApigatewayAuditLogConfig": {
-      "id": "ApigatewayAuditLogConfig",
-      "description": "Provides the configuration for logging a type of permissions. Example: { \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", \"exempted_members\": [ \"user:jose@example.com\" ] }, { \"log_type\": \"DATA_WRITE\" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.",
       "type": "object",
+      "id": "ApigatewayAuditLogConfig",
       "properties": {
         "exemptedMembers": {
+          "type": "array",
+          "description": "Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.",
           "items": {
             "type": "string"
-          },
-          "type": "array",
-          "description": "Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members."
+          }
         },
         "logType": {
           "enumDescriptions": [
@@ -615,1218 +1318,515 @@
             "DATA_READ"
           ]
         }
-      }
+      },
+      "description": "Provides the configuration for logging a type of permissions. Example: { \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", \"exempted_members\": [ \"user:jose@example.com\" ] }, { \"log_type\": \"DATA_WRITE\" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging."
     },
-    "ApigatewayListLocationsResponse": {
-      "id": "ApigatewayListLocationsResponse",
-      "description": "The response message for Locations.ListLocations.",
-      "type": "object",
+    "ApigatewayApi": {
+      "description": "An API that can be served by one or more Gateways.",
       "properties": {
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
+        "managedService": {
+          "description": "Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.",
           "type": "string"
-        },
-        "locations": {
-          "items": {
-            "$ref": "ApigatewayLocation"
-          },
-          "description": "A list of locations that matches the specified filter in the request.",
-          "type": "array"
-        }
-      }
-    },
-    "ApigatewayApiConfig": {
-      "description": "An API Configuration is a combination of settings for both the Managed Service and Gateways serving this API Config.",
-      "properties": {
-        "managedServiceConfigs": {
-          "items": {
-            "$ref": "ApigatewayApiConfigFile"
-          },
-          "description": "Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using \"last one wins\" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.",
-          "type": "array"
         },
         "labels": {
           "type": "object",
-          "description": "Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources",
           "additionalProperties": {
             "type": "string"
-          }
+          },
+          "description": "Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources"
         },
-        "serviceConfigId": {
+        "name": {
           "type": "string",
           "readOnly": true,
-          "description": "Output only. The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config)."
+          "description": "Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}"
+        },
+        "updateTime": {
+          "description": "Output only. Updated time.",
+          "type": "string",
+          "format": "google-datetime",
+          "readOnly": true
         },
         "state": {
-          "enumDescriptions": [
-            "API Config does not have a state yet.",
-            "API Config is being created and deployed to the API Controller.",
-            "API Config is ready for use by Gateways.",
-            "API Config creation failed.",
-            "API Config is being deleted.",
-            "API Config is being updated.",
-            "API Config settings are being activated in downstream systems. API Configs in this state cannot be used by Gateways."
-          ],
-          "description": "Output only. State of the API Config.",
-          "readOnly": true,
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
             "ACTIVE",
             "FAILED",
             "DELETING",
-            "UPDATING",
-            "ACTIVATING"
+            "UPDATING"
           ],
-          "type": "string"
-        },
-        "gatewayServiceAccount": {
-          "description": "Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.",
-          "type": "string"
-        },
-        "updateTime": {
-          "type": "string",
-          "description": "Output only. Updated time.",
+          "enumDescriptions": [
+            "API does not have a state yet.",
+            "API is being created.",
+            "API is active.",
+            "API creation failed.",
+            "API is being deleted.",
+            "API is being updated."
+          ],
           "readOnly": true,
-          "format": "google-datetime"
-        },
-        "gatewayConfig": {
-          "$ref": "ApigatewayGatewayConfig",
-          "description": "Immutable. Gateway specific configuration."
+          "type": "string",
+          "description": "Output only. State of the API."
         },
         "displayName": {
           "description": "Optional. Display name.",
           "type": "string"
-        },
-        "grpcServices": {
-          "items": {
-            "$ref": "ApigatewayApiConfigGrpcServiceDefinition"
-          },
-          "description": "Optional. gRPC service definition files. If specified, openapi_documents must not be included.",
-          "type": "array"
-        },
-        "name": {
-          "description": "Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}",
-          "type": "string",
-          "readOnly": true
         },
         "createTime": {
           "type": "string",
           "readOnly": true,
           "format": "google-datetime",
           "description": "Output only. Created time."
-        },
-        "openapiDocuments": {
-          "type": "array",
-          "items": {
-            "$ref": "ApigatewayApiConfigOpenApiDocument"
-          },
-          "description": "Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included."
         }
       },
-      "id": "ApigatewayApiConfig",
-      "type": "object"
-    },
-    "ApigatewayCancelOperationRequest": {
-      "description": "The request message for Operations.CancelOperation.",
-      "id": "ApigatewayCancelOperationRequest",
-      "properties": {},
-      "type": "object"
-    },
-    "ApigatewayOperation": {
       "type": "object",
-      "id": "ApigatewayOperation",
+      "id": "ApigatewayApi"
+    },
+    "Empty": {
+      "properties": {},
+      "type": "object",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+      "id": "Empty"
+    },
+    "ApigatewayStatus": {
+      "type": "object",
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+      "id": "ApigatewayStatus",
       "properties": {
-        "response": {
-          "type": "object",
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          }
+        "message": {
+          "type": "string",
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."
         },
-        "done": {
-          "type": "boolean",
-          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available."
+        "details": {
+          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+          "items": {
+            "additionalProperties": {
+              "type": "any",
+              "description": "Properties of the object. Contains field @type with type URL."
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "ApigatewayListLocationsResponse": {
+      "description": "The response message for Locations.ListLocations.",
+      "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        },
+        "locations": {
+          "description": "A list of locations that matches the specified filter in the request.",
+          "items": {
+            "$ref": "ApigatewayLocation"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "id": "ApigatewayListLocationsResponse"
+    },
+    "ApigatewayGateway": {
+      "id": "ApigatewayGateway",
+      "description": "A Gateway is an API-aware HTTP proxy. It performs API-Method and/or API-Consumer specific actions based on an API Config such as authentication, policy enforcement, and backend selection.",
+      "type": "object",
+      "properties": {
+        "labels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Optional. Display name."
+        },
+        "updateTime": {
+          "readOnly": true,
+          "format": "google-datetime",
+          "type": "string",
+          "description": "Output only. Updated time."
+        },
+        "apiConfig": {
+          "type": "string",
+          "description": "Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}"
+        },
+        "state": {
+          "type": "string",
+          "readOnly": true,
+          "enumDescriptions": [
+            "Gateway does not have a state yet.",
+            "Gateway is being created.",
+            "Gateway is running and ready for requests.",
+            "Gateway creation failed.",
+            "Gateway is being deleted.",
+            "Gateway is being updated."
+          ],
+          "description": "Output only. The current state of the Gateway.",
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "CREATING",
+            "ACTIVE",
+            "FAILED",
+            "DELETING",
+            "UPDATING"
+          ]
+        },
+        "defaultHostname": {
+          "type": "string",
+          "description": "Output only. The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.",
+          "readOnly": true
         },
         "name": {
-          "type": "string",
-          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
+          "description": "Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}",
+          "readOnly": true,
+          "type": "string"
         },
-        "error": {
-          "$ref": "ApigatewayStatus",
-          "description": "The error result of the operation in case of failure or cancellation."
+        "createTime": {
+          "readOnly": true,
+          "description": "Output only. Created time.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      }
+    },
+    "ApigatewayListApisResponse": {
+      "type": "object",
+      "description": "Response message for ApiGatewayService.ListApis",
+      "properties": {
+        "unreachableLocations": {
+          "type": "array",
+          "description": "Locations that could not be reached.",
+          "items": {
+            "type": "string"
+          }
         },
-        "metadata": {
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
+        "apis": {
+          "description": "APIs.",
+          "items": {
+            "$ref": "ApigatewayApi"
           },
-          "type": "object",
-          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."
+          "type": "array"
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "Next page token."
         }
       },
-      "description": "This resource represents a long-running operation that is the result of a network API call."
+      "id": "ApigatewayListApisResponse"
+    },
+    "ApigatewayOperationMetadataDiagnostic": {
+      "properties": {
+        "location": {
+          "type": "string",
+          "description": "Location of the diagnostic."
+        },
+        "message": {
+          "description": "The diagnostic message.",
+          "type": "string"
+        }
+      },
+      "description": "Diagnostic information from configuration processing.",
+      "type": "object",
+      "id": "ApigatewayOperationMetadataDiagnostic"
+    },
+    "ApigatewayTestIamPermissionsResponse": {
+      "properties": {
+        "permissions": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is allowed."
+        }
+      },
+      "id": "ApigatewayTestIamPermissionsResponse",
+      "type": "object",
+      "description": "Response message for `TestIamPermissions` method."
+    },
+    "ApigatewayPolicy": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "description": "Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+          "format": "int32"
+        },
+        "auditConfigs": {
+          "description": "Specifies cloud audit logging configuration for this policy.",
+          "items": {
+            "$ref": "ApigatewayAuditConfig"
+          },
+          "type": "array"
+        },
+        "bindings": {
+          "type": "array",
+          "description": "Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.",
+          "items": {
+            "$ref": "ApigatewayBinding"
+          }
+        },
+        "etag": {
+          "type": "string",
+          "format": "byte",
+          "description": "`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost."
+        }
+      },
+      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time \u003c timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time \u003c timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+      "id": "ApigatewayPolicy"
     },
     "ApigatewayApiConfigOpenApiDocument": {
+      "description": "An OpenAPI Specification Document describing an API.",
+      "id": "ApigatewayApiConfigOpenApiDocument",
+      "type": "object",
       "properties": {
         "document": {
           "$ref": "ApigatewayApiConfigFile",
           "description": "The OpenAPI Specification document file."
         }
-      },
-      "description": "An OpenAPI Specification Document describing an API.",
-      "id": "ApigatewayApiConfigOpenApiDocument",
-      "type": "object"
+      }
     },
-    "ApigatewayBinding": {
+    "ApigatewayCancelOperationRequest": {
+      "properties": {},
+      "type": "object",
+      "id": "ApigatewayCancelOperationRequest",
+      "description": "The request message for Operations.CancelOperation."
+    },
+    "ApigatewayTestIamPermissionsRequest": {
+      "description": "Request message for `TestIamPermissions` method.",
       "properties": {
-        "role": {
-          "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
-          "type": "string"
-        },
-        "members": {
+        "permissions": {
           "items": {
             "type": "string"
           },
+          "description": "The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
+          "type": "array"
+        }
+      },
+      "id": "ApigatewayTestIamPermissionsRequest",
+      "type": "object"
+    },
+    "ApigatewayExpr": {
+      "id": "ApigatewayExpr",
+      "properties": {
+        "expression": {
+          "description": "Textual representation of an expression in Common Expression Language syntax.",
+          "type": "string"
+        },
+        "title": {
+          "description": "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.",
+          "type": "string"
+        },
+        "location": {
+          "description": "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "description": "Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() \u003c 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\" expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description: \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information."
+    },
+    "ApigatewayLocation": {
+      "description": "A resource that represents Google Cloud Platform location.",
+      "type": "object",
+      "id": "ApigatewayLocation",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`"
+        },
+        "locationId": {
+          "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+          "type": "string"
+        },
+        "labels": {
+          "type": "object",
+          "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "metadata": {
+          "description": "Service-specific metadata. For example the available capacity at the given location.",
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "type": "object"
+        },
+        "displayName": {
+          "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+          "type": "string"
+        }
+      }
+    },
+    "ApigatewayApiConfigFile": {
+      "id": "ApigatewayApiConfigFile",
+      "description": "A lightweight description of a file.",
+      "type": "object",
+      "properties": {
+        "contents": {
+          "format": "byte",
+          "description": "The bytes that constitute the file.",
+          "type": "string"
+        },
+        "path": {
+          "type": "string",
+          "description": "The file path (full or relative path). This is typically the path of the file when it is uploaded."
+        }
+      }
+    },
+    "ApigatewayApiConfigGrpcServiceDefinition": {
+      "description": "A gRPC service definition.",
+      "type": "object",
+      "id": "ApigatewayApiConfigGrpcServiceDefinition",
+      "properties": {
+        "fileDescriptorSet": {
+          "description": "Input only. File descriptor set, generated by protoc. To generate, use protoc with imports and source info included. For an example test.proto file, the following command would put the value in a new file named out.pb. $ protoc --include_imports --include_source_info test.proto -o out.pb",
+          "$ref": "ApigatewayApiConfigFile"
+        },
+        "source": {
+          "items": {
+            "$ref": "ApigatewayApiConfigFile"
+          },
+          "description": "Optional. Uncompiled proto files associated with the descriptor set, used for display purposes (server-side compilation is not supported). These should match the inputs to 'protoc' command used to generate file_descriptor_set.",
+          "type": "array"
+        }
+      }
+    },
+    "ApigatewayBinding": {
+      "type": "object",
+      "id": "ApigatewayBinding",
+      "properties": {
+        "members": {
           "type": "array",
-          "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding."
+          "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "role": {
+          "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+          "type": "string"
         },
         "condition": {
           "$ref": "ApigatewayExpr",
           "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         }
       },
-      "id": "ApigatewayBinding",
-      "description": "Associates `members`, or principals, with a `role`.",
-      "type": "object"
+      "description": "Associates `members`, or principals, with a `role`."
+    },
+    "ApigatewaySetIamPolicyRequest": {
+      "type": "object",
+      "description": "Request message for `SetIamPolicy` method.",
+      "id": "ApigatewaySetIamPolicyRequest",
+      "properties": {
+        "policy": {
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them.",
+          "$ref": "ApigatewayPolicy"
+        },
+        "updateMask": {
+          "type": "string",
+          "format": "google-fieldmask",
+          "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`"
+        }
+      }
+    },
+    "ApigatewayBackendConfig": {
+      "type": "object",
+      "id": "ApigatewayBackendConfig",
+      "properties": {
+        "googleServiceAccount": {
+          "type": "string",
+          "description": "Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend). This may either be the Service Account's email (i.e. \"{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com\") or its full resource name (i.e. \"projects/{PROJECT}/accounts/{UNIQUE_ID}\"). This is most often used when the backend is a GCP resource such as a Cloud Run Service or an IAP-secured service. Note that this token is always sent as an authorization header bearer token. The audience of the OIDC token is configured in the associated Service Config in the BackendRule option (https://github.com/googleapis/googleapis/blob/master/google/api/backend.proto#L125)."
+        }
+      },
+      "description": "Configuration for all backends."
     },
     "ApigatewayAuditConfig": {
       "properties": {
-        "auditLogConfigs": {
-          "items": {
-            "$ref": "ApigatewayAuditLogConfig"
-          },
-          "type": "array",
-          "description": "The configuration for logging of each type of permission."
-        },
         "service": {
           "type": "string",
           "description": "Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services."
-        }
-      },
-      "id": "ApigatewayAuditConfig",
-      "type": "object",
-      "description": "Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { \"audit_configs\": [ { \"service\": \"allServices\", \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", \"exempted_members\": [ \"user:jose@example.com\" ] }, { \"log_type\": \"DATA_WRITE\" }, { \"log_type\": \"ADMIN_READ\" } ] }, { \"service\": \"sampleservice.googleapis.com\", \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\" }, { \"log_type\": \"DATA_WRITE\", \"exempted_members\": [ \"user:aliya@example.com\" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging."
-    },
-    "ApigatewayApiConfigFile": {
-      "type": "object",
-      "id": "ApigatewayApiConfigFile",
-      "description": "A lightweight description of a file.",
-      "properties": {
-        "path": {
-          "description": "The file path (full or relative path). This is typically the path of the file when it is uploaded.",
-          "type": "string"
         },
-        "contents": {
-          "type": "string",
-          "description": "The bytes that constitute the file.",
-          "format": "byte"
-        }
-      }
-    }
-  },
-  "version_module": true,
-  "mtlsRootUrl": "https://apigateway.mtls.googleapis.com/",
-  "description": "",
-  "ownerDomain": "google.com",
-  "ownerName": "Google",
-  "revision": "20230208",
-  "servicePath": "",
-  "name": "apigateway",
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
-  "rootUrl": "https://apigateway.googleapis.com/",
-  "resources": {
-    "projects": {
-      "resources": {
-        "locations": {
-          "methods": {
-            "get": {
-              "response": {
-                "$ref": "ApigatewayLocation"
-              },
-              "parameters": {
-                "name": {
-                  "description": "Resource name for the location.",
-                  "type": "string",
-                  "location": "path",
-                  "required": true,
-                  "pattern": "^projects/[^/]+/locations/[^/]+$"
-                }
-              },
-              "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}",
-              "description": "Gets information about a location.",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "httpMethod": "GET",
-              "path": "v1beta/{+name}",
-              "parameterOrder": [
-                "name"
-              ],
-              "id": "apigateway.projects.locations.get"
-            },
-            "list": {
-              "description": "Lists information about the supported locations for this service.",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "pageToken": {
-                  "location": "query",
-                  "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.",
-                  "type": "string"
-                },
-                "name": {
-                  "description": "The resource that owns the locations collection, if applicable.",
-                  "pattern": "^projects/[^/]+$",
-                  "type": "string",
-                  "required": true,
-                  "location": "path"
-                },
-                "pageSize": {
-                  "type": "integer",
-                  "location": "query",
-                  "format": "int32",
-                  "description": "The maximum number of results to return. If not set, the service selects a default."
-                },
-                "filter": {
-                  "location": "query",
-                  "type": "string",
-                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160)."
-                }
-              },
-              "flatPath": "v1beta/projects/{projectsId}/locations",
-              "id": "apigateway.projects.locations.list",
-              "response": {
-                "$ref": "ApigatewayListLocationsResponse"
-              },
-              "httpMethod": "GET",
-              "path": "v1beta/{+name}/locations",
-              "parameterOrder": [
-                "name"
-              ]
-            }
-          },
-          "resources": {
-            "apis": {
-              "resources": {
-                "configs": {
-                  "methods": {
-                    "getIamPolicy": {
-                      "parameters": {
-                        "options.requestedPolicyVersion": {
-                          "type": "integer",
-                          "location": "query",
-                          "format": "int32",
-                          "description": "Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
-                        },
-                        "resource": {
-                          "required": true,
-                          "description": "REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                          "type": "string"
-                        }
-                      },
-                      "parameterOrder": [
-                        "resource"
-                      ],
-                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}:getIamPolicy",
-                      "id": "apigateway.projects.locations.apis.configs.getIamPolicy",
-                      "response": {
-                        "$ref": "ApigatewayPolicy"
-                      },
-                      "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "path": "v1beta/{+resource}:getIamPolicy",
-                      "httpMethod": "GET"
-                    },
-                    "patch": {
-                      "httpMethod": "PATCH",
-                      "request": {
-                        "$ref": "ApigatewayApiConfig"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "description": "Updates the parameters of a single ApiConfig.",
-                      "response": {
-                        "$ref": "ApigatewayOperation"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "id": "apigateway.projects.locations.apis.configs.patch",
-                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}",
-                      "path": "v1beta/{+name}",
-                      "parameters": {
-                        "updateMask": {
-                          "type": "string",
-                          "format": "google-fieldmask",
-                          "location": "query",
-                          "description": "Field mask is used to specify the fields to be overwritten in the ApiConfig resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten."
-                        },
-                        "name": {
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                          "location": "path",
-                          "description": "Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}",
-                          "required": true
-                        }
-                      }
-                    },
-                    "create": {
-                      "path": "v1beta/{+parent}/configs",
-                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs",
-                      "response": {
-                        "$ref": "ApigatewayOperation"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "httpMethod": "POST",
-                      "parameters": {
-                        "parent": {
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                          "location": "path",
-                          "description": "Required. Parent resource of the API Config, of the form: `projects/*/locations/global/apis/*`",
-                          "required": true
-                        },
-                        "apiConfigId": {
-                          "type": "string",
-                          "location": "query",
-                          "description": "Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource."
-                        }
-                      },
-                      "id": "apigateway.projects.locations.apis.configs.create",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "request": {
-                        "$ref": "ApigatewayApiConfig"
-                      },
-                      "description": "Creates a new ApiConfig in a given project and location."
-                    },
-                    "setIamPolicy": {
-                      "parameterOrder": [
-                        "resource"
-                      ],
-                      "parameters": {
-                        "resource": {
-                          "type": "string",
-                          "location": "path",
-                          "required": true,
-                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                          "description": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field."
-                        }
-                      },
-                      "httpMethod": "POST",
-                      "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
-                      "id": "apigateway.projects.locations.apis.configs.setIamPolicy",
-                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}:setIamPolicy",
-                      "request": {
-                        "$ref": "ApigatewaySetIamPolicyRequest"
-                      },
-                      "path": "v1beta/{+resource}:setIamPolicy",
-                      "response": {
-                        "$ref": "ApigatewayPolicy"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    },
-                    "delete": {
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "response": {
-                        "$ref": "ApigatewayOperation"
-                      },
-                      "httpMethod": "DELETE",
-                      "description": "Deletes a single ApiConfig.",
-                      "path": "v1beta/{+name}",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "location": "path",
-                          "description": "Required. Resource name of the form: `projects/*/locations/global/apis/*/configs/*`",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                          "type": "string",
-                          "required": true
-                        }
-                      },
-                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}",
-                      "id": "apigateway.projects.locations.apis.configs.delete"
-                    },
-                    "testIamPermissions": {
-                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}:testIamPermissions",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "id": "apigateway.projects.locations.apis.configs.testIamPermissions",
-                      "parameters": {
-                        "resource": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                          "required": true,
-                          "description": "REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                          "type": "string",
-                          "location": "path"
-                        }
-                      },
-                      "path": "v1beta/{+resource}:testIamPermissions",
-                      "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
-                      "parameterOrder": [
-                        "resource"
-                      ],
-                      "response": {
-                        "$ref": "ApigatewayTestIamPermissionsResponse"
-                      },
-                      "request": {
-                        "$ref": "ApigatewayTestIamPermissionsRequest"
-                      },
-                      "httpMethod": "POST"
-                    },
-                    "get": {
-                      "httpMethod": "GET",
-                      "path": "v1beta/{+name}",
-                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs/{configsId}",
-                      "id": "apigateway.projects.locations.apis.configs.get",
-                      "response": {
-                        "$ref": "ApigatewayApiConfig"
-                      },
-                      "description": "Gets details of a single ApiConfig.",
-                      "parameters": {
-                        "view": {
-                          "description": "Specifies which fields of the API Config are returned in the response. Defaults to `BASIC` view.",
-                          "enum": [
-                            "CONFIG_VIEW_UNSPECIFIED",
-                            "BASIC",
-                            "FULL"
-                          ],
-                          "enumDescriptions": [
-                            "",
-                            "Do not include configuration source files.",
-                            "Include configuration source files."
-                          ],
-                          "location": "query",
-                          "type": "string"
-                        },
-                        "name": {
-                          "description": "Required. Resource name of the form: `projects/*/locations/global/apis/*/configs/*`",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+/configs/[^/]+$",
-                          "location": "path",
-                          "type": "string",
-                          "required": true
-                        }
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    },
-                    "list": {
-                      "path": "v1beta/{+parent}/configs",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "response": {
-                        "$ref": "ApigatewayListApiConfigsResponse"
-                      },
-                      "id": "apigateway.projects.locations.apis.configs.list",
-                      "parameters": {
-                        "parent": {
-                          "required": true,
-                          "type": "string",
-                          "description": "Required. Parent resource of the API Config, of the form: `projects/*/locations/global/apis/*`",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                          "location": "path"
-                        },
-                        "pageSize": {
-                          "type": "integer",
-                          "format": "int32",
-                          "location": "query",
-                          "description": "Page size."
-                        },
-                        "orderBy": {
-                          "description": "Order by parameters.",
-                          "location": "query",
-                          "type": "string"
-                        },
-                        "filter": {
-                          "description": "Filter.",
-                          "location": "query",
-                          "type": "string"
-                        },
-                        "pageToken": {
-                          "location": "query",
-                          "description": "Page token.",
-                          "type": "string"
-                        }
-                      },
-                      "httpMethod": "GET",
-                      "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/configs",
-                      "description": "Lists ApiConfigs in a given project and location."
-                    }
-                  }
-                }
-              },
-              "methods": {
-                "testIamPermissions": {
-                  "path": "v1beta/{+resource}:testIamPermissions",
-                  "request": {
-                    "$ref": "ApigatewayTestIamPermissionsRequest"
-                  },
-                  "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}:testIamPermissions",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "parameters": {
-                    "resource": {
-                      "description": "REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                      "type": "string",
-                      "required": true,
-                      "location": "path"
-                    }
-                  },
-                  "response": {
-                    "$ref": "ApigatewayTestIamPermissionsResponse"
-                  },
-                  "httpMethod": "POST",
-                  "id": "apigateway.projects.locations.apis.testIamPermissions"
-                },
-                "delete": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}",
-                  "httpMethod": "DELETE",
-                  "response": {
-                    "$ref": "ApigatewayOperation"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "required": true,
-                      "description": "Required. Resource name of the form: `projects/*/locations/global/apis/*`",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                      "type": "string"
-                    }
-                  },
-                  "id": "apigateway.projects.locations.apis.delete",
-                  "description": "Deletes a single Api.",
-                  "path": "v1beta/{+name}"
-                },
-                "list": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "response": {
-                    "$ref": "ApigatewayListApisResponse"
-                  },
-                  "path": "v1beta/{+parent}/apis",
-                  "description": "Lists Apis in a given project and location.",
-                  "parameters": {
-                    "pageSize": {
-                      "type": "integer",
-                      "description": "Page size.",
-                      "format": "int32",
-                      "location": "query"
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "description": "Page token.",
-                      "type": "string"
-                    },
-                    "parent": {
-                      "type": "string",
-                      "required": true,
-                      "location": "path",
-                      "description": "Required. Parent resource of the API, of the form: `projects/*/locations/global`",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$"
-                    },
-                    "orderBy": {
-                      "description": "Order by parameters.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "filter": {
-                      "location": "query",
-                      "description": "Filter.",
-                      "type": "string"
-                    }
-                  },
-                  "id": "apigateway.projects.locations.apis.list",
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis",
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "parent"
-                  ]
-                },
-                "create": {
-                  "description": "Creates a new Api in a given project and location.",
-                  "response": {
-                    "$ref": "ApigatewayOperation"
-                  },
-                  "path": "v1beta/{+parent}/apis",
-                  "id": "apigateway.projects.locations.apis.create",
-                  "parameters": {
-                    "apiId": {
-                      "location": "query",
-                      "description": "Required. Identifier to assign to the API. Must be unique within scope of the parent resource.",
-                      "type": "string"
-                    },
-                    "parent": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "description": "Required. Parent resource of the API, of the form: `projects/*/locations/global`",
-                      "location": "path",
-                      "type": "string",
-                      "required": true
-                    }
-                  },
-                  "httpMethod": "POST",
-                  "request": {
-                    "$ref": "ApigatewayApi"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis"
-                },
-                "getIamPolicy": {
-                  "path": "v1beta/{+resource}:getIamPolicy",
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
-                  "parameters": {
-                    "resource": {
-                      "type": "string",
-                      "location": "path",
-                      "description": "REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$"
-                    },
-                    "options.requestedPolicyVersion": {
-                      "format": "int32",
-                      "type": "integer",
-                      "description": "Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
-                      "location": "query"
-                    }
-                  },
-                  "id": "apigateway.projects.locations.apis.getIamPolicy",
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}:getIamPolicy",
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "response": {
-                    "$ref": "ApigatewayPolicy"
-                  }
-                },
-                "get": {
-                  "parameters": {
-                    "name": {
-                      "description": "Required. Resource name of the form: `projects/*/locations/global/apis/*`",
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$",
-                      "required": true,
-                      "location": "path"
-                    }
-                  },
-                  "description": "Gets details of a single Api.",
-                  "path": "v1beta/{+name}",
-                  "id": "apigateway.projects.locations.apis.get",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "response": {
-                    "$ref": "ApigatewayApi"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}",
-                  "httpMethod": "GET"
-                },
-                "patch": {
-                  "path": "v1beta/{+name}",
-                  "response": {
-                    "$ref": "ApigatewayOperation"
-                  },
-                  "httpMethod": "PATCH",
-                  "description": "Updates the parameters of a single Api.",
-                  "id": "apigateway.projects.locations.apis.patch",
-                  "request": {
-                    "$ref": "ApigatewayApi"
-                  },
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}",
-                  "parameters": {
-                    "updateMask": {
-                      "type": "string",
-                      "description": "Field mask is used to specify the fields to be overwritten in the Api resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.",
-                      "format": "google-fieldmask",
-                      "location": "query"
-                    },
-                    "name": {
-                      "required": true,
-                      "description": "Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}",
-                      "location": "path",
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$"
-                    }
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "setIamPolicy": {
-                  "request": {
-                    "$ref": "ApigatewaySetIamPolicyRequest"
-                  },
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "path": "v1beta/{+resource}:setIamPolicy",
-                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
-                  "response": {
-                    "$ref": "ApigatewayPolicy"
-                  },
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/apis/{apisId}:setIamPolicy",
-                  "httpMethod": "POST",
-                  "parameters": {
-                    "resource": {
-                      "location": "path",
-                      "description": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/apis/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "id": "apigateway.projects.locations.apis.setIamPolicy"
-                }
-              }
-            },
-            "gateways": {
-              "methods": {
-                "patch": {
-                  "path": "v1beta/{+name}",
-                  "request": {
-                    "$ref": "ApigatewayGateway"
-                  },
-                  "httpMethod": "PATCH",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "description": "Updates the parameters of a single Gateway.",
-                  "id": "apigateway.projects.locations.gateways.patch",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}",
-                  "parameters": {
-                    "name": {
-                      "description": "Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}",
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$"
-                    },
-                    "updateMask": {
-                      "location": "query",
-                      "type": "string",
-                      "format": "google-fieldmask",
-                      "description": "Field mask is used to specify the fields to be overwritten in the Gateway resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten."
-                    }
-                  },
-                  "response": {
-                    "$ref": "ApigatewayOperation"
-                  }
-                },
-                "delete": {
-                  "httpMethod": "DELETE",
-                  "id": "apigateway.projects.locations.gateways.delete",
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "path": "v1beta/{+name}",
-                  "description": "Deletes a single Gateway.",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "required": true,
-                      "description": "Required. Resource name of the form: `projects/*/locations/*/gateways/*`",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                      "type": "string"
-                    }
-                  },
-                  "response": {
-                    "$ref": "ApigatewayOperation"
-                  }
-                },
-                "create": {
-                  "parameters": {
-                    "gatewayId": {
-                      "location": "query",
-                      "description": "Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.",
-                      "type": "string"
-                    },
-                    "parent": {
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "required": true,
-                      "description": "Required. Parent resource of the Gateway, of the form: `projects/*/locations/*`",
-                      "type": "string"
-                    }
-                  },
-                  "request": {
-                    "$ref": "ApigatewayGateway"
-                  },
-                  "path": "v1beta/{+parent}/gateways",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "id": "apigateway.projects.locations.gateways.create",
-                  "httpMethod": "POST",
-                  "description": "Creates a new Gateway in a given project and location.",
-                  "response": {
-                    "$ref": "ApigatewayOperation"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways"
-                },
-                "list": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "description": "Lists Gateways in a given project and location.",
-                  "parameters": {
-                    "orderBy": {
-                      "location": "query",
-                      "description": "Order by parameters.",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "format": "int32",
-                      "type": "integer",
-                      "location": "query",
-                      "description": "Page size."
-                    },
-                    "parent": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "description": "Required. Parent resource of the Gateway, of the form: `projects/*/locations/*`",
-                      "location": "path",
-                      "required": true
-                    },
-                    "filter": {
-                      "description": "Filter.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "type": "string",
-                      "description": "Page token."
-                    }
-                  },
-                  "httpMethod": "GET",
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways",
-                  "path": "v1beta/{+parent}/gateways",
-                  "response": {
-                    "$ref": "ApigatewayListGatewaysResponse"
-                  },
-                  "id": "apigateway.projects.locations.gateways.list",
-                  "parameterOrder": [
-                    "parent"
-                  ]
-                },
-                "getIamPolicy": {
-                  "response": {
-                    "$ref": "ApigatewayPolicy"
-                  },
-                  "parameters": {
-                    "options.requestedPolicyVersion": {
-                      "format": "int32",
-                      "location": "query",
-                      "type": "integer",
-                      "description": "Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
-                    },
-                    "resource": {
-                      "location": "path",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                      "description": "REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                      "type": "string"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
-                  "id": "apigateway.projects.locations.gateways.getIamPolicy",
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}:getIamPolicy",
-                  "path": "v1beta/{+resource}:getIamPolicy"
-                },
-                "testIamPermissions": {
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "path": "v1beta/{+resource}:testIamPermissions",
-                  "response": {
-                    "$ref": "ApigatewayTestIamPermissionsResponse"
-                  },
-                  "id": "apigateway.projects.locations.gateways.testIamPermissions",
-                  "parameters": {
-                    "resource": {
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                      "location": "path",
-                      "description": "REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}:testIamPermissions",
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "request": {
-                    "$ref": "ApigatewayTestIamPermissionsRequest"
-                  },
-                  "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning."
-                },
-                "get": {
-                  "httpMethod": "GET",
-                  "description": "Gets details of a single Gateway.",
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}",
-                  "parameters": {
-                    "name": {
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                      "description": "Required. Resource name of the form: `projects/*/locations/*/gateways/*`",
-                      "type": "string",
-                      "location": "path"
-                    }
-                  },
-                  "id": "apigateway.projects.locations.gateways.get",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "response": {
-                    "$ref": "ApigatewayGateway"
-                  },
-                  "path": "v1beta/{+name}"
-                },
-                "setIamPolicy": {
-                  "path": "v1beta/{+resource}:setIamPolicy",
-                  "request": {
-                    "$ref": "ApigatewaySetIamPolicyRequest"
-                  },
-                  "parameterOrder": [
-                    "resource"
-                  ],
-                  "id": "apigateway.projects.locations.gateways.setIamPolicy",
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/gateways/{gatewaysId}:setIamPolicy",
-                  "httpMethod": "POST",
-                  "response": {
-                    "$ref": "ApigatewayPolicy"
-                  },
-                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
-                  "parameters": {
-                    "resource": {
-                      "location": "path",
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/gateways/[^/]+$",
-                      "description": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field."
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                }
-              }
-            },
-            "operations": {
-              "methods": {
-                "get": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "response": {
-                    "$ref": "ApigatewayOperation"
-                  },
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "id": "apigateway.projects.locations.operations.get",
-                  "path": "v1beta/{+name}",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "type": "string",
-                      "description": "The name of the operation resource.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "required": true
-                    }
-                  },
-                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service."
-                },
-                "cancel": {
-                  "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-                  "request": {
-                    "$ref": "ApigatewayCancelOperationRequest"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "POST",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "id": "apigateway.projects.locations.operations.cancel",
-                  "path": "v1beta/{+name}:cancel",
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the operation resource to be cancelled.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel"
-                },
-                "list": {
-                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "id": "apigateway.projects.locations.operations.list",
-                  "parameters": {
-                    "filter": {
-                      "description": "The standard list filter.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "pageToken": {
-                      "description": "The standard list page token.",
-                      "location": "query",
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "required": true,
-                      "description": "The name of the operation's parent resource.",
-                      "location": "path"
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "format": "int32",
-                      "description": "The standard list page size.",
-                      "type": "integer"
-                    }
-                  },
-                  "path": "v1beta/{+name}/operations",
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "httpMethod": "GET",
-                  "response": {
-                    "$ref": "ApigatewayListOperationsResponse"
-                  }
-                },
-                "delete": {
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "id": "apigateway.projects.locations.operations.delete",
-                  "httpMethod": "DELETE",
-                  "path": "v1beta/{+name}",
-                  "parameters": {
-                    "name": {
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "description": "The name of the operation resource to be deleted.",
-                      "required": true,
-                      "location": "path"
-                    }
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`."
-                }
-              }
-            }
+        "auditLogConfigs": {
+          "description": "The configuration for logging of each type of permission.",
+          "type": "array",
+          "items": {
+            "$ref": "ApigatewayAuditLogConfig"
           }
         }
-      }
+      },
+      "type": "object",
+      "description": "Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { \"audit_configs\": [ { \"service\": \"allServices\", \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", \"exempted_members\": [ \"user:jose@example.com\" ] }, { \"log_type\": \"DATA_WRITE\" }, { \"log_type\": \"ADMIN_READ\" } ] }, { \"service\": \"sampleservice.googleapis.com\", \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\" }, { \"log_type\": \"DATA_WRITE\", \"exempted_members\": [ \"user:aliya@example.com\" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.",
+      "id": "ApigatewayAuditConfig"
+    },
+    "ApigatewayOperationMetadata": {
+      "properties": {
+        "diagnostics": {
+          "readOnly": true,
+          "description": "Output only. Diagnostics generated during processing of configuration source files.",
+          "type": "array",
+          "items": {
+            "$ref": "ApigatewayOperationMetadataDiagnostic"
+          }
+        },
+        "endTime": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Output only. The time the operation finished running.",
+          "format": "google-datetime"
+        },
+        "createTime": {
+          "description": "Output only. The time the operation was created.",
+          "readOnly": true,
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "requestedCancellation": {
+          "type": "boolean",
+          "readOnly": true,
+          "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`."
+        },
+        "target": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Output only. Server-defined resource path for the target of the operation."
+        },
+        "statusMessage": {
+          "description": "Output only. Human-readable status of the operation, if any.",
+          "type": "string",
+          "readOnly": true
+        },
+        "apiVersion": {
+          "type": "string",
+          "description": "Output only. API version used to start the operation.",
+          "readOnly": true
+        },
+        "verb": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Output only. Name of the verb executed by the operation."
+        }
+      },
+      "description": "Represents the metadata of the long-running operation.",
+      "id": "ApigatewayOperationMetadata",
+      "type": "object"
     }
-  }
+  },
+  "id": "apigateway:v1beta",
+  "version_module": true,
+  "version": "v1beta",
+  "protocol": "rest",
+  "servicePath": ""
 }

@@ -1,280 +1,27 @@
 {
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
-  "discoveryVersion": "v1",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/doubleclickbidmanager": {
-          "description": "View and manage your reports in DoubleClick Bid Manager"
-        }
-      }
-    }
-  },
-  "documentationLink": "https://developers.google.com/bid-manager/",
-  "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
-  "basePath": "/v2/",
-  "protocol": "rest",
   "baseUrl": "https://doubleclickbidmanager.googleapis.com/v2/",
-  "mtlsRootUrl": "https://doubleclickbidmanager.mtls.googleapis.com/",
-  "id": "doubleclickbidmanager:v2",
   "version": "v2",
-  "description": "DoubleClick Bid Manager API allows users to manage and create campaigns and reports.",
   "revision": "20230216",
+  "servicePath": "v2/",
+  "discoveryVersion": "v1",
   "canonicalName": "DoubleClick Bid Manager",
-  "resources": {
-    "queries": {
-      "methods": {
-        "create": {
-          "request": {
-            "$ref": "Query"
-          },
-          "id": "doubleclickbidmanager.queries.create",
-          "parameters": {},
-          "response": {
-            "$ref": "Query"
-          },
-          "description": "Creates a query.",
-          "parameterOrder": [],
-          "flatPath": "queries",
-          "httpMethod": "POST",
-          "path": "queries",
-          "scopes": [
-            "https://www.googleapis.com/auth/doubleclickbidmanager"
-          ]
-        },
-        "get": {
-          "httpMethod": "GET",
-          "parameters": {
-            "queryId": {
-              "location": "path",
-              "type": "string",
-              "required": true,
-              "description": "Required. ID of query to retrieve.",
-              "format": "int64"
-            }
-          },
-          "id": "doubleclickbidmanager.queries.get",
-          "scopes": [
-            "https://www.googleapis.com/auth/doubleclickbidmanager"
-          ],
-          "response": {
-            "$ref": "Query"
-          },
-          "path": "queries/{queryId}",
-          "flatPath": "queries/{queryId}",
-          "parameterOrder": [
-            "queryId"
-          ],
-          "description": "Retrieves a query."
-        },
-        "run": {
-          "response": {
-            "$ref": "Report"
-          },
-          "request": {
-            "$ref": "RunQueryRequest"
-          },
-          "id": "doubleclickbidmanager.queries.run",
-          "httpMethod": "POST",
-          "path": "queries/{queryId}:run",
-          "flatPath": "queries/{queryId}:run",
-          "scopes": [
-            "https://www.googleapis.com/auth/doubleclickbidmanager"
-          ],
-          "parameterOrder": [
-            "queryId"
-          ],
-          "description": "Runs a stored query to generate a report.",
-          "parameters": {
-            "synchronous": {
-              "location": "query",
-              "description": "Whether the query should be run synchronously. When true, this method will not return until the query has finished running. When false or not specified, this method will return immediately.",
-              "type": "boolean"
-            },
-            "queryId": {
-              "type": "string",
-              "required": true,
-              "format": "int64",
-              "description": "Required. ID of query to run.",
-              "location": "path"
-            }
-          }
-        },
-        "list": {
-          "description": "Lists queries created by the current user.",
-          "scopes": [
-            "https://www.googleapis.com/auth/doubleclickbidmanager"
-          ],
-          "httpMethod": "GET",
-          "path": "queries",
-          "id": "doubleclickbidmanager.queries.list",
-          "response": {
-            "$ref": "ListQueriesResponse"
-          },
-          "parameterOrder": [],
-          "flatPath": "queries",
-          "parameters": {
-            "pageSize": {
-              "description": "Maximum number of results per page. Must be between `1` and `100`. Defaults to `100` if unspecified.",
-              "location": "query",
-              "format": "int32",
-              "type": "integer"
-            },
-            "orderBy": {
-              "location": "query",
-              "type": "string",
-              "description": "Name of a field used to order results. The default sorting order is ascending. To specify descending order for a field, append a \" desc\" suffix. For example \"metadata.title desc\". Sorting is only supported for the following fields: * `queryId` * `metadata.title`"
-            },
-            "pageToken": {
-              "type": "string",
-              "location": "query",
-              "description": "A page token, received from a previous list call. Provide this to retrieve the subsequent page of queries."
-            }
-          }
-        },
-        "delete": {
-          "flatPath": "queries/{queryId}",
-          "scopes": [
-            "https://www.googleapis.com/auth/doubleclickbidmanager"
-          ],
-          "httpMethod": "DELETE",
-          "parameters": {
-            "queryId": {
-              "description": "Required. ID of query to delete.",
-              "format": "int64",
-              "type": "string",
-              "location": "path",
-              "required": true
-            }
-          },
-          "path": "queries/{queryId}",
-          "description": "Deletes a query as well as the associated reports.",
-          "parameterOrder": [
-            "queryId"
-          ],
-          "id": "doubleclickbidmanager.queries.delete"
-        }
-      },
-      "resources": {
-        "reports": {
-          "methods": {
-            "list": {
-              "parameters": {
-                "pageSize": {
-                  "format": "int32",
-                  "location": "query",
-                  "type": "integer",
-                  "description": "Maximum number of results per page. Must be between `1` and `100`. Defaults to `100` if unspecified."
-                },
-                "queryId": {
-                  "location": "path",
-                  "type": "string",
-                  "format": "int64",
-                  "required": true,
-                  "description": "Required. ID of the query with which the reports are associated."
-                },
-                "orderBy": {
-                  "type": "string",
-                  "description": "Name of a field used to order results. The default sorting order is ascending. To specify descending order for a field, append a \" desc\" suffix. For example \"key.reportId desc\". Sorting is only supported for the following fields: * `key.reportId`",
-                  "location": "query"
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "A page token, received from a previous list call. Provide this to retrieve the subsequent page of reports.",
-                  "type": "string"
-                }
-              },
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/doubleclickbidmanager"
-              ],
-              "flatPath": "queries/{queryId}/reports",
-              "description": "Lists reports associated with a query.",
-              "response": {
-                "$ref": "ListReportsResponse"
-              },
-              "id": "doubleclickbidmanager.queries.reports.list",
-              "path": "queries/{queryId}/reports",
-              "parameterOrder": [
-                "queryId"
-              ]
-            },
-            "get": {
-              "parameterOrder": [
-                "queryId",
-                "reportId"
-              ],
-              "description": "Retrieves a report.",
-              "response": {
-                "$ref": "Report"
-              },
-              "flatPath": "queries/{queryId}/reports/{reportId}",
-              "id": "doubleclickbidmanager.queries.reports.get",
-              "httpMethod": "GET",
-              "path": "queries/{queryId}/reports/{reportId}",
-              "scopes": [
-                "https://www.googleapis.com/auth/doubleclickbidmanager"
-              ],
-              "parameters": {
-                "reportId": {
-                  "required": true,
-                  "type": "string",
-                  "description": "Required. ID of the report to retrieve.",
-                  "format": "int64",
-                  "location": "path"
-                },
-                "queryId": {
-                  "required": true,
-                  "type": "string",
-                  "description": "Required. ID of the query the report is associated with.",
-                  "location": "path",
-                  "format": "int64"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "name": "doubleclickbidmanager",
-  "kind": "discovery#restDescription",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
+  "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
+  "title": "DoubleClick Bid Manager API",
   "parameters": {
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
     "upload_protocol": {
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "location": "query",
-      "type": "string"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "location": "query",
-      "type": "string"
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "prettyPrint": {
-      "default": "true",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "location": "query"
-    },
     "alt": {
       "description": "Data format for response.",
-      "location": "query",
       "type": "string",
+      "location": "query",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -287,10 +34,21 @@
         "proto"
       ]
     },
-    "callback": {
-      "location": "query",
+    "uploadType": {
       "type": "string",
-      "description": "JSONP"
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "access_token": {
+      "type": "string",
+      "description": "OAuth access token.",
+      "location": "query"
     },
     "quotaUser": {
       "location": "query",
@@ -302,315 +60,77 @@
       "location": "query",
       "type": "string"
     },
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
     "$.xgafv": {
       "description": "V1 error format.",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
+      "type": "string",
       "enum": [
         "1",
         "2"
       ],
+      "location": "query",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ]
+    },
+    "key": {
       "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "callback": {
+      "description": "JSONP",
+      "location": "query",
+      "type": "string"
     }
   },
-  "servicePath": "v2/",
   "schemas": {
-    "Rule": {
-      "description": "A Rule defines a name, and a boolean expression in [conjunctive normal form] (http://mathworld.wolfram.com/ConjunctiveNormalForm.html){.external} that can be applied to a path event to determine if that name should be applied.",
-      "properties": {
-        "disjunctiveMatchStatements": {
-          "type": "array",
-          "description": "DisjunctiveMatchStatements within a Rule. DisjunctiveMatchStatement OR's all contained filters.",
-          "items": {
-            "$ref": "DisjunctiveMatchStatement"
-          }
-        },
-        "name": {
-          "description": "Rule name.",
-          "type": "string"
-        }
-      },
-      "id": "Rule",
-      "type": "object"
-    },
-    "Report": {
-      "type": "object",
-      "id": "Report",
-      "description": "Represents a report.",
-      "properties": {
-        "key": {
-          "$ref": "ReportKey",
-          "description": "Key used to identify a report."
-        },
-        "params": {
-          "$ref": "Parameters",
-          "description": "Report parameters."
-        },
-        "metadata": {
-          "description": "Report metadata.",
-          "$ref": "ReportMetadata"
-        }
-      }
-    },
-    "Options": {
-      "properties": {
-        "includeOnlyTargetedUserLists": {
-          "description": "Set to true and filter your report by `FILTER_INSERTION_ORDER` or `FILTER_LINE_ITEM` to include data for audience lists specifically targeted by those items.",
-          "type": "boolean"
-        },
-        "pathQueryOptions": {
-          "$ref": "PathQueryOptions",
-          "description": "Options that contain Path Filters and Custom Channel Groupings."
-        }
-      },
-      "description": "Additional query options.",
-      "id": "Options",
-      "type": "object"
-    },
     "ListReportsResponse": {
+      "type": "object",
       "properties": {
         "nextPageToken": {
           "description": "A token, which can be sent as page_token to retrieve the next page of reports. If this field is omitted, there are no subsequent pages.",
           "type": "string"
         },
         "reports": {
-          "description": "Retrieved reports.",
           "items": {
             "$ref": "Report"
           },
-          "type": "array"
+          "type": "array",
+          "description": "Retrieved reports."
         }
       },
-      "type": "object",
       "id": "ListReportsResponse"
     },
-    "Date": {
-      "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
-      "id": "Date",
-      "type": "object",
-      "properties": {
-        "day": {
-          "type": "integer",
-          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
-          "format": "int32"
-        },
-        "year": {
-          "type": "integer",
-          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
-          "format": "int32"
-        },
-        "month": {
-          "type": "integer",
-          "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
-          "format": "int32"
-        }
-      }
-    },
-    "ReportMetadata": {
-      "description": "Report metadata.",
-      "id": "ReportMetadata",
-      "properties": {
-        "status": {
-          "description": "Report status.",
-          "$ref": "ReportStatus"
-        },
-        "reportDataEndDate": {
-          "description": "The ending time for the data that is shown in the report.",
-          "$ref": "Date"
-        },
-        "googleCloudStoragePath": {
-          "description": "Output only. The path to the location in Google Cloud Storage where the report is stored.",
-          "type": "string",
-          "readOnly": true
-        },
-        "reportDataStartDate": {
-          "$ref": "Date",
-          "description": "The starting time for the data that is shown in the report."
-        }
-      },
-      "type": "object"
-    },
-    "PathQueryOptionsFilter": {
-      "id": "PathQueryOptionsFilter",
-      "type": "object",
-      "description": "Dimension filter on path events.",
-      "properties": {
-        "match": {
-          "enum": [
-            "UNKNOWN",
-            "EXACT",
-            "PARTIAL",
-            "BEGINS_WITH",
-            "WILDCARD_EXPRESSION"
-          ],
-          "type": "string",
-          "enumDescriptions": [
-            "Default value when match is not specified or is unknown in this version.",
-            "Matches a value exactly.",
-            "Matches a value partially.",
-            "Begins with a value.",
-            "Matches a value, utilizing wildcard character logic in the value."
-          ],
-          "description": "Match logic of the filter."
-        },
-        "filter": {
-          "type": "string",
-          "description": "Dimension the filter is applied to."
-        },
-        "values": {
-          "items": {
-            "type": "string"
-          },
-          "description": "Values to filter on.",
-          "type": "array"
-        }
-      }
-    },
-    "PathFilter": {
-      "type": "object",
-      "description": "Path filters specify which paths to include in a report. A path is the result of combining DV360 events based on User ID to create a workflow of users' actions. When a path filter is set, the resulting report will only include paths that match the specified event at the specified position. All other paths will be excluded.",
-      "properties": {
-        "pathMatchPosition": {
-          "enumDescriptions": [
-            "Default value when path match position is not specified or is unknown in this version.",
-            "Any position in the path.",
-            "The first position in the path.",
-            "The last position in the path."
-          ],
-          "type": "string",
-          "description": "The position of the path the filter should match to (first, last, or any event in path).",
-          "enum": [
-            "PATH_MATCH_POSITION_UNSPECIFIED",
-            "ANY",
-            "FIRST",
-            "LAST"
-          ]
-        },
-        "eventFilters": {
-          "type": "array",
-          "items": {
-            "$ref": "EventFilter"
-          },
-          "description": "Filter on an event to be applied to some part of the path."
-        }
-      },
-      "id": "PathFilter"
-    },
-    "Query": {
-      "type": "object",
-      "id": "Query",
-      "properties": {
-        "params": {
-          "$ref": "Parameters",
-          "description": "Query parameters."
-        },
-        "schedule": {
-          "description": "Information on how often and when to run a query. If `ONE_TIME` is set to the frequency field, the query will only be run at the time of creation.",
-          "$ref": "QuerySchedule"
-        },
-        "metadata": {
-          "$ref": "QueryMetadata",
-          "description": "Query metadata."
-        },
-        "queryId": {
-          "readOnly": true,
-          "description": "Output only. Query ID.",
-          "type": "string",
-          "format": "int64"
-        }
-      },
-      "description": "Represents a query."
-    },
-    "Parameters": {
-      "id": "Parameters",
-      "properties": {
-        "options": {
-          "description": "Additional query options.",
-          "$ref": "Options"
-        },
-        "filters": {
-          "items": {
-            "$ref": "FilterPair"
-          },
-          "description": "Filters used to match traffic data in your report.",
-          "type": "array"
-        },
-        "metrics": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array",
-          "description": "Metrics to include as columns in your report."
-        },
-        "groupBys": {
-          "type": "array",
-          "description": "Data is grouped by the filters listed in this field.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "type": {
-          "enumDescriptions": [
-            "Default value when report type is not specified or is unknown in this version.",
-            "Standard report.",
-            "Inventory Availability report.",
-            "Audience Composition report.",
-            "Floodlight report.",
-            "YouTube report.",
-            "GRP report.",
-            "YouTube Programmatic Guaranteed report.",
-            "Reach report.",
-            "Unique Reach Audience report.",
-            "Full Path report.",
-            "Path Attribution report."
-          ],
-          "description": "The type of the report. The type of the report will dictate what dimesions, filters, and metrics can be used.",
-          "enum": [
-            "REPORT_TYPE_UNSPECIFIED",
-            "STANDARD",
-            "INVENTORY_AVAILABILITY",
-            "AUDIENCE_COMPOSITION",
-            "FLOODLIGHT",
-            "YOUTUBE",
-            "GRP",
-            "YOUTUBE_PROGRAMMATIC_GUARANTEED",
-            "REACH",
-            "UNIQUE_REACH_AUDIENCE",
-            "FULL_PATH",
-            "PATH_ATTRIBUTION"
-          ],
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "description": "Parameters of a query or report."
-    },
-    "EventFilter": {
-      "description": "Defines the type of filter to be applied to the path, a DV360 event dimension filter.",
-      "id": "EventFilter",
-      "properties": {
-        "dimensionFilter": {
-          "$ref": "PathQueryOptionsFilter",
-          "description": "Filter on a dimension."
-        }
-      },
-      "type": "object"
-    },
     "DataRange": {
+      "description": "Report data range.",
       "properties": {
-        "customEndDate": {
-          "description": "The ending date for the data that is shown in the report. Note, `customEndDate` is required if `range` is `CUSTOM_DATES` and ignored otherwise.",
-          "$ref": "Date"
+        "customStartDate": {
+          "$ref": "Date",
+          "description": "The starting data for the data that is shown in the report. Note, `customStartDate` is required if `range` is `CUSTOM_DATES` and ignored otherwise."
         },
         "range": {
+          "enumDescriptions": [
+            "Default value when range is not specified or is unknown in this version.",
+            "Custom range specified by custom_start_date and custom_end_date fields.",
+            "Current day.",
+            "Previous day.",
+            "All days, including the current day, since the most recent Sunday.",
+            "All days, including the current day, since the start of the current month.",
+            "All days, including the current day, since the start of the current quarter.",
+            "All days, including the current day, since the start of the current calendar year.",
+            "The previous completed week, beginning from Sunday.",
+            "The previous completed calendar month.",
+            "The previous completed quarter.",
+            "The previous completed calendar year.",
+            "The previous 7 days, excluding the current day.",
+            "The previous 30 days, excluding the current day.",
+            "The previous 90 days, excluding the current day.",
+            "The previous 365 days, excluding the current day.",
+            "All time for which data is available, excluding the current day.",
+            "The previous 14 days, excluding the current day.",
+            "The previous 60 days, excluding the current day."
+          ],
           "enum": [
             "RANGE_UNSPECIFIED",
             "CUSTOM_DATES",
@@ -633,74 +153,33 @@
             "LAST_60_DAYS"
           ],
           "description": "Report data range used to generate the report.",
-          "type": "string",
-          "enumDescriptions": [
-            "Default value when range is not specified or is unknown in this version.",
-            "Custom range specified by custom_start_date and custom_end_date fields.",
-            "Current day.",
-            "Previous day.",
-            "All days, including the current day, since the most recent Sunday.",
-            "All days, including the current day, since the start of the current month.",
-            "All days, including the current day, since the start of the current quarter.",
-            "All days, including the current day, since the start of the current calendar year.",
-            "The previous completed week, beginning from Sunday.",
-            "The previous completed calendar month.",
-            "The previous completed quarter.",
-            "The previous completed calendar year.",
-            "The previous 7 days, excluding the current day.",
-            "The previous 30 days, excluding the current day.",
-            "The previous 90 days, excluding the current day.",
-            "The previous 365 days, excluding the current day.",
-            "All time for which data is available, excluding the current day.",
-            "The previous 14 days, excluding the current day.",
-            "The previous 60 days, excluding the current day."
-          ]
+          "type": "string"
         },
-        "customStartDate": {
-          "description": "The starting data for the data that is shown in the report. Note, `customStartDate` is required if `range` is `CUSTOM_DATES` and ignored otherwise.",
-          "$ref": "Date"
+        "customEndDate": {
+          "$ref": "Date",
+          "description": "The ending date for the data that is shown in the report. Note, `customEndDate` is required if `range` is `CUSTOM_DATES` and ignored otherwise."
         }
       },
-      "type": "object",
       "id": "DataRange",
-      "description": "Report data range."
-    },
-    "RunQueryRequest": {
-      "description": "Request to run a stored query to generate a report.",
-      "type": "object",
-      "properties": {
-        "dataRange": {
-          "$ref": "DataRange",
-          "description": "Report data range used to generate the report. If unspecified, the original parent query's data range is used."
-        }
-      },
-      "id": "RunQueryRequest"
-    },
-    "PathQueryOptions": {
-      "properties": {
-        "channelGrouping": {
-          "$ref": "ChannelGrouping",
-          "description": "Custom Channel Groupings."
-        },
-        "pathFilters": {
-          "items": {
-            "$ref": "PathFilter"
-          },
-          "type": "array",
-          "description": "Path Filters. There is a limit of 100 path filters that can be set per report."
-        }
-      },
-      "type": "object",
-      "id": "PathQueryOptions",
-      "description": "Path Query Options for Report Options."
+      "type": "object"
     },
     "ReportStatus": {
-      "description": "Report status.",
       "properties": {
+        "format": {
+          "enumDescriptions": [
+            "Default value when format is not specified or is unknown in this version.",
+            "CSV.",
+            "Excel."
+          ],
+          "enum": [
+            "FORMAT_UNSPECIFIED",
+            "CSV",
+            "XLSX"
+          ],
+          "description": "The file type of the report.",
+          "type": "string"
+        },
         "state": {
-          "description": "Output only. The state of the report.",
-          "type": "string",
-          "readOnly": true,
           "enumDescriptions": [
             "Default value when state is not specified or is unknown in this version.",
             "The report is queued to run.",
@@ -708,104 +187,183 @@
             "The report has finished running successfully.",
             "The report has finished running in failure."
           ],
+          "type": "string",
+          "readOnly": true,
           "enum": [
             "STATE_UNSPECIFIED",
             "QUEUED",
             "RUNNING",
             "DONE",
             "FAILED"
-          ]
+          ],
+          "description": "Output only. The state of the report."
         },
         "finishTime": {
-          "description": "Output only. The time when this report either completed successfully or failed.",
+          "readOnly": true,
           "format": "google-datetime",
-          "type": "string",
-          "readOnly": true
-        },
-        "format": {
-          "enum": [
-            "FORMAT_UNSPECIFIED",
-            "CSV",
-            "XLSX"
-          ],
-          "enumDescriptions": [
-            "Default value when format is not specified or is unknown in this version.",
-            "CSV.",
-            "Excel."
-          ],
-          "type": "string",
-          "description": "The file type of the report."
+          "description": "Output only. The time when this report either completed successfully or failed.",
+          "type": "string"
         }
       },
-      "id": "ReportStatus",
+      "type": "object",
+      "description": "Report status.",
+      "id": "ReportStatus"
+    },
+    "Query": {
+      "description": "Represents a query.",
+      "type": "object",
+      "properties": {
+        "params": {
+          "description": "Query parameters.",
+          "$ref": "Parameters"
+        },
+        "metadata": {
+          "description": "Query metadata.",
+          "$ref": "QueryMetadata"
+        },
+        "schedule": {
+          "description": "Information on how often and when to run a query. If `ONE_TIME` is set to the frequency field, the query will only be run at the time of creation.",
+          "$ref": "QuerySchedule"
+        },
+        "queryId": {
+          "format": "int64",
+          "readOnly": true,
+          "type": "string",
+          "description": "Output only. Query ID."
+        }
+      },
+      "id": "Query"
+    },
+    "PathQueryOptionsFilter": {
+      "properties": {
+        "filter": {
+          "type": "string",
+          "description": "Dimension the filter is applied to."
+        },
+        "match": {
+          "enum": [
+            "UNKNOWN",
+            "EXACT",
+            "PARTIAL",
+            "BEGINS_WITH",
+            "WILDCARD_EXPRESSION"
+          ],
+          "type": "string",
+          "description": "Match logic of the filter.",
+          "enumDescriptions": [
+            "Default value when match is not specified or is unknown in this version.",
+            "Matches a value exactly.",
+            "Matches a value partially.",
+            "Begins with a value.",
+            "Matches a value, utilizing wildcard character logic in the value."
+          ]
+        },
+        "values": {
+          "description": "Values to filter on.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "id": "PathQueryOptionsFilter",
+      "description": "Dimension filter on path events."
+    },
+    "ChannelGrouping": {
+      "type": "object",
+      "description": "A channel grouping defines a set of rules that can be used to categorize events in a path report.",
+      "properties": {
+        "fallbackName": {
+          "type": "string",
+          "description": "The name to apply to an event that does not match any of the rules in the channel grouping."
+        },
+        "rules": {
+          "items": {
+            "$ref": "Rule"
+          },
+          "description": "Rules within Channel Grouping. There is a limit of 100 rules that can be set per channel grouping.",
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "description": "Channel Grouping name."
+        }
+      },
+      "id": "ChannelGrouping"
+    },
+    "EventFilter": {
+      "properties": {
+        "dimensionFilter": {
+          "$ref": "PathQueryOptionsFilter",
+          "description": "Filter on a dimension."
+        }
+      },
+      "id": "EventFilter",
+      "description": "Defines the type of filter to be applied to the path, a DV360 event dimension filter.",
+      "type": "object"
+    },
+    "PathQueryOptions": {
+      "type": "object",
+      "properties": {
+        "channelGrouping": {
+          "description": "Custom Channel Groupings.",
+          "$ref": "ChannelGrouping"
+        },
+        "pathFilters": {
+          "description": "Path Filters. There is a limit of 100 path filters that can be set per report.",
+          "items": {
+            "$ref": "PathFilter"
+          },
+          "type": "array"
+        }
+      },
+      "description": "Path Query Options for Report Options.",
+      "id": "PathQueryOptions"
+    },
+    "Report": {
+      "id": "Report",
+      "properties": {
+        "key": {
+          "description": "Key used to identify a report.",
+          "$ref": "ReportKey"
+        },
+        "params": {
+          "description": "Report parameters.",
+          "$ref": "Parameters"
+        },
+        "metadata": {
+          "description": "Report metadata.",
+          "$ref": "ReportMetadata"
+        }
+      },
+      "description": "Represents a report.",
       "type": "object"
     },
     "DisjunctiveMatchStatement": {
+      "description": "DisjunctiveMatchStatement that OR's all contained filters.",
+      "id": "DisjunctiveMatchStatement",
       "properties": {
         "eventFilters": {
           "type": "array",
+          "description": "Filters. There is a limit of 100 filters that can be set per disjunctive match statement.",
           "items": {
             "$ref": "EventFilter"
-          },
-          "description": "Filters. There is a limit of 100 filters that can be set per disjunctive match statement."
+          }
         }
       },
-      "type": "object",
-      "description": "DisjunctiveMatchStatement that OR's all contained filters.",
-      "id": "DisjunctiveMatchStatement"
-    },
-    "ListQueriesResponse": {
-      "id": "ListQueriesResponse",
-      "type": "object",
-      "properties": {
-        "queries": {
-          "type": "array",
-          "items": {
-            "$ref": "Query"
-          },
-          "description": "The list of queries."
-        },
-        "nextPageToken": {
-          "description": "A token, which can be sent as page_token to retrieve the next page of queries. If this field is omitted, there are no subsequent pages.",
-          "type": "string"
-        }
-      }
-    },
-    "ReportKey": {
-      "properties": {
-        "reportId": {
-          "format": "int64",
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. Report ID."
-        },
-        "queryId": {
-          "readOnly": true,
-          "description": "Output only. Query ID.",
-          "format": "int64",
-          "type": "string"
-        }
-      },
-      "description": "Key used to identify a report.",
-      "type": "object",
-      "id": "ReportKey"
+      "type": "object"
     },
     "QuerySchedule": {
-      "description": "Information on when and how frequently to run a query.",
       "type": "object",
-      "id": "QuerySchedule",
       "properties": {
         "startDate": {
           "description": "When to start running the query. Not applicable to `ONE_TIME` frequency.",
           "$ref": "Date"
         },
-        "nextRunTimezoneCode": {
-          "description": "Canonical timezone code for report generation time. Defaults to `America/New_York`.",
-          "type": "string"
-        },
         "endDate": {
-          "$ref": "Date",
-          "description": "Date to periodically run the query until. Not applicable to `ONE_TIME` frequency."
+          "description": "Date to periodically run the query until. Not applicable to `ONE_TIME` frequency.",
+          "$ref": "Date"
         },
         "frequency": {
           "enumDescriptions": [
@@ -818,8 +376,6 @@
             "Once a quarter",
             "Once a year."
           ],
-          "type": "string",
-          "description": "How often the query is run.",
           "enum": [
             "FREQUENCY_UNSPECIFIED",
             "ONE_TIME",
@@ -829,89 +385,533 @@
             "MONTHLY",
             "QUARTERLY",
             "YEARLY"
-          ]
+          ],
+          "type": "string",
+          "description": "How often the query is run."
+        },
+        "nextRunTimezoneCode": {
+          "description": "Canonical timezone code for report generation time. Defaults to `America/New_York`.",
+          "type": "string"
         }
-      }
+      },
+      "description": "Information on when and how frequently to run a query.",
+      "id": "QuerySchedule"
     },
     "QueryMetadata": {
-      "type": "object",
-      "id": "QueryMetadata",
-      "description": "Query metadata.",
       "properties": {
         "shareEmailAddress": {
+          "description": "List of email addresses which are sent email notifications when the report is finished. Separate from send_notification.",
           "items": {
             "type": "string"
           },
-          "type": "array",
-          "description": "List of email addresses which are sent email notifications when the report is finished. Separate from send_notification."
+          "type": "array"
         },
         "dataRange": {
-          "$ref": "DataRange",
-          "description": "Range of report data. All reports will be based on the same time zone as used by the advertiser."
-        },
-        "title": {
-          "type": "string",
-          "description": "Query title. It is used to name the reports generated from this query."
+          "description": "Range of report data. All reports will be based on the same time zone as used by the advertiser.",
+          "$ref": "DataRange"
         },
         "sendNotification": {
           "description": "Whether to send an email notification when a report is ready. Defaults to false.",
           "type": "boolean"
         },
-        "format": {
-          "description": "Format of the generated report.",
+        "title": {
           "type": "string",
+          "description": "Query title. It is used to name the reports generated from this query."
+        },
+        "format": {
           "enumDescriptions": [
             "Default value when format is not specified or is unknown in this version.",
             "CSV.",
             "Excel."
           ],
+          "description": "Format of the generated report.",
+          "type": "string",
           "enum": [
             "FORMAT_UNSPECIFIED",
             "CSV",
             "XLSX"
           ]
         }
+      },
+      "id": "QueryMetadata",
+      "description": "Query metadata.",
+      "type": "object"
+    },
+    "ReportKey": {
+      "description": "Key used to identify a report.",
+      "id": "ReportKey",
+      "properties": {
+        "reportId": {
+          "type": "string",
+          "format": "int64",
+          "readOnly": true,
+          "description": "Output only. Report ID."
+        },
+        "queryId": {
+          "type": "string",
+          "description": "Output only. Query ID.",
+          "readOnly": true,
+          "format": "int64"
+        }
+      },
+      "type": "object"
+    },
+    "PathFilter": {
+      "type": "object",
+      "description": "Path filters specify which paths to include in a report. A path is the result of combining DV360 events based on User ID to create a workflow of users' actions. When a path filter is set, the resulting report will only include paths that match the specified event at the specified position. All other paths will be excluded.",
+      "properties": {
+        "eventFilters": {
+          "type": "array",
+          "items": {
+            "$ref": "EventFilter"
+          },
+          "description": "Filter on an event to be applied to some part of the path."
+        },
+        "pathMatchPosition": {
+          "description": "The position of the path the filter should match to (first, last, or any event in path).",
+          "enum": [
+            "PATH_MATCH_POSITION_UNSPECIFIED",
+            "ANY",
+            "FIRST",
+            "LAST"
+          ],
+          "enumDescriptions": [
+            "Default value when path match position is not specified or is unknown in this version.",
+            "Any position in the path.",
+            "The first position in the path.",
+            "The last position in the path."
+          ],
+          "type": "string"
+        }
+      },
+      "id": "PathFilter"
+    },
+    "Options": {
+      "type": "object",
+      "id": "Options",
+      "properties": {
+        "pathQueryOptions": {
+          "$ref": "PathQueryOptions",
+          "description": "Options that contain Path Filters and Custom Channel Groupings."
+        },
+        "includeOnlyTargetedUserLists": {
+          "type": "boolean",
+          "description": "Set to true and filter your report by `FILTER_INSERTION_ORDER` or `FILTER_LINE_ITEM` to include data for audience lists specifically targeted by those items."
+        }
+      },
+      "description": "Additional query options."
+    },
+    "ReportMetadata": {
+      "type": "object",
+      "properties": {
+        "googleCloudStoragePath": {
+          "type": "string",
+          "description": "Output only. The path to the location in Google Cloud Storage where the report is stored.",
+          "readOnly": true
+        },
+        "reportDataEndDate": {
+          "$ref": "Date",
+          "description": "The ending time for the data that is shown in the report."
+        },
+        "reportDataStartDate": {
+          "$ref": "Date",
+          "description": "The starting time for the data that is shown in the report."
+        },
+        "status": {
+          "$ref": "ReportStatus",
+          "description": "Report status."
+        }
+      },
+      "description": "Report metadata.",
+      "id": "ReportMetadata"
+    },
+    "Parameters": {
+      "description": "Parameters of a query or report.",
+      "id": "Parameters",
+      "type": "object",
+      "properties": {
+        "groupBys": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "Data is grouped by the filters listed in this field."
+        },
+        "filters": {
+          "items": {
+            "$ref": "FilterPair"
+          },
+          "description": "Filters used to match traffic data in your report.",
+          "type": "array"
+        },
+        "options": {
+          "description": "Additional query options.",
+          "$ref": "Options"
+        },
+        "metrics": {
+          "type": "array",
+          "description": "Metrics to include as columns in your report.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "enum": [
+            "REPORT_TYPE_UNSPECIFIED",
+            "STANDARD",
+            "INVENTORY_AVAILABILITY",
+            "AUDIENCE_COMPOSITION",
+            "FLOODLIGHT",
+            "YOUTUBE",
+            "GRP",
+            "YOUTUBE_PROGRAMMATIC_GUARANTEED",
+            "REACH",
+            "UNIQUE_REACH_AUDIENCE",
+            "FULL_PATH",
+            "PATH_ATTRIBUTION"
+          ],
+          "type": "string",
+          "description": "The type of the report. The type of the report will dictate what dimesions, filters, and metrics can be used.",
+          "enumDescriptions": [
+            "Default value when report type is not specified or is unknown in this version.",
+            "Standard report.",
+            "Inventory Availability report.",
+            "Audience Composition report.",
+            "Floodlight report.",
+            "YouTube report.",
+            "GRP report.",
+            "YouTube Programmatic Guaranteed report.",
+            "Reach report.",
+            "Unique Reach Audience report.",
+            "Full Path report.",
+            "Path Attribution report."
+          ]
+        }
+      }
+    },
+    "ListQueriesResponse": {
+      "id": "ListQueriesResponse",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "type": "string",
+          "description": "A token, which can be sent as page_token to retrieve the next page of queries. If this field is omitted, there are no subsequent pages."
+        },
+        "queries": {
+          "items": {
+            "$ref": "Query"
+          },
+          "type": "array",
+          "description": "The list of queries."
+        }
+      }
+    },
+    "RunQueryRequest": {
+      "id": "RunQueryRequest",
+      "properties": {
+        "dataRange": {
+          "description": "Report data range used to generate the report. If unspecified, the original parent query's data range is used.",
+          "$ref": "DataRange"
+        }
+      },
+      "type": "object",
+      "description": "Request to run a stored query to generate a report."
+    },
+    "Date": {
+      "properties": {
+        "day": {
+          "format": "int32",
+          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+          "type": "integer"
+        },
+        "month": {
+          "format": "int32",
+          "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
+          "type": "integer"
+        },
+        "year": {
+          "type": "integer",
+          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+          "format": "int32"
+        }
+      },
+      "type": "object",
+      "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
+      "id": "Date"
+    },
+    "Rule": {
+      "id": "Rule",
+      "description": "A Rule defines a name, and a boolean expression in [conjunctive normal form] (http://mathworld.wolfram.com/ConjunctiveNormalForm.html){.external} that can be applied to a path event to determine if that name should be applied.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Rule name."
+        },
+        "disjunctiveMatchStatements": {
+          "items": {
+            "$ref": "DisjunctiveMatchStatement"
+          },
+          "type": "array",
+          "description": "DisjunctiveMatchStatements within a Rule. DisjunctiveMatchStatement OR's all contained filters."
+        }
       }
     },
     "FilterPair": {
       "properties": {
-        "value": {
-          "type": "string",
-          "description": "Filter value."
-        },
         "type": {
           "description": "Filter type.",
           "type": "string"
-        }
-      },
-      "description": "Filter used to match traffic data in your report.",
-      "type": "object",
-      "id": "FilterPair"
-    },
-    "ChannelGrouping": {
-      "description": "A channel grouping defines a set of rules that can be used to categorize events in a path report.",
-      "id": "ChannelGrouping",
-      "properties": {
-        "fallbackName": {
-          "type": "string",
-          "description": "The name to apply to an event that does not match any of the rules in the channel grouping."
         },
-        "rules": {
-          "type": "array",
-          "description": "Rules within Channel Grouping. There is a limit of 100 rules that can be set per channel grouping.",
-          "items": {
-            "$ref": "Rule"
-          }
-        },
-        "name": {
-          "description": "Channel Grouping name.",
+        "value": {
+          "description": "Filter value.",
           "type": "string"
         }
       },
-      "type": "object"
+      "id": "FilterPair",
+      "type": "object",
+      "description": "Filter used to match traffic data in your report."
     }
   },
-  "title": "DoubleClick Bid Manager API",
+  "fullyEncodeReservedExpansion": true,
+  "name": "doubleclickbidmanager",
+  "id": "doubleclickbidmanager:v2",
+  "protocol": "rest",
+  "mtlsRootUrl": "https://doubleclickbidmanager.mtls.googleapis.com/",
+  "resources": {
+    "queries": {
+      "resources": {
+        "reports": {
+          "methods": {
+            "list": {
+              "scopes": [
+                "https://www.googleapis.com/auth/doubleclickbidmanager"
+              ],
+              "description": "Lists reports associated with a query.",
+              "parameterOrder": [
+                "queryId"
+              ],
+              "id": "doubleclickbidmanager.queries.reports.list",
+              "response": {
+                "$ref": "ListReportsResponse"
+              },
+              "parameters": {
+                "queryId": {
+                  "type": "string",
+                  "required": true,
+                  "location": "path",
+                  "format": "int64",
+                  "description": "Required. ID of the query with which the reports are associated."
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "Maximum number of results per page. Must be between `1` and `100`. Defaults to `100` if unspecified.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "orderBy": {
+                  "location": "query",
+                  "description": "Name of a field used to order results. The default sorting order is ascending. To specify descending order for a field, append a \" desc\" suffix. For example \"key.reportId desc\". Sorting is only supported for the following fields: * `key.reportId`",
+                  "type": "string"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "A page token, received from a previous list call. Provide this to retrieve the subsequent page of reports.",
+                  "type": "string"
+                }
+              },
+              "path": "queries/{queryId}/reports",
+              "flatPath": "queries/{queryId}/reports",
+              "httpMethod": "GET"
+            },
+            "get": {
+              "parameters": {
+                "reportId": {
+                  "location": "path",
+                  "required": true,
+                  "format": "int64",
+                  "description": "Required. ID of the report to retrieve.",
+                  "type": "string"
+                },
+                "queryId": {
+                  "required": true,
+                  "location": "path",
+                  "format": "int64",
+                  "description": "Required. ID of the query the report is associated with.",
+                  "type": "string"
+                }
+              },
+              "response": {
+                "$ref": "Report"
+              },
+              "flatPath": "queries/{queryId}/reports/{reportId}",
+              "scopes": [
+                "https://www.googleapis.com/auth/doubleclickbidmanager"
+              ],
+              "parameterOrder": [
+                "queryId",
+                "reportId"
+              ],
+              "path": "queries/{queryId}/reports/{reportId}",
+              "httpMethod": "GET",
+              "id": "doubleclickbidmanager.queries.reports.get",
+              "description": "Retrieves a report."
+            }
+          }
+        }
+      },
+      "methods": {
+        "run": {
+          "parameterOrder": [
+            "queryId"
+          ],
+          "id": "doubleclickbidmanager.queries.run",
+          "response": {
+            "$ref": "Report"
+          },
+          "parameters": {
+            "queryId": {
+              "required": true,
+              "format": "int64",
+              "description": "Required. ID of query to run.",
+              "type": "string",
+              "location": "path"
+            },
+            "synchronous": {
+              "description": "Whether the query should be run synchronously. When true, this method will not return until the query has finished running. When false or not specified, this method will return immediately.",
+              "location": "query",
+              "type": "boolean"
+            }
+          },
+          "description": "Runs a stored query to generate a report.",
+          "scopes": [
+            "https://www.googleapis.com/auth/doubleclickbidmanager"
+          ],
+          "httpMethod": "POST",
+          "request": {
+            "$ref": "RunQueryRequest"
+          },
+          "flatPath": "queries/{queryId}:run",
+          "path": "queries/{queryId}:run"
+        },
+        "create": {
+          "scopes": [
+            "https://www.googleapis.com/auth/doubleclickbidmanager"
+          ],
+          "description": "Creates a query.",
+          "id": "doubleclickbidmanager.queries.create",
+          "flatPath": "queries",
+          "path": "queries",
+          "request": {
+            "$ref": "Query"
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "parameters": {},
+          "response": {
+            "$ref": "Query"
+          }
+        },
+        "get": {
+          "response": {
+            "$ref": "Query"
+          },
+          "path": "queries/{queryId}",
+          "parameterOrder": [
+            "queryId"
+          ],
+          "id": "doubleclickbidmanager.queries.get",
+          "scopes": [
+            "https://www.googleapis.com/auth/doubleclickbidmanager"
+          ],
+          "parameters": {
+            "queryId": {
+              "required": true,
+              "format": "int64",
+              "description": "Required. ID of query to retrieve.",
+              "location": "path",
+              "type": "string"
+            }
+          },
+          "description": "Retrieves a query.",
+          "flatPath": "queries/{queryId}",
+          "httpMethod": "GET"
+        },
+        "list": {
+          "path": "queries",
+          "scopes": [
+            "https://www.googleapis.com/auth/doubleclickbidmanager"
+          ],
+          "response": {
+            "$ref": "ListQueriesResponse"
+          },
+          "parameters": {
+            "pageSize": {
+              "format": "int32",
+              "description": "Maximum number of results per page. Must be between `1` and `100`. Defaults to `100` if unspecified.",
+              "location": "query",
+              "type": "integer"
+            },
+            "orderBy": {
+              "location": "query",
+              "description": "Name of a field used to order results. The default sorting order is ascending. To specify descending order for a field, append a \" desc\" suffix. For example \"metadata.title desc\". Sorting is only supported for the following fields: * `queryId` * `metadata.title`",
+              "type": "string"
+            },
+            "pageToken": {
+              "type": "string",
+              "description": "A page token, received from a previous list call. Provide this to retrieve the subsequent page of queries.",
+              "location": "query"
+            }
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "flatPath": "queries",
+          "description": "Lists queries created by the current user.",
+          "id": "doubleclickbidmanager.queries.list"
+        },
+        "delete": {
+          "flatPath": "queries/{queryId}",
+          "httpMethod": "DELETE",
+          "path": "queries/{queryId}",
+          "scopes": [
+            "https://www.googleapis.com/auth/doubleclickbidmanager"
+          ],
+          "id": "doubleclickbidmanager.queries.delete",
+          "parameterOrder": [
+            "queryId"
+          ],
+          "description": "Deletes a query as well as the associated reports.",
+          "parameters": {
+            "queryId": {
+              "required": true,
+              "format": "int64",
+              "description": "Required. ID of query to delete.",
+              "type": "string",
+              "location": "path"
+            }
+          }
+        }
+      }
+    }
+  },
+  "batchPath": "batch",
+  "ownerName": "Google",
+  "documentationLink": "https://developers.google.com/bid-manager/",
+  "basePath": "/v2/",
+  "kind": "discovery#restDescription",
   "ownerDomain": "google.com",
-  "ownerName": "Google"
+  "description": "DoubleClick Bid Manager API allows users to manage and create campaigns and reports.",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/doubleclickbidmanager": {
+          "description": "View and manage your reports in DoubleClick Bid Manager"
+        }
+      }
+    }
+  }
 }

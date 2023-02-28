@@ -1,543 +1,612 @@
 {
+  "parameters": {
+    "prettyPrint": {
+      "type": "boolean",
+      "description": "Returns response with indentations and line breaks.",
+      "location": "query",
+      "default": "true"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "location": "query",
+      "type": "string"
+    },
+    "alt": {
+      "default": "json",
+      "type": "string",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "description": "Data format for response.",
+      "location": "query"
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "upload_protocol": {
+      "location": "query",
+      "type": "string",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+    },
+    "fields": {
+      "type": "string",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "location": "query"
+    },
+    "key": {
+      "type": "string",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "location": "query"
+    },
+    "uploadType": {
+      "type": "string",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "type": "string"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "location": "query",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "type": "string",
+      "description": "JSONP"
+    }
+  },
+  "revision": "20230222",
+  "baseUrl": "https://contactcenteraiplatform.googleapis.com/",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
+        }
+      }
+    }
+  },
   "resources": {
     "projects": {
       "resources": {
         "locations": {
-          "methods": {
-            "get": {
-              "response": {
-                "$ref": "Location"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "description": "Gets information about a location.",
-              "httpMethod": "GET",
-              "path": "v1alpha1/{+name}",
-              "parameters": {
-                "name": {
-                  "required": true,
-                  "location": "path",
-                  "description": "Resource name for the location.",
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$"
-                }
-              },
-              "id": "contactcenteraiplatform.projects.locations.get"
-            },
-            "queryContactCenterQuota": {
-              "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}:queryContactCenterQuota",
-              "response": {
-                "$ref": "ContactCenterQuota"
-              },
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "parent"
-              ],
-              "id": "contactcenteraiplatform.projects.locations.queryContactCenterQuota",
-              "parameters": {
-                "parent": {
-                  "required": true,
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "description": "Required. Parent project resource id.",
-                  "location": "path",
-                  "type": "string"
-                }
-              },
-              "path": "v1alpha1/{+parent}:queryContactCenterQuota",
-              "description": "Queries the contact center quota, an aggregation over all the projects, that belongs to the billing account, which the input project belongs to.",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ]
-            },
-            "list": {
-              "id": "contactcenteraiplatform.projects.locations.list",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "description": "Lists information about the supported locations for this service.",
-              "parameterOrder": [
-                "name"
-              ],
-              "path": "v1alpha1/{+name}/locations",
-              "flatPath": "v1alpha1/projects/{projectsId}/locations",
-              "httpMethod": "GET",
-              "parameters": {
-                "pageToken": {
-                  "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "format": "int32",
-                  "description": "The maximum number of results to return. If not set, the service selects a default.",
-                  "type": "integer"
-                },
-                "name": {
-                  "location": "path",
-                  "pattern": "^projects/[^/]+$",
-                  "required": true,
-                  "type": "string",
-                  "description": "The resource that owns the locations collection, if applicable."
-                },
-                "filter": {
-                  "type": "string",
-                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
-                  "location": "query"
-                }
-              },
-              "response": {
-                "$ref": "ListLocationsResponse"
-              }
-            }
-          },
           "resources": {
             "operations": {
               "methods": {
-                "list": {
-                  "httpMethod": "GET",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations",
-                  "parameterOrder": [
-                    "name"
-                  ],
+                "get": {
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                  "path": "v1alpha1/{+name}",
+                  "parameterOrder": [
+                    "name"
+                  ],
                   "response": {
-                    "$ref": "ListOperationsResponse"
+                    "$ref": "Operation"
                   },
-                  "parameters": {
-                    "pageSize": {
-                      "location": "query",
-                      "type": "integer",
-                      "format": "int32",
-                      "description": "The standard list page size."
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "description": "The standard list page token.",
-                      "type": "string"
-                    },
-                    "name": {
-                      "description": "The name of the operation's parent resource.",
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    },
-                    "filter": {
-                      "description": "The standard list filter.",
-                      "location": "query",
-                      "type": "string"
-                    }
-                  },
-                  "path": "v1alpha1/{+name}/operations",
-                  "id": "contactcenteraiplatform.projects.locations.operations.list"
-                },
-                "delete": {
+                  "id": "contactcenteraiplatform.projects.locations.operations.get",
                   "parameters": {
                     "name": {
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "location": "path",
-                      "description": "The name of the operation resource to be deleted.",
+                      "description": "The name of the operation resource.",
+                      "type": "string",
                       "required": true,
-                      "type": "string"
+                      "location": "path"
                     }
                   },
                   "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
-                  "id": "contactcenteraiplatform.projects.locations.operations.delete",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "httpMethod": "DELETE",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "path": "v1alpha1/{+name}"
+                  "httpMethod": "GET",
+                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service."
                 },
                 "cancel": {
-                  "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-                  "httpMethod": "POST",
                   "parameterOrder": [
                     "name"
                   ],
+                  "httpMethod": "POST",
+                  "id": "contactcenteraiplatform.projects.locations.operations.cancel",
                   "parameters": {
                     "name": {
-                      "required": true,
-                      "description": "The name of the operation resource to be cancelled.",
                       "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                       "type": "string",
-                      "location": "path"
+                      "required": true,
+                      "location": "path",
+                      "description": "The name of the operation resource to be cancelled."
                     }
                   },
                   "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
+                  "path": "v1alpha1/{+name}:cancel",
                   "response": {
                     "$ref": "Empty"
                   },
-                  "id": "contactcenteraiplatform.projects.locations.operations.cancel",
-                  "path": "v1alpha1/{+name}:cancel",
                   "request": {
                     "$ref": "CancelOperationRequest"
-                  }
+                  },
+                  "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`."
                 },
-                "get": {
-                  "path": "v1alpha1/{+name}",
+                "delete": {
                   "parameterOrder": [
                     "name"
                   ],
-                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
-                  "httpMethod": "GET",
-                  "response": {
-                    "$ref": "Operation"
-                  },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
+                  "path": "v1alpha1/{+name}",
+                  "id": "contactcenteraiplatform.projects.locations.operations.delete",
+                  "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "httpMethod": "DELETE",
+                  "response": {
+                    "$ref": "Empty"
+                  },
                   "parameters": {
                     "name": {
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                       "type": "string",
                       "location": "path",
-                      "description": "The name of the operation resource.",
+                      "description": "The name of the operation resource to be deleted."
+                    }
+                  }
+                },
+                "list": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "response": {
+                    "$ref": "ListOperationsResponse"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
+                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                  "id": "contactcenteraiplatform.projects.locations.operations.list",
+                  "parameters": {
+                    "pageToken": {
+                      "location": "query",
+                      "type": "string",
+                      "description": "The standard list page token."
+                    },
+                    "name": {
                       "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
+                      "location": "path",
+                      "description": "The name of the operation's parent resource.",
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    },
+                    "filter": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "The standard list filter."
+                    },
+                    "pageSize": {
+                      "format": "int32",
+                      "description": "The standard list page size.",
+                      "type": "integer",
+                      "location": "query"
                     }
                   },
-                  "id": "contactcenteraiplatform.projects.locations.operations.get",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}"
+                  "path": "v1alpha1/{+name}/operations",
+                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/operations"
                 }
               }
             },
             "contactCenters": {
               "methods": {
-                "list": {
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "description": "Lists ContactCenters in a given project and location.",
-                  "path": "v1alpha1/{+parent}/contactCenters",
-                  "response": {
-                    "$ref": "ListContactCentersResponse"
-                  },
-                  "httpMethod": "GET",
-                  "id": "contactcenteraiplatform.projects.locations.contactCenters.list",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
+                "create": {
                   "parameters": {
-                    "pageToken": {
-                      "type": "string",
+                    "requestId": {
                       "location": "query",
-                      "description": "A token identifying a page of results the server should return."
+                      "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+                      "type": "string"
                     },
-                    "pageSize": {
-                      "description": "Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.",
-                      "type": "integer",
+                    "contactCenterId": {
                       "location": "query",
-                      "format": "int32"
-                    },
-                    "filter": {
-                      "location": "query",
-                      "description": "Filtering results",
+                      "description": "Required. Id of the requesting object If auto-generating Id server-side, remove this field and contact_center_id from the method_signature of Create RPC",
                       "type": "string"
                     },
                     "parent": {
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "location": "path",
                       "required": true,
+                      "description": "Required. Value for parent.",
+                      "type": "string"
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters",
+                  "description": "Creates a new ContactCenter in a given project and location.",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "id": "contactcenteraiplatform.projects.locations.contactCenters.create",
+                  "request": {
+                    "$ref": "ContactCenter"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "path": "v1alpha1/{+parent}/contactCenters",
+                  "httpMethod": "POST"
+                },
+                "get": {
+                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters/{contactCentersId}",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "response": {
+                    "$ref": "ContactCenter"
+                  },
+                  "path": "v1alpha1/{+name}",
+                  "httpMethod": "GET",
+                  "id": "contactcenteraiplatform.projects.locations.contactCenters.get",
+                  "description": "Gets details of a single ContactCenter.",
+                  "parameters": {
+                    "name": {
                       "type": "string",
-                      "description": "Required. Parent value for ListContactCentersRequest"
-                    },
-                    "orderBy": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "Hint for how to order the results"
+                      "description": "Required. Name of the resource",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/contactCenters/[^/]+$",
+                      "required": true,
+                      "location": "path"
                     }
                   }
                 },
                 "delete": {
+                  "httpMethod": "DELETE",
                   "path": "v1alpha1/{+name}",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "id": "contactcenteraiplatform.projects.locations.contactCenters.delete",
                   "parameterOrder": [
                     "name"
                   ],
+                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters/{contactCentersId}",
                   "parameters": {
                     "name": {
-                      "description": "Required. Name of the resource",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/contactCenters/[^/]+$",
-                      "required": true,
                       "type": "string",
-                      "location": "path"
+                      "pattern": "^projects/[^/]+/locations/[^/]+/contactCenters/[^/]+$",
+                      "location": "path",
+                      "required": true,
+                      "description": "Required. Name of the resource"
                     },
                     "requestId": {
                       "location": "query",
-                      "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-                      "type": "string"
+                      "type": "string",
+                      "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000)."
                     }
                   },
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters/{contactCentersId}",
                   "description": "Deletes a single ContactCenter.",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "httpMethod": "DELETE",
-                  "id": "contactcenteraiplatform.projects.locations.contactCenters.delete"
+                  ]
                 },
-                "create": {
-                  "httpMethod": "POST",
-                  "description": "Creates a new ContactCenter in a given project and location.",
+                "list": {
                   "parameterOrder": [
                     "parent"
                   ],
-                  "id": "contactcenteraiplatform.projects.locations.contactCenters.create",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters",
-                  "request": {
-                    "$ref": "ContactCenter"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "response": {
-                    "$ref": "Operation"
-                  },
+                  "description": "Lists ContactCenters in a given project and location.",
                   "path": "v1alpha1/{+parent}/contactCenters",
                   "parameters": {
-                    "requestId": {
-                      "type": "string",
-                      "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-                      "location": "query"
-                    },
                     "parent": {
-                      "location": "path",
-                      "type": "string",
                       "required": true,
-                      "description": "Required. Value for parent.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                      "description": "Required. Parent value for ListContactCentersRequest",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "type": "string"
                     },
-                    "contactCenterId": {
+                    "filter": {
                       "type": "string",
                       "location": "query",
-                      "description": "Required. Id of the requesting object If auto-generating Id server-side, remove this field and contact_center_id from the method_signature of Create RPC"
+                      "description": "Filtering results"
+                    },
+                    "pageToken": {
+                      "location": "query",
+                      "description": "A token identifying a page of results the server should return.",
+                      "type": "string"
+                    },
+                    "pageSize": {
+                      "type": "integer",
+                      "location": "query",
+                      "format": "int32",
+                      "description": "Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default."
+                    },
+                    "orderBy": {
+                      "location": "query",
+                      "type": "string",
+                      "description": "Hint for how to order the results"
                     }
-                  }
-                },
-                "patch": {
-                  "request": {
-                    "$ref": "ContactCenter"
                   },
-                  "id": "contactcenteraiplatform.projects.locations.contactCenters.patch",
+                  "response": {
+                    "$ref": "ListContactCentersResponse"
+                  },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "path": "v1alpha1/{+name}",
-                  "parameterOrder": [
-                    "name"
-                  ],
+                  "httpMethod": "GET",
+                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters",
+                  "id": "contactcenteraiplatform.projects.locations.contactCenters.list"
+                },
+                "patch": {
                   "response": {
                     "$ref": "Operation"
                   },
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters/{contactCentersId}",
+                  "request": {
+                    "$ref": "ContactCenter"
+                  },
+                  "httpMethod": "PATCH",
                   "description": "Updates the parameters of a single ContactCenter.",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
                   "parameters": {
+                    "requestId": {
+                      "location": "query",
+                      "type": "string",
+                      "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000)."
+                    },
                     "name": {
+                      "required": true,
                       "location": "path",
                       "type": "string",
                       "description": "name of resource",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/contactCenters/[^/]+$",
-                      "required": true
-                    },
-                    "requestId": {
-                      "location": "query",
-                      "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-                      "type": "string"
+                      "pattern": "^projects/[^/]+/locations/[^/]+/contactCenters/[^/]+$"
                     },
                     "updateMask": {
-                      "location": "query",
                       "type": "string",
                       "format": "google-fieldmask",
-                      "description": "Required. Field mask is used to specify the fields to be overwritten in the ContactCenter resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten."
+                      "description": "Required. Field mask is used to specify the fields to be overwritten in the ContactCenter resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.",
+                      "location": "query"
                     }
                   },
-                  "httpMethod": "PATCH"
-                },
-                "get": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "response": {
-                    "$ref": "ContactCenter"
-                  },
+                  "id": "contactcenteraiplatform.projects.locations.contactCenters.patch",
+                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters/{contactCentersId}",
+                  "path": "v1alpha1/{+name}",
                   "parameterOrder": [
                     "name"
-                  ],
-                  "id": "contactcenteraiplatform.projects.locations.contactCenters.get",
-                  "description": "Gets details of a single ContactCenter.",
-                  "httpMethod": "GET",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/contactCenters/{contactCentersId}",
-                  "parameters": {
-                    "name": {
-                      "type": "string",
-                      "location": "path",
-                      "description": "Required. Name of the resource",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/contactCenters/[^/]+$",
-                      "required": true
-                    }
-                  },
-                  "path": "v1alpha1/{+name}"
+                  ]
                 }
               }
+            }
+          },
+          "methods": {
+            "get": {
+              "response": {
+                "$ref": "Location"
+              },
+              "httpMethod": "GET",
+              "path": "v1alpha1/{+name}",
+              "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}",
+              "parameterOrder": [
+                "name"
+              ],
+              "description": "Gets information about a location.",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "type": "string",
+                  "description": "Resource name for the location.",
+                  "required": true,
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "id": "contactcenteraiplatform.projects.locations.get"
+            },
+            "queryContactCenterQuota": {
+              "parameters": {
+                "parent": {
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path",
+                  "description": "Required. Parent project resource id.",
+                  "type": "string",
+                  "required": true
+                }
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "ContactCenterQuota"
+              },
+              "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}:queryContactCenterQuota",
+              "id": "contactcenteraiplatform.projects.locations.queryContactCenterQuota",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "path": "v1alpha1/{+parent}:queryContactCenterQuota",
+              "description": "Queries the contact center quota, an aggregation over all the projects, that belongs to the billing account, which the input project belongs to."
+            },
+            "list": {
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "ListLocationsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1alpha1/projects/{projectsId}/locations",
+              "parameters": {
+                "name": {
+                  "type": "string",
+                  "location": "path",
+                  "description": "The resource that owns the locations collection, if applicable.",
+                  "required": true,
+                  "pattern": "^projects/[^/]+$"
+                },
+                "pageToken": {
+                  "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.",
+                  "location": "query",
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160)."
+                },
+                "pageSize": {
+                  "format": "int32",
+                  "description": "The maximum number of results to return. If not set, the service selects a default.",
+                  "type": "integer",
+                  "location": "query"
+                }
+              },
+              "path": "v1alpha1/{+name}/locations",
+              "description": "Lists information about the supported locations for this service.",
+              "httpMethod": "GET",
+              "id": "contactcenteraiplatform.projects.locations.list"
             }
           }
         }
       }
     }
   },
+  "kind": "discovery#restDescription",
+  "discoveryVersion": "v1",
+  "servicePath": "",
   "ownerDomain": "google.com",
-  "batchPath": "batch",
-  "documentationLink": "https://cloud.google.com/solutions/contact-center-ai-platform",
+  "description": "",
   "version": "v1alpha1",
+  "canonicalName": "CCAI Platform",
   "title": "Contact Center AI Platform API",
+  "rootUrl": "https://contactcenteraiplatform.googleapis.com/",
+  "ownerName": "Google",
+  "batchPath": "batch",
+  "id": "contactcenteraiplatform:v1alpha1",
+  "name": "contactcenteraiplatform",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
+  "basePath": "",
   "schemas": {
-    "Empty": {
-      "type": "object",
-      "properties": {},
-      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
-      "id": "Empty"
-    },
-    "ListOperationsResponse": {
-      "description": "The response message for Operations.ListOperations.",
-      "id": "ListOperationsResponse",
+    "ContactCenter": {
       "properties": {
-        "operations": {
-          "description": "A list of operations that matches the specified filter in the request.",
-          "items": {
-            "$ref": "Operation"
-          },
-          "type": "array"
+        "labels": {
+          "description": "Labels as key value pairs",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
+        "userEmail": {
+          "type": "string",
+          "description": "Optional. Email address of the first admin user."
+        },
+        "displayName": {
+          "description": "Required. A user friendly name for the ContactCenter.",
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "OperationMetadata": {
-      "type": "object",
-      "id": "OperationMetadata",
-      "properties": {
-        "contactCenter": {
-          "description": "Contact center information for this request",
-          "$ref": "ContactCenter"
         },
-        "verb": {
+        "instanceConfig": {
+          "$ref": "InstanceConfig",
+          "description": "The configuration of this instance, it is currently immutable once created."
+        },
+        "ccaipManagedUsers": {
+          "type": "boolean",
+          "description": "Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity"
+        },
+        "uris": {
+          "readOnly": true,
+          "description": "Output only. URIs to access the deployed ContactCenters.",
+          "$ref": "URIs"
+        },
+        "updateTime": {
           "readOnly": true,
           "type": "string",
-          "description": "Output only. Name of the verb executed by the operation."
-        },
-        "endTime": {
-          "description": "Output only. The time the operation finished running.",
-          "readOnly": true,
           "format": "google-datetime",
-          "type": "string"
+          "description": "Output only. [Output only] Update time stamp"
         },
-        "apiVersion": {
-          "description": "Output only. API version used to start the operation.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "target": {
-          "description": "Output only. Server-defined resource path for the target of the operation.",
+        "customerDomainPrefix": {
           "type": "string",
-          "readOnly": true
+          "description": "Required. Immutable. At least 2 and max 16 char long, must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt)."
         },
-        "statusMessage": {
-          "readOnly": true,
-          "description": "Output only. Human-readable status of the operation, if any.",
+        "adminUser": {
+          "$ref": "AdminUser",
+          "description": "Optional. Info about the first admin user, such as given name and family name."
+        },
+        "name": {
+          "description": "name of resource",
           "type": "string"
         },
-        "requestedCancellation": {
-          "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-          "readOnly": true,
-          "type": "boolean"
+        "state": {
+          "type": "string",
+          "description": "Output only. The state of this contact center.",
+          "enumDescriptions": [
+            "The default value. This value is used if the state is omitted.",
+            "State DEPLOYING",
+            "State DEPLOYED",
+            "State TERMINATING",
+            "State FAILED",
+            "State TERMINATING_FAILED",
+            "State TERMINATED"
+          ],
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "STATE_DEPLOYING",
+            "STATE_DEPLOYED",
+            "STATE_TERMINATING",
+            "STATE_FAILED",
+            "STATE_TERMINATING_FAILED",
+            "STATE_TERMINATED"
+          ],
+          "readOnly": true
         },
         "createTime": {
           "format": "google-datetime",
-          "description": "Output only. The time the operation was created.",
+          "type": "string",
           "readOnly": true,
-          "type": "string"
+          "description": "Output only. [Output only] Create time stamp"
+        },
+        "samlParams": {
+          "$ref": "SAMLParams",
+          "description": "Optional. Params that sets up Google as IdP."
         }
       },
-      "description": "Represents the metadata of the long-running operation."
-    },
-    "ListContactCentersResponse": {
-      "description": "Message for response to listing ContactCenters",
-      "properties": {
-        "nextPageToken": {
-          "description": "A token identifying a page of results the server should return.",
-          "type": "string"
-        },
-        "contactCenters": {
-          "description": "The list of ContactCenter",
-          "items": {
-            "$ref": "ContactCenter"
-          },
-          "type": "array"
-        },
-        "unreachable": {
-          "type": "array",
-          "description": "Locations that could not be reached.",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "type": "object",
-      "id": "ListContactCentersResponse"
-    },
-    "ContactCenterQuota": {
-      "id": "ContactCenterQuota",
-      "description": "Represents a quota for contact centers.",
-      "properties": {
-        "contactCenterCountSum": {
-          "description": "Reflects the count sum of contact centers on a billing account.",
-          "type": "integer",
-          "format": "int32"
-        },
-        "contactCenterCountLimit": {
-          "format": "int32",
-          "type": "integer",
-          "description": "Reflects the count limit of contact centers on a billing account."
-        }
-      },
+      "id": "ContactCenter",
+      "description": "Message describing ContactCenter object Next ID: 14",
       "type": "object"
     },
-    "CancelOperationRequest": {
-      "properties": {},
-      "description": "The request message for Operations.CancelOperation.",
-      "type": "object",
-      "id": "CancelOperationRequest"
-    },
     "Status": {
+      "id": "Status",
       "properties": {
-        "message": {
-          "type": "string",
-          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."
+        "code": {
+          "type": "integer",
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "format": "int32"
         },
         "details": {
           "type": "array",
@@ -550,109 +619,195 @@
             "type": "object"
           }
         },
-        "code": {
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32",
-          "type": "integer"
+        "message": {
+          "type": "string",
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."
         }
       },
-      "type": "object",
-      "id": "Status",
-      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+      "type": "object"
     },
-    "ContactCenter": {
+    "CancelOperationRequest": {
       "type": "object",
-      "id": "ContactCenter",
-      "description": "Message describing ContactCenter object Next ID: 14",
+      "id": "CancelOperationRequest",
+      "description": "The request message for Operations.CancelOperation.",
+      "properties": {}
+    },
+    "Location": {
+      "type": "object",
       "properties": {
+        "name": {
+          "type": "string",
+          "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`"
+        },
         "labels": {
-          "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Labels as key value pairs"
-        },
-        "instanceConfig": {
-          "$ref": "InstanceConfig",
-          "description": "The configuration of this instance, it is currently immutable once created."
-        },
-        "ccaipManagedUsers": {
-          "description": "Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity",
-          "type": "boolean"
+          "type": "object",
+          "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}"
         },
         "displayName": {
-          "type": "string",
-          "description": "Required. A user friendly name for the ContactCenter."
-        },
-        "samlParams": {
-          "description": "Optional. Params that sets up Google as IdP.",
-          "$ref": "SAMLParams"
-        },
-        "updateTime": {
-          "format": "google-datetime",
-          "description": "Output only. [Output only] Update time stamp",
-          "type": "string",
-          "readOnly": true
-        },
-        "name": {
-          "description": "name of resource",
+          "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
           "type": "string"
         },
-        "customerDomainPrefix": {
-          "type": "string",
-          "description": "Required. Immutable. At least 2 and max 16 char long, must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt)."
+        "locationId": {
+          "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+          "type": "string"
         },
-        "adminUser": {
-          "description": "Optional. Info about the first admin user, such as given name and family name.",
-          "$ref": "AdminUser"
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          },
+          "description": "Service-specific metadata. For example the available capacity at the given location."
+        }
+      },
+      "description": "A resource that represents Google Cloud Platform location.",
+      "id": "Location"
+    },
+    "OperationMetadata": {
+      "description": "Represents the metadata of the long-running operation.",
+      "properties": {
+        "statusMessage": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Output only. Human-readable status of the operation, if any."
+        },
+        "endTime": {
+          "description": "Output only. The time the operation finished running.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
         },
         "createTime": {
-          "readOnly": true,
-          "type": "string",
           "format": "google-datetime",
-          "description": "Output only. [Output only] Create time stamp"
-        },
-        "userEmail": {
           "type": "string",
-          "description": "Optional. Email address of the first admin user."
+          "description": "Output only. The time the operation was created.",
+          "readOnly": true
         },
-        "state": {
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "STATE_DEPLOYING",
-            "STATE_DEPLOYED",
-            "STATE_TERMINATING",
-            "STATE_FAILED",
-            "STATE_TERMINATING_FAILED",
-            "STATE_TERMINATED"
-          ],
+        "apiVersion": {
+          "readOnly": true,
+          "description": "Output only. API version used to start the operation.",
+          "type": "string"
+        },
+        "requestedCancellation": {
+          "readOnly": true,
+          "type": "boolean",
+          "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`."
+        },
+        "contactCenter": {
+          "description": "Contact center information for this request",
+          "$ref": "ContactCenter"
+        },
+        "verb": {
           "type": "string",
           "readOnly": true,
-          "enumDescriptions": [
-            "The default value. This value is used if the state is omitted.",
-            "State DEPLOYING",
-            "State DEPLOYED",
-            "State TERMINATING",
-            "State FAILED",
-            "State TERMINATING_FAILED",
-            "State TERMINATED"
-          ],
-          "description": "Output only. The state of this contact center."
+          "description": "Output only. Name of the verb executed by the operation."
         },
-        "uris": {
-          "$ref": "URIs",
+        "target": {
           "readOnly": true,
-          "description": "Output only. URIs to access the deployed ContactCenters."
+          "description": "Output only. Server-defined resource path for the target of the operation.",
+          "type": "string"
+        }
+      },
+      "id": "OperationMetadata",
+      "type": "object"
+    },
+    "URIs": {
+      "type": "object",
+      "id": "URIs",
+      "properties": {
+        "mediaUri": {
+          "description": "Media Uri of the ContactCenter.",
+          "type": "string"
+        },
+        "chatBotUri": {
+          "type": "string",
+          "description": "Chat Bot Uri of the ContactCenter"
+        },
+        "rootUri": {
+          "description": "Root Uri of the ContactCenter.",
+          "type": "string"
+        },
+        "virtualAgentStreamingServiceUri": {
+          "description": "Virtual Agent Streaming Service Uri of the ContactCenter.",
+          "type": "string"
+        }
+      },
+      "description": "Message storing the URIs of the ContactCenter."
+    },
+    "ContactCenterQuota": {
+      "id": "ContactCenterQuota",
+      "type": "object",
+      "properties": {
+        "contactCenterCountSum": {
+          "description": "Reflects the count sum of contact centers on a billing account.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "contactCenterCountLimit": {
+          "type": "integer",
+          "description": "Reflects the count limit of contact centers on a billing account.",
+          "format": "int32"
+        }
+      },
+      "description": "Represents a quota for contact centers."
+    },
+    "ListContactCentersResponse": {
+      "id": "ListContactCentersResponse",
+      "description": "Message for response to listing ContactCenters",
+      "type": "object",
+      "properties": {
+        "unreachable": {
+          "type": "array",
+          "description": "Locations that could not be reached.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "contactCenters": {
+          "type": "array",
+          "description": "The list of ContactCenter",
+          "items": {
+            "$ref": "ContactCenter"
+          }
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "A token identifying a page of results the server should return."
         }
       }
     },
+    "SAMLParams": {
+      "properties": {
+        "ssoUri": {
+          "type": "string",
+          "description": "Single sign-on URL"
+        },
+        "userEmail": {
+          "description": "Email address of the first admin users.",
+          "type": "string"
+        },
+        "entityId": {
+          "description": "Entity id URL",
+          "type": "string"
+        },
+        "certificate": {
+          "type": "string",
+          "description": "SAML certificate"
+        }
+      },
+      "id": "SAMLParams",
+      "description": "Message storing SAML params to enable Google as IDP.",
+      "type": "object"
+    },
     "InstanceConfig": {
-      "id": "InstanceConfig",
       "type": "object",
       "description": "Message storing the instance configuration.",
       "properties": {
         "instanceSize": {
-          "type": "string",
           "description": "The instance size of this the instance configuration.",
           "enum": [
             "INSTANCE_SIZE_UNSPECIFIED",
@@ -671,263 +826,108 @@
             "Instance Size STANDARD_XLARGE.",
             "Instance Size STANDARD_2XLARGE.",
             "Instance Size STANDARD_3XLARGE."
-          ]
-        }
-      }
-    },
-    "Location": {
-      "properties": {
-        "labels": {
-          "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "metadata": {
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
-          },
-          "type": "object",
-          "description": "Service-specific metadata. For example the available capacity at the given location."
-        },
-        "locationId": {
-          "description": "The canonical id for this location. For example: `\"us-east1\"`.",
-          "type": "string"
-        },
-        "displayName": {
-          "type": "string",
-          "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\"."
-        },
-        "name": {
-          "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+          ],
           "type": "string"
         }
       },
-      "type": "object",
-      "description": "A resource that represents Google Cloud Platform location.",
-      "id": "Location"
-    },
-    "ListLocationsResponse": {
-      "properties": {
-        "locations": {
-          "items": {
-            "$ref": "Location"
-          },
-          "type": "array",
-          "description": "A list of locations that matches the specified filter in the request."
-        },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        }
-      },
-      "id": "ListLocationsResponse",
-      "type": "object",
-      "description": "The response message for Locations.ListLocations."
+      "id": "InstanceConfig"
     },
     "Operation": {
+      "id": "Operation",
+      "description": "This resource represents a long-running operation that is the result of a network API call.",
+      "type": "object",
       "properties": {
-        "response": {
+        "metadata": {
+          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
           "type": "object",
           "additionalProperties": {
             "type": "any",
             "description": "Properties of the object. Contains field @type with type URL."
-          },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`."
+          }
+        },
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
+        },
+        "name": {
+          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+          "type": "string"
         },
         "done": {
           "type": "boolean",
           "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available."
         },
-        "name": {
-          "type": "string",
-          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
-        },
-        "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
-        },
-        "metadata": {
-          "type": "object",
-          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+        "response": {
+          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
           "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          },
+          "type": "object"
+        }
+      }
+    },
+    "ListLocationsResponse": {
+      "description": "The response message for Locations.ListLocations.",
+      "id": "ListLocationsResponse",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "type": "string",
+          "description": "The standard List next-page token."
+        },
+        "locations": {
+          "type": "array",
+          "description": "A list of locations that matches the specified filter in the request.",
+          "items": {
+            "$ref": "Location"
           }
         }
-      },
-      "type": "object",
-      "id": "Operation",
-      "description": "This resource represents a long-running operation that is the result of a network API call."
+      }
     },
     "AdminUser": {
+      "description": "Message storing info about the first admin user. Next ID: 3",
+      "id": "AdminUser",
       "type": "object",
       "properties": {
         "givenName": {
-          "description": "Optional. First/given name of the first admin user.",
-          "type": "string"
+          "type": "string",
+          "description": "Optional. First/given name of the first admin user."
         },
         "familyName": {
           "description": "Optional. Last/family name of the first admin user.",
           "type": "string"
         }
-      },
-      "description": "Message storing info about the first admin user. Next ID: 3",
-      "id": "AdminUser"
-    },
-    "SAMLParams": {
-      "id": "SAMLParams",
-      "type": "object",
-      "properties": {
-        "userEmail": {
-          "description": "Email address of the first admin users.",
-          "type": "string"
-        },
-        "entityId": {
-          "type": "string",
-          "description": "Entity id URL"
-        },
-        "ssoUri": {
-          "type": "string",
-          "description": "Single sign-on URL"
-        },
-        "certificate": {
-          "description": "SAML certificate",
-          "type": "string"
-        }
-      },
-      "description": "Message storing SAML params to enable Google as IDP."
-    },
-    "URIs": {
-      "description": "Message storing the URIs of the ContactCenter.",
-      "type": "object",
-      "id": "URIs",
-      "properties": {
-        "mediaUri": {
-          "type": "string",
-          "description": "Media Uri of the ContactCenter."
-        },
-        "rootUri": {
-          "description": "Root Uri of the ContactCenter.",
-          "type": "string"
-        },
-        "chatBotUri": {
-          "type": "string",
-          "description": "Chat Bot Uri of the ContactCenter"
-        },
-        "virtualAgentStreamingServiceUri": {
-          "description": "Virtual Agent Streaming Service Uri of the ContactCenter.",
-          "type": "string"
-        }
       }
+    },
+    "ListOperationsResponse": {
+      "description": "The response message for Operations.ListOperations.",
+      "properties": {
+        "nextPageToken": {
+          "type": "string",
+          "description": "The standard List next-page token."
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "$ref": "Operation"
+          },
+          "description": "A list of operations that matches the specified filter in the request."
+        }
+      },
+      "id": "ListOperationsResponse",
+      "type": "object"
+    },
+    "Empty": {
+      "type": "object",
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+      "properties": {}
     }
   },
-  "kind": "discovery#restDescription",
-  "baseUrl": "https://contactcenteraiplatform.googleapis.com/",
-  "revision": "20230222",
-  "description": "",
-  "fullyEncodeReservedExpansion": true,
-  "protocol": "rest",
-  "name": "contactcenteraiplatform",
-  "rootUrl": "https://contactcenteraiplatform.googleapis.com/",
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
-  "ownerName": "Google",
+  "version_module": true,
   "mtlsRootUrl": "https://contactcenteraiplatform.mtls.googleapis.com/",
-  "id": "contactcenteraiplatform:v1alpha1",
-  "parameters": {
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "location": "query",
-      "type": "string",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
-    },
-    "oauth_token": {
-      "type": "string",
-      "description": "OAuth 2.0 token for the current user.",
-      "location": "query"
-    },
-    "fields": {
-      "type": "string",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "location": "query"
-    },
-    "uploadType": {
-      "type": "string",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "location": "query"
-    },
-    "access_token": {
-      "location": "query",
-      "type": "string",
-      "description": "OAuth access token."
-    },
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "type": "string",
-      "description": "V1 error format.",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "location": "query"
-    },
-    "callback": {
-      "location": "query",
-      "type": "string",
-      "description": "JSONP"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "location": "query",
-      "type": "string"
-    },
-    "alt": {
-      "description": "Data format for response.",
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "default": "json"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "default": "true",
-      "location": "query",
-      "type": "boolean"
-    }
-  },
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
-        }
-      }
-    }
-  },
-  "servicePath": "",
-  "basePath": "",
-  "discoveryVersion": "v1",
-  "canonicalName": "CCAI Platform",
-  "version_module": true
+  "documentationLink": "https://cloud.google.com/solutions/contact-center-ai-platform",
+  "fullyEncodeReservedExpansion": true,
+  "protocol": "rest"
 }

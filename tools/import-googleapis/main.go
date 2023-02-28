@@ -9,7 +9,6 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/apigee/registry/cmd/registry/compress"
 	"github.com/apigee/registry/pkg/encoding"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/descriptorpb"
@@ -162,17 +161,18 @@ func describeAPI(apiIndex *ApiIndexEntry, root string, allProtos []string) error
 	if err != nil {
 		return err
 	}
-	// Collect the listed files and put them in a zip archive.
-	tempDir, err := os.MkdirTemp("", "proto-collect-")
-	if err != nil {
-		return err
-	}
-	defer os.RemoveAll(tempDir)
-	// (Finding the files is tricky)
+
+	// Get the apiID and versionID for use in Registry YAML.
+	apiID := strings.TrimSuffix(apiIndex.NameInServiceConfig, ".googleapis.com")
+	versionID := apiIndex.Version
+	specID := "protos"
+
+	// Collect the listed files into the spec directory.
+	specDir := filepath.Join(out, apiID, versionID, specID)
 	for _, a := range all {
 		for _, p := range allProtos {
 			if strings.HasSuffix(p, a) {
-				err := copyFile(p, filepath.Join(tempDir, a))
+				err := copyFile(p, filepath.Join(specDir, a))
 				if err != nil {
 					return err
 				}
@@ -180,30 +180,21 @@ func describeAPI(apiIndex *ApiIndexEntry, root string, allProtos []string) error
 			}
 		}
 	}
+
 	// If we have service config, copy that into the archive.
 	serviceConfigPath := filepath.Join(container, apiIndex.ConfigFile)
-	localPath := filepath.Join(tempDir, apiIndex.Directory, apiIndex.ConfigFile)
+	localPath := filepath.Join(specDir, apiIndex.Directory, apiIndex.ConfigFile)
 	err = copyFile(serviceConfigPath, localPath)
 	if err != nil {
 		return err
 	}
-	contents, err := compress.ZipArchiveOfPath(tempDir, tempDir+"/", true)
-	if err != nil {
-		return err
-	}
-	// Get the apiID and versionID for use in Registry YAML.
-	apiID := strings.TrimSuffix(apiIndex.NameInServiceConfig, ".googleapis.com")
-	versionID := apiIndex.Version
-	specID := "protos"
+
 	// Make the directory for the API and version YAML.
 	err = os.MkdirAll(filepath.Join(out, apiID, versionID, specID), 0777)
 	if err != nil {
 		return err
 	}
-	// Save the zipped protos.
-	specfilename := "protos" // strings.TrimPrefix(container, "deps/")
-	name := filepath.Join(out, apiID, versionID, specID, specfilename+".zip")
-	os.WriteFile(name, contents.Bytes(), 0664)
+
 	// Build and save info.yaml for the version.
 	apiVersion := &encoding.ApiVersion{
 		Header: encoding.Header{
@@ -222,7 +213,7 @@ func describeAPI(apiIndex *ApiIndexEntry, root string, allProtos []string) error
 	if err != nil {
 		return err
 	}
-	name = filepath.Join(out, apiID, versionID, "info.yaml")
+	name := filepath.Join(out, apiID, versionID, "info.yaml")
 	err = os.WriteFile(name, b, 0664)
 	if err != nil {
 		return err

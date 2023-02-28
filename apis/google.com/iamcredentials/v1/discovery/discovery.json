@@ -1,166 +1,54 @@
 {
+  "baseUrl": "https://iamcredentials.googleapis.com/",
   "description": "Creates short-lived credentials for impersonating IAM service accounts. To enable this API, you must enable the IAM API (iam.googleapis.com). ",
-  "revision": "20230221",
-  "id": "iamcredentials:v1",
-  "version": "v1",
-  "fullyEncodeReservedExpansion": true,
-  "basePath": "",
-  "title": "IAM Service Account Credentials API",
-  "servicePath": "",
   "discoveryVersion": "v1",
-  "name": "iamcredentials",
-  "documentationLink": "https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials",
-  "version_module": true,
-  "parameters": {
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "location": "query",
-      "type": "string"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "location": "query",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "type": "string",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
-    },
-    "$.xgafv": {
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "type": "string",
-      "description": "V1 error format.",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "default": "true",
-      "location": "query",
-      "type": "boolean"
-    },
-    "alt": {
-      "description": "Data format for response.",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "type": "string",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "default": "json",
-      "location": "query"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "location": "query",
-      "type": "string"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    }
-  },
-  "mtlsRootUrl": "https://iamcredentials.mtls.googleapis.com/",
+  "ownerDomain": "google.com",
+  "kind": "discovery#restDescription",
+  "canonicalName": "IAM Credentials",
+  "servicePath": "",
+  "rootUrl": "https://iamcredentials.googleapis.com/",
+  "ownerName": "Google",
+  "protocol": "rest",
   "resources": {
     "projects": {
       "resources": {
         "serviceAccounts": {
           "methods": {
-            "generateIdToken": {
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:generateIdToken",
-              "response": {
-                "$ref": "GenerateIdTokenResponse"
-              },
-              "path": "v1/{+name}:generateIdToken",
-              "id": "iamcredentials.projects.serviceAccounts.generateIdToken",
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "request": {
-                "$ref": "GenerateIdTokenRequest"
-              },
-              "description": "Generates an OpenID Connect ID token for a service account.",
-              "parameterOrder": [
-                "name"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid.",
-                  "required": true,
-                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
-                  "type": "string",
-                  "location": "path"
-                }
-              }
-            },
             "generateAccessToken": {
-              "response": {
-                "$ref": "GenerateAccessTokenResponse"
-              },
-              "path": "v1/{+name}:generateAccessToken",
               "request": {
                 "$ref": "GenerateAccessTokenRequest"
               },
+              "httpMethod": "POST",
+              "path": "v1/{+name}:generateAccessToken",
+              "response": {
+                "$ref": "GenerateAccessTokenResponse"
+              },
+              "description": "Generates an OAuth 2.0 access token for a service account.",
               "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:generateAccessToken",
-              "id": "iamcredentials.projects.serviceAccounts.generateAccessToken",
+              "parameters": {
+                "name": {
+                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
+                  "type": "string",
+                  "required": true,
+                  "location": "path",
+                  "description": "Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid."
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameterOrder": [
                 "name"
               ],
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "description": "Generates an OAuth 2.0 access token for a service account.",
-              "httpMethod": "POST",
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "required": true,
-                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
-                  "description": "Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid.",
-                  "type": "string"
-                }
-              }
+              "id": "iamcredentials.projects.serviceAccounts.generateAccessToken"
             },
             "signBlob": {
-              "response": {
-                "$ref": "SignBlobResponse"
-              },
+              "description": "Signs a blob using a service account's system-managed private key.",
               "id": "iamcredentials.projects.serviceAccounts.signBlob",
-              "path": "v1/{+name}:signBlob",
-              "httpMethod": "POST",
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "description": "Signs a blob using a service account's system-managed private key.",
+              "path": "v1/{+name}:signBlob",
               "parameterOrder": [
                 "name"
               ],
@@ -168,43 +56,75 @@
               "parameters": {
                 "name": {
                   "description": "Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid.",
+                  "type": "string",
+                  "required": true,
+                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "response": {
+                "$ref": "SignBlobResponse"
+              },
+              "request": {
+                "$ref": "SignBlobRequest"
+              },
+              "httpMethod": "POST"
+            },
+            "signJwt": {
+              "response": {
+                "$ref": "SignJwtResponse"
+              },
+              "request": {
+                "$ref": "SignJwtRequest"
+              },
+              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:signJwt",
+              "id": "iamcredentials.projects.serviceAccounts.signJwt",
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "name"
+              ],
+              "parameters": {
+                "name": {
+                  "type": "string",
                   "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
                   "location": "path",
+                  "required": true,
+                  "description": "Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid."
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "description": "Signs a JWT using a service account's system-managed private key.",
+              "path": "v1/{+name}:signJwt"
+            },
+            "generateIdToken": {
+              "parameters": {
+                "name": {
+                  "description": "Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid.",
+                  "location": "path",
+                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
                   "type": "string",
                   "required": true
                 }
               },
-              "request": {
-                "$ref": "SignBlobRequest"
-              }
-            },
-            "signJwt": {
-              "path": "v1/{+name}:signJwt",
+              "id": "iamcredentials.projects.serviceAccounts.generateIdToken",
+              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:generateIdToken",
               "httpMethod": "POST",
-              "id": "iamcredentials.projects.serviceAccounts.signJwt",
+              "description": "Generates an OpenID Connect ID token for a service account.",
+              "path": "v1/{+name}:generateIdToken",
               "response": {
-                "$ref": "SignJwtResponse"
+                "$ref": "GenerateIdTokenResponse"
               },
               "parameterOrder": [
                 "name"
               ],
+              "request": {
+                "$ref": "GenerateIdTokenRequest"
+              },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "request": {
-                "$ref": "SignJwtRequest"
-              },
-              "description": "Signs a JWT using a service account's system-managed private key.",
-              "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:signJwt",
-              "parameters": {
-                "name": {
-                  "description": "Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid.",
-                  "pattern": "^projects/[^/]+/serviceAccounts/[^/]+$",
-                  "required": true,
-                  "type": "string",
-                  "location": "path"
-                }
-              }
+              ]
             }
           }
         }
@@ -220,40 +140,75 @@
       }
     }
   },
-  "baseUrl": "https://iamcredentials.googleapis.com/",
-  "ownerDomain": "google.com",
-  "ownerName": "Google",
+  "version": "v1",
   "schemas": {
     "SignJwtRequest": {
-      "id": "SignJwtRequest",
-      "type": "object",
       "properties": {
         "payload": {
           "type": "string",
           "description": "Required. The JWT payload to sign. Must be a serialized JSON object that contains a JWT Claims Set. For example: `{\"sub\": \"user@example.com\", \"iat\": 313435}` If the JWT Claims Set contains an expiration time (`exp`) claim, it must be an integer timestamp that is not in the past and no more than 12 hours in the future."
         },
         "delegates": {
-          "description": "The sequence of service accounts in a delegation chain. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid.",
           "type": "array",
+          "description": "The sequence of service accounts in a delegation chain. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid.",
           "items": {
             "type": "string"
           }
         }
-      }
+      },
+      "type": "object",
+      "id": "SignJwtRequest"
     },
-    "SignJwtResponse": {
+    "SignBlobResponse": {
       "type": "object",
       "properties": {
-        "signedJwt": {
-          "type": "string",
-          "description": "The signed JWT. Contains the automatically generated header; the client-supplied payload; and the signature, which is generated using the key referenced by the `kid` field in the header. After the key pair referenced by the `key_id` response field expires, Google no longer exposes the public key that can be used to verify the JWT. As a result, the receiver can no longer verify the signature."
-        },
         "keyId": {
-          "description": "The ID of the key used to sign the JWT. The key used for signing will remain valid for at least 12 hours after the JWT is signed. To verify the signature, you can retrieve the public key in several formats from the following endpoints: - RSA public key wrapped in an X.509 v3 certificate: `https://www.googleapis.com/service_accounts/v1/metadata/x509/{ACCOUNT_EMAIL}` - Raw key in JSON format: `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}` - JSON Web Key (JWK): `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}`",
+          "description": "The ID of the key used to sign the blob. The key used for signing will remain valid for at least 12 hours after the blob is signed. To verify the signature, you can retrieve the public key in several formats from the following endpoints: - RSA public key wrapped in an X.509 v3 certificate: `https://www.googleapis.com/service_accounts/v1/metadata/x509/{ACCOUNT_EMAIL}` - Raw key in JSON format: `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}` - JSON Web Key (JWK): `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}`",
+          "type": "string"
+        },
+        "signedBlob": {
+          "description": "The signature for the blob. Does not include the original blob. After the key pair referenced by the `key_id` response field expires, Google no longer exposes the public key that can be used to verify the blob. As a result, the receiver can no longer verify the signature.",
+          "format": "byte",
           "type": "string"
         }
       },
-      "id": "SignJwtResponse"
+      "id": "SignBlobResponse"
+    },
+    "GenerateIdTokenRequest": {
+      "id": "GenerateIdTokenRequest",
+      "type": "object",
+      "properties": {
+        "delegates": {
+          "items": {
+            "type": "string"
+          },
+          "description": "The sequence of service accounts in a delegation chain. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid.",
+          "type": "array"
+        },
+        "includeEmail": {
+          "description": "Include the service account email in the token. If set to `true`, the token will contain `email` and `email_verified` claims.",
+          "type": "boolean"
+        },
+        "audience": {
+          "description": "Required. The audience for the token, such as the API or account that this token grants access to.",
+          "type": "string"
+        }
+      }
+    },
+    "GenerateAccessTokenResponse": {
+      "id": "GenerateAccessTokenResponse",
+      "properties": {
+        "accessToken": {
+          "description": "The OAuth 2.0 access token.",
+          "type": "string"
+        },
+        "expireTime": {
+          "format": "google-datetime",
+          "description": "Token expiration time. The expiration time is always set.",
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "GenerateIdTokenResponse": {
       "id": "GenerateIdTokenResponse",
@@ -265,23 +220,7 @@
         }
       }
     },
-    "SignBlobResponse": {
-      "type": "object",
-      "properties": {
-        "keyId": {
-          "type": "string",
-          "description": "The ID of the key used to sign the blob. The key used for signing will remain valid for at least 12 hours after the blob is signed. To verify the signature, you can retrieve the public key in several formats from the following endpoints: - RSA public key wrapped in an X.509 v3 certificate: `https://www.googleapis.com/service_accounts/v1/metadata/x509/{ACCOUNT_EMAIL}` - Raw key in JSON format: `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}` - JSON Web Key (JWK): `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}`"
-        },
-        "signedBlob": {
-          "description": "The signature for the blob. Does not include the original blob. After the key pair referenced by the `key_id` response field expires, Google no longer exposes the public key that can be used to verify the blob. As a result, the receiver can no longer verify the signature.",
-          "format": "byte",
-          "type": "string"
-        }
-      },
-      "id": "SignBlobResponse"
-    },
     "SignBlobRequest": {
-      "id": "SignBlobRequest",
       "properties": {
         "payload": {
           "format": "byte",
@@ -289,64 +228,30 @@
           "description": "Required. The bytes to sign."
         },
         "delegates": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array",
-          "description": "The sequence of service accounts in a delegation chain. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid."
-        }
-      },
-      "type": "object"
-    },
-    "GenerateIdTokenRequest": {
-      "properties": {
-        "audience": {
-          "description": "Required. The audience for the token, such as the API or account that this token grants access to.",
-          "type": "string"
-        },
-        "delegates": {
           "description": "The sequence of service accounts in a delegation chain. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid.",
           "items": {
             "type": "string"
           },
           "type": "array"
-        },
-        "includeEmail": {
-          "description": "Include the service account email in the token. If set to `true`, the token will contain `email` and `email_verified` claims.",
-          "type": "boolean"
         }
       },
-      "id": "GenerateIdTokenRequest",
-      "type": "object"
-    },
-    "GenerateAccessTokenResponse": {
       "type": "object",
-      "id": "GenerateAccessTokenResponse",
-      "properties": {
-        "expireTime": {
-          "format": "google-datetime",
-          "type": "string",
-          "description": "Token expiration time. The expiration time is always set."
-        },
-        "accessToken": {
-          "description": "The OAuth 2.0 access token.",
-          "type": "string"
-        }
-      }
+      "id": "SignBlobRequest"
     },
     "GenerateAccessTokenRequest": {
+      "type": "object",
       "properties": {
+        "lifetime": {
+          "description": "The desired lifetime duration of the access token in seconds. By default, the maximum allowed value is 1 hour. To set a lifetime of up to 12 hours, you can add the service account as an allowed value in an Organization Policy that enforces the `constraints/iam.allowServiceAccountCredentialLifetimeExtension` constraint. See detailed instructions at https://cloud.google.com/iam/help/credentials/lifetime If a value is not specified, the token's lifetime will be set to a default value of 1 hour.",
+          "type": "string",
+          "format": "google-duration"
+        },
         "scope": {
+          "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "Required. Code to identify the scopes to be included in the OAuth 2.0 access token. See https://developers.google.com/identity/protocols/googlescopes for more information. At least one value required.",
-          "type": "array"
-        },
-        "lifetime": {
-          "type": "string",
-          "description": "The desired lifetime duration of the access token in seconds. By default, the maximum allowed value is 1 hour. To set a lifetime of up to 12 hours, you can add the service account as an allowed value in an Organization Policy that enforces the `constraints/iam.allowServiceAccountCredentialLifetimeExtension` constraint. See detailed instructions at https://cloud.google.com/iam/help/credentials/lifetime If a value is not specified, the token's lifetime will be set to a default value of 1 hour.",
-          "format": "google-duration"
+          "description": "Required. Code to identify the scopes to be included in the OAuth 2.0 access token. See https://developers.google.com/identity/protocols/googlescopes for more information. At least one value required."
         },
         "delegates": {
           "items": {
@@ -356,17 +261,112 @@
           "description": "The sequence of service accounts in a delegation chain. This field is required for [delegated requests](https://cloud.google.com/iam/help/credentials/delegated-request). For [direct requests](https://cloud.google.com/iam/help/credentials/direct-request), which are more common, do not specify this field. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid."
         }
       },
-      "type": "object",
       "id": "GenerateAccessTokenRequest"
+    },
+    "SignJwtResponse": {
+      "id": "SignJwtResponse",
+      "type": "object",
+      "properties": {
+        "keyId": {
+          "description": "The ID of the key used to sign the JWT. The key used for signing will remain valid for at least 12 hours after the JWT is signed. To verify the signature, you can retrieve the public key in several formats from the following endpoints: - RSA public key wrapped in an X.509 v3 certificate: `https://www.googleapis.com/service_accounts/v1/metadata/x509/{ACCOUNT_EMAIL}` - Raw key in JSON format: `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}` - JSON Web Key (JWK): `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}`",
+          "type": "string"
+        },
+        "signedJwt": {
+          "description": "The signed JWT. Contains the automatically generated header; the client-supplied payload; and the signature, which is generated using the key referenced by the `kid` field in the header. After the key pair referenced by the `key_id` response field expires, Google no longer exposes the public key that can be used to verify the JWT. As a result, the receiver can no longer verify the signature.",
+          "type": "string"
+        }
+      }
     }
   },
-  "canonicalName": "IAM Credentials",
-  "protocol": "rest",
-  "rootUrl": "https://iamcredentials.googleapis.com/",
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  "title": "IAM Service Account Credentials API",
+  "documentationLink": "https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials",
+  "parameters": {
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "location": "query",
+      "type": "string"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "location": "query",
+      "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ]
+    },
+    "oauth_token": {
+      "location": "query",
+      "type": "string",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "prettyPrint": {
+      "location": "query",
+      "type": "boolean",
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "type": "string",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+    },
+    "alt": {
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "type": "string",
+      "location": "query",
+      "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "default": "json"
+    },
+    "key": {
+      "type": "string",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "location": "query"
+    },
+    "access_token": {
+      "location": "query",
+      "type": "string",
+      "description": "OAuth access token."
+    }
   },
-  "kind": "discovery#restDescription",
+  "revision": "20230221",
+  "name": "iamcredentials",
+  "version_module": true,
+  "fullyEncodeReservedExpansion": true,
+  "basePath": "",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "mtlsRootUrl": "https://iamcredentials.mtls.googleapis.com/",
+  "id": "iamcredentials:v1",
   "batchPath": "batch"
 }

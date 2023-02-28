@@ -1,96 +1,4 @@
 {
-  "title": "Serverless VPC Access API",
-  "protocol": "rest",
-  "parameters": {
-    "oauth_token": {
-      "type": "string",
-      "description": "OAuth 2.0 token for the current user.",
-      "location": "query"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "access_token": {
-      "type": "string",
-      "description": "OAuth access token.",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "location": "query",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "type": "string",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format."
-    },
-    "quotaUser": {
-      "location": "query",
-      "type": "string",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
-    },
-    "upload_protocol": {
-      "type": "string",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "callback": {
-      "description": "JSONP",
-      "location": "query",
-      "type": "string"
-    },
-    "fields": {
-      "type": "string",
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
-    },
-    "key": {
-      "type": "string",
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
-    "alt": {
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "default": "json",
-      "location": "query",
-      "description": "Data format for response.",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string"
-    }
-  },
-  "baseUrl": "https://vpcaccess.googleapis.com/",
-  "documentationLink": "https://cloud.google.com/vpc/docs/configure-serverless-vpc-access",
-  "version_module": true,
-  "description": "API for managing VPC access connectors.",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
-        }
-      }
-    }
-  },
   "kind": "discovery#restDescription",
   "resources": {
     "projects": {
@@ -98,44 +6,44 @@
         "locations": {
           "methods": {
             "list": {
-              "httpMethod": "GET",
               "response": {
                 "$ref": "ListLocationsResponse"
               },
-              "id": "vpcaccess.projects.locations.list",
-              "parameters": {
-                "pageSize": {
-                  "format": "int32",
-                  "location": "query",
-                  "type": "integer",
-                  "description": "The maximum number of results to return. If not set, the service selects a default."
-                },
-                "filter": {
-                  "type": "string",
-                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
-                  "location": "query"
-                },
-                "name": {
-                  "description": "The resource that owns the locations collection, if applicable.",
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
-                  "required": true
-                },
-                "pageToken": {
-                  "location": "query",
-                  "type": "string",
-                  "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page."
-                }
-              },
-              "parameterOrder": [
-                "name"
-              ],
+              "description": "Lists information about the supported locations for this service.",
+              "httpMethod": "GET",
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "description": "Lists information about the supported locations for this service.",
               "flatPath": "v1beta1/projects/{projectsId}/locations",
+              "id": "vpcaccess.projects.locations.list",
+              "parameterOrder": [
+                "name"
+              ],
+              "parameters": {
+                "filter": {
+                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
+                  "location": "query",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "The maximum number of results to return. If not set, the service selects a default.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string",
+                  "required": true,
+                  "description": "The resource that owns the locations collection, if applicable.",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.",
+                  "type": "string"
+                }
+              },
               "path": "v1beta1/{+name}/locations"
             }
           },
@@ -143,67 +51,67 @@
             "operations": {
               "methods": {
                 "get": {
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "response": {
                     "$ref": "Operation"
                   },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "description": "The name of the operation resource.",
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "location": "path"
+                    }
+                  },
                   "id": "vpcaccess.projects.locations.operations.get",
+                  "path": "v1beta1/{+name}",
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "httpMethod": "GET",
                   "parameterOrder": [
                     "name"
                   ],
-                  "path": "v1beta1/{+name}",
-                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "location": "path",
-                      "description": "The name of the operation resource.",
-                      "type": "string",
-                      "required": true
-                    }
-                  }
-                },
-                "list": {
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
+                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service."
+                },
+                "list": {
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations",
+                  "parameterOrder": [
+                    "name"
+                  ],
                   "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
-                  "httpMethod": "GET",
                   "parameters": {
-                    "filter": {
-                      "description": "The standard list filter.",
-                      "location": "query",
-                      "type": "string"
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "description": "The standard list page token.",
-                      "type": "string"
-                    },
                     "name": {
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "type": "string",
+                      "required": true,
+                      "location": "path",
                       "description": "The name of the operation's parent resource."
                     },
                     "pageSize": {
-                      "type": "integer",
                       "description": "The standard list page size.",
                       "format": "int32",
+                      "type": "integer",
                       "location": "query"
+                    },
+                    "filter": {
+                      "location": "query",
+                      "type": "string",
+                      "description": "The standard list filter."
+                    },
+                    "pageToken": {
+                      "location": "query",
+                      "type": "string",
+                      "description": "The standard list page token."
                     }
                   },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/operations",
                   "path": "v1beta1/{+name}/operations",
-                  "parameterOrder": [
-                    "name"
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
                   ],
                   "id": "vpcaccess.projects.locations.operations.list",
+                  "httpMethod": "GET",
                   "response": {
                     "$ref": "ListOperationsResponse"
                   }
@@ -212,158 +120,158 @@
             },
             "connectors": {
               "methods": {
-                "create": {
-                  "path": "v1beta1/{+parent}/connectors",
-                  "id": "vpcaccess.projects.locations.connectors.create",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "httpMethod": "POST",
-                  "request": {
-                    "$ref": "Connector"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "parameters": {
-                    "connectorId": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "Required. The ID to use for this connector."
-                    },
-                    "parent": {
-                      "required": true,
-                      "type": "string",
-                      "location": "path",
-                      "description": "Required. The project and location in which the configuration should be created, specified in the format `projects/*/locations/*`.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$"
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectors",
-                  "description": "Creates a Serverless VPC Access connector, returns an operation."
-                },
-                "get": {
+                "delete": {
                   "parameters": {
                     "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/connectors/[^/]+$",
+                      "location": "path",
                       "required": true,
+                      "description": "Required. Name of a Serverless VPC Access connector to delete.",
                       "type": "string",
-                      "description": "Required. Name of a Serverless VPC Access connector to get.",
-                      "location": "path"
+                      "pattern": "^projects/[^/]+/locations/[^/]+/connectors/[^/]+$"
                     }
                   },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "description": "Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.",
-                  "id": "vpcaccess.projects.locations.connectors.get",
-                  "path": "v1beta1/{+name}",
                   "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectors/{connectorsId}",
-                  "response": {
-                    "$ref": "Connector"
-                  },
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "delete": {
+                  "httpMethod": "DELETE",
                   "id": "vpcaccess.projects.locations.connectors.delete",
                   "response": {
                     "$ref": "Operation"
                   },
-                  "httpMethod": "DELETE",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
                   "parameterOrder": [
                     "name"
                   ],
-                  "path": "v1beta1/{+name}",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectors/{connectorsId}",
                   "description": "Deletes a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.",
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/connectors/[^/]+$",
-                      "description": "Required. Name of a Serverless VPC Access connector to delete.",
-                      "type": "string",
-                      "required": true,
-                      "location": "path"
-                    }
-                  }
-                },
-                "patch": {
-                  "httpMethod": "PATCH",
+                  "path": "v1beta1/{+name}",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "id": "vpcaccess.projects.locations.connectors.patch",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "path": "v1beta1/{+name}",
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectors/{connectorsId}",
-                  "request": {
-                    "$ref": "Connector"
-                  },
-                  "description": "Updates a Serverless VPC Access connector, returns an operation.",
+                  ]
+                },
+                "get": {
+                  "id": "vpcaccess.projects.locations.connectors.get",
+                  "description": "Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.",
                   "parameterOrder": [
                     "name"
                   ],
-                  "parameters": {
-                    "name": {
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/connectors/[^/]+$",
-                      "description": "The resource name in the format `projects/*/locations/*/connectors/*`.",
-                      "required": true,
-                      "location": "path"
-                    },
-                    "updateMask": {
-                      "location": "query",
-                      "type": "string",
-                      "description": "The fields to update on the entry group. If absent or empty, all modifiable fields are updated.",
-                      "format": "google-fieldmask"
-                    }
-                  }
-                },
-                "list": {
-                  "path": "v1beta1/{+parent}/connectors",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectors",
-                  "response": {
-                    "$ref": "ListConnectorsResponse"
-                  },
-                  "id": "vpcaccess.projects.locations.connectors.list",
+                  "path": "v1beta1/{+name}",
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectors/{connectorsId}",
                   "httpMethod": "GET",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
+                  "response": {
+                    "$ref": "Connector"
+                  },
                   "parameters": {
-                    "pageSize": {
-                      "type": "integer",
-                      "format": "int32",
-                      "location": "query",
-                      "description": "Maximum number of functions to return per call."
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "type": "string",
-                      "description": "Continuation token."
-                    },
-                    "parent": {
+                    "name": {
+                      "location": "path",
                       "required": true,
+                      "type": "string",
+                      "description": "Required. Name of a Serverless VPC Access connector to get.",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/connectors/[^/]+$"
+                    }
+                  }
+                },
+                "create": {
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "httpMethod": "POST",
+                  "request": {
+                    "$ref": "Connector"
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectors",
+                  "path": "v1beta1/{+parent}/connectors",
+                  "id": "vpcaccess.projects.locations.connectors.create",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "parent": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "location": "path",
                       "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "description": "Required. The project and location from which the routes should be listed."
+                      "description": "Required. The project and location in which the configuration should be created, specified in the format `projects/*/locations/*`.",
+                      "required": true
+                    },
+                    "connectorId": {
+                      "description": "Required. The ID to use for this connector.",
+                      "type": "string",
+                      "location": "query"
                     }
                   },
-                  "description": "Lists Serverless VPC Access connectors."
+                  "description": "Creates a Serverless VPC Access connector, returns an operation."
+                },
+                "list": {
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "path": "v1beta1/{+parent}/connectors",
+                  "description": "Lists Serverless VPC Access connectors.",
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "ListConnectorsResponse"
+                  },
+                  "id": "vpcaccess.projects.locations.connectors.list",
+                  "parameters": {
+                    "parent": {
+                      "type": "string",
+                      "description": "Required. The project and location from which the routes should be listed.",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path"
+                    },
+                    "pageSize": {
+                      "description": "Maximum number of functions to return per call.",
+                      "type": "integer",
+                      "format": "int32",
+                      "location": "query"
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "description": "Continuation token.",
+                      "location": "query"
+                    }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectors",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "patch": {
+                  "id": "vpcaccess.projects.locations.connectors.patch",
+                  "httpMethod": "PATCH",
+                  "parameters": {
+                    "updateMask": {
+                      "description": "The fields to update on the entry group. If absent or empty, all modifiable fields are updated.",
+                      "location": "query",
+                      "format": "google-fieldmask",
+                      "type": "string"
+                    },
+                    "name": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+/connectors/[^/]+$",
+                      "required": true,
+                      "description": "The resource name in the format `projects/*/locations/*/connectors/*`.",
+                      "location": "path",
+                      "type": "string"
+                    }
+                  },
+                  "description": "Updates a Serverless VPC Access connector, returns an operation.",
+                  "request": {
+                    "$ref": "Connector"
+                  },
+                  "path": "v1beta1/{+name}",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/connectors/{connectorsId}"
                 }
               }
             }
@@ -372,94 +280,65 @@
       }
     }
   },
-  "rootUrl": "https://vpcaccess.googleapis.com/",
-  "ownerDomain": "google.com",
-  "fullyEncodeReservedExpansion": true,
+  "documentationLink": "https://cloud.google.com/vpc/docs/configure-serverless-vpc-access",
   "basePath": "",
-  "mtlsRootUrl": "https://vpcaccess.mtls.googleapis.com/",
-  "name": "vpcaccess",
-  "batchPath": "batch",
+  "version": "v1beta1",
   "ownerName": "Google",
-  "servicePath": "",
+  "batchPath": "batch",
+  "description": "API for managing VPC access connectors.",
+  "version_module": true,
+  "protocol": "rest",
+  "baseUrl": "https://vpcaccess.googleapis.com/",
+  "name": "vpcaccess",
+  "fullyEncodeReservedExpansion": true,
   "schemas": {
-    "Operation": {
-      "type": "object",
-      "description": "This resource represents a long-running operation that is the result of a network API call.",
-      "id": "Operation",
-      "properties": {
-        "metadata": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "type": "object",
-          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."
-        },
-        "response": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
-          },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`."
-        },
-        "done": {
-          "type": "boolean",
-          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available."
-        },
-        "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
-        },
-        "name": {
-          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
-          "type": "string"
-        }
-      }
-    },
-    "Status": {
-      "properties": {
-        "code": {
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "message": {
-          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
-          "type": "string"
-        },
-        "details": {
-          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
-          "items": {
-            "additionalProperties": {
-              "type": "any",
-              "description": "Properties of the object. Contains field @type with type URL."
-            },
-            "type": "object"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object",
-      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
-      "id": "Status"
-    },
     "Subnet": {
       "id": "Subnet",
+      "description": "The subnet in which to house the connector",
       "properties": {
         "projectId": {
-          "type": "string",
-          "description": "Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued."
+          "description": "Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.",
+          "type": "string"
         },
         "name": {
           "description": "Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}",
           "type": "string"
         }
       },
-      "description": "The subnet in which to house the connector",
       "type": "object"
     },
+    "OperationMetadataV1Beta1": {
+      "id": "OperationMetadataV1Beta1",
+      "type": "object",
+      "description": "Metadata for google.longrunning.Operation.",
+      "properties": {
+        "target": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Output only. Name of the resource that this operation is acting on e.g. projects/my-project/locations/us-central1/connectors/v1."
+        },
+        "endTime": {
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string",
+          "description": "Output only. Time when the operation completed."
+        },
+        "createTime": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Output only. Time when the operation was created.",
+          "format": "google-datetime"
+        },
+        "method": {
+          "description": "Output only. Method that initiated the operation e.g. google.cloud.vpcaccess.v1beta1.Connectors.CreateConnector.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
     "ListLocationsResponse": {
+      "id": "ListLocationsResponse",
+      "description": "The response message for Locations.ListLocations.",
       "properties": {
         "locations": {
           "description": "A list of locations that matches the specified filter in the request.",
@@ -469,181 +348,102 @@
           }
         },
         "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
+          "type": "string",
+          "description": "The standard List next-page token."
         }
       },
-      "description": "The response message for Locations.ListLocations.",
-      "id": "ListLocationsResponse",
       "type": "object"
     },
-    "OperationMetadataV1Beta1": {
-      "type": "object",
-      "id": "OperationMetadataV1Beta1",
+    "Operation": {
       "properties": {
-        "endTime": {
-          "description": "Output only. Time when the operation completed.",
-          "type": "string",
-          "readOnly": true,
-          "format": "google-datetime"
-        },
-        "method": {
-          "readOnly": true,
-          "type": "string",
-          "description": "Output only. Method that initiated the operation e.g. google.cloud.vpcaccess.v1beta1.Connectors.CreateConnector."
-        },
-        "createTime": {
-          "description": "Output only. Time when the operation was created.",
-          "type": "string",
-          "readOnly": true,
-          "format": "google-datetime"
-        },
-        "target": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. Name of the resource that this operation is acting on e.g. projects/my-project/locations/us-central1/connectors/v1."
-        }
-      },
-      "description": "Metadata for google.longrunning.Operation."
-    },
-    "OperationMetadata": {
-      "id": "OperationMetadata",
-      "properties": {
-        "method": {
-          "type": "string",
-          "description": "Output only. Method that initiated the operation e.g. google.cloud.vpcaccess.v1.Connectors.CreateConnector.",
-          "readOnly": true
-        },
-        "createTime": {
-          "description": "Output only. Time when the operation was created.",
-          "format": "google-datetime",
-          "readOnly": true,
+        "name": {
+          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
           "type": "string"
         },
-        "target": {
-          "description": "Output only. Name of the resource that this operation is acting on e.g. projects/my-project/locations/us-central1/connectors/v1.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "endTime": {
-          "format": "google-datetime",
-          "readOnly": true,
-          "description": "Output only. Time when the operation completed.",
-          "type": "string"
-        }
-      },
-      "description": "Metadata for google.longrunning.Operation.",
-      "type": "object"
-    },
-    "ListConnectorsResponse": {
-      "id": "ListConnectorsResponse",
-      "properties": {
-        "connectors": {
-          "items": {
-            "$ref": "Connector"
-          },
-          "type": "array",
-          "description": "List of Serverless VPC Access connectors."
-        },
-        "nextPageToken": {
-          "description": "Continuation token.",
-          "type": "string"
-        }
-      },
-      "description": "Response for listing Serverless VPC Access connectors.",
-      "type": "object"
-    },
-    "Location": {
-      "type": "object",
-      "id": "Location",
-      "description": "A resource that represents Google Cloud Platform location.",
-      "properties": {
-        "locationId": {
-          "description": "The canonical id for this location. For example: `\"us-east1\"`.",
-          "type": "string"
+        "error": {
+          "description": "The error result of the operation in case of failure or cancellation.",
+          "$ref": "Status"
         },
         "metadata": {
-          "description": "Service-specific metadata. For example the available capacity at the given location.",
-          "type": "object",
           "additionalProperties": {
             "type": "any",
             "description": "Properties of the object. Contains field @type with type URL."
-          }
-        },
-        "name": {
-          "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
-          "type": "string"
-        },
-        "displayName": {
-          "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
-          "type": "string"
-        },
-        "labels": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
           },
-          "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}"
+          "type": "object",
+          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."
+        },
+        "response": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "type": "object"
+        },
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+          "type": "boolean"
         }
-      }
+      },
+      "id": "Operation",
+      "type": "object",
+      "description": "This resource represents a long-running operation that is the result of a network API call."
     },
     "OperationMetadataV1Alpha1": {
+      "id": "OperationMetadataV1Alpha1",
       "properties": {
-        "endTime": {
-          "description": "Output only. Time when the operation completed.",
-          "readOnly": true,
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "method": {
-          "readOnly": true,
-          "type": "string",
-          "description": "Output only. Method that initiated the operation e.g. google.cloud.vpcaccess.v1alpha1.Connectors.CreateConnector."
-        },
-        "insertTime": {
-          "format": "google-datetime",
-          "readOnly": true,
-          "description": "Output only. Time when the operation was created.",
-          "type": "string"
-        },
         "target": {
           "type": "string",
           "readOnly": true,
           "description": "Output only. Name of the resource that this operation is acting on e.g. projects/my-project/locations/us-central1/connectors/v1."
+        },
+        "endTime": {
+          "readOnly": true,
+          "description": "Output only. Time when the operation completed.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "insertTime": {
+          "type": "string",
+          "description": "Output only. Time when the operation was created.",
+          "readOnly": true,
+          "format": "google-datetime"
+        },
+        "method": {
+          "readOnly": true,
+          "description": "Output only. Method that initiated the operation e.g. google.cloud.vpcaccess.v1alpha1.Connectors.CreateConnector.",
+          "type": "string"
         }
       },
-      "description": "Metadata for google.longrunning.Operation.",
       "type": "object",
-      "id": "OperationMetadataV1Alpha1"
+      "description": "Metadata for google.longrunning.Operation."
     },
     "Connector": {
-      "id": "Connector",
       "description": "Definition of a Serverless VPC Access connector.",
+      "type": "object",
+      "id": "Connector",
       "properties": {
-        "name": {
-          "type": "string",
-          "description": "The resource name in the format `projects/*/locations/*/connectors/*`."
-        },
-        "minInstances": {
-          "type": "integer",
-          "description": "Minimum value of instances in autoscaling group underlying the connector.",
-          "format": "int32"
+        "network": {
+          "description": "Name of a VPC network.",
+          "type": "string"
         },
         "maxInstances": {
           "format": "int32",
-          "description": "Maximum value of instances in autoscaling group underlying the connector.",
-          "type": "integer"
+          "type": "integer",
+          "description": "Maximum value of instances in autoscaling group underlying the connector."
+        },
+        "connectedProjects": {
+          "readOnly": true,
+          "items": {
+            "type": "string"
+          },
+          "description": "Output only. List of projects using the connector.",
+          "type": "array"
         },
         "state": {
-          "enumDescriptions": [
-            "Invalid state.",
-            "Connector is deployed and ready to receive traffic.",
-            "An Insert operation is in progress. Transient condition.",
-            "A Delete operation is in progress. Transient condition.",
-            "Connector is in a bad state, manual deletion recommended.",
-            "The connector is being updated."
-          ],
+          "type": "string",
           "description": "Output only. State of the VPC access connector.",
+          "readOnly": true,
           "enum": [
             "STATE_UNSPECIFIED",
             "READY",
@@ -652,72 +452,272 @@
             "ERROR",
             "UPDATING"
           ],
-          "type": "string",
-          "readOnly": true
+          "enumDescriptions": [
+            "Invalid state.",
+            "Connector is deployed and ready to receive traffic.",
+            "An Insert operation is in progress. Transient condition.",
+            "A Delete operation is in progress. Transient condition.",
+            "Connector is in a bad state, manual deletion recommended.",
+            "The connector is being updated."
+          ]
         },
         "maxThroughput": {
+          "type": "integer",
           "format": "int32",
-          "description": "Maximum throughput of the connector in Mbps. Default is 300, max is 1000.",
-          "type": "integer"
-        },
-        "subnet": {
-          "description": "The subnet in which to house the VPC Access Connector.",
-          "$ref": "Subnet"
+          "description": "Maximum throughput of the connector in Mbps. Default is 300, max is 1000."
         },
         "machineType": {
           "description": "Machine type of VM Instance underlying connector. Default is e2-micro",
           "type": "string"
         },
-        "connectedProjects": {
-          "description": "Output only. List of projects using the connector.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "readOnly": true
-        },
         "ipCidrRange": {
-          "type": "string",
-          "description": "The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`."
-        },
-        "network": {
-          "description": "Name of a VPC network.",
+          "description": "The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.",
           "type": "string"
         },
         "minThroughput": {
           "description": "Minimum throughput of the connector in Mbps. Default and min is 200.",
-          "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "type": "integer"
+        },
+        "subnet": {
+          "$ref": "Subnet",
+          "description": "The subnet in which to house the VPC Access Connector."
+        },
+        "minInstances": {
+          "description": "Minimum value of instances in autoscaling group underlying the connector.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string",
+          "description": "The resource name in the format `projects/*/locations/*/connectors/*`."
         }
-      },
-      "type": "object"
+      }
     },
     "ListOperationsResponse": {
-      "id": "ListOperationsResponse",
-      "type": "object",
       "properties": {
         "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
+          "type": "string",
+          "description": "The standard List next-page token."
         },
         "operations": {
+          "description": "A list of operations that matches the specified filter in the request.",
+          "type": "array",
           "items": {
             "$ref": "Operation"
-          },
-          "description": "A list of operations that matches the specified filter in the request.",
-          "type": "array"
+          }
         }
       },
-      "description": "The response message for Operations.ListOperations."
+      "description": "The response message for Operations.ListOperations.",
+      "id": "ListOperationsResponse",
+      "type": "object"
+    },
+    "Status": {
+      "type": "object",
+      "id": "Status",
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+      "properties": {
+        "details": {
+          "items": {
+            "additionalProperties": {
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
+            },
+            "type": "object"
+          },
+          "type": "array",
+          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use."
+        },
+        "code": {
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string",
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."
+        }
+      }
+    },
+    "Location": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`"
+        },
+        "labels": {
+          "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "displayName": {
+          "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+          "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          },
+          "type": "object",
+          "description": "Service-specific metadata. For example the available capacity at the given location."
+        },
+        "locationId": {
+          "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+          "type": "string"
+        }
+      },
+      "id": "Location",
+      "type": "object",
+      "description": "A resource that represents Google Cloud Platform location."
+    },
+    "ListConnectorsResponse": {
+      "id": "ListConnectorsResponse",
+      "description": "Response for listing Serverless VPC Access connectors.",
+      "type": "object",
+      "properties": {
+        "connectors": {
+          "items": {
+            "$ref": "Connector"
+          },
+          "description": "List of Serverless VPC Access connectors.",
+          "type": "array"
+        },
+        "nextPageToken": {
+          "description": "Continuation token.",
+          "type": "string"
+        }
+      }
+    },
+    "OperationMetadata": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "description": "Output only. Time when the operation was created.",
+          "format": "google-datetime",
+          "readOnly": true
+        },
+        "target": {
+          "type": "string",
+          "description": "Output only. Name of the resource that this operation is acting on e.g. projects/my-project/locations/us-central1/connectors/v1.",
+          "readOnly": true
+        },
+        "endTime": {
+          "type": "string",
+          "format": "google-datetime",
+          "description": "Output only. Time when the operation completed.",
+          "readOnly": true
+        },
+        "method": {
+          "readOnly": true,
+          "description": "Output only. Method that initiated the operation e.g. google.cloud.vpcaccess.v1.Connectors.CreateConnector.",
+          "type": "string"
+        }
+      },
+      "id": "OperationMetadata",
+      "description": "Metadata for google.longrunning.Operation."
     }
   },
   "revision": "20230222",
-  "id": "vpcaccess:v1beta1",
-  "discoveryVersion": "v1",
+  "rootUrl": "https://vpcaccess.googleapis.com/",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
-  "version": "v1beta1",
-  "canonicalName": "Serverless VPC Access"
+  "ownerDomain": "google.com",
+  "mtlsRootUrl": "https://vpcaccess.mtls.googleapis.com/",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
+        }
+      }
+    }
+  },
+  "servicePath": "",
+  "canonicalName": "Serverless VPC Access",
+  "discoveryVersion": "v1",
+  "parameters": {
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "type": "string",
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+    },
+    "alt": {
+      "type": "string",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "default": "json",
+      "location": "query",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "description": "Data format for response."
+    },
+    "prettyPrint": {
+      "location": "query",
+      "default": "true",
+      "type": "boolean",
+      "description": "Returns response with indentations and line breaks."
+    },
+    "uploadType": {
+      "type": "string",
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "key": {
+      "type": "string",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "location": "query"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "quotaUser": {
+      "type": "string",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "location": "query"
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
+      "location": "query",
+      "description": "V1 error format.",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "type": "string"
+    }
+  },
+  "id": "vpcaccess:v1beta1",
+  "title": "Serverless VPC Access API"
 }

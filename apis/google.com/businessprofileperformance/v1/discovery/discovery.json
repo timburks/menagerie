@@ -1,4 +1,92 @@
 {
+  "servicePath": "",
+  "ownerDomain": "google.com",
+  "fullyEncodeReservedExpansion": true,
+  "id": "businessprofileperformance:v1",
+  "parameters": {
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "type": "string",
+      "description": "JSONP"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "type": "string",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+    },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
+      "type": "string",
+      "description": "V1 error format.",
+      "location": "query",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ]
+    },
+    "access_token": {
+      "location": "query",
+      "type": "string",
+      "description": "OAuth access token."
+    },
+    "uploadType": {
+      "location": "query",
+      "type": "string",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    }
+  },
+  "kind": "discovery#restDescription",
+  "version_module": true,
+  "version": "v1",
+  "ownerName": "Google",
+  "description": "The Business Profile Performance API allows merchants to fetch performance reports about their business profile on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.",
+  "mtlsRootUrl": "https://businessprofileperformance.mtls.googleapis.com/",
+  "protocol": "rest",
   "resources": {
     "locations": {
       "resources": {
@@ -9,42 +97,38 @@
                 "monthly": {
                   "methods": {
                     "list": {
+                      "id": "businessprofileperformance.locations.searchkeywords.impressions.monthly.list",
                       "httpMethod": "GET",
                       "description": "Returns the search keywords used to find a business in search or maps. Each search keyword is accompanied by impressions which are aggregated on a monthly basis. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345/searchkeywords/impressions/monthly?monthly_range.start_month.year=2022&monthly_range.start_month.month=1&monthly_range.end_month.year=2022&monthly_range.end_month.month=3`",
                       "response": {
                         "$ref": "ListSearchKeywordImpressionsMonthlyResponse"
                       },
+                      "path": "v1/{+parent}/searchkeywords/impressions/monthly",
+                      "flatPath": "v1/locations/{locationsId}/searchkeywords/impressions/monthly",
                       "parameters": {
-                        "parent": {
-                          "type": "string",
-                          "pattern": "^locations/[^/]+$",
-                          "description": "Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id.",
-                          "location": "path",
-                          "required": true
-                        },
-                        "monthlyRange.endMonth.year": {
-                          "format": "int32",
+                        "monthlyRange.endMonth.day": {
+                          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
                           "type": "integer",
-                          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
-                          "location": "query"
+                          "location": "query",
+                          "format": "int32"
+                        },
+                        "pageSize": {
+                          "format": "int32",
+                          "location": "query",
+                          "type": "integer",
+                          "description": "Optional. The number of results requested. The default page size is 100. Page size can be set to a maximum of 100."
                         },
                         "monthlyRange.endMonth.month": {
                           "type": "integer",
+                          "format": "int32",
                           "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
-                          "format": "int32",
                           "location": "query"
                         },
-                        "pageSize": {
-                          "type": "integer",
-                          "format": "int32",
-                          "description": "Optional. The number of results requested. The default page size is 100. Page size can be set to a maximum of 100.",
-                          "location": "query"
-                        },
-                        "monthlyRange.endMonth.day": {
+                        "pageToken": {
+                          "format": "byte",
                           "location": "query",
-                          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
-                          "type": "integer",
-                          "format": "int32"
+                          "type": "string",
+                          "description": "Optional. A token indicating the next paginated result to be returned."
                         },
                         "monthlyRange.startMonth.month": {
                           "type": "integer",
@@ -52,31 +136,35 @@
                           "location": "query",
                           "format": "int32"
                         },
-                        "monthlyRange.startMonth.year": {
-                          "format": "int32",
-                          "type": "integer",
+                        "parent": {
+                          "pattern": "^locations/[^/]+$",
+                          "location": "path",
+                          "description": "Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id.",
+                          "type": "string",
+                          "required": true
+                        },
+                        "monthlyRange.endMonth.year": {
                           "location": "query",
-                          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."
+                          "format": "int32",
+                          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+                          "type": "integer"
                         },
                         "monthlyRange.startMonth.day": {
-                          "type": "integer",
                           "format": "int32",
+                          "location": "query",
                           "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
-                          "location": "query"
+                          "type": "integer"
                         },
-                        "pageToken": {
-                          "format": "byte",
-                          "type": "string",
-                          "description": "Optional. A token indicating the next paginated result to be returned.",
-                          "location": "query"
+                        "monthlyRange.startMonth.year": {
+                          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+                          "format": "int32",
+                          "location": "query",
+                          "type": "integer"
                         }
                       },
-                      "id": "businessprofileperformance.locations.searchkeywords.impressions.monthly.list",
-                      "flatPath": "v1/locations/{locationsId}/searchkeywords/impressions/monthly",
                       "parameterOrder": [
                         "parent"
-                      ],
-                      "path": "v1/{+parent}/searchkeywords/impressions/monthly"
+                      ]
                     }
                   }
                 }
@@ -87,15 +175,38 @@
       },
       "methods": {
         "getDailyMetricsTimeSeries": {
-          "path": "v1/{+name}:getDailyMetricsTimeSeries",
+          "id": "businessprofileperformance.locations.getDailyMetricsTimeSeries",
+          "httpMethod": "GET",
+          "description": " Returns the values for each date from a given time range that are associated with the specific daily metric. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345:getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&daily_range.start_date.year=2022&daily_range.start_date.month=1&daily_range.start_date.day=1&daily_range.end_date.year=2022&daily_range.end_date.month=3&daily_range.end_date.day=31`",
+          "flatPath": "v1/locations/{locationsId}:getDailyMetricsTimeSeries",
           "parameters": {
-            "dailySubEntityType.timeOfDay.seconds": {
+            "dailyRange.endDate.day": {
+              "type": "integer",
+              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+              "location": "query",
+              "format": "int32"
+            },
+            "dailySubEntityType.timeOfDay.nanos": {
               "location": "query",
               "type": "integer",
               "format": "int32",
-              "description": "Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds."
+              "description": "Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999."
+            },
+            "dailyRange.endDate.year": {
+              "location": "query",
+              "type": "integer",
+              "format": "int32",
+              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."
+            },
+            "dailyRange.startDate.month": {
+              "type": "integer",
+              "location": "query",
+              "format": "int32",
+              "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."
             },
             "dailyMetric": {
+              "description": "Required. The metric to retrieve time series.",
+              "location": "query",
               "type": "string",
               "enum": [
                 "DAILY_METRIC_UNKNOWN",
@@ -124,28 +235,37 @@
                 "The number of bookings received from the business profile.",
                 "The number of food orders received from the business profile.",
                 "The number of clicks to view or interact with the menu content on the business profile. Multiple clicks by a unique user within a single day are counted as 1."
-              ],
-              "description": "Required. The metric to retrieve time series.",
-              "location": "query"
+              ]
             },
-            "name": {
-              "required": true,
-              "location": "path",
-              "pattern": "^locations/[^/]+$",
-              "type": "string",
-              "description": "Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id."
+            "dailyRange.startDate.year": {
+              "type": "integer",
+              "location": "query",
+              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+              "format": "int32"
+            },
+            "dailySubEntityType.timeOfDay.seconds": {
+              "format": "int32",
+              "type": "integer",
+              "location": "query",
+              "description": "Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds."
             },
             "dailyRange.startDate.day": {
-              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+              "format": "int32",
+              "type": "integer",
+              "location": "query",
+              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant."
+            },
+            "dailySubEntityType.timeOfDay.minutes": {
+              "description": "Minutes of hour of day. Must be from 0 to 59.",
               "type": "integer",
               "location": "query",
               "format": "int32"
             },
             "dailySubEntityType.timeOfDay.hours": {
               "format": "int32",
+              "description": "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time.",
               "type": "integer",
-              "location": "query",
-              "description": "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time."
+              "location": "query"
             },
             "dailyRange.endDate.month": {
               "location": "query",
@@ -153,29 +273,7 @@
               "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
               "type": "integer"
             },
-            "dailyRange.startDate.year": {
-              "type": "integer",
-              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
-              "format": "int32",
-              "location": "query"
-            },
-            "dailySubEntityType.timeOfDay.minutes": {
-              "format": "int32",
-              "location": "query",
-              "description": "Minutes of hour of day. Must be from 0 to 59.",
-              "type": "integer"
-            },
             "dailySubEntityType.dayOfWeek": {
-              "enum": [
-                "DAY_OF_WEEK_UNSPECIFIED",
-                "MONDAY",
-                "TUESDAY",
-                "WEDNESDAY",
-                "THURSDAY",
-                "FRIDAY",
-                "SATURDAY",
-                "SUNDAY"
-              ],
               "location": "query",
               "enumDescriptions": [
                 "The day of the week is unspecified.",
@@ -187,93 +285,67 @@
                 "Saturday",
                 "Sunday"
               ],
+              "enum": [
+                "DAY_OF_WEEK_UNSPECIFIED",
+                "MONDAY",
+                "TUESDAY",
+                "WEDNESDAY",
+                "THURSDAY",
+                "FRIDAY",
+                "SATURDAY",
+                "SUNDAY"
+              ],
               "type": "string",
               "description": "Represents the day of the week. Eg: MONDAY."
             },
-            "dailyRange.endDate.year": {
-              "format": "int32",
-              "location": "query",
-              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
-              "type": "integer"
-            },
-            "dailyRange.startDate.month": {
-              "location": "query",
-              "format": "int32",
-              "type": "integer",
-              "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."
-            },
-            "dailyRange.endDate.day": {
-              "format": "int32",
-              "type": "integer",
-              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
-              "location": "query"
-            },
-            "dailySubEntityType.timeOfDay.nanos": {
-              "description": "Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.",
-              "type": "integer",
-              "format": "int32",
-              "location": "query"
+            "name": {
+              "pattern": "^locations/[^/]+$",
+              "required": true,
+              "type": "string",
+              "location": "path",
+              "description": "Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id."
             }
           },
-          "id": "businessprofileperformance.locations.getDailyMetricsTimeSeries",
           "response": {
             "$ref": "GetDailyMetricsTimeSeriesResponse"
           },
-          "description": " Returns the values for each date from a given time range that are associated with the specific daily metric. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345:getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&daily_range.start_date.year=2022&daily_range.start_date.month=1&daily_range.start_date.day=1&daily_range.end_date.year=2022&daily_range.end_date.month=3&daily_range.end_date.day=31`",
+          "path": "v1/{+name}:getDailyMetricsTimeSeries",
           "parameterOrder": [
             "name"
-          ],
-          "flatPath": "v1/locations/{locationsId}:getDailyMetricsTimeSeries",
-          "httpMethod": "GET"
+          ]
         }
       }
     }
   },
   "basePath": "",
+  "name": "businessprofileperformance",
+  "title": "Business Profile Performance API",
+  "baseUrl": "https://businessprofileperformance.googleapis.com/",
+  "canonicalName": "Business Profile Performance",
+  "documentationLink": "https://developers.google.com/my-business/",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "discoveryVersion": "v1",
-  "baseUrl": "https://businessprofileperformance.googleapis.com/",
-  "rootUrl": "https://businessprofileperformance.googleapis.com/",
+  "revision": "20230228",
   "schemas": {
-    "SearchKeywordCount": {
-      "properties": {
-        "insightsValue": {
-          "description": "One of either: 1) The sum of the number of unique users that used the keyword in a month, aggregated for each month requested. 2) A threshold that indicates that the actual value is below this threshold.",
-          "$ref": "InsightsValue"
-        },
-        "searchKeyword": {
-          "type": "string",
-          "description": "The lower-cased string that the user entered."
-        }
-      },
+    "TimeSeries": {
       "type": "object",
-      "id": "SearchKeywordCount",
-      "description": "Represents a single search keyword and its value."
-    },
-    "ListSearchKeywordImpressionsMonthlyResponse": {
-      "type": "object",
-      "description": "Represents the response for ListSearchKeywordImpressionsMonthly.",
-      "id": "ListSearchKeywordImpressionsMonthlyResponse",
+      "id": "TimeSeries",
+      "description": "Represents a timeseries.",
       "properties": {
-        "searchKeywordsCounts": {
-          "type": "array",
-          "description": "Search terms which have been used to find a business.",
+        "datedValues": {
+          "description": "List of datapoints in the timeseries, where each datapoint is a date-value pair.",
           "items": {
-            "$ref": "SearchKeywordCount"
-          }
-        },
-        "nextPageToken": {
-          "description": "A token indicating the last paginated result returned. This can be used by succeeding requests to get the next \"page\" of keywords. It will only be present when there are more results to be returned.",
-          "format": "byte",
-          "type": "string"
+            "$ref": "DatedValue"
+          },
+          "type": "array"
         }
       }
     },
     "GetDailyMetricsTimeSeriesResponse": {
-      "id": "GetDailyMetricsTimeSeriesResponse",
+      "description": "Represents the response for GetDailyMetricsTimeSeries.",
       "type": "object",
       "properties": {
         "timeSeries": {
@@ -281,170 +353,98 @@
           "$ref": "TimeSeries"
         }
       },
-      "description": "Represents the response for GetDailyMetricsTimeSeries."
+      "id": "GetDailyMetricsTimeSeriesResponse"
     },
-    "DatedValue": {
+    "ListSearchKeywordImpressionsMonthlyResponse": {
+      "id": "ListSearchKeywordImpressionsMonthlyResponse",
+      "type": "object",
+      "description": "Represents the response for ListSearchKeywordImpressionsMonthly.",
       "properties": {
-        "value": {
-          "format": "int64",
-          "description": "The value of the datapoint.",
-          "type": "string"
+        "nextPageToken": {
+          "type": "string",
+          "description": "A token indicating the last paginated result returned. This can be used by succeeding requests to get the next \"page\" of keywords. It will only be present when there are more results to be returned.",
+          "format": "byte"
         },
-        "date": {
-          "$ref": "Date",
-          "description": "The date that the datapoint corresponds to. This represents a month value if the day field is not set."
-        }
-      },
-      "id": "DatedValue",
-      "description": "Represents a single datapoint in the timeseries, where each datapoint is a date-value pair.",
-      "type": "object"
-    },
-    "TimeSeries": {
-      "properties": {
-        "datedValues": {
+        "searchKeywordsCounts": {
           "items": {
-            "$ref": "DatedValue"
+            "$ref": "SearchKeywordCount"
           },
-          "description": "List of datapoints in the timeseries, where each datapoint is a date-value pair.",
+          "description": "Search terms which have been used to find a business.",
           "type": "array"
         }
+      }
+    },
+    "DatedValue": {
+      "id": "DatedValue",
+      "description": "Represents a single datapoint in the timeseries, where each datapoint is a date-value pair.",
+      "properties": {
+        "date": {
+          "description": "The date that the datapoint corresponds to. This represents a month value if the day field is not set.",
+          "$ref": "Date"
+        },
+        "value": {
+          "description": "The value of the datapoint.",
+          "format": "int64",
+          "type": "string"
+        }
       },
-      "description": "Represents a timeseries.",
-      "type": "object",
-      "id": "TimeSeries"
+      "type": "object"
     },
     "Date": {
-      "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
+      "id": "Date",
+      "type": "object",
       "properties": {
-        "year": {
-          "type": "integer",
-          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
-          "format": "int32"
-        },
         "month": {
           "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
           "type": "integer",
           "format": "int32"
         },
         "day": {
+          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
           "format": "int32",
-          "type": "integer",
-          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant."
+          "type": "integer"
+        },
+        "year": {
+          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+          "format": "int32",
+          "type": "integer"
         }
       },
-      "type": "object",
-      "id": "Date"
+      "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp"
     },
     "InsightsValue": {
       "properties": {
-        "value": {
-          "description": "Represents the actual value.",
+        "threshold": {
+          "description": "Represents the threshold below which the actual value falls.",
           "format": "int64",
           "type": "string"
         },
-        "threshold": {
+        "value": {
+          "type": "string",
           "format": "int64",
-          "description": "Represents the threshold below which the actual value falls.",
-          "type": "string"
+          "description": "Represents the actual value."
         }
       },
-      "type": "object",
       "id": "InsightsValue",
-      "description": "Represents an insights value."
+      "description": "Represents an insights value.",
+      "type": "object"
+    },
+    "SearchKeywordCount": {
+      "type": "object",
+      "id": "SearchKeywordCount",
+      "description": "Represents a single search keyword and its value.",
+      "properties": {
+        "insightsValue": {
+          "$ref": "InsightsValue",
+          "description": "One of either: 1) The sum of the number of unique users that used the keyword in a month, aggregated for each month requested. 2) A threshold that indicates that the actual value is below this threshold."
+        },
+        "searchKeyword": {
+          "type": "string",
+          "description": "The lower-cased string that the user entered."
+        }
+      }
     }
   },
-  "ownerName": "Google",
-  "servicePath": "",
-  "batchPath": "batch",
-  "version": "v1",
-  "protocol": "rest",
-  "mtlsRootUrl": "https://businessprofileperformance.mtls.googleapis.com/",
-  "id": "businessprofileperformance:v1",
-  "version_module": true,
-  "ownerDomain": "google.com",
-  "revision": "20230228",
-  "canonicalName": "Business Profile Performance",
-  "kind": "discovery#restDescription",
-  "parameters": {
-    "access_token": {
-      "description": "OAuth access token.",
-      "location": "query",
-      "type": "string"
-    },
-    "quotaUser": {
-      "location": "query",
-      "type": "string",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
-    },
-    "fields": {
-      "type": "string",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "location": "query"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "location": "query",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "type": "string"
-    },
-    "uploadType": {
-      "location": "query",
-      "type": "string",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "alt": {
-      "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "default": "json",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "description": "Data format for response."
-    }
-  },
-  "fullyEncodeReservedExpansion": true,
-  "title": "Business Profile Performance API",
-  "documentationLink": "https://developers.google.com/my-business/",
-  "description": "The Business Profile Performance API allows merchants to fetch performance reports about their business profile on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.",
-  "name": "businessprofileperformance"
+  "rootUrl": "https://businessprofileperformance.googleapis.com/",
+  "batchPath": "batch"
 }

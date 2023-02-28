@@ -1,244 +1,700 @@
 {
-  "name": "transcoder",
-  "canonicalName": "Transcoder",
-  "revision": "20230215",
   "id": "transcoder:v1",
-  "discoveryVersion": "v1",
+  "baseUrl": "https://transcoder.googleapis.com/",
   "title": "Transcoder API",
-  "version": "v1",
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  "resources": {
+    "projects": {
+      "resources": {
+        "locations": {
+          "resources": {
+            "jobs": {
+              "methods": {
+                "get": {
+                  "id": "transcoder.projects.locations.jobs.get",
+                  "description": "Returns the job data.",
+                  "httpMethod": "GET",
+                  "path": "v1/{+name}",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
+                  "response": {
+                    "$ref": "Job"
+                  },
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                      "description": "Required. The name of the job to retrieve. Format: `projects/{project}/locations/{location}/jobs/{job}`",
+                      "type": "string",
+                      "location": "path"
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "list": {
+                  "parameters": {
+                    "parent": {
+                      "description": "Required. Format: `projects/{project}/locations/{location}`",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "type": "string"
+                    },
+                    "pageToken": {
+                      "location": "query",
+                      "description": "The `next_page_token` value returned from a previous List request, if any.",
+                      "type": "string"
+                    },
+                    "orderBy": {
+                      "location": "query",
+                      "type": "string",
+                      "description": "One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering."
+                    },
+                    "pageSize": {
+                      "type": "integer",
+                      "description": "The maximum number of items to return.",
+                      "format": "int32",
+                      "location": "query"
+                    },
+                    "filter": {
+                      "type": "string",
+                      "description": "The filter expression, following the syntax outlined in https://google.aip.dev/160.",
+                      "location": "query"
+                    }
+                  },
+                  "id": "transcoder.projects.locations.jobs.list",
+                  "path": "v1/{+parent}/jobs",
+                  "httpMethod": "GET",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs",
+                  "description": "Lists jobs in the specified region.",
+                  "response": {
+                    "$ref": "ListJobsResponse"
+                  }
+                },
+                "delete": {
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "allowMissing": {
+                      "type": "boolean",
+                      "location": "query",
+                      "description": "If set to true, and the job is not found, the request will succeed but no action will be taken on the server."
+                    },
+                    "name": {
+                      "description": "Required. The name of the job to delete. Format: `projects/{project}/locations/{location}/jobs/{job}`",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
+                      "type": "string",
+                      "location": "path"
+                    }
+                  },
+                  "id": "transcoder.projects.locations.jobs.delete",
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "httpMethod": "DELETE",
+                  "path": "v1/{+name}",
+                  "description": "Deletes a job.",
+                  "parameterOrder": [
+                    "name"
+                  ]
+                },
+                "create": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "parent": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "description": "Required. The parent location to create and process this job. Format: `projects/{project}/locations/{location}`",
+                      "location": "path"
+                    }
+                  },
+                  "path": "v1/{+parent}/jobs",
+                  "response": {
+                    "$ref": "Job"
+                  },
+                  "id": "transcoder.projects.locations.jobs.create",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "description": "Creates a job in the specified region.",
+                  "httpMethod": "POST",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs",
+                  "request": {
+                    "$ref": "Job"
+                  }
+                }
+              }
+            },
+            "jobTemplates": {
+              "methods": {
+                "delete": {
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "path": "v1/{+name}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "httpMethod": "DELETE",
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "location": "path",
+                      "description": "Required. The name of the job template to delete. `projects/{project}/locations/{location}/jobTemplates/{job_template}`",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/jobTemplates/[^/]+$"
+                    },
+                    "allowMissing": {
+                      "location": "query",
+                      "description": "If set to true, and the job template is not found, the request will succeed but no action will be taken on the server.",
+                      "type": "boolean"
+                    }
+                  },
+                  "id": "transcoder.projects.locations.jobTemplates.delete",
+                  "description": "Deletes a job template.",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates/{jobTemplatesId}",
+                  "response": {
+                    "$ref": "Empty"
+                  }
+                },
+                "get": {
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates/{jobTemplatesId}",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "path": "v1/{+name}",
+                  "description": "Returns the job template data.",
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "JobTemplate"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "id": "transcoder.projects.locations.jobTemplates.get",
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "description": "Required. The name of the job template to retrieve. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/jobTemplates/[^/]+$"
+                    }
+                  }
+                },
+                "list": {
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "path": "v1/{+parent}/jobTemplates",
+                  "description": "Lists job templates in the specified region.",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "response": {
+                    "$ref": "ListJobTemplatesResponse"
+                  },
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "pageSize": {
+                      "description": "The maximum number of items to return.",
+                      "location": "query",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "filter": {
+                      "description": "The filter expression, following the syntax outlined in https://google.aip.dev/160.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "The `next_page_token` value returned from a previous List request, if any."
+                    },
+                    "parent": {
+                      "description": "Required. The parent location from which to retrieve the collection of job templates. Format: `projects/{project}/locations/{location}`",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "type": "string",
+                      "required": true
+                    },
+                    "orderBy": {
+                      "description": "One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering.",
+                      "type": "string",
+                      "location": "query"
+                    }
+                  },
+                  "id": "transcoder.projects.locations.jobTemplates.list"
+                },
+                "create": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "parent": {
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "description": "Required. The parent location to create this job template. Format: `projects/{project}/locations/{location}`",
+                      "required": true
+                    },
+                    "jobTemplateId": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`."
+                    }
+                  },
+                  "httpMethod": "POST",
+                  "path": "v1/{+parent}/jobTemplates",
+                  "response": {
+                    "$ref": "JobTemplate"
+                  },
+                  "request": {
+                    "$ref": "JobTemplate"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates",
+                  "description": "Creates a job template in the specified region.",
+                  "id": "transcoder.projects.locations.jobTemplates.create"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
+  "discoveryVersion": "v1",
+  "batchPath": "batch",
+  "protocol": "rest",
+  "fullyEncodeReservedExpansion": true,
+  "revision": "20230215",
+  "rootUrl": "https://transcoder.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "name": "transcoder",
+  "version": "v1",
+  "documentationLink": "https://cloud.google.com/transcoder/docs/",
+  "description": "This API converts video files into formats suitable for consumer distribution. For more information, see the Transcoder API overview. ",
+  "basePath": "",
+  "servicePath": "",
+  "version_module": true,
   "schemas": {
-    "SegmentSettings": {
-      "type": "object",
-      "description": "Segment settings for `ts`, `fmp4` and `vtt`.",
-      "id": "SegmentSettings",
-      "properties": {
-        "individualSegments": {
-          "description": "Required. Create an individual segment file. The default is `false`.",
-          "type": "boolean"
-        },
-        "segmentDuration": {
-          "type": "string",
-          "description": "Duration of the segments in seconds. The default is `6.0s`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).",
-          "format": "google-duration"
-        }
-      }
-    },
-    "SpriteSheet": {
-      "description": "Sprite sheet configuration.",
-      "properties": {
-        "endTimeOffset": {
-          "type": "string",
-          "description": "End time in seconds, relative to the output file timeline. When `end_time_offset` is not specified, the sprites are generated until the end of the output file.",
-          "format": "google-duration"
-        },
-        "interval": {
-          "description": "Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds.",
-          "type": "string",
-          "format": "google-duration"
-        },
-        "quality": {
-          "description": "The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.",
-          "type": "integer",
-          "format": "int32"
-        },
-        "spriteHeightPixels": {
-          "description": "Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
-          "type": "integer",
-          "format": "int32"
-        },
-        "format": {
-          "description": "Format type. The default is `jpeg`. Supported formats: - `jpeg`",
-          "type": "string"
-        },
-        "spriteWidthPixels": {
-          "format": "int32",
-          "type": "integer",
-          "description": "Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output."
-        },
-        "startTimeOffset": {
-          "type": "string",
-          "description": "Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.",
-          "format": "google-duration"
-        },
-        "totalCount": {
-          "format": "int32",
-          "description": "Total number of sprites. Create the specified number of sprites distributed evenly across the timeline of the output media. The default is 100.",
-          "type": "integer"
-        },
-        "columnCount": {
-          "format": "int32",
-          "type": "integer",
-          "description": "The maximum number of sprites per row in a sprite sheet. The default is 0, which indicates no maximum limit."
-        },
-        "rowCount": {
-          "format": "int32",
-          "description": "The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.",
-          "type": "integer"
-        },
-        "filePrefix": {
-          "description": "Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `sprite_sheet0000000123.jpeg`.",
-          "type": "string"
-        }
-      },
-      "id": "SpriteSheet",
-      "type": "object"
-    },
-    "ListJobsResponse": {
-      "type": "object",
-      "description": "Response message for `TranscoderService.ListJobs`.",
-      "properties": {
-        "unreachable": {
-          "description": "List of regions that could not be reached.",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "jobs": {
-          "description": "List of jobs in the specified region.",
-          "items": {
-            "$ref": "Job"
-          },
-          "type": "array"
-        },
-        "nextPageToken": {
-          "description": "The pagination token.",
-          "type": "string"
-        }
-      },
-      "id": "ListJobsResponse"
-    },
     "AdBreak": {
-      "type": "object",
       "description": "Ad break.",
-      "id": "AdBreak",
       "properties": {
-        "startTimeOffset": {
-          "format": "google-duration",
-          "description": "Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`.",
-          "type": "string"
-        }
-      }
-    },
-    "AnimationStatic": {
-      "id": "AnimationStatic",
-      "type": "object",
-      "properties": {
-        "xy": {
-          "description": "Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.",
-          "$ref": "NormalizedCoordinate"
-        },
         "startTimeOffset": {
           "type": "string",
           "format": "google-duration",
-          "description": "The time to start displaying the overlay object, in seconds. Default: 0"
+          "description": "Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`."
         }
       },
-      "description": "Display static overlay object."
-    },
-    "PreprocessingConfig": {
-      "id": "PreprocessingConfig",
-      "description": "Preprocessing configurations.",
-      "properties": {
-        "deinterlace": {
-          "description": "Specify the video deinterlace configuration.",
-          "$ref": "Deinterlace"
-        },
-        "color": {
-          "description": "Color preprocessing configuration.",
-          "$ref": "Color"
-        },
-        "denoise": {
-          "$ref": "Denoise",
-          "description": "Denoise preprocessing configuration."
-        },
-        "deblock": {
-          "description": "Deblock preprocessing configuration.",
-          "$ref": "Deblock"
-        },
-        "pad": {
-          "$ref": "Pad",
-          "description": "Specify the video pad filter configuration."
-        },
-        "audio": {
-          "description": "Audio preprocessing configuration.",
-          "$ref": "Audio"
-        },
-        "crop": {
-          "description": "Specify the video cropping configuration.",
-          "$ref": "Crop"
-        }
-      },
-      "type": "object"
-    },
-    "Input": {
       "type": "object",
-      "id": "Input",
+      "id": "AdBreak"
+    },
+    "Deinterlace": {
+      "description": "Deinterlace configuration for input video.",
+      "type": "object",
       "properties": {
-        "uri": {
-          "description": "URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).",
-          "type": "string"
+        "bwdif": {
+          "description": "Specifies the Bob Weaver Deinterlacing Filter Configuration.",
+          "$ref": "BwdifConfig"
         },
-        "preprocessingConfig": {
-          "description": "Preprocessing configurations.",
-          "$ref": "PreprocessingConfig"
-        },
-        "key": {
-          "description": "A unique key for this input. Must be specified when using advanced mapping and edit lists.",
-          "type": "string"
+        "yadif": {
+          "$ref": "YadifConfig",
+          "description": "Specifies the Yet Another Deinterlacing Filter Configuration."
         }
       },
-      "description": "Input asset."
+      "id": "Deinterlace"
     },
     "Audio": {
       "type": "object",
+      "id": "Audio",
       "properties": {
+        "lowBoost": {
+          "type": "boolean",
+          "description": "Enable boosting low frequency components. The default is `false`. **Note:** This field is not supported."
+        },
         "highBoost": {
           "description": "Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.",
           "type": "boolean"
         },
         "lufs": {
-          "description": "Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization",
+          "format": "double",
           "type": "number",
-          "format": "double"
-        },
-        "lowBoost": {
-          "description": "Enable boosting low frequency components. The default is `false`. **Note:** This field is not supported.",
-          "type": "boolean"
+          "description": "Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization"
         }
       },
-      "id": "Audio",
       "description": "Audio preprocessing configuration."
     },
-    "BwdifConfig": {
-      "description": "Bob Weaver Deinterlacing Filter Configuration.",
+    "ListJobTemplatesResponse": {
+      "description": "Response message for `TranscoderService.ListJobTemplates`.",
+      "type": "object",
       "properties": {
-        "deinterlaceAllFrames": {
-          "description": "Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.",
-          "type": "boolean"
+        "unreachable": {
+          "description": "List of regions that could not be reached.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
-        "parity": {
-          "description": "The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity",
+        "nextPageToken": {
+          "type": "string",
+          "description": "The pagination token."
+        },
+        "jobTemplates": {
+          "type": "array",
+          "description": "List of job templates in the specified region.",
+          "items": {
+            "$ref": "JobTemplate"
+          }
+        }
+      },
+      "id": "ListJobTemplatesResponse"
+    },
+    "ElementaryStream": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "A unique key for this elementary stream."
+        },
+        "textStream": {
+          "description": "Encoding of a text stream. For example, closed captions or subtitles.",
+          "$ref": "TextStream"
+        },
+        "audioStream": {
+          "$ref": "AudioStream",
+          "description": "Encoding of an audio stream."
+        },
+        "videoStream": {
+          "description": "Encoding of a video stream.",
+          "$ref": "VideoStream"
+        }
+      },
+      "id": "ElementaryStream",
+      "description": "Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats."
+    },
+    "Overlay": {
+      "description": "Overlay configuration.",
+      "id": "Overlay",
+      "type": "object",
+      "properties": {
+        "animations": {
+          "description": "List of Animations. The list should be chronological, without any time overlap.",
+          "type": "array",
+          "items": {
+            "$ref": "Animation"
+          }
+        },
+        "image": {
+          "$ref": "Image",
+          "description": "Image overlay."
+        }
+      }
+    },
+    "Animation": {
+      "properties": {
+        "animationEnd": {
+          "$ref": "AnimationEnd",
+          "description": "End previous animation."
+        },
+        "animationFade": {
+          "description": "Display overlay object with fade animation.",
+          "$ref": "AnimationFade"
+        },
+        "animationStatic": {
+          "description": "Display static overlay object.",
+          "$ref": "AnimationStatic"
+        }
+      },
+      "type": "object",
+      "description": "Animation types.",
+      "id": "Animation"
+    },
+    "Job": {
+      "id": "Job",
+      "description": "Transcoding job resource.",
+      "type": "object",
+      "properties": {
+        "inputUri": {
+          "description": "Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).",
           "type": "string"
         },
-        "mode": {
-          "description": "Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field",
+        "name": {
+          "type": "string",
+          "description": "The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`"
+        },
+        "templateId": {
+          "description": "Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`",
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "Output only. The time the job was created.",
+          "format": "google-datetime",
+          "readOnly": true
+        },
+        "error": {
+          "$ref": "Status",
+          "readOnly": true,
+          "description": "Output only. An error object that describes the reason for the failure. This property is always present when `state` is `FAILED`."
+        },
+        "config": {
+          "$ref": "JobConfig",
+          "description": "The configuration for this job."
+        },
+        "startTime": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Output only. The time the transcoding started.",
+          "format": "google-datetime"
+        },
+        "outputUri": {
+          "description": "Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "PROCESSING_STATE_UNSPECIFIED",
+            "PENDING",
+            "RUNNING",
+            "SUCCEEDED",
+            "FAILED"
+          ],
+          "type": "string",
+          "description": "Output only. The current state of the job.",
+          "enumDescriptions": [
+            "The processing state is not specified.",
+            "The job is enqueued and will be picked up for processing soon.",
+            "The job is being processed.",
+            "The job has been completed successfully.",
+            "The job has failed. For additional information, see `failure_reason` and `failure_details`"
+          ],
+          "readOnly": true
+        },
+        "labels": {
+          "type": "object",
+          "description": "The labels associated with this job. You can use these to organize and group your jobs.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "ttlAfterCompletionDays": {
+          "type": "integer",
+          "description": "Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.",
+          "format": "int32"
+        },
+        "endTime": {
+          "format": "google-datetime",
+          "type": "string",
+          "readOnly": true,
+          "description": "Output only. The time the transcoding finished."
+        }
+      }
+    },
+    "Color": {
+      "description": "Color preprocessing configuration. **Note:** This configuration is not supported.",
+      "id": "Color",
+      "type": "object",
+      "properties": {
+        "saturation": {
+          "format": "double",
+          "type": "number",
+          "description": "Control color saturation of the video. Enter a value between -1 and 1, where -1 is fully desaturated and 1 is maximum saturation. 0 is no change. The default is 0."
+        },
+        "contrast": {
+          "type": "number",
+          "description": "Control black and white contrast of the video. Enter a value between -1 and 1, where -1 is minimum contrast and 1 is maximum contrast. 0 is no change. The default is 0.",
+          "format": "double"
+        },
+        "brightness": {
+          "format": "double",
+          "description": "Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.",
+          "type": "number"
+        }
+      }
+    },
+    "VideoStream": {
+      "description": "Video stream resource.",
+      "id": "VideoStream",
+      "type": "object",
+      "properties": {
+        "h264": {
+          "$ref": "H264CodecSettings",
+          "description": "H264 codec settings."
+        },
+        "h265": {
+          "description": "H265 codec settings.",
+          "$ref": "H265CodecSettings"
+        },
+        "vp9": {
+          "$ref": "Vp9CodecSettings",
+          "description": "VP9 codec settings."
+        }
+      }
+    },
+    "SpriteSheet": {
+      "description": "Sprite sheet configuration.",
+      "type": "object",
+      "properties": {
+        "columnCount": {
+          "description": "The maximum number of sprites per row in a sprite sheet. The default is 0, which indicates no maximum limit.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "startTimeOffset": {
+          "format": "google-duration",
+          "description": "Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.",
+          "type": "string"
+        },
+        "interval": {
+          "type": "string",
+          "format": "google-duration",
+          "description": "Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds."
+        },
+        "filePrefix": {
+          "description": "Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `sprite_sheet0000000123.jpeg`.",
+          "type": "string"
+        },
+        "format": {
+          "type": "string",
+          "description": "Format type. The default is `jpeg`. Supported formats: - `jpeg`"
+        },
+        "endTimeOffset": {
+          "format": "google-duration",
+          "description": "End time in seconds, relative to the output file timeline. When `end_time_offset` is not specified, the sprites are generated until the end of the output file.",
+          "type": "string"
+        },
+        "rowCount": {
+          "format": "int32",
+          "type": "integer",
+          "description": "The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit."
+        },
+        "quality": {
+          "type": "integer",
+          "description": "The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.",
+          "format": "int32"
+        },
+        "spriteWidthPixels": {
+          "description": "Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "spriteHeightPixels": {
+          "type": "integer",
+          "description": "Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
+          "format": "int32"
+        },
+        "totalCount": {
+          "type": "integer",
+          "description": "Total number of sprites. Create the specified number of sprites distributed evenly across the timeline of the output media. The default is 100.",
+          "format": "int32"
+        }
+      },
+      "id": "SpriteSheet"
+    },
+    "Manifest": {
+      "type": "object",
+      "description": "Manifest configuration.",
+      "properties": {
+        "fileName": {
+          "description": "The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.",
+          "type": "string"
+        },
+        "muxStreams": {
+          "items": {
+            "type": "string"
+          },
+          "description": "Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.",
+          "type": "array"
+        },
+        "type": {
+          "description": "Required. Type of the manifest, can be `HLS` or `DASH`.",
+          "enum": [
+            "MANIFEST_TYPE_UNSPECIFIED",
+            "HLS",
+            "DASH"
+          ],
+          "enumDescriptions": [
+            "The manifest type is not specified.",
+            "Create `HLS` manifest. The corresponding file extension is `.m3u8`.",
+            "Create `DASH` manifest. The corresponding file extension is `.mpd`."
+          ],
           "type": "string"
         }
       },
-      "id": "BwdifConfig",
+      "id": "Manifest"
+    },
+    "TextStream": {
+      "id": "TextStream",
+      "description": "Encoding of a text stream. For example, closed captions or subtitles.",
+      "properties": {
+        "codec": {
+          "description": "The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`",
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The name for this particular text stream that will be added to the HLS/DASH manifest."
+        },
+        "mapping": {
+          "type": "array",
+          "description": "The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.",
+          "items": {
+            "$ref": "TextMapping"
+          }
+        },
+        "languageCode": {
+          "type": "string",
+          "description": "The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier."
+        }
+      },
       "type": "object"
     },
-    "Image": {
+    "Deblock": {
       "properties": {
-        "resolution": {
-          "$ref": "NormalizedCoordinate",
-          "description": "Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`."
+        "enabled": {
+          "description": "Enable deblocker. The default is `false`.",
+          "type": "boolean"
         },
+        "strength": {
+          "description": "Set strength of the deblocker. Enter a value between 0 and 1. The higher the value, the stronger the block removal. 0 is no deblocking. The default is 0.",
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "description": "Deblock preprocessing configuration. **Note:** This configuration is not supported.",
+      "type": "object",
+      "id": "Deblock"
+    },
+    "Image": {
+      "description": "Overlaid jpeg image.",
+      "id": "Image",
+      "type": "object",
+      "properties": {
         "alpha": {
           "format": "double",
           "type": "number",
@@ -247,11 +703,271 @@
         "uri": {
           "type": "string",
           "description": "Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type."
+        },
+        "resolution": {
+          "$ref": "NormalizedCoordinate",
+          "description": "Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`."
+        }
+      }
+    },
+    "H264CodecSettings": {
+      "type": "object",
+      "properties": {
+        "heightPixels": {
+          "format": "int32",
+          "description": "The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
+          "type": "integer"
+        },
+        "preset": {
+          "type": "string",
+          "description": "Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message."
+        },
+        "bPyramid": {
+          "description": "Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.",
+          "type": "boolean"
+        },
+        "vbvSizeBits": {
+          "format": "int32",
+          "description": "Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.",
+          "type": "integer"
+        },
+        "widthPixels": {
+          "format": "int32",
+          "description": "The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
+          "type": "integer"
+        },
+        "rateControlMode": {
+          "type": "string",
+          "description": "Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor"
+        },
+        "pixelFormat": {
+          "type": "string",
+          "description": "Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format"
+        },
+        "entropyCoder": {
+          "description": "The entropy coder to use. The default is `cabac`. Supported entropy coders: - `cavlc` - `cabac`",
+          "type": "string"
+        },
+        "frameRate": {
+          "format": "double",
+          "description": "Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.",
+          "type": "number"
+        },
+        "enableTwoPass": {
+          "description": "Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.",
+          "type": "boolean"
+        },
+        "bFrameCount": {
+          "type": "integer",
+          "description": "The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.",
+          "format": "int32"
+        },
+        "vbvFullnessBits": {
+          "format": "int32",
+          "description": "Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.",
+          "type": "integer"
+        },
+        "allowOpenGop": {
+          "type": "boolean",
+          "description": "Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`."
+        },
+        "crfLevel": {
+          "description": "Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "tune": {
+          "type": "string",
+          "description": "Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message."
+        },
+        "aqStrength": {
+          "format": "double",
+          "type": "number",
+          "description": "Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0."
+        },
+        "bitrateBps": {
+          "format": "int32",
+          "description": "Required. The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 800,000,000.",
+          "type": "integer"
+        },
+        "gopDuration": {
+          "type": "string",
+          "format": "google-duration",
+          "description": "Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`."
+        },
+        "gopFrameCount": {
+          "type": "integer",
+          "description": "Select the GOP size based on the specified frame count. Must be greater than zero.",
+          "format": "int32"
+        },
+        "profile": {
+          "type": "string",
+          "description": "Enforces the specified codec profile. The following profiles are supported: * `baseline` * `main` * `high` (default) The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message."
         }
       },
-      "description": "Overlaid jpeg image.",
-      "id": "Image",
-      "type": "object"
+      "id": "H264CodecSettings",
+      "description": "H264 codec settings."
+    },
+    "AudioMapping": {
+      "description": "The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.",
+      "type": "object",
+      "properties": {
+        "gainDb": {
+          "type": "number",
+          "description": "Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.",
+          "format": "double"
+        },
+        "inputChannel": {
+          "type": "integer",
+          "description": "Required. The zero-based index of the channel in the input audio stream.",
+          "format": "int32"
+        },
+        "atomKey": {
+          "description": "Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.",
+          "type": "string"
+        },
+        "inputKey": {
+          "description": "Required. The `Input.key` that identifies the input file.",
+          "type": "string"
+        },
+        "inputTrack": {
+          "description": "Required. The zero-based index of the track in the input file.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "outputChannel": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Required. The zero-based index of the channel in the output audio stream."
+        }
+      },
+      "id": "AudioMapping"
+    },
+    "EditAtom": {
+      "properties": {
+        "startTimeOffset": {
+          "description": "Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.",
+          "format": "google-duration",
+          "type": "string"
+        },
+        "key": {
+          "type": "string",
+          "description": "A unique key for this atom. Must be specified when using advanced mapping."
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline."
+        },
+        "endTimeOffset": {
+          "description": "End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.",
+          "format": "google-duration",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "id": "EditAtom",
+      "description": "Edit atom."
+    },
+    "Status": {
+      "properties": {
+        "details": {
+          "type": "array",
+          "items": {
+            "additionalProperties": {
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
+            },
+            "type": "object"
+          },
+          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use."
+        },
+        "message": {
+          "type": "string",
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."
+        },
+        "code": {
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "id": "Status",
+      "type": "object",
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+    },
+    "Input": {
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "A unique key for this input. Must be specified when using advanced mapping and edit lists."
+        },
+        "uri": {
+          "type": "string",
+          "description": "URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)."
+        },
+        "preprocessingConfig": {
+          "description": "Preprocessing configurations.",
+          "$ref": "PreprocessingConfig"
+        }
+      },
+      "type": "object",
+      "id": "Input",
+      "description": "Input asset."
+    },
+    "PubsubDestination": {
+      "description": "A Pub/Sub destination.",
+      "type": "object",
+      "properties": {
+        "topic": {
+          "description": "The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.",
+          "type": "string"
+        }
+      },
+      "id": "PubsubDestination"
+    },
+    "Output": {
+      "type": "object",
+      "description": "Location of output file(s) in a Cloud Storage bucket.",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "description": "URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)."
+        }
+      },
+      "id": "Output"
+    },
+    "MuxStream": {
+      "type": "object",
+      "properties": {
+        "fileName": {
+          "description": "The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.",
+          "type": "string"
+        },
+        "container": {
+          "description": "The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)",
+          "type": "string"
+        },
+        "key": {
+          "type": "string",
+          "description": "A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8` extension suffix."
+        },
+        "segmentSettings": {
+          "$ref": "SegmentSettings",
+          "description": "Segment settings for `ts`, `fmp4` and `vtt`."
+        },
+        "elementaryStreams": {
+          "items": {
+            "type": "string"
+          },
+          "description": "List of `ElementaryStream.key`s multiplexed in this stream.",
+          "type": "array"
+        }
+      },
+      "description": "Multiplexing settings for output stream.",
+      "id": "MuxStream"
     },
     "AnimationFade": {
       "properties": {
@@ -259,13 +975,7 @@
           "description": "Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.",
           "$ref": "NormalizedCoordinate"
         },
-        "startTimeOffset": {
-          "format": "google-duration",
-          "type": "string",
-          "description": "The time to start the fade animation, in seconds. Default: 0"
-        },
         "fadeType": {
-          "type": "string",
           "enumDescriptions": [
             "The fade type is not specified.",
             "Fade the overlay object into view.",
@@ -276,376 +986,23 @@
             "FADE_IN",
             "FADE_OUT"
           ],
-          "description": "Required. Type of fade animation: `FADE_IN` or `FADE_OUT`."
+          "description": "Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.",
+          "type": "string"
+        },
+        "startTimeOffset": {
+          "type": "string",
+          "format": "google-duration",
+          "description": "The time to start the fade animation, in seconds. Default: 0"
         },
         "endTimeOffset": {
-          "type": "string",
+          "format": "google-duration",
           "description": "The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s",
-          "format": "google-duration"
+          "type": "string"
         }
       },
+      "id": "AnimationFade",
       "type": "object",
-      "description": "Display overlay object with fade animation.",
-      "id": "AnimationFade"
-    },
-    "YadifConfig": {
-      "description": "Yet Another Deinterlacing Filter Configuration.",
-      "id": "YadifConfig",
-      "properties": {
-        "disableSpatialInterlacing": {
-          "type": "boolean",
-          "description": "Disable spacial interlacing. The default is `false`."
-        },
-        "deinterlaceAllFrames": {
-          "type": "boolean",
-          "description": "Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`."
-        },
-        "parity": {
-          "type": "string",
-          "description": "The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity"
-        },
-        "mode": {
-          "description": "Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "Vp9CodecSettings": {
-      "type": "object",
-      "id": "Vp9CodecSettings",
-      "description": "VP9 codec settings.",
-      "properties": {
-        "pixelFormat": {
-          "type": "string",
-          "description": "Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format"
-        },
-        "gopFrameCount": {
-          "description": "Select the GOP size based on the specified frame count. Must be greater than zero.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "bitrateBps": {
-          "format": "int32",
-          "description": "Required. The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.",
-          "type": "integer"
-        },
-        "widthPixels": {
-          "format": "int32",
-          "description": "The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
-          "type": "integer"
-        },
-        "heightPixels": {
-          "type": "integer",
-          "description": "The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
-          "format": "int32"
-        },
-        "rateControlMode": {
-          "description": "Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate",
-          "type": "string"
-        },
-        "frameRate": {
-          "description": "Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.",
-          "format": "double",
-          "type": "number"
-        },
-        "profile": {
-          "type": "string",
-          "description": "Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message."
-        },
-        "gopDuration": {
-          "format": "google-duration",
-          "description": "Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.",
-          "type": "string"
-        },
-        "crfLevel": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported."
-        }
-      }
-    },
-    "AudioMapping": {
-      "description": "The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.",
-      "properties": {
-        "inputKey": {
-          "type": "string",
-          "description": "Required. The `Input.key` that identifies the input file."
-        },
-        "outputChannel": {
-          "description": "Required. The zero-based index of the channel in the output audio stream.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "gainDb": {
-          "format": "double",
-          "description": "Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.",
-          "type": "number"
-        },
-        "inputChannel": {
-          "format": "int32",
-          "description": "Required. The zero-based index of the channel in the input audio stream.",
-          "type": "integer"
-        },
-        "atomKey": {
-          "type": "string",
-          "description": "Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`."
-        },
-        "inputTrack": {
-          "type": "integer",
-          "description": "Required. The zero-based index of the track in the input file.",
-          "format": "int32"
-        }
-      },
-      "id": "AudioMapping",
-      "type": "object"
-    },
-    "Denoise": {
-      "id": "Denoise",
-      "properties": {
-        "strength": {
-          "description": "Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.",
-          "type": "number",
-          "format": "double"
-        },
-        "tune": {
-          "type": "string",
-          "description": "Set the denoiser mode. The default is `standard`. Supported denoiser modes: - `standard` - `grain`"
-        }
-      },
-      "type": "object",
-      "description": "Denoise preprocessing configuration. **Note:** This configuration is not supported."
-    },
-    "H265CodecSettings": {
-      "type": "object",
-      "properties": {
-        "heightPixels": {
-          "description": "The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
-          "type": "integer",
-          "format": "int32"
-        },
-        "pixelFormat": {
-          "description": "Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format",
-          "type": "string"
-        },
-        "allowOpenGop": {
-          "type": "boolean",
-          "description": "Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`."
-        },
-        "gopDuration": {
-          "description": "Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.",
-          "format": "google-duration",
-          "type": "string"
-        },
-        "vbvFullnessBits": {
-          "format": "int32",
-          "type": "integer",
-          "description": "Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`."
-        },
-        "frameRate": {
-          "type": "number",
-          "description": "Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.",
-          "format": "double"
-        },
-        "aqStrength": {
-          "description": "Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.",
-          "format": "double",
-          "type": "number"
-        },
-        "bPyramid": {
-          "description": "Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.",
-          "type": "boolean"
-        },
-        "vbvSizeBits": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`."
-        },
-        "tune": {
-          "description": "Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.",
-          "type": "string"
-        },
-        "preset": {
-          "description": "Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.",
-          "type": "string"
-        },
-        "crfLevel": {
-          "type": "integer",
-          "description": "Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.",
-          "format": "int32"
-        },
-        "widthPixels": {
-          "description": "The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "bitrateBps": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Required. The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 800,000,000."
-        },
-        "rateControlMode": {
-          "description": "Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor",
-          "type": "string"
-        },
-        "gopFrameCount": {
-          "format": "int32",
-          "type": "integer",
-          "description": "Select the GOP size based on the specified frame count. Must be greater than zero."
-        },
-        "enableTwoPass": {
-          "type": "boolean",
-          "description": "Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`."
-        },
-        "profile": {
-          "description": "Enforces the specified codec profile. The following profiles are supported: * 8-bit profiles * `main` (default) * `main-intra` * `mainstillpicture` * 10-bit profiles * `main10` (default) * `main10-intra` * `main422-10` * `main422-10-intra` * `main444-10` * `main444-10-intra` * 12-bit profiles * `main12` (default) * `main12-intra` * `main422-12` * `main422-12-intra` * `main444-12` * `main444-12-intra` The available options are [FFmpeg-compatible](https://x265.readthedocs.io/). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.",
-          "type": "string"
-        },
-        "bFrameCount": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0."
-        }
-      },
-      "id": "H265CodecSettings",
-      "description": "H265 codec settings."
-    },
-    "Job": {
-      "description": "Transcoding job resource.",
-      "id": "Job",
-      "properties": {
-        "startTime": {
-          "type": "string",
-          "description": "Output only. The time the transcoding started.",
-          "readOnly": true,
-          "format": "google-datetime"
-        },
-        "endTime": {
-          "readOnly": true,
-          "type": "string",
-          "description": "Output only. The time the transcoding finished.",
-          "format": "google-datetime"
-        },
-        "error": {
-          "description": "Output only. An error object that describes the reason for the failure. This property is always present when `state` is `FAILED`.",
-          "$ref": "Status",
-          "readOnly": true
-        },
-        "config": {
-          "$ref": "JobConfig",
-          "description": "The configuration for this job."
-        },
-        "state": {
-          "readOnly": true,
-          "enumDescriptions": [
-            "The processing state is not specified.",
-            "The job is enqueued and will be picked up for processing soon.",
-            "The job is being processed.",
-            "The job has been completed successfully.",
-            "The job has failed. For additional information, see `failure_reason` and `failure_details`"
-          ],
-          "enum": [
-            "PROCESSING_STATE_UNSPECIFIED",
-            "PENDING",
-            "RUNNING",
-            "SUCCEEDED",
-            "FAILED"
-          ],
-          "type": "string",
-          "description": "Output only. The current state of the job."
-        },
-        "templateId": {
-          "type": "string",
-          "description": "Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`"
-        },
-        "inputUri": {
-          "type": "string",
-          "description": "Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)."
-        },
-        "createTime": {
-          "readOnly": true,
-          "description": "Output only. The time the job was created.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "ttlAfterCompletionDays": {
-          "description": "Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "outputUri": {
-          "type": "string",
-          "description": "Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)."
-        },
-        "name": {
-          "description": "The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`",
-          "type": "string"
-        },
-        "labels": {
-          "description": "The labels associated with this job. You can use these to organize and group your jobs.",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "NormalizedCoordinate": {
-      "id": "NormalizedCoordinate",
-      "properties": {
-        "x": {
-          "type": "number",
-          "format": "double",
-          "description": "Normalized x coordinate."
-        },
-        "y": {
-          "type": "number",
-          "format": "double",
-          "description": "Normalized y coordinate."
-        }
-      },
-      "description": "2D normalized coordinates. Default: `{0.0, 0.0}`",
-      "type": "object"
-    },
-    "ElementaryStream": {
-      "description": "Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats.",
-      "properties": {
-        "videoStream": {
-          "description": "Encoding of a video stream.",
-          "$ref": "VideoStream"
-        },
-        "key": {
-          "type": "string",
-          "description": "A unique key for this elementary stream."
-        },
-        "textStream": {
-          "$ref": "TextStream",
-          "description": "Encoding of a text stream. For example, closed captions or subtitles."
-        },
-        "audioStream": {
-          "description": "Encoding of an audio stream.",
-          "$ref": "AudioStream"
-        }
-      },
-      "id": "ElementaryStream",
-      "type": "object"
-    },
-    "Deblock": {
-      "type": "object",
-      "properties": {
-        "strength": {
-          "format": "double",
-          "type": "number",
-          "description": "Set strength of the deblocker. Enter a value between 0 and 1. The higher the value, the stronger the block removal. 0 is no deblocking. The default is 0."
-        },
-        "enabled": {
-          "description": "Enable deblocker. The default is `false`.",
-          "type": "boolean"
-        }
-      },
-      "id": "Deblock",
-      "description": "Deblock preprocessing configuration. **Note:** This configuration is not supported."
+      "description": "Display overlay object with fade animation."
     },
     "Crop": {
       "properties": {
@@ -654,311 +1011,254 @@
           "type": "integer",
           "format": "int32"
         },
-        "bottomPixels": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The number of pixels to crop from the bottom. The default is 0."
-        },
         "rightPixels": {
           "type": "integer",
           "description": "The number of pixels to crop from the right. The default is 0.",
           "format": "int32"
         },
+        "bottomPixels": {
+          "type": "integer",
+          "description": "The number of pixels to crop from the bottom. The default is 0.",
+          "format": "int32"
+        },
         "leftPixels": {
           "description": "The number of pixels to crop from the left. The default is 0.",
-          "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object",
-      "description": "Video cropping configuration for the input video. The cropped input video is scaled to match the output resolution.",
-      "id": "Crop"
+      "id": "Crop",
+      "description": "Video cropping configuration for the input video. The cropped input video is scaled to match the output resolution."
     },
-    "Empty": {
-      "id": "Empty",
+    "TextMapping": {
+      "id": "TextMapping",
       "type": "object",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
-      "properties": {}
-    },
-    "Color": {
+      "description": "The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.",
       "properties": {
-        "brightness": {
-          "description": "Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.",
-          "format": "double",
-          "type": "number"
-        },
-        "saturation": {
-          "description": "Control color saturation of the video. Enter a value between -1 and 1, where -1 is fully desaturated and 1 is maximum saturation. 0 is no change. The default is 0.",
-          "format": "double",
-          "type": "number"
-        },
-        "contrast": {
-          "description": "Control black and white contrast of the video. Enter a value between -1 and 1, where -1 is minimum contrast and 1 is maximum contrast. 0 is no change. The default is 0.",
-          "type": "number",
-          "format": "double"
-        }
-      },
-      "description": "Color preprocessing configuration. **Note:** This configuration is not supported.",
-      "id": "Color",
-      "type": "object"
-    },
-    "TextStream": {
-      "type": "object",
-      "id": "TextStream",
-      "properties": {
-        "displayName": {
-          "description": "The name for this particular text stream that will be added to the HLS/DASH manifest.",
+        "inputKey": {
+          "description": "Required. The `Input.key` that identifies the input file.",
           "type": "string"
         },
-        "codec": {
+        "atomKey": {
           "type": "string",
-          "description": "The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`"
+          "description": "Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`."
         },
-        "languageCode": {
-          "type": "string",
-          "description": "The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier."
-        },
-        "mapping": {
-          "description": "The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.",
-          "items": {
-            "$ref": "TextMapping"
-          },
-          "type": "array"
-        }
-      },
-      "description": "Encoding of a text stream. For example, closed captions or subtitles."
-    },
-    "JobConfig": {
-      "description": "Job configuration",
-      "properties": {
-        "output": {
-          "description": "Output configuration.",
-          "$ref": "Output"
-        },
-        "editList": {
-          "items": {
-            "$ref": "EditAtom"
-          },
-          "type": "array",
-          "description": "List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest."
-        },
-        "inputs": {
-          "items": {
-            "$ref": "Input"
-          },
-          "type": "array",
-          "description": "List of input assets stored in Cloud Storage."
-        },
-        "pubsubDestination": {
-          "description": "Destination on Pub/Sub.",
-          "$ref": "PubsubDestination"
-        },
-        "overlays": {
-          "items": {
-            "$ref": "Overlay"
-          },
-          "type": "array",
-          "description": "List of overlays on the output video, in descending Z-order."
-        },
-        "muxStreams": {
-          "items": {
-            "$ref": "MuxStream"
-          },
-          "type": "array",
-          "description": "List of multiplexing settings for output streams."
-        },
-        "elementaryStreams": {
-          "type": "array",
-          "description": "List of elementary streams.",
-          "items": {
-            "$ref": "ElementaryStream"
-          }
-        },
-        "manifests": {
-          "description": "List of output manifests.",
-          "items": {
-            "$ref": "Manifest"
-          },
-          "type": "array"
-        },
-        "adBreaks": {
-          "items": {
-            "$ref": "AdBreak"
-          },
-          "type": "array",
-          "description": "List of ad breaks. Specifies where to insert ad break tags in the output manifests."
-        },
-        "spriteSheets": {
-          "description": "List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.",
-          "items": {
-            "$ref": "SpriteSheet"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object",
-      "id": "JobConfig"
-    },
-    "Overlay": {
-      "properties": {
-        "image": {
-          "$ref": "Image",
-          "description": "Image overlay."
-        },
-        "animations": {
-          "type": "array",
-          "description": "List of Animations. The list should be chronological, without any time overlap.",
-          "items": {
-            "$ref": "Animation"
-          }
-        }
-      },
-      "type": "object",
-      "id": "Overlay",
-      "description": "Overlay configuration."
-    },
-    "Deinterlace": {
-      "description": "Deinterlace configuration for input video.",
-      "type": "object",
-      "id": "Deinterlace",
-      "properties": {
-        "bwdif": {
-          "description": "Specifies the Bob Weaver Deinterlacing Filter Configuration.",
-          "$ref": "BwdifConfig"
-        },
-        "yadif": {
-          "$ref": "YadifConfig",
-          "description": "Specifies the Yet Another Deinterlacing Filter Configuration."
+        "inputTrack": {
+          "format": "int32",
+          "description": "Required. The zero-based index of the track in the input file.",
+          "type": "integer"
         }
       }
     },
-    "Animation": {
-      "id": "Animation",
-      "description": "Animation types.",
-      "properties": {
-        "animationStatic": {
-          "$ref": "AnimationStatic",
-          "description": "Display static overlay object."
-        },
-        "animationFade": {
-          "$ref": "AnimationFade",
-          "description": "Display overlay object with fade animation."
-        },
-        "animationEnd": {
-          "description": "End previous animation.",
-          "$ref": "AnimationEnd"
-        }
-      },
-      "type": "object"
-    },
-    "AudioStream": {
+    "JobTemplate": {
+      "description": "Transcoding job template resource.",
+      "id": "JobTemplate",
       "type": "object",
-      "id": "AudioStream",
-      "description": "Audio stream resource.",
       "properties": {
-        "displayName": {
-          "type": "string",
-          "description": "The name for this particular audio stream that will be added to the HLS/DASH manifest."
+        "config": {
+          "$ref": "JobConfig",
+          "description": "The configuration for this template."
         },
-        "channelCount": {
-          "description": "Number of audio channels. Must be between 1 and 6. The default is 2.",
+        "name": {
+          "type": "string",
+          "description": "The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`"
+        },
+        "labels": {
+          "type": "object",
+          "description": "The labels associated with this job template. You can use these to organize and group your job templates.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "H265CodecSettings": {
+      "type": "object",
+      "properties": {
+        "tune": {
+          "description": "Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.",
+          "type": "string"
+        },
+        "preset": {
+          "description": "Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.",
+          "type": "string"
+        },
+        "gopDuration": {
+          "type": "string",
+          "description": "Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.",
+          "format": "google-duration"
+        },
+        "widthPixels": {
+          "description": "The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
           "format": "int32",
           "type": "integer"
         },
-        "channelLayout": {
-          "items": {
-            "type": "string"
-          },
-          "description": "A list of channel names specifying layout of the audio channels. This only affects the metadata embedded in the container headers, if supported by the specified format. The default is `[\"fl\", \"fr\"]`. Supported channel names: - `fl` - Front left channel - `fr` - Front right channel - `sl` - Side left channel - `sr` - Side right channel - `fc` - Front center channel - `lfe` - Low frequency",
-          "type": "array"
+        "gopFrameCount": {
+          "description": "Select the GOP size based on the specified frame count. Must be greater than zero.",
+          "format": "int32",
+          "type": "integer"
         },
-        "languageCode": {
-          "description": "The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.",
-          "type": "string"
+        "bFrameCount": {
+          "format": "int32",
+          "description": "The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.",
+          "type": "integer"
+        },
+        "aqStrength": {
+          "type": "number",
+          "format": "double",
+          "description": "Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0."
+        },
+        "vbvFullnessBits": {
+          "format": "int32",
+          "type": "integer",
+          "description": "Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`."
         },
         "bitrateBps": {
-          "format": "int32",
-          "description": "Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.",
-          "type": "integer"
-        },
-        "mapping": {
-          "description": "The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.",
-          "type": "array",
-          "items": {
-            "$ref": "AudioMapping"
-          }
-        },
-        "sampleRateHertz": {
           "type": "integer",
-          "description": "The audio sample rate in Hertz. The default is 48000 Hertz.",
+          "description": "Required. The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 800,000,000.",
           "format": "int32"
         },
-        "codec": {
-          "description": "The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3`",
+        "bPyramid": {
+          "description": "Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.",
+          "type": "boolean"
+        },
+        "vbvSizeBits": {
+          "description": "Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "rateControlMode": {
+          "type": "string",
+          "description": "Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor"
+        },
+        "allowOpenGop": {
+          "description": "Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.",
+          "type": "boolean"
+        },
+        "profile": {
+          "type": "string",
+          "description": "Enforces the specified codec profile. The following profiles are supported: * 8-bit profiles * `main` (default) * `main-intra` * `mainstillpicture` * 10-bit profiles * `main10` (default) * `main10-intra` * `main422-10` * `main422-10-intra` * `main444-10` * `main444-10-intra` * 12-bit profiles * `main12` (default) * `main12-intra` * `main422-12` * `main422-12-intra` * `main444-12` * `main444-12-intra` The available options are [FFmpeg-compatible](https://x265.readthedocs.io/). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message."
+        },
+        "crfLevel": {
+          "description": "Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "heightPixels": {
+          "format": "int32",
+          "description": "The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
+          "type": "integer"
+        },
+        "frameRate": {
+          "type": "number",
+          "format": "double",
+          "description": "Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information."
+        },
+        "pixelFormat": {
+          "description": "Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format",
           "type": "string"
+        },
+        "enableTwoPass": {
+          "description": "Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.",
+          "type": "boolean"
+        }
+      },
+      "id": "H265CodecSettings",
+      "description": "H265 codec settings."
+    },
+    "Denoise": {
+      "type": "object",
+      "description": "Denoise preprocessing configuration. **Note:** This configuration is not supported.",
+      "id": "Denoise",
+      "properties": {
+        "tune": {
+          "type": "string",
+          "description": "Set the denoiser mode. The default is `standard`. Supported denoiser modes: - `standard` - `grain`"
+        },
+        "strength": {
+          "type": "number",
+          "format": "double",
+          "description": "Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0."
         }
       }
     },
-    "Pad": {
+    "BwdifConfig": {
+      "type": "object",
+      "id": "BwdifConfig",
       "properties": {
-        "rightPixels": {
-          "format": "int32",
-          "description": "The number of pixels to add to the right. The default is 0.",
-          "type": "integer"
+        "mode": {
+          "description": "Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field",
+          "type": "string"
         },
-        "leftPixels": {
-          "format": "int32",
-          "type": "integer",
-          "description": "The number of pixels to add to the left. The default is 0."
+        "parity": {
+          "type": "string",
+          "description": "The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity"
         },
-        "topPixels": {
-          "description": "The number of pixels to add to the top. The default is 0.",
-          "type": "integer",
-          "format": "int32"
-        },
-        "bottomPixels": {
-          "format": "int32",
-          "description": "The number of pixels to add to the bottom. The default is 0.",
-          "type": "integer"
+        "deinterlaceAllFrames": {
+          "description": "Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.",
+          "type": "boolean"
         }
       },
-      "id": "Pad",
-      "description": "Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.",
-      "type": "object"
+      "description": "Bob Weaver Deinterlacing Filter Configuration."
     },
-    "VideoStream": {
+    "AnimationEnd": {
+      "id": "AnimationEnd",
       "properties": {
-        "h265": {
-          "$ref": "H265CodecSettings",
-          "description": "H265 codec settings."
-        },
-        "h264": {
-          "$ref": "H264CodecSettings",
-          "description": "H264 codec settings."
-        },
-        "vp9": {
-          "$ref": "Vp9CodecSettings",
-          "description": "VP9 codec settings."
+        "startTimeOffset": {
+          "description": "The time to end overlay object, in seconds. Default: 0",
+          "format": "google-duration",
+          "type": "string"
         }
       },
-      "description": "Video stream resource.",
-      "id": "VideoStream",
+      "type": "object",
+      "description": "End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of previous animation until the end of the video."
+    },
+    "AnimationStatic": {
+      "properties": {
+        "xy": {
+          "description": "Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.",
+          "$ref": "NormalizedCoordinate"
+        },
+        "startTimeOffset": {
+          "description": "The time to start displaying the overlay object, in seconds. Default: 0",
+          "format": "google-duration",
+          "type": "string"
+        }
+      },
+      "id": "AnimationStatic",
+      "description": "Display static overlay object.",
       "type": "object"
     },
-    "ListJobTemplatesResponse": {
-      "description": "Response message for `TranscoderService.ListJobTemplates`.",
-      "id": "ListJobTemplatesResponse",
+    "NormalizedCoordinate": {
+      "description": "2D normalized coordinates. Default: `{0.0, 0.0}`",
+      "id": "NormalizedCoordinate",
       "properties": {
+        "y": {
+          "format": "double",
+          "type": "number",
+          "description": "Normalized y coordinate."
+        },
+        "x": {
+          "description": "Normalized x coordinate.",
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "ListJobsResponse": {
+      "properties": {
+        "jobs": {
+          "items": {
+            "$ref": "Job"
+          },
+          "description": "List of jobs in the specified region.",
+          "type": "array"
+        },
         "nextPageToken": {
           "type": "string",
           "description": "The pagination token."
-        },
-        "jobTemplates": {
-          "type": "array",
-          "items": {
-            "$ref": "JobTemplate"
-          },
-          "description": "List of job templates in the specified region."
         },
         "unreachable": {
           "type": "array",
@@ -968,593 +1268,369 @@
           }
         }
       },
-      "type": "object"
-    },
-    "EditAtom": {
+      "id": "ListJobsResponse",
       "type": "object",
-      "description": "Edit atom.",
+      "description": "Response message for `TranscoderService.ListJobs`."
+    },
+    "Pad": {
+      "description": "Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.",
       "properties": {
-        "startTimeOffset": {
-          "type": "string",
-          "description": "Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.",
-          "format": "google-duration"
+        "leftPixels": {
+          "format": "int32",
+          "type": "integer",
+          "description": "The number of pixels to add to the left. The default is 0."
         },
-        "key": {
-          "description": "A unique key for this atom. Must be specified when using advanced mapping.",
-          "type": "string"
+        "bottomPixels": {
+          "format": "int32",
+          "description": "The number of pixels to add to the bottom. The default is 0.",
+          "type": "integer"
         },
-        "endTimeOffset": {
-          "description": "End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.",
+        "topPixels": {
+          "description": "The number of pixels to add to the top. The default is 0.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "rightPixels": {
+          "type": "integer",
+          "description": "The number of pixels to add to the right. The default is 0.",
+          "format": "int32"
+        }
+      },
+      "type": "object",
+      "id": "Pad"
+    },
+    "YadifConfig": {
+      "description": "Yet Another Deinterlacing Filter Configuration.",
+      "type": "object",
+      "id": "YadifConfig",
+      "properties": {
+        "disableSpatialInterlacing": {
+          "type": "boolean",
+          "description": "Disable spacial interlacing. The default is `false`."
+        },
+        "mode": {
           "type": "string",
-          "format": "google-duration"
+          "description": "Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field"
+        },
+        "deinterlaceAllFrames": {
+          "type": "boolean",
+          "description": "Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`."
+        },
+        "parity": {
+          "type": "string",
+          "description": "The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity"
+        }
+      }
+    },
+    "JobConfig": {
+      "id": "JobConfig",
+      "type": "object",
+      "description": "Job configuration",
+      "properties": {
+        "elementaryStreams": {
+          "items": {
+            "$ref": "ElementaryStream"
+          },
+          "type": "array",
+          "description": "List of elementary streams."
+        },
+        "pubsubDestination": {
+          "$ref": "PubsubDestination",
+          "description": "Destination on Pub/Sub."
+        },
+        "overlays": {
+          "type": "array",
+          "items": {
+            "$ref": "Overlay"
+          },
+          "description": "List of overlays on the output video, in descending Z-order."
+        },
+        "spriteSheets": {
+          "type": "array",
+          "description": "List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.",
+          "items": {
+            "$ref": "SpriteSheet"
+          }
+        },
+        "output": {
+          "description": "Output configuration.",
+          "$ref": "Output"
         },
         "inputs": {
           "type": "array",
+          "description": "List of input assets stored in Cloud Storage.",
           "items": {
-            "type": "string"
-          },
-          "description": "List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the same timeline."
-        }
-      },
-      "id": "EditAtom"
-    },
-    "MuxStream": {
-      "description": "Multiplexing settings for output stream.",
-      "properties": {
-        "fileName": {
-          "type": "string",
-          "description": "The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`."
+            "$ref": "Input"
+          }
         },
-        "container": {
-          "description": "The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)",
-          "type": "string"
-        },
-        "key": {
-          "type": "string",
-          "description": "A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8` extension suffix."
-        },
-        "elementaryStreams": {
+        "adBreaks": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "AdBreak"
           },
-          "description": "List of `ElementaryStream.key`s multiplexed in this stream."
+          "description": "List of ad breaks. Specifies where to insert ad break tags in the output manifests."
         },
-        "segmentSettings": {
-          "description": "Segment settings for `ts`, `fmp4` and `vtt`.",
-          "$ref": "SegmentSettings"
-        }
-      },
-      "type": "object",
-      "id": "MuxStream"
-    },
-    "JobTemplate": {
-      "properties": {
-        "config": {
-          "$ref": "JobConfig",
-          "description": "The configuration for this template."
-        },
-        "labels": {
-          "additionalProperties": {
-            "type": "string"
+        "manifests": {
+          "type": "array",
+          "items": {
+            "$ref": "Manifest"
           },
-          "type": "object",
-          "description": "The labels associated with this job template. You can use these to organize and group your job templates."
-        },
-        "name": {
-          "type": "string",
-          "description": "The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`"
-        }
-      },
-      "id": "JobTemplate",
-      "type": "object",
-      "description": "Transcoding job template resource."
-    },
-    "Manifest": {
-      "description": "Manifest configuration.",
-      "properties": {
-        "fileName": {
-          "type": "string",
-          "description": "The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`."
-        },
-        "type": {
-          "description": "Required. Type of the manifest, can be `HLS` or `DASH`.",
-          "enumDescriptions": [
-            "The manifest type is not specified.",
-            "Create `HLS` manifest. The corresponding file extension is `.m3u8`.",
-            "Create `DASH` manifest. The corresponding file extension is `.mpd`."
-          ],
-          "enum": [
-            "MANIFEST_TYPE_UNSPECIFIED",
-            "HLS",
-            "DASH"
-          ],
-          "type": "string"
+          "description": "List of output manifests."
         },
         "muxStreams": {
-          "items": {
-            "type": "string"
-          },
+          "description": "List of multiplexing settings for output streams.",
           "type": "array",
-          "description": "Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`."
+          "items": {
+            "$ref": "MuxStream"
+          }
+        },
+        "editList": {
+          "type": "array",
+          "items": {
+            "$ref": "EditAtom"
+          },
+          "description": "List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest."
+        }
+      }
+    },
+    "SegmentSettings": {
+      "type": "object",
+      "description": "Segment settings for `ts`, `fmp4` and `vtt`.",
+      "properties": {
+        "segmentDuration": {
+          "format": "google-duration",
+          "description": "Duration of the segments in seconds. The default is `6.0s`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).",
+          "type": "string"
+        },
+        "individualSegments": {
+          "description": "Required. Create an individual segment file. The default is `false`.",
+          "type": "boolean"
         }
       },
-      "type": "object",
-      "id": "Manifest"
+      "id": "SegmentSettings"
     },
-    "Output": {
-      "id": "Output",
-      "properties": {
-        "uri": {
-          "type": "string",
-          "description": "URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)."
-        }
-      },
+    "Vp9CodecSettings": {
       "type": "object",
-      "description": "Location of output file(s) in a Cloud Storage bucket."
-    },
-    "H264CodecSettings": {
-      "id": "H264CodecSettings",
-      "description": "H264 codec settings.",
-      "type": "object",
+      "description": "VP9 codec settings.",
       "properties": {
-        "gopFrameCount": {
+        "pixelFormat": {
+          "description": "Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format",
+          "type": "string"
+        },
+        "heightPixels": {
+          "description": "The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
           "type": "integer",
-          "description": "Select the GOP size based on the specified frame count. Must be greater than zero.",
           "format": "int32"
         },
         "crfLevel": {
+          "description": "Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.",
           "format": "int32",
-          "description": "Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.",
           "type": "integer"
+        },
+        "bitrateBps": {
+          "format": "int32",
+          "type": "integer",
+          "description": "Required. The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000."
+        },
+        "rateControlMode": {
+          "type": "string",
+          "description": "Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate"
+        },
+        "gopFrameCount": {
+          "format": "int32",
+          "type": "integer",
+          "description": "Select the GOP size based on the specified frame count. Must be greater than zero."
         },
         "gopDuration": {
           "format": "google-duration",
           "type": "string",
           "description": "Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`."
         },
-        "heightPixels": {
-          "description": "The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "widthPixels": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output."
+        "profile": {
+          "type": "string",
+          "description": "Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message."
         },
         "frameRate": {
           "type": "number",
           "description": "Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.",
           "format": "double"
         },
-        "profile": {
-          "type": "string",
-          "description": "Enforces the specified codec profile. The following profiles are supported: * `baseline` * `main` * `high` (default) The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message."
-        },
-        "tune": {
-          "type": "string",
-          "description": "Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message."
-        },
-        "entropyCoder": {
-          "description": "The entropy coder to use. The default is `cabac`. Supported entropy coders: - `cavlc` - `cabac`",
-          "type": "string"
-        },
-        "bFrameCount": {
-          "description": "The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.",
+        "widthPixels": {
           "format": "int32",
-          "type": "integer"
-        },
-        "rateControlMode": {
+          "type": "integer",
+          "description": "The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output."
+        }
+      },
+      "id": "Vp9CodecSettings"
+    },
+    "AudioStream": {
+      "description": "Audio stream resource.",
+      "properties": {
+        "codec": {
           "type": "string",
-          "description": "Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor"
+          "description": "The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3`"
+        },
+        "channelLayout": {
+          "type": "array",
+          "description": "A list of channel names specifying layout of the audio channels. This only affects the metadata embedded in the container headers, if supported by the specified format. The default is `[\"fl\", \"fr\"]`. Supported channel names: - `fl` - Front left channel - `fr` - Front right channel - `sl` - Side left channel - `sr` - Side right channel - `fc` - Front center channel - `lfe` - Low frequency",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sampleRateHertz": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The audio sample rate in Hertz. The default is 48000 Hertz."
         },
         "bitrateBps": {
-          "description": "Required. The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 800,000,000.",
-          "type": "integer",
-          "format": "int32"
-        },
-        "vbvSizeBits": {
-          "type": "integer",
-          "description": "Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.",
-          "format": "int32"
-        },
-        "vbvFullnessBits": {
-          "description": "Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of `VideoStream.vbv_size_bits`.",
+          "description": "Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.",
           "format": "int32",
           "type": "integer"
         },
-        "bPyramid": {
-          "type": "boolean",
-          "description": "Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`."
-        },
-        "enableTwoPass": {
-          "type": "boolean",
-          "description": "Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `vbr`. The default is `false`."
-        },
-        "aqStrength": {
-          "format": "double",
-          "type": "number",
-          "description": "Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0."
-        },
-        "allowOpenGop": {
-          "type": "boolean",
-          "description": "Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`."
-        },
-        "preset": {
-          "description": "Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.",
+        "displayName": {
+          "description": "The name for this particular audio stream that will be added to the HLS/DASH manifest.",
           "type": "string"
         },
-        "pixelFormat": {
-          "description": "Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format",
-          "type": "string"
-        }
-      }
-    },
-    "PubsubDestination": {
-      "id": "PubsubDestination",
-      "description": "A Pub/Sub destination.",
-      "properties": {
-        "topic": {
+        "mapping": {
+          "type": "array",
+          "description": "The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.",
+          "items": {
+            "$ref": "AudioMapping"
+          }
+        },
+        "channelCount": {
+          "description": "Number of audio channels. Must be between 1 and 6. The default is 2.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "languageCode": {
           "type": "string",
-          "description": "The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`."
+          "description": "The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier."
         }
       },
+      "id": "AudioStream",
       "type": "object"
     },
-    "AnimationEnd": {
+    "PreprocessingConfig": {
       "type": "object",
+      "description": "Preprocessing configurations.",
+      "id": "PreprocessingConfig",
       "properties": {
-        "startTimeOffset": {
-          "format": "google-duration",
-          "type": "string",
-          "description": "The time to end overlay object, in seconds. Default: 0"
-        }
-      },
-      "description": "End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of previous animation until the end of the video.",
-      "id": "AnimationEnd"
-    },
-    "Status": {
-      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
-      "type": "object",
-      "id": "Status",
-      "properties": {
-        "details": {
-          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
-          "items": {
-            "additionalProperties": {
-              "type": "any",
-              "description": "Properties of the object. Contains field @type with type URL."
-            },
-            "type": "object"
-          },
-          "type": "array"
+        "pad": {
+          "description": "Specify the video pad filter configuration.",
+          "$ref": "Pad"
         },
-        "code": {
-          "format": "int32",
-          "type": "integer",
-          "description": "The status code, which should be an enum value of google.rpc.Code."
+        "audio": {
+          "description": "Audio preprocessing configuration.",
+          "$ref": "Audio"
         },
-        "message": {
-          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
-          "type": "string"
+        "color": {
+          "description": "Color preprocessing configuration.",
+          "$ref": "Color"
+        },
+        "deinterlace": {
+          "$ref": "Deinterlace",
+          "description": "Specify the video deinterlace configuration."
+        },
+        "crop": {
+          "description": "Specify the video cropping configuration.",
+          "$ref": "Crop"
+        },
+        "deblock": {
+          "$ref": "Deblock",
+          "description": "Deblock preprocessing configuration."
+        },
+        "denoise": {
+          "description": "Denoise preprocessing configuration.",
+          "$ref": "Denoise"
         }
       }
     },
-    "TextMapping": {
+    "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
       "type": "object",
-      "id": "TextMapping",
-      "properties": {
-        "inputTrack": {
-          "format": "int32",
-          "type": "integer",
-          "description": "Required. The zero-based index of the track in the input file."
-        },
-        "inputKey": {
-          "type": "string",
-          "description": "Required. The `Input.key` that identifies the input file."
-        },
-        "atomKey": {
-          "description": "Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.",
-          "type": "string"
-        }
-      },
-      "description": "The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`."
+      "properties": {},
+      "id": "Empty"
     }
   },
-  "description": "This API converts video files into formats suitable for consumer distribution. For more information, see the Transcoder API overview. ",
-  "baseUrl": "https://transcoder.googleapis.com/",
-  "ownerDomain": "google.com",
-  "resources": {
-    "projects": {
-      "resources": {
-        "locations": {
-          "resources": {
-            "jobs": {
-              "methods": {
-                "list": {
-                  "parameters": {
-                    "orderBy": {
-                      "location": "query",
-                      "description": "One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering.",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "description": "The maximum number of items to return.",
-                      "type": "integer",
-                      "location": "query",
-                      "format": "int32"
-                    },
-                    "filter": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "The filter expression, following the syntax outlined in https://google.aip.dev/160."
-                    },
-                    "pageToken": {
-                      "type": "string",
-                      "description": "The `next_page_token` value returned from a previous List request, if any.",
-                      "location": "query"
-                    },
-                    "parent": {
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "required": true,
-                      "description": "Required. Format: `projects/{project}/locations/{location}`",
-                      "location": "path"
-                    }
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "id": "transcoder.projects.locations.jobs.list",
-                  "description": "Lists jobs in the specified region.",
-                  "path": "v1/{+parent}/jobs",
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "response": {
-                    "$ref": "ListJobsResponse"
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs"
-                },
-                "get": {
-                  "path": "v1/{+name}",
-                  "parameters": {
-                    "name": {
-                      "description": "Required. The name of the job to retrieve. Format: `projects/{project}/locations/{location}/jobs/{job}`",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
-                      "type": "string",
-                      "location": "path"
-                    }
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "Job"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-                  "id": "transcoder.projects.locations.jobs.get",
-                  "description": "Returns the job data.",
-                  "httpMethod": "GET"
-                },
-                "create": {
-                  "path": "v1/{+parent}/jobs",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs",
-                  "id": "transcoder.projects.locations.jobs.create",
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "parameters": {
-                    "parent": {
-                      "description": "Required. The parent location to create and process this job. Format: `projects/{project}/locations/{location}`",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "required": true,
-                      "type": "string",
-                      "location": "path"
-                    }
-                  },
-                  "description": "Creates a job in the specified region.",
-                  "request": {
-                    "$ref": "Job"
-                  },
-                  "response": {
-                    "$ref": "Job"
-                  }
-                },
-                "delete": {
-                  "path": "v1/{+name}",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-                  "description": "Deletes a job.",
-                  "id": "transcoder.projects.locations.jobs.delete",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "httpMethod": "DELETE",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "type": "string",
-                      "required": true,
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
-                      "description": "Required. The name of the job to delete. Format: `projects/{project}/locations/{location}/jobs/{job}`"
-                    },
-                    "allowMissing": {
-                      "type": "boolean",
-                      "location": "query",
-                      "description": "If set to true, and the job is not found, the request will succeed but no action will be taken on the server."
-                    }
-                  }
-                }
-              }
-            },
-            "jobTemplates": {
-              "methods": {
-                "list": {
-                  "parameters": {
-                    "parent": {
-                      "required": true,
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "description": "Required. The parent location from which to retrieve the collection of job templates. Format: `projects/{project}/locations/{location}`"
-                    },
-                    "pageSize": {
-                      "format": "int32",
-                      "type": "integer",
-                      "location": "query",
-                      "description": "The maximum number of items to return."
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "type": "string",
-                      "description": "The `next_page_token` value returned from a previous List request, if any."
-                    },
-                    "filter": {
-                      "description": "The filter expression, following the syntax outlined in https://google.aip.dev/160.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "orderBy": {
-                      "location": "query",
-                      "description": "One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering.",
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "response": {
-                    "$ref": "ListJobTemplatesResponse"
-                  },
-                  "httpMethod": "GET",
-                  "path": "v1/{+parent}/jobTemplates",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "id": "transcoder.projects.locations.jobTemplates.list",
-                  "description": "Lists job templates in the specified region."
-                },
-                "delete": {
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates/{jobTemplatesId}",
-                  "description": "Deletes a job template.",
-                  "httpMethod": "DELETE",
-                  "path": "v1/{+name}",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameters": {
-                    "name": {
-                      "description": "Required. The name of the job template to delete. `projects/{project}/locations/{location}/jobTemplates/{job_template}`",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/jobTemplates/[^/]+$",
-                      "location": "path",
-                      "required": true,
-                      "type": "string"
-                    },
-                    "allowMissing": {
-                      "description": "If set to true, and the job template is not found, the request will succeed but no action will be taken on the server.",
-                      "location": "query",
-                      "type": "boolean"
-                    }
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "id": "transcoder.projects.locations.jobTemplates.delete",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "create": {
-                  "request": {
-                    "$ref": "JobTemplate"
-                  },
-                  "id": "transcoder.projects.locations.jobTemplates.create",
-                  "parameters": {
-                    "parent": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "description": "Required. The parent location to create this job template. Format: `projects/{project}/locations/{location}`",
-                      "required": true,
-                      "location": "path"
-                    },
-                    "jobTemplateId": {
-                      "description": "Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.",
-                      "type": "string",
-                      "location": "query"
-                    }
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates",
-                  "path": "v1/{+parent}/jobTemplates",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "response": {
-                    "$ref": "JobTemplate"
-                  },
-                  "description": "Creates a job template in the specified region.",
-                  "httpMethod": "POST"
-                },
-                "get": {
-                  "description": "Returns the job template data.",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "id": "transcoder.projects.locations.jobTemplates.get",
-                  "path": "v1/{+name}",
-                  "response": {
-                    "$ref": "JobTemplate"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates/{jobTemplatesId}",
-                  "httpMethod": "GET",
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/jobTemplates/[^/]+$",
-                      "type": "string",
-                      "location": "path",
-                      "description": "Required. The name of the job template to retrieve. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`",
-                      "required": true
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+  "parameters": {
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "type": "boolean"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
+      "location": "query",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "type": "string",
+      "description": "V1 error format."
+    },
+    "alt": {
+      "type": "string",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "default": "json",
+      "description": "Data format for response."
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
+    },
+    "access_token": {
+      "type": "string",
+      "description": "OAuth access token.",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "location": "query",
+      "type": "string",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
     }
   },
-  "mtlsRootUrl": "https://transcoder.mtls.googleapis.com/",
-  "ownerName": "Google",
-  "servicePath": "",
-  "basePath": "",
-  "documentationLink": "https://cloud.google.com/transcoder/docs/",
-  "rootUrl": "https://transcoder.googleapis.com/",
-  "fullyEncodeReservedExpansion": true,
-  "kind": "discovery#restDescription",
-  "protocol": "rest",
+  "canonicalName": "Transcoder",
   "auth": {
     "oauth2": {
       "scopes": {
@@ -1564,83 +1640,7 @@
       }
     }
   },
-  "parameters": {
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "description": "V1 error format.",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "type": "string"
-    },
-    "alt": {
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "default": "json",
-      "type": "string",
-      "location": "query",
-      "description": "Data format for response.",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "description": "JSONP",
-      "location": "query",
-      "type": "string"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "location": "query",
-      "type": "string"
-    },
-    "key": {
-      "type": "string",
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
-    "fields": {
-      "type": "string",
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "default": "true",
-      "location": "query",
-      "type": "boolean",
-      "description": "Returns response with indentations and line breaks."
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "type": "string",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "location": "query"
-    }
-  },
-  "batchPath": "batch",
-  "version_module": true
+  "ownerName": "Google",
+  "mtlsRootUrl": "https://transcoder.mtls.googleapis.com/",
+  "ownerDomain": "google.com"
 }
