@@ -1,0 +1,8 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-iam-meta-api
+  labels:
+    provider: google-com
+data:
+  displayName: Google IAM Meta API

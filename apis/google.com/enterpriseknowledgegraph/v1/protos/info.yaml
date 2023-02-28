@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-enterpriseknowledgegraph/versions/v1
+  annotations:
+    config: enterpriseknowledgegraph_v1.yaml
+    directory: google/cloud/enterpriseknowledgegraph/v1
+    host: enterpriseknowledgegraph.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

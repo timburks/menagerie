@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-chromeosmoblab/versions/v1beta1
+  annotations:
+    config: chromeosmoblab_v1beta1.yaml
+    directory: google/chromeos/moblab/v1beta1
+    host: chromeosmoblab.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

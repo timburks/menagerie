@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-area120tables/versions/v1alpha1
+  annotations:
+    config: area120tables_v1alpha1.yaml
+    directory: google/area120/tables/v1alpha1
+    host: area120tables.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

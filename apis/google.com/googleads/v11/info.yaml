@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v11
+  parent: apis/google.com-googleads
+data:
+  displayName: v11

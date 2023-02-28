@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v1alpha
+  parent: apis/google.com-analyticsdata
+data:
+  displayName: v1alpha

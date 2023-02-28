@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-artifactregistry/versions/v1beta2
+  annotations:
+    config: artifactregistry_v1beta2.yaml
+    directory: google/devtools/artifactregistry/v1beta2
+    host: artifactregistry.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

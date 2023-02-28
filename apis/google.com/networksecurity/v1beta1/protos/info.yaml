@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-networksecurity/versions/v1beta1
+  annotations:
+    config: networksecurity_v1beta1.yaml
+    directory: google/cloud/networksecurity/v1beta1
+    host: networksecurity.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-texttospeech/versions/v1beta1
+  annotations:
+    config: texttospeech_v1beta1.yaml
+    directory: google/cloud/texttospeech/v1beta1
+    host: texttospeech.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

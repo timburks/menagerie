@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-biglake/versions/v1alpha1
+  annotations:
+    config: biglake_v1alpha1.yaml
+    directory: google/cloud/bigquery/biglake/v1alpha1
+    host: biglake.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

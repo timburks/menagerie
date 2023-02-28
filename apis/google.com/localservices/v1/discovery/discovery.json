@@ -1,547 +1,63 @@
 {
-  "ownerName": "Google",
-  "batchPath": "batch",
-  "kind": "discovery#restDescription",
-  "schemas": {
-    "GoogleAdsHomeservicesLocalservicesV1PhoneLead": {
-      "description": "Container for phone lead specific information.",
-      "properties": {
-        "consumerPhoneNumber": {
-          "description": "Consumer phone number associated with the phone lead.",
-          "type": "string"
-        },
-        "chargedConnectedCallDurationSeconds": {
-          "type": "string",
-          "description": "Duration of the charged phone call in seconds.",
-          "format": "google-duration"
-        },
-        "chargedCallTimestamp": {
-          "format": "google-datetime",
-          "type": "string",
-          "description": "Timestamp of the phone call which resulted in a charged phone lead."
-        }
-      },
-      "type": "object",
-      "id": "GoogleAdsHomeservicesLocalservicesV1PhoneLead"
-    },
-    "GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport": {
-      "id": "GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport",
-      "description": "A Detailed Lead Report of a lead identified by their lead id and contains consumer, account, monetization, and lead data.",
-      "type": "object",
-      "properties": {
-        "bookingLead": {
-          "description": "More information associated to only booking leads.",
-          "$ref": "GoogleAdsHomeservicesLocalservicesV1BookingLead"
-        },
-        "currencyCode": {
-          "description": "Currency code.",
-          "type": "string"
-        },
-        "aggregatorInfo": {
-          "$ref": "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo",
-          "description": "Aggregator specific information related to the lead."
-        },
-        "geo": {
-          "description": "Location of the associated account's home city.",
-          "type": "string"
-        },
-        "leadCreationTimestamp": {
-          "format": "google-datetime",
-          "description": "Timestamp of when the lead was created.",
-          "type": "string"
-        },
-        "messageLead": {
-          "$ref": "GoogleAdsHomeservicesLocalservicesV1MessageLead",
-          "description": "More information associated to only message leads."
-        },
-        "leadCategory": {
-          "description": "Lead category (e.g. hvac, plumber)",
-          "type": "string"
-        },
-        "leadId": {
-          "description": "Unique identifier of a Detailed Lead Report.",
-          "type": "string",
-          "format": "int64"
-        },
-        "businessName": {
-          "description": "Business name associated to the account.",
-          "type": "string"
-        },
-        "phoneLead": {
-          "$ref": "GoogleAdsHomeservicesLocalservicesV1PhoneLead",
-          "description": "More information associated to only phone leads."
-        },
-        "leadType": {
-          "enumDescriptions": [
-            "Not specified.",
-            "Message lead.",
-            "Phone call lead.",
-            "Booking lead."
-          ],
-          "description": "Lead type.",
-          "enum": [
-            "LEAD_TYPE_UNSPECIFIED",
-            "MESSAGE",
-            "PHONE_CALL",
-            "BOOKING"
-          ],
-          "type": "string"
-        },
-        "accountId": {
-          "format": "int64",
-          "description": "Identifies account that received the lead.",
-          "type": "string"
-        },
-        "leadPrice": {
-          "format": "double",
-          "description": "Price of the lead (available only after it has been charged).",
-          "type": "number"
-        },
-        "timezone": {
-          "description": "Timezone of the particular provider associated to a lead.",
-          "$ref": "GoogleTypeTimeZone"
-        },
-        "disputeStatus": {
-          "description": "Dispute status related to the lead.",
-          "type": "string"
-        },
-        "chargeStatus": {
-          "type": "string",
-          "enumDescriptions": [
-            "Not specified.",
-            "Charged.",
-            "Not charged."
-          ],
-          "enum": [
-            "CHARGE_STATUS_UNSPECIFIED",
-            "CHARGED",
-            "NOT_CHARGED"
-          ],
-          "description": "Whether the lead has been charged."
-        }
-      }
-    },
-    "GoogleAdsHomeservicesLocalservicesV1AccountReport": {
-      "type": "object",
-      "properties": {
-        "averageWeeklyBudget": {
-          "description": "Average weekly budget in the currency code of the account.",
-          "format": "double",
-          "type": "number"
-        },
-        "accountId": {
-          "format": "int64",
-          "description": "Unique identifier of the GLS account.",
-          "type": "string"
-        },
-        "currentPeriodPhoneCalls": {
-          "type": "string",
-          "format": "int64",
-          "description": "Number of phone calls in current specified period, including both connected and unconnected calls."
-        },
-        "totalReview": {
-          "type": "integer",
-          "description": "Total number of reviews the account has up to current date.",
-          "format": "int32"
-        },
-        "currentPeriodConnectedPhoneCalls": {
-          "format": "int64",
-          "description": "Number of connected phone calls (duration over 30s) in current specified period.",
-          "type": "string"
-        },
-        "aggregatorInfo": {
-          "description": "Aggregator specific information related to the account.",
-          "$ref": "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo"
-        },
-        "currentPeriodChargedLeads": {
-          "type": "string",
-          "format": "int64",
-          "description": "Number of charged leads the account received in current specified period."
-        },
-        "previousPeriodPhoneCalls": {
-          "type": "string",
-          "description": "Number of phone calls in previous specified period, including both connected and unconnected calls.",
-          "format": "int64"
-        },
-        "phoneLeadResponsiveness": {
-          "format": "double",
-          "type": "number",
-          "description": "Phone lead responsiveness of the account for the past 90 days from current date. This is computed by taking the total number of connected calls from charged phone leads and dividing by the total number of calls received."
-        },
-        "averageFiveStarRating": {
-          "format": "double",
-          "description": "Average review rating score from 1-5 stars.",
-          "type": "number"
-        },
-        "previousPeriodTotalCost": {
-          "type": "number",
-          "description": "Total cost of the account in previous specified period in the account's specified currency.",
-          "format": "double"
-        },
-        "currencyCode": {
-          "description": "Currency code of the account.",
-          "type": "string"
-        },
-        "currentPeriodTotalCost": {
-          "description": "Total cost of the account in current specified period in the account's specified currency.",
-          "format": "double",
-          "type": "number"
-        },
-        "impressionsLastTwoDays": {
-          "format": "int64",
-          "type": "string",
-          "description": "Number of impressions that customers have had in the past 2 days."
-        },
-        "businessName": {
-          "description": "Business name of the account.",
-          "type": "string"
-        },
-        "previousPeriodConnectedPhoneCalls": {
-          "format": "int64",
-          "type": "string",
-          "description": "Number of connected phone calls (duration over 30s) in previous specified period."
-        },
-        "previousPeriodChargedLeads": {
-          "type": "string",
-          "description": "Number of charged leads the account received in previous specified period.",
-          "format": "int64"
-        }
-      },
-      "id": "GoogleAdsHomeservicesLocalservicesV1AccountReport",
-      "description": "An Account Report of a GLS account identified by their account id containing aggregate data gathered from a particular date range. Next ID: 18"
-    },
-    "GoogleAdsHomeservicesLocalservicesV1MessageLead": {
-      "description": "Container for message lead specific information.",
-      "properties": {
-        "postalCode": {
-          "type": "string",
-          "description": "The postal code of the customer who created the lead."
-        },
-        "customerName": {
-          "type": "string",
-          "description": "Name of the customer who created the lead."
-        },
-        "consumerPhoneNumber": {
-          "description": "Consumer phone number associated with the message lead.",
-          "type": "string"
-        },
-        "jobType": {
-          "description": "The job type of the specified lead.",
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "id": "GoogleAdsHomeservicesLocalservicesV1MessageLead"
-    },
-    "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo": {
-      "type": "object",
-      "id": "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo",
-      "properties": {
-        "aggregatorProviderId": {
-          "description": "Provider id (listed in aggregator system) which maps to a account id in GLS system.",
-          "type": "string"
-        }
-      },
-      "description": "Conatiner for aggregator specific information if lead is for an aggregator GLS account."
-    },
-    "GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse": {
-      "properties": {
-        "nextPageToken": {
-          "description": "Pagination token to retrieve the next page of results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set.",
-          "type": "string"
-        },
-        "detailedLeadReports": {
-          "items": {
-            "$ref": "GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport"
-          },
-          "type": "array",
-          "description": "List of detailed lead reports uniquely identified by external lead id."
-        }
-      },
-      "id": "GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse",
-      "type": "object",
-      "description": "A page of the response received from the SearchDetailedLeadReports method. A paginated response where more pages are available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request page."
-    },
-    "GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse": {
-      "description": "A page of the response received from the SearchAccountReports method. A paginated response where more pages are available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request page.",
-      "id": "GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse",
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "type": "string",
-          "description": "Pagination token to retrieve the next page of results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set."
-        },
-        "accountReports": {
-          "items": {
-            "$ref": "GoogleAdsHomeservicesLocalservicesV1AccountReport"
-          },
-          "type": "array",
-          "description": "List of account reports which maps 1:1 to a particular linked GLS account."
-        }
-      }
-    },
-    "GoogleAdsHomeservicesLocalservicesV1BookingLead": {
-      "description": "Container for booking lead specific information.",
-      "id": "GoogleAdsHomeservicesLocalservicesV1BookingLead",
-      "type": "object",
-      "properties": {
-        "jobType": {
-          "description": "The job type of the specified lead.",
-          "type": "string"
-        },
-        "bookingAppointmentTimestamp": {
-          "description": "Timestamp of when service is provided by advertiser.",
-          "type": "string",
-          "format": "google-datetime"
-        },
-        "consumerEmail": {
-          "type": "string",
-          "description": "Consumer email associated with the booking lead."
-        },
-        "consumerPhoneNumber": {
-          "description": "Consumer phone number associated with the booking lead.",
-          "type": "string"
-        },
-        "customerName": {
-          "description": "Name of the customer who created the lead.",
-          "type": "string"
-        }
-      }
-    },
-    "GoogleTypeTimeZone": {
-      "type": "object",
-      "properties": {
-        "version": {
-          "description": "Optional. IANA Time Zone Database version number, e.g. \"2019a\".",
-          "type": "string"
-        },
-        "id": {
-          "type": "string",
-          "description": "IANA Time Zone Database time zone, e.g. \"America/New_York\"."
-        }
-      },
-      "id": "GoogleTypeTimeZone",
-      "description": "Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones)."
-    }
-  },
-  "version_module": true,
-  "documentationLink": "https://ads.google.com/local-services-ads/",
-  "canonicalName": "Localservices",
-  "discoveryVersion": "v1",
-  "version": "v1",
-  "ownerDomain": "google.com",
-  "id": "localservices:v1",
   "fullyEncodeReservedExpansion": true,
-  "resources": {
-    "accountReports": {
-      "methods": {
-        "search": {
-          "path": "v1/accountReports:search",
-          "httpMethod": "GET",
-          "description": "Get account reports containing aggregate account data of all linked GLS accounts. Caller needs to provide their manager customer id and the associated auth credential that allows them read permissions on their linked accounts.",
-          "parameters": {
-            "startDate.day": {
-              "type": "integer",
-              "format": "int32",
-              "location": "query",
-              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant."
-            },
-            "startDate.year": {
-              "format": "int32",
-              "location": "query",
-              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
-              "type": "integer"
-            },
-            "endDate.month": {
-              "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
-              "type": "integer",
-              "location": "query",
-              "format": "int32"
-            },
-            "endDate.year": {
-              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
-              "type": "integer",
-              "location": "query",
-              "format": "int32"
-            },
-            "pageToken": {
-              "description": "The `next_page_token` value returned from a previous request to SearchAccountReports that indicates where listing should continue. Optional.",
-              "type": "string",
-              "location": "query"
-            },
-            "query": {
-              "location": "query",
-              "description": "A query string for searching for account reports. Caller must provide a customer id of their MCC account with an associated Gaia Mint that allows read permission on their linked accounts. Search expressions are case insensitive. Example query: | Query | Description | |-------------------------|-----------------------------------------------| | manager_customer_id:123 | Get Account Report for Manager with id 123. | Required.",
-              "type": "string"
-            },
-            "startDate.month": {
-              "type": "integer",
-              "format": "int32",
-              "location": "query",
-              "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."
-            },
-            "endDate.day": {
-              "location": "query",
-              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
-              "type": "integer",
-              "format": "int32"
-            },
-            "pageSize": {
-              "description": "The maximum number of accounts to return. If the page size is unset, page size will default to 1000. Maximum page_size is 10000. Optional.",
-              "format": "int32",
-              "type": "integer",
-              "location": "query"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/adwords"
-          ],
-          "id": "localservices.accountReports.search",
-          "flatPath": "v1/accountReports:search",
-          "parameterOrder": [],
-          "response": {
-            "$ref": "GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse"
-          }
-        }
-      }
-    },
-    "detailedLeadReports": {
-      "methods": {
-        "search": {
-          "response": {
-            "$ref": "GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse"
-          },
-          "id": "localservices.detailedLeadReports.search",
-          "path": "v1/detailedLeadReports:search",
-          "parameters": {
-            "pageSize": {
-              "description": "The maximum number of accounts to return. If the page size is unset, page size will default to 1000. Maximum page_size is 10000. Optional.",
-              "format": "int32",
-              "type": "integer",
-              "location": "query"
-            },
-            "startDate.year": {
-              "location": "query",
-              "format": "int32",
-              "type": "integer",
-              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."
-            },
-            "query": {
-              "type": "string",
-              "description": "A query string for searching for account reports. Caller must provide a customer id of their MCC account with an associated Gaia Mint that allows read permission on their linked accounts. Search expressions are case insensitive. Example query: | Query | Description | |-------------------------|-----------------------------------------------| | manager_customer_id:123 | Get Detailed Lead Report for Manager with id | | | 123. | Required.",
-              "location": "query"
-            },
-            "startDate.day": {
-              "type": "integer",
-              "format": "int32",
-              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
-              "location": "query"
-            },
-            "endDate.year": {
-              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
-              "location": "query",
-              "type": "integer",
-              "format": "int32"
-            },
-            "endDate.day": {
-              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
-              "location": "query",
-              "format": "int32",
-              "type": "integer"
-            },
-            "pageToken": {
-              "type": "string",
-              "location": "query",
-              "description": "The `next_page_token` value returned from a previous request to SearchDetailedLeadReports that indicates where listing should continue. Optional."
-            },
-            "startDate.month": {
-              "type": "integer",
-              "location": "query",
-              "format": "int32",
-              "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."
-            },
-            "endDate.month": {
-              "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
-              "location": "query",
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          "httpMethod": "GET",
-          "flatPath": "v1/detailedLeadReports:search",
-          "parameterOrder": [],
-          "scopes": [
-            "https://www.googleapis.com/auth/adwords"
-          ],
-          "description": "Get detailed lead reports containing leads that have been received by all linked GLS accounts. Caller needs to provide their manager customer id and the associated auth credential that allows them read permissions on their linked accounts."
+  "servicePath": "",
+  "documentationLink": "https://ads.google.com/local-services-ads/",
+  "mtlsRootUrl": "https://localservices.mtls.googleapis.com/",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/adwords": {
+          "description": "See, edit, create, and delete your Google Ads accounts and data."
         }
       }
     }
   },
-  "servicePath": "",
+  "id": "localservices:v1",
+  "canonicalName": "Localservices",
   "title": "Local Services API",
+  "rootUrl": "https://localservices.googleapis.com/",
+  "name": "localservices",
+  "basePath": "",
+  "version_module": true,
+  "discoveryVersion": "v1",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "parameters": {
-    "fields": {
-      "type": "string",
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
-    },
     "quotaUser": {
-      "location": "query",
       "type": "string",
+      "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+    },
+    "prettyPrint": {
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
     },
     "access_token": {
       "description": "OAuth access token.",
       "location": "query",
       "type": "string"
     },
-    "$.xgafv": {
-      "type": "string",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "description": "V1 error format.",
-      "location": "query"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
     "upload_protocol": {
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "location": "query",
       "type": "string"
     },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "default": "true",
-      "type": "boolean"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
     "oauth_token": {
-      "type": "string",
       "location": "query",
+      "type": "string",
       "description": "OAuth 2.0 token for the current user."
     },
     "alt": {
-      "type": "string",
-      "default": "json",
+      "location": "query",
       "enum": [
         "json",
         "media",
@@ -552,30 +68,514 @@
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
-      "description": "Data format for response.",
+      "default": "json",
+      "type": "string",
+      "description": "Data format for response."
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "callback": {
+      "type": "string",
+      "description": "JSONP",
       "location": "query"
     },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
       "location": "query",
-      "type": "string"
+      "description": "V1 error format.",
+      "type": "string",
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
     }
   },
-  "rootUrl": "https://localservices.googleapis.com/",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/adwords": {
-          "description": "See, edit, create, and delete your Google Ads accounts and data."
+  "ownerName": "Google",
+  "protocol": "rest",
+  "batchPath": "batch",
+  "version": "v1",
+  "baseUrl": "https://localservices.googleapis.com/",
+  "resources": {
+    "detailedLeadReports": {
+      "methods": {
+        "search": {
+          "id": "localservices.detailedLeadReports.search",
+          "response": {
+            "$ref": "GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/adwords"
+          ],
+          "flatPath": "v1/detailedLeadReports:search",
+          "parameters": {
+            "endDate.month": {
+              "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
+              "type": "integer",
+              "format": "int32",
+              "location": "query"
+            },
+            "endDate.day": {
+              "format": "int32",
+              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+              "type": "integer",
+              "location": "query"
+            },
+            "query": {
+              "location": "query",
+              "description": "A query string for searching for account reports. Caller must provide a customer id of their MCC account with an associated Gaia Mint that allows read permission on their linked accounts. Search expressions are case insensitive. Example query: | Query | Description | |-------------------------|-----------------------------------------------| | manager_customer_id:123 | Get Detailed Lead Report for Manager with id | | | 123. | Required.",
+              "type": "string"
+            },
+            "startDate.day": {
+              "type": "integer",
+              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+              "format": "int32",
+              "location": "query"
+            },
+            "startDate.year": {
+              "location": "query",
+              "type": "integer",
+              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+              "format": "int32"
+            },
+            "pageToken": {
+              "description": "The `next_page_token` value returned from a previous request to SearchDetailedLeadReports that indicates where listing should continue. Optional.",
+              "location": "query",
+              "type": "string"
+            },
+            "startDate.month": {
+              "format": "int32",
+              "location": "query",
+              "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
+              "type": "integer"
+            },
+            "endDate.year": {
+              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
+            },
+            "pageSize": {
+              "description": "The maximum number of accounts to return. If the page size is unset, page size will default to 1000. Maximum page_size is 10000. Optional.",
+              "format": "int32",
+              "location": "query",
+              "type": "integer"
+            }
+          },
+          "path": "v1/detailedLeadReports:search",
+          "parameterOrder": [],
+          "description": "Get detailed lead reports containing leads that have been received by all linked GLS accounts. Caller needs to provide their manager customer id and the associated auth credential that allows them read permissions on their linked accounts.",
+          "httpMethod": "GET"
+        }
+      }
+    },
+    "accountReports": {
+      "methods": {
+        "search": {
+          "scopes": [
+            "https://www.googleapis.com/auth/adwords"
+          ],
+          "parameters": {
+            "endDate.year": {
+              "location": "query",
+              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+              "format": "int32",
+              "type": "integer"
+            },
+            "pageToken": {
+              "location": "query",
+              "description": "The `next_page_token` value returned from a previous request to SearchAccountReports that indicates where listing should continue. Optional.",
+              "type": "string"
+            },
+            "startDate.day": {
+              "type": "integer",
+              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+              "location": "query",
+              "format": "int32"
+            },
+            "endDate.month": {
+              "type": "integer",
+              "location": "query",
+              "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
+              "format": "int32"
+            },
+            "startDate.year": {
+              "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
+            },
+            "startDate.month": {
+              "location": "query",
+              "format": "int32",
+              "type": "integer",
+              "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."
+            },
+            "query": {
+              "location": "query",
+              "description": "A query string for searching for account reports. Caller must provide a customer id of their MCC account with an associated Gaia Mint that allows read permission on their linked accounts. Search expressions are case insensitive. Example query: | Query | Description | |-------------------------|-----------------------------------------------| | manager_customer_id:123 | Get Account Report for Manager with id 123. | Required.",
+              "type": "string"
+            },
+            "pageSize": {
+              "description": "The maximum number of accounts to return. If the page size is unset, page size will default to 1000. Maximum page_size is 10000. Optional.",
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
+            },
+            "endDate.day": {
+              "location": "query",
+              "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "id": "localservices.accountReports.search",
+          "response": {
+            "$ref": "GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse"
+          },
+          "httpMethod": "GET",
+          "flatPath": "v1/accountReports:search",
+          "path": "v1/accountReports:search",
+          "description": "Get account reports containing aggregate account data of all linked GLS accounts. Caller needs to provide their manager customer id and the associated auth credential that allows them read permissions on their linked accounts.",
+          "parameterOrder": []
         }
       }
     }
   },
-  "protocol": "rest",
-  "revision": "20230226",
-  "basePath": "",
-  "name": "localservices",
-  "baseUrl": "https://localservices.googleapis.com/",
+  "ownerDomain": "google.com",
   "description": "",
-  "mtlsRootUrl": "https://localservices.mtls.googleapis.com/"
+  "kind": "discovery#restDescription",
+  "schemas": {
+    "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo": {
+      "description": "Conatiner for aggregator specific information if lead is for an aggregator GLS account.",
+      "id": "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo",
+      "properties": {
+        "aggregatorProviderId": {
+          "type": "string",
+          "description": "Provider id (listed in aggregator system) which maps to a account id in GLS system."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleAdsHomeservicesLocalservicesV1BookingLead": {
+      "id": "GoogleAdsHomeservicesLocalservicesV1BookingLead",
+      "description": "Container for booking lead specific information.",
+      "properties": {
+        "jobType": {
+          "description": "The job type of the specified lead.",
+          "type": "string"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Name of the customer who created the lead."
+        },
+        "consumerEmail": {
+          "description": "Consumer email associated with the booking lead.",
+          "type": "string"
+        },
+        "bookingAppointmentTimestamp": {
+          "type": "string",
+          "description": "Timestamp of when service is provided by advertiser.",
+          "format": "google-datetime"
+        },
+        "consumerPhoneNumber": {
+          "description": "Consumer phone number associated with the booking lead.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse": {
+      "description": "A page of the response received from the SearchDetailedLeadReports method. A paginated response where more pages are available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request page.",
+      "type": "object",
+      "id": "GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse",
+      "properties": {
+        "detailedLeadReports": {
+          "description": "List of detailed lead reports uniquely identified by external lead id.",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport"
+          }
+        },
+        "nextPageToken": {
+          "description": "Pagination token to retrieve the next page of results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set.",
+          "type": "string"
+        }
+      }
+    },
+    "GoogleTypeTimeZone": {
+      "type": "object",
+      "description": "Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Optional. IANA Time Zone Database version number, e.g. \"2019a\"."
+        },
+        "id": {
+          "type": "string",
+          "description": "IANA Time Zone Database time zone, e.g. \"America/New_York\"."
+        }
+      },
+      "id": "GoogleTypeTimeZone"
+    },
+    "GoogleAdsHomeservicesLocalservicesV1MessageLead": {
+      "description": "Container for message lead specific information.",
+      "properties": {
+        "jobType": {
+          "type": "string",
+          "description": "The job type of the specified lead."
+        },
+        "consumerPhoneNumber": {
+          "type": "string",
+          "description": "Consumer phone number associated with the message lead."
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Name of the customer who created the lead."
+        },
+        "postalCode": {
+          "description": "The postal code of the customer who created the lead.",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "id": "GoogleAdsHomeservicesLocalservicesV1MessageLead"
+    },
+    "GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport": {
+      "description": "A Detailed Lead Report of a lead identified by their lead id and contains consumer, account, monetization, and lead data.",
+      "id": "GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport",
+      "type": "object",
+      "properties": {
+        "bookingLead": {
+          "$ref": "GoogleAdsHomeservicesLocalservicesV1BookingLead",
+          "description": "More information associated to only booking leads."
+        },
+        "messageLead": {
+          "$ref": "GoogleAdsHomeservicesLocalservicesV1MessageLead",
+          "description": "More information associated to only message leads."
+        },
+        "leadId": {
+          "type": "string",
+          "format": "int64",
+          "description": "Unique identifier of a Detailed Lead Report."
+        },
+        "phoneLead": {
+          "$ref": "GoogleAdsHomeservicesLocalservicesV1PhoneLead",
+          "description": "More information associated to only phone leads."
+        },
+        "currencyCode": {
+          "description": "Currency code.",
+          "type": "string"
+        },
+        "accountId": {
+          "description": "Identifies account that received the lead.",
+          "format": "int64",
+          "type": "string"
+        },
+        "businessName": {
+          "description": "Business name associated to the account.",
+          "type": "string"
+        },
+        "chargeStatus": {
+          "description": "Whether the lead has been charged.",
+          "type": "string",
+          "enum": [
+            "CHARGE_STATUS_UNSPECIFIED",
+            "CHARGED",
+            "NOT_CHARGED"
+          ],
+          "enumDescriptions": [
+            "Not specified.",
+            "Charged.",
+            "Not charged."
+          ]
+        },
+        "leadCategory": {
+          "description": "Lead category (e.g. hvac, plumber)",
+          "type": "string"
+        },
+        "leadCreationTimestamp": {
+          "format": "google-datetime",
+          "type": "string",
+          "description": "Timestamp of when the lead was created."
+        },
+        "timezone": {
+          "$ref": "GoogleTypeTimeZone",
+          "description": "Timezone of the particular provider associated to a lead."
+        },
+        "disputeStatus": {
+          "type": "string",
+          "description": "Dispute status related to the lead."
+        },
+        "aggregatorInfo": {
+          "$ref": "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo",
+          "description": "Aggregator specific information related to the lead."
+        },
+        "leadPrice": {
+          "format": "double",
+          "description": "Price of the lead (available only after it has been charged).",
+          "type": "number"
+        },
+        "leadType": {
+          "description": "Lead type.",
+          "enum": [
+            "LEAD_TYPE_UNSPECIFIED",
+            "MESSAGE",
+            "PHONE_CALL",
+            "BOOKING"
+          ],
+          "type": "string",
+          "enumDescriptions": [
+            "Not specified.",
+            "Message lead.",
+            "Phone call lead.",
+            "Booking lead."
+          ]
+        },
+        "geo": {
+          "description": "Location of the associated account's home city.",
+          "type": "string"
+        }
+      }
+    },
+    "GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse": {
+      "id": "GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "Pagination token to retrieve the next page of results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set.",
+          "type": "string"
+        },
+        "accountReports": {
+          "description": "List of account reports which maps 1:1 to a particular linked GLS account.",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleAdsHomeservicesLocalservicesV1AccountReport"
+          }
+        }
+      },
+      "description": "A page of the response received from the SearchAccountReports method. A paginated response where more pages are available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request page."
+    },
+    "GoogleAdsHomeservicesLocalservicesV1AccountReport": {
+      "type": "object",
+      "properties": {
+        "previousPeriodChargedLeads": {
+          "type": "string",
+          "description": "Number of charged leads the account received in previous specified period.",
+          "format": "int64"
+        },
+        "currencyCode": {
+          "description": "Currency code of the account.",
+          "type": "string"
+        },
+        "accountId": {
+          "type": "string",
+          "format": "int64",
+          "description": "Unique identifier of the GLS account."
+        },
+        "currentPeriodPhoneCalls": {
+          "format": "int64",
+          "description": "Number of phone calls in current specified period, including both connected and unconnected calls.",
+          "type": "string"
+        },
+        "averageFiveStarRating": {
+          "description": "Average review rating score from 1-5 stars.",
+          "format": "double",
+          "type": "number"
+        },
+        "currentPeriodTotalCost": {
+          "format": "double",
+          "description": "Total cost of the account in current specified period in the account's specified currency.",
+          "type": "number"
+        },
+        "impressionsLastTwoDays": {
+          "format": "int64",
+          "type": "string",
+          "description": "Number of impressions that customers have had in the past 2 days."
+        },
+        "previousPeriodTotalCost": {
+          "type": "number",
+          "format": "double",
+          "description": "Total cost of the account in previous specified period in the account's specified currency."
+        },
+        "totalReview": {
+          "format": "int32",
+          "description": "Total number of reviews the account has up to current date.",
+          "type": "integer"
+        },
+        "currentPeriodConnectedPhoneCalls": {
+          "format": "int64",
+          "type": "string",
+          "description": "Number of connected phone calls (duration over 30s) in current specified period."
+        },
+        "currentPeriodChargedLeads": {
+          "description": "Number of charged leads the account received in current specified period.",
+          "format": "int64",
+          "type": "string"
+        },
+        "businessName": {
+          "type": "string",
+          "description": "Business name of the account."
+        },
+        "phoneLeadResponsiveness": {
+          "format": "double",
+          "description": "Phone lead responsiveness of the account for the past 90 days from current date. This is computed by taking the total number of connected calls from charged phone leads and dividing by the total number of calls received.",
+          "type": "number"
+        },
+        "aggregatorInfo": {
+          "$ref": "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo",
+          "description": "Aggregator specific information related to the account."
+        },
+        "previousPeriodConnectedPhoneCalls": {
+          "format": "int64",
+          "description": "Number of connected phone calls (duration over 30s) in previous specified period.",
+          "type": "string"
+        },
+        "previousPeriodPhoneCalls": {
+          "format": "int64",
+          "description": "Number of phone calls in previous specified period, including both connected and unconnected calls.",
+          "type": "string"
+        },
+        "averageWeeklyBudget": {
+          "format": "double",
+          "description": "Average weekly budget in the currency code of the account.",
+          "type": "number"
+        }
+      },
+      "description": "An Account Report of a GLS account identified by their account id containing aggregate data gathered from a particular date range. Next ID: 18",
+      "id": "GoogleAdsHomeservicesLocalservicesV1AccountReport"
+    },
+    "GoogleAdsHomeservicesLocalservicesV1PhoneLead": {
+      "id": "GoogleAdsHomeservicesLocalservicesV1PhoneLead",
+      "type": "object",
+      "description": "Container for phone lead specific information.",
+      "properties": {
+        "consumerPhoneNumber": {
+          "type": "string",
+          "description": "Consumer phone number associated with the phone lead."
+        },
+        "chargedConnectedCallDurationSeconds": {
+          "format": "google-duration",
+          "description": "Duration of the charged phone call in seconds.",
+          "type": "string"
+        },
+        "chargedCallTimestamp": {
+          "format": "google-datetime",
+          "type": "string",
+          "description": "Timestamp of the phone call which resulted in a charged phone lead."
+        }
+      }
+    }
+  },
+  "revision": "20230228"
 }

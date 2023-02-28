@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-cloudresourcemanager/versions/v3
+  annotations:
+    config: cloudresourcemanager_v3.yaml
+    directory: google/cloud/resourcemanager/v3
+    host: cloudresourcemanager.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

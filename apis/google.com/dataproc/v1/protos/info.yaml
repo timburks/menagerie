@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-dataproc/versions/v1
+  annotations:
+    config: dataproc_v1.yaml
+    directory: google/cloud/dataproc/v1
+    host: dataproc.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

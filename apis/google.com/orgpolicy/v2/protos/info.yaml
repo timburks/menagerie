@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-orgpolicy/versions/v2
+  annotations:
+    config: orgpolicy_v2.yaml
+    directory: google/cloud/orgpolicy/v2
+    host: orgpolicy.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

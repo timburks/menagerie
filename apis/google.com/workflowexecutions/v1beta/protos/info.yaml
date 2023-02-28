@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-workflowexecutions/versions/v1beta
+  annotations:
+    config: workflowexecutions_v1beta.yaml
+    directory: google/cloud/workflows/executions/v1beta
+    host: workflowexecutions.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-automl/versions/v1beta1
+  annotations:
+    config: automl_v1beta1.yaml
+    directory: google/cloud/automl/v1beta1
+    host: automl.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

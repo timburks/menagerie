@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-connectgateway/versions/v1alpha1
+  annotations:
+    config: connectgateway_v1alpha1.yaml
+    directory: google/cloud/gkeconnect/gateway/v1alpha1
+    host: connectgateway.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

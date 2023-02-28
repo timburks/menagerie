@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-spanner/versions/v1
+  annotations:
+    config: spanner.yaml
+    directory: google/spanner/v1
+    host: spanner.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

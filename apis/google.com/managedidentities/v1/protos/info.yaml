@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-managedidentities/versions/v1
+  annotations:
+    config: managedidentities_v1.yaml
+    directory: google/cloud/managedidentities/v1
+    host: managedidentities.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-logging/versions/v2
+  annotations:
+    config: logging_v2.yaml
+    directory: google/logging/v2
+    host: logging.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

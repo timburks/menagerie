@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-transcoder/versions/v1
+  annotations:
+    config: transcoder_v1.yaml
+    directory: google/cloud/video/transcoder/v1
+    host: transcoder.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

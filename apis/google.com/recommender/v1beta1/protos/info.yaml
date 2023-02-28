@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-recommender/versions/v1beta1
+  annotations:
+    config: recommender_v1beta1.yaml
+    directory: google/cloud/recommender/v1beta1
+    host: recommender.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

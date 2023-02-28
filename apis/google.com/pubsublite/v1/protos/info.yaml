@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-pubsublite/versions/v1
+  annotations:
+    config: pubsublite_v1.yaml
+    directory: google/cloud/pubsublite/v1
+    host: pubsublite.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

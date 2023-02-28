@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-advisorynotifications/versions/v1
+  annotations:
+    config: advisorynotifications_v1.yaml
+    directory: google/cloud/advisorynotifications/v1
+    host: advisorynotifications.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-billingbudgets/versions/v1beta1
+  annotations:
+    config: billingbudgets.yaml
+    directory: google/cloud/billing/budgets/v1beta1
+    host: billingbudgets.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

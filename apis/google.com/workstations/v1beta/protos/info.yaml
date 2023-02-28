@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-workstations/versions/v1beta
+  annotations:
+    config: workstations_v1beta.yaml
+    directory: google/cloud/workstations/v1beta
+    host: workstations.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

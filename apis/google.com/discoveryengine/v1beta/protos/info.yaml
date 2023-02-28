@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-discoveryengine/versions/v1beta
+  annotations:
+    config: discoveryengine_v1beta.yaml
+    directory: google/cloud/discoveryengine/v1beta
+    host: discoveryengine.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-regionlookup/versions/v1alpha
+  annotations:
+    config: regionlookup_v1alpha.yaml
+    directory: google/maps/regionlookup/v1alpha
+    host: regionlookup.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

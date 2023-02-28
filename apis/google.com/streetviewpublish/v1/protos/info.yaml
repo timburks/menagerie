@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-streetviewpublish/versions/v1
+  annotations:
+    config: streetviewpublish.yaml
+    directory: google/streetview/publish/v1
+    host: streetviewpublish.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

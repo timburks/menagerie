@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-smartdevicemanagement/versions/v1
+  annotations:
+    config: smartdevicemanagement_v1.yaml
+    directory: google/home/enterprise/sdm/v1
+    host: smartdevicemanagement.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

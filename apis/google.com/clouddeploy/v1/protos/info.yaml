@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-clouddeploy/versions/v1
+  annotations:
+    config: clouddeploy_v1.yaml
+    directory: google/cloud/deploy/v1
+    host: clouddeploy.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

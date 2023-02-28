@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-vision/versions/v1p1beta1
+  annotations:
+    config: vision_v1p1beta1.yaml
+    directory: google/cloud/vision/v1p1beta1
+    host: vision.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

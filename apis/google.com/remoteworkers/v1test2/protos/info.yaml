@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-remoteworkers/versions/v1test2
+  annotations:
+    config: remoteworkers_v1beta2.yaml
+    directory: google/devtools/remoteworkers/v1test2
+    host: remoteworkers.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

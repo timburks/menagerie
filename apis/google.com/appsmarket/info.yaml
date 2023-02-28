@@ -1,0 +1,8 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: google.com-appsmarket
+  labels:
+    provider: google-com
+data:
+  displayName: Google Workspace Marketplace API

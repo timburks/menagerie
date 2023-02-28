@@ -1,60 +1,209 @@
 {
-  "version": "v1",
-  "documentationLink": "https://developers.google.com/domains/acme-dns/",
-  "rootUrl": "https://acmedns.googleapis.com/",
-  "mtlsRootUrl": "https://acmedns.mtls.googleapis.com/",
-  "servicePath": "",
-  "version_module": true,
-  "name": "acmedns",
-  "ownerDomain": "google.com",
-  "batchPath": "batch",
-  "description": "Google Domains ACME DNS API that allows users to complete ACME DNS-01 challenges for a domain.",
   "kind": "discovery#restDescription",
-  "ownerName": "Google",
+  "protocol": "rest",
+  "name": "acmedns",
+  "version": "v1",
+  "schemas": {
+    "RotateChallengesRequest": {
+      "type": "object",
+      "id": "RotateChallengesRequest",
+      "description": "The request message for the RotateChallenges RPC. Requires an access token, a root domain, and either records_to_add or records_to_remove to be populated. Records may be set for multiple subdomains at once to support SAN requests for multiple subdomains in a single domain. By default, ACME TXT record challenges that are older than 30 days will be removed. Set `keep_expired_records` to false if this behavior is undesired. There is a record maximum of 100 records per domain including expired records. Any request sent that would exceed this maximum will result in a FAILED_PRECONDITION error. NEXT ID: 6",
+      "properties": {
+        "keepExpiredRecords": {
+          "description": "Keep records older than 30 days that were used for previous requests.",
+          "type": "boolean"
+        },
+        "recordsToAdd": {
+          "description": "ACME TXT record challenges to add. Supports multiple challenges on the same FQDN.",
+          "type": "array",
+          "items": {
+            "$ref": "AcmeTxtRecord"
+          }
+        },
+        "accessToken": {
+          "description": "Required. ACME DNS access token. This is a base64 token secret that is procured from the Google Domains website. It authorizes ACME TXT record updates for a domain.",
+          "type": "string",
+          "format": "byte"
+        },
+        "recordsToRemove": {
+          "description": "ACME TXT record challenges to remove.",
+          "items": {
+            "$ref": "AcmeTxtRecord"
+          },
+          "type": "array"
+        }
+      }
+    },
+    "AcmeTxtRecord": {
+      "type": "object",
+      "id": "AcmeTxtRecord",
+      "description": "The TXT record message that represents an ACME DNS-01 challenge.",
+      "properties": {
+        "updateTime": {
+          "readOnly": true,
+          "description": "Output only. The time when this record was last updated. This will be in UTC time.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "digest": {
+          "type": "string",
+          "description": "Holds the ACME challenge data put in the TXT record. This will be checked to be a valid TXT record data entry."
+        },
+        "fqdn": {
+          "description": "The domain/subdomain for the record. In a request, this MAY be Unicode or Punycode. In a response, this will be in Unicode. The fqdn MUST contain the root_domain field on the request.",
+          "type": "string"
+        }
+      }
+    },
+    "AcmeChallengeSet": {
+      "id": "AcmeChallengeSet",
+      "description": "The up-to-date ACME challenge set on a domain for an RPC. This contains all of the ACME TXT records that exist on the domain.",
+      "type": "object",
+      "properties": {
+        "record": {
+          "type": "array",
+          "description": "The ACME challenges on the requested domain represented as individual TXT records.",
+          "items": {
+            "$ref": "AcmeTxtRecord"
+          }
+        }
+      }
+    }
+  },
   "baseUrl": "https://acmedns.googleapis.com/",
+  "parameters": {
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "location": "query",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "description": "V1 error format.",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "type": "string",
+      "location": "query"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "oauth_token": {
+      "location": "query",
+      "type": "string",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "uploadType": {
+      "type": "string",
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "upload_protocol": {
+      "location": "query",
+      "type": "string",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+    },
+    "access_token": {
+      "location": "query",
+      "type": "string",
+      "description": "OAuth access token."
+    },
+    "alt": {
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "type": "string",
+      "default": "json",
+      "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "location": "query"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    }
+  },
+  "batchPath": "batch",
+  "revision": "20230226",
+  "fullyEncodeReservedExpansion": true,
+  "id": "acmedns:v1",
+  "ownerDomain": "google.com",
+  "title": "ACME DNS API",
+  "basePath": "",
+  "rootUrl": "https://acmedns.googleapis.com/",
+  "discoveryVersion": "v1",
+  "mtlsRootUrl": "https://acmedns.mtls.googleapis.com/",
+  "description": "Google Domains ACME DNS API that allows users to complete ACME DNS-01 challenges for a domain.",
+  "servicePath": "",
+  "canonicalName": "ACME DNS",
   "resources": {
     "acmeChallengeSets": {
       "methods": {
         "get": {
-          "description": "Gets the ACME challenge set for a given domain name. Domain names must be provided in Punycode.",
-          "id": "acmedns.acmeChallengeSets.get",
           "path": "v1/acmeChallengeSets/{rootDomain}",
-          "httpMethod": "GET",
+          "description": "Gets the ACME challenge set for a given domain name. Domain names must be provided in Punycode.",
           "parameters": {
             "rootDomain": {
               "required": true,
-              "type": "string",
+              "description": "Required. SLD + TLD domain name to list challenges. This MAY be Unicode or Punycode.",
               "location": "path",
-              "description": "Required. SLD + TLD domain name to list challenges. This MAY be Unicode or Punycode."
+              "type": "string"
             }
           },
-          "parameterOrder": [
-            "rootDomain"
-          ],
-          "flatPath": "v1/acmeChallengeSets/{rootDomain}",
+          "httpMethod": "GET",
           "response": {
             "$ref": "AcmeChallengeSet"
-          }
-        },
-        "rotateChallenges": {
-          "description": "Rotate the ACME challenges for a given domain name. By default, removes any challenges that are older than 30 days. Domain names must be provided in Punycode.",
-          "httpMethod": "POST",
-          "id": "acmedns.acmeChallengeSets.rotateChallenges",
+          },
+          "flatPath": "v1/acmeChallengeSets/{rootDomain}",
+          "id": "acmedns.acmeChallengeSets.get",
           "parameterOrder": [
             "rootDomain"
-          ],
+          ]
+        },
+        "rotateChallenges": {
           "path": "v1/acmeChallengeSets/{rootDomain}:rotateChallenges",
+          "id": "acmedns.acmeChallengeSets.rotateChallenges",
           "parameters": {
             "rootDomain": {
-              "required": true,
               "type": "string",
+              "description": "Required. SLD + TLD domain name to update records for. This MAY be Unicode or Punycode.",
               "location": "path",
-              "description": "Required. SLD + TLD domain name to update records for. This MAY be Unicode or Punycode."
+              "required": true
             }
           },
+          "description": "Rotate the ACME challenges for a given domain name. By default, removes any challenges that are older than 30 days. Domain names must be provided in Punycode.",
           "request": {
             "$ref": "RotateChallengesRequest"
           },
+          "parameterOrder": [
+            "rootDomain"
+          ],
+          "httpMethod": "POST",
           "response": {
             "$ref": "AcmeChallengeSet"
           },
@@ -63,160 +212,11 @@
       }
     }
   },
-  "parameters": {
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "location": "query",
-      "type": "string"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "access_token": {
-      "type": "string",
-      "description": "OAuth access token.",
-      "location": "query"
-    },
-    "uploadType": {
-      "location": "query",
-      "type": "string",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "oauth_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user."
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "location": "query",
-      "description": "V1 error format.",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "enum": [
-        "1",
-        "2"
-      ],
-      "type": "string"
-    },
-    "callback": {
-      "location": "query",
-      "type": "string",
-      "description": "JSONP"
-    },
-    "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "description": "Data format for response.",
-      "default": "json",
-      "type": "string",
-      "location": "query",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ]
-    },
-    "quotaUser": {
-      "location": "query",
-      "type": "string",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
-    },
-    "prettyPrint": {
-      "type": "boolean",
-      "description": "Returns response with indentations and line breaks.",
-      "location": "query",
-      "default": "true"
-    }
-  },
-  "id": "acmedns:v1",
-  "discoveryVersion": "v1",
-  "schemas": {
-    "AcmeTxtRecord": {
-      "type": "object",
-      "id": "AcmeTxtRecord",
-      "description": "The TXT record message that represents an ACME DNS-01 challenge.",
-      "properties": {
-        "fqdn": {
-          "type": "string",
-          "description": "The domain/subdomain for the record. In a request, this MAY be Unicode or Punycode. In a response, this will be in Unicode. The fqdn MUST contain the root_domain field on the request."
-        },
-        "updateTime": {
-          "type": "string",
-          "description": "Output only. The time when this record was last updated. This will be in UTC time.",
-          "format": "google-datetime",
-          "readOnly": true
-        },
-        "digest": {
-          "description": "Holds the ACME challenge data put in the TXT record. This will be checked to be a valid TXT record data entry.",
-          "type": "string"
-        }
-      }
-    },
-    "AcmeChallengeSet": {
-      "properties": {
-        "record": {
-          "type": "array",
-          "items": {
-            "$ref": "AcmeTxtRecord"
-          },
-          "description": "The ACME challenges on the requested domain represented as individual TXT records."
-        }
-      },
-      "type": "object",
-      "id": "AcmeChallengeSet",
-      "description": "The up-to-date ACME challenge set on a domain for an RPC. This contains all of the ACME TXT records that exist on the domain."
-    },
-    "RotateChallengesRequest": {
-      "properties": {
-        "keepExpiredRecords": {
-          "type": "boolean",
-          "description": "Keep records older than 30 days that were used for previous requests."
-        },
-        "recordsToRemove": {
-          "type": "array",
-          "items": {
-            "$ref": "AcmeTxtRecord"
-          },
-          "description": "ACME TXT record challenges to remove."
-        },
-        "recordsToAdd": {
-          "items": {
-            "$ref": "AcmeTxtRecord"
-          },
-          "description": "ACME TXT record challenges to add. Supports multiple challenges on the same FQDN.",
-          "type": "array"
-        },
-        "accessToken": {
-          "type": "string",
-          "description": "Required. ACME DNS access token. This is a base64 token secret that is procured from the Google Domains website. It authorizes ACME TXT record updates for a domain.",
-          "format": "byte"
-        }
-      },
-      "id": "RotateChallengesRequest",
-      "type": "object",
-      "description": "The request message for the RotateChallenges RPC. Requires an access token, a root domain, and either records_to_add or records_to_remove to be populated. Records may be set for multiple subdomains at once to support SAN requests for multiple subdomains in a single domain. By default, ACME TXT record challenges that are older than 30 days will be removed. Set `keep_expired_records` to false if this behavior is undesired. There is a record maximum of 100 records per domain including expired records. Any request sent that would exceed this maximum will result in a FAILED_PRECONDITION error. NEXT ID: 6"
-    }
-  },
-  "basePath": "",
+  "documentationLink": "https://developers.google.com/domains/acme-dns/",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
-  "title": "ACME DNS API",
-  "revision": "20230226",
-  "canonicalName": "ACME DNS",
-  "protocol": "rest",
-  "fullyEncodeReservedExpansion": true
+  "version_module": true,
+  "ownerName": "Google"
 }

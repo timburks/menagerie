@@ -1,6 +1,33 @@
 {
-  "protocol": "rest",
+  "title": "Policy Analyzer API",
+  "id": "policyanalyzer:v1beta1",
+  "name": "policyanalyzer",
+  "rootUrl": "https://policyanalyzer.googleapis.com/",
   "servicePath": "",
+  "kind": "discovery#restDescription",
+  "basePath": "",
+  "mtlsRootUrl": "https://policyanalyzer.mtls.googleapis.com/",
+  "protocol": "rest",
+  "fullyEncodeReservedExpansion": true,
+  "ownerName": "Google",
+  "version_module": true,
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
+        }
+      }
+    }
+  },
+  "description": "",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "ownerDomain": "google.com",
+  "baseUrl": "https://policyanalyzer.googleapis.com/",
+  "revision": "20230226",
   "resources": {
     "projects": {
       "resources": {
@@ -11,44 +38,44 @@
                 "activities": {
                   "methods": {
                     "query": {
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "parameters": {
-                        "pageSize": {
-                          "description": "Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available.",
-                          "format": "int32",
-                          "type": "integer",
-                          "location": "query"
-                        },
-                        "pageToken": {
-                          "location": "query",
-                          "type": "string",
-                          "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. `pageToken` must be the value of `nextPageToken` from the previous response. The values of other method parameters should be identical to those in the previous call."
-                        },
-                        "parent": {
-                          "required": true,
-                          "pattern": "^projects/[^/]+/locations/[^/]+/activityTypes/[^/]+$",
-                          "description": "Required. The container resource on which to execute the request. Acceptable formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/",
-                          "type": "string",
-                          "location": "path"
-                        },
-                        "filter": {
-                          "type": "string",
-                          "location": "query",
-                          "description": "Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=} "
-                        }
+                      "description": "Queries policy activities on GCP resources.",
+                      "response": {
+                        "$ref": "GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse"
                       },
                       "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/activityTypes/{activityTypesId}/activities:query",
+                      "id": "policyanalyzer.projects.locations.activityTypes.activities.query",
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
                       ],
-                      "id": "policyanalyzer.projects.locations.activityTypes.activities.query",
-                      "description": "Queries policy activities on GCP resources.",
                       "httpMethod": "GET",
+                      "parameterOrder": [
+                        "parent"
+                      ],
                       "path": "v1beta1/{+parent}/activities:query",
-                      "response": {
-                        "$ref": "GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse"
+                      "parameters": {
+                        "filter": {
+                          "description": "Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=} ",
+                          "type": "string",
+                          "location": "query"
+                        },
+                        "pageSize": {
+                          "type": "integer",
+                          "format": "int32",
+                          "location": "query",
+                          "description": "Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available."
+                        },
+                        "parent": {
+                          "type": "string",
+                          "location": "path",
+                          "required": true,
+                          "pattern": "^projects/[^/]+/locations/[^/]+/activityTypes/[^/]+$",
+                          "description": "Required. The container resource on which to execute the request. Acceptable formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/"
+                        },
+                        "pageToken": {
+                          "description": "Optional. If present, then retrieve the next batch of results from the preceding call to this method. `pageToken` must be the value of `nextPageToken` from the previous response. The values of other method parameters should be identical to those in the previous call.",
+                          "location": "query",
+                          "type": "string"
+                        }
                       }
                     }
                   }
@@ -60,56 +87,110 @@
       }
     }
   },
-  "fullyEncodeReservedExpansion": true,
-  "rootUrl": "https://policyanalyzer.googleapis.com/",
   "documentationLink": "https://www.google.com",
-  "id": "policyanalyzer:v1beta1",
-  "version_module": true,
-  "basePath": "",
+  "parameters": {
+    "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "default": "json",
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "description": "Data format for response.",
+      "location": "query"
+    },
+    "access_token": {
+      "type": "string",
+      "description": "OAuth access token.",
+      "location": "query"
+    },
+    "key": {
+      "type": "string",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "type": "string",
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+    },
+    "quotaUser": {
+      "type": "string",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "type": "string",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "description": "V1 error format.",
+      "location": "query"
+    },
+    "uploadType": {
+      "type": "string",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "location": "query"
+    },
+    "oauth_token": {
+      "type": "string",
+      "description": "OAuth 2.0 token for the current user.",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "callback": {
+      "type": "string",
+      "description": "JSONP",
+      "location": "query"
+    }
+  },
   "batchPath": "batch",
-  "baseUrl": "https://policyanalyzer.googleapis.com/",
   "schemas": {
     "GoogleCloudPolicyanalyzerV1beta1ObservationPeriod": {
+      "id": "GoogleCloudPolicyanalyzerV1beta1ObservationPeriod",
       "description": "Represents data observation period.",
       "properties": {
         "startTime": {
-          "description": "The observation start time.",
           "type": "string",
+          "description": "The observation start time.",
           "format": "google-datetime"
         },
         "endTime": {
-          "description": "The observation end time.",
+          "format": "google-datetime",
           "type": "string",
-          "format": "google-datetime"
+          "description": "The observation end time."
         }
       },
-      "type": "object",
-      "id": "GoogleCloudPolicyanalyzerV1beta1ObservationPeriod"
-    },
-    "GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse": {
-      "properties": {
-        "activities": {
-          "type": "array",
-          "items": {
-            "$ref": "GoogleCloudPolicyanalyzerV1beta1Activity"
-          },
-          "description": "The set of activities that match the filter included in the request."
-        },
-        "nextPageToken": {
-          "description": "If there might be more results than those appearing in this response, then `nextPageToken` is included. To get the next set of results, call this method again using the value of `nextPageToken` as `pageToken`.",
-          "type": "string"
-        }
-      },
-      "description": "Response to the `QueryActivity` method.",
-      "type": "object",
-      "id": "GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse"
+      "type": "object"
     },
     "GoogleCloudPolicyanalyzerV1beta1Activity": {
       "type": "object",
+      "id": "GoogleCloudPolicyanalyzerV1beta1Activity",
       "properties": {
-        "activityType": {
-          "description": "The type of the activity.",
-          "type": "string"
+        "observationPeriod": {
+          "description": "The data observation period to build the activity.",
+          "$ref": "GoogleCloudPolicyanalyzerV1beta1ObservationPeriod"
         },
         "activity": {
           "type": "object",
@@ -119,117 +200,36 @@
           },
           "description": "A struct of custom fields to explain the activity."
         },
-        "observationPeriod": {
-          "description": "The data observation period to build the activity.",
-          "$ref": "GoogleCloudPolicyanalyzerV1beta1ObservationPeriod"
-        },
         "fullResourceName": {
-          "description": "The full resource name that identifies the resource. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names.",
+          "type": "string",
+          "description": "The full resource name that identifies the resource. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names."
+        },
+        "activityType": {
+          "type": "string",
+          "description": "The type of the activity."
+        }
+      }
+    },
+    "GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse": {
+      "type": "object",
+      "properties": {
+        "activities": {
+          "type": "array",
+          "description": "The set of activities that match the filter included in the request.",
+          "items": {
+            "$ref": "GoogleCloudPolicyanalyzerV1beta1Activity"
+          }
+        },
+        "nextPageToken": {
+          "description": "If there might be more results than those appearing in this response, then `nextPageToken` is included. To get the next set of results, call this method again using the value of `nextPageToken` as `pageToken`.",
           "type": "string"
         }
       },
-      "id": "GoogleCloudPolicyanalyzerV1beta1Activity"
+      "description": "Response to the `QueryActivity` method.",
+      "id": "GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse"
     }
   },
-  "discoveryVersion": "v1",
-  "ownerName": "Google",
-  "name": "policyanalyzer",
-  "revision": "20230219",
-  "parameters": {
-    "oauth_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user."
-    },
-    "callback": {
-      "type": "string",
-      "description": "JSONP",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "location": "query",
-      "type": "string"
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "prettyPrint": {
-      "type": "boolean",
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "default": "true"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "location": "query",
-      "type": "string"
-    },
-    "alt": {
-      "default": "json",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "type": "string",
-      "description": "Data format for response.",
-      "location": "query",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "location": "query",
-      "type": "string",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "location": "query",
-      "type": "string"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "location": "query",
-      "type": "string"
-    }
-  },
-  "kind": "discovery#restDescription",
-  "mtlsRootUrl": "https://policyanalyzer.mtls.googleapis.com/",
-  "description": "",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
-        }
-      }
-    }
-  },
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
-  "title": "Policy Analyzer API",
   "version": "v1beta1",
-  "ownerDomain": "google.com",
+  "discoveryVersion": "v1",
   "canonicalName": "Policy Analyzer"
 }

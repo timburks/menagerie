@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v1p1beta1
+  parent: apis/google.com-securitycenter
+data:
+  displayName: v1p1beta1

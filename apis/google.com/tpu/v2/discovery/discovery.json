@@ -1,5 +1,4 @@
 {
-  "description": "TPU API provides customers with access to Google TPU technology.",
   "auth": {
     "oauth2": {
       "scopes": {
@@ -9,421 +8,29 @@
       }
     }
   },
-  "servicePath": "",
+  "version": "v2",
+  "mtlsRootUrl": "https://tpu.mtls.googleapis.com/",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "fullyEncodeReservedExpansion": true,
+  "basePath": "",
+  "canonicalName": "TPU",
   "schemas": {
-    "Empty": {
-      "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
-      "properties": {},
-      "type": "object"
-    },
-    "ServiceIdentity": {
-      "type": "object",
-      "id": "ServiceIdentity",
-      "description": "The per-product per-project service identity for Cloud TPU service.",
-      "properties": {
-        "email": {
-          "description": "The email address of the service identity.",
-          "type": "string"
-        }
-      }
-    },
-    "ListOperationsResponse": {
-      "properties": {
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        },
-        "operations": {
-          "type": "array",
-          "items": {
-            "$ref": "Operation"
-          },
-          "description": "A list of operations that matches the specified filter in the request."
-        }
-      },
-      "id": "ListOperationsResponse",
-      "type": "object",
-      "description": "The response message for Operations.ListOperations."
-    },
-    "GuestAttributesEntry": {
-      "id": "GuestAttributesEntry",
-      "description": "A guest attributes namespace/key/value entry.",
-      "properties": {
-        "namespace": {
-          "description": "Namespace for the guest attribute entry.",
-          "type": "string"
-        },
-        "key": {
-          "description": "Key for the guest attribute entry.",
-          "type": "string"
-        },
-        "value": {
-          "description": "Value for the guest attribute entry.",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "ServiceAccount": {
-      "description": "A service account.",
-      "id": "ServiceAccount",
-      "type": "object",
-      "properties": {
-        "scope": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The list of scopes to be made available for this service account. If empty, access to all Cloud APIs will be allowed."
-        },
-        "email": {
-          "type": "string",
-          "description": "Email address of the service account. If empty, default Compute service account will be used."
-        }
-      }
-    },
-    "AcceleratorConfig": {
-      "description": "A TPU accelerator configuration.",
-      "id": "AcceleratorConfig",
-      "properties": {
-        "type": {
-          "description": "Required. Type of TPU.",
-          "type": "string",
-          "enum": [
-            "TYPE_UNSPECIFIED",
-            "V2",
-            "V3",
-            "V4"
-          ],
-          "enumDescriptions": [
-            "Unspecified version.",
-            "TPU v2.",
-            "TPU v3.",
-            "TPU v4."
-          ]
-        },
-        "topology": {
-          "type": "string",
-          "description": "Required. Topology of TPU in chips."
-        }
-      },
-      "type": "object"
-    },
     "GenerateServiceIdentityResponse": {
-      "description": "Response for GenerateServiceIdentity.",
       "type": "object",
-      "id": "GenerateServiceIdentityResponse",
       "properties": {
         "identity": {
-          "$ref": "ServiceIdentity",
-          "description": "ServiceIdentity that was created or retrieved."
-        }
-      }
-    },
-    "ListLocationsResponse": {
-      "type": "object",
-      "id": "ListLocationsResponse",
-      "properties": {
-        "nextPageToken": {
-          "type": "string",
-          "description": "The standard List next-page token."
-        },
-        "locations": {
-          "description": "A list of locations that matches the specified filter in the request.",
-          "items": {
-            "$ref": "Location"
-          },
-          "type": "array"
+          "description": "ServiceIdentity that was created or retrieved.",
+          "$ref": "ServiceIdentity"
         }
       },
-      "description": "The response message for Locations.ListLocations."
-    },
-    "ListNodesResponse": {
-      "description": "Response for ListNodes.",
-      "properties": {
-        "nextPageToken": {
-          "type": "string",
-          "description": "The next page token or empty if none."
-        },
-        "nodes": {
-          "type": "array",
-          "description": "The listed nodes.",
-          "items": {
-            "$ref": "Node"
-          }
-        },
-        "unreachable": {
-          "items": {
-            "type": "string"
-          },
-          "description": "Locations that could not be reached.",
-          "type": "array"
-        }
-      },
-      "type": "object",
-      "id": "ListNodesResponse"
-    },
-    "RuntimeVersion": {
-      "description": "A runtime version that a Node can be configured with.",
-      "id": "RuntimeVersion",
-      "type": "object",
-      "properties": {
-        "version": {
-          "description": "The runtime version.",
-          "type": "string"
-        },
-        "name": {
-          "description": "The resource name.",
-          "type": "string"
-        }
-      }
-    },
-    "GetGuestAttributesRequest": {
-      "id": "GetGuestAttributesRequest",
-      "description": "Request for GetGuestAttributes.",
-      "type": "object",
-      "properties": {
-        "workerIds": {
-          "description": "The 0-based worker ID. If it is empty, all workers' GuestAttributes will be returned.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "queryPath": {
-          "type": "string",
-          "description": "The guest attributes path to be queried."
-        }
-      }
-    },
-    "ListAcceleratorTypesResponse": {
-      "type": "object",
-      "description": "Response for ListAcceleratorTypes.",
-      "properties": {
-        "nextPageToken": {
-          "description": "The next page token or empty if none.",
-          "type": "string"
-        },
-        "unreachable": {
-          "description": "Locations that could not be reached.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "acceleratorTypes": {
-          "description": "The listed nodes.",
-          "items": {
-            "$ref": "AcceleratorType"
-          },
-          "type": "array"
-        }
-      },
-      "id": "ListAcceleratorTypesResponse"
-    },
-    "GuestAttributesValue": {
-      "type": "object",
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "GuestAttributesEntry"
-          },
-          "type": "array",
-          "description": "The list of guest attributes entries."
-        }
-      },
-      "id": "GuestAttributesValue",
-      "description": "Array of guest attribute namespace/key/value tuples."
-    },
-    "ListRuntimeVersionsResponse": {
-      "type": "object",
-      "properties": {
-        "unreachable": {
-          "description": "Locations that could not be reached.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "nextPageToken": {
-          "type": "string",
-          "description": "The next page token or empty if none."
-        },
-        "runtimeVersions": {
-          "type": "array",
-          "description": "The listed nodes.",
-          "items": {
-            "$ref": "RuntimeVersion"
-          }
-        }
-      },
-      "description": "Response for ListRuntimeVersions.",
-      "id": "ListRuntimeVersionsResponse"
-    },
-    "AccessConfig": {
-      "type": "object",
-      "description": "An access config attached to the TPU worker.",
-      "id": "AccessConfig",
-      "properties": {
-        "externalIp": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. An external IP address associated with the TPU worker."
-        }
-      }
-    },
-    "StopNodeRequest": {
-      "properties": {},
-      "id": "StopNodeRequest",
-      "description": "Request for StopNode.",
-      "type": "object"
-    },
-    "Status": {
-      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
-      "id": "Status",
-      "type": "object",
-      "properties": {
-        "message": {
-          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
-          "type": "string"
-        },
-        "details": {
-          "items": {
-            "additionalProperties": {
-              "description": "Properties of the object. Contains field @type with type URL.",
-              "type": "any"
-            },
-            "type": "object"
-          },
-          "type": "array",
-          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use."
-        },
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The status code, which should be an enum value of google.rpc.Code."
-        }
-      }
-    },
-    "GetGuestAttributesResponse": {
-      "description": "Response for GetGuestAttributes.",
-      "properties": {
-        "guestAttributes": {
-          "description": "The guest attributes for the TPU workers.",
-          "type": "array",
-          "items": {
-            "$ref": "GuestAttributes"
-          }
-        }
-      },
-      "id": "GetGuestAttributesResponse",
-      "type": "object"
-    },
-    "NetworkEndpoint": {
-      "description": "A network endpoint over which a TPU worker can be reached.",
-      "properties": {
-        "ipAddress": {
-          "type": "string",
-          "description": "The internal IP address of this network endpoint."
-        },
-        "accessConfig": {
-          "$ref": "AccessConfig",
-          "description": "The access config for the TPU worker."
-        },
-        "port": {
-          "format": "int32",
-          "type": "integer",
-          "description": "The port of this network endpoint."
-        }
-      },
-      "type": "object",
-      "id": "NetworkEndpoint"
-    },
-    "AcceleratorType": {
-      "description": "A accelerator type that a Node can be configured with.",
-      "properties": {
-        "type": {
-          "description": "the accelerator type.",
-          "type": "string"
-        },
-        "name": {
-          "description": "The resource name.",
-          "type": "string"
-        },
-        "acceleratorConfigs": {
-          "items": {
-            "$ref": "AcceleratorConfig"
-          },
-          "description": "The accelerator config.",
-          "type": "array"
-        }
-      },
-      "type": "object",
-      "id": "AcceleratorType"
-    },
-    "GenerateServiceIdentityRequest": {
-      "description": "Request for GenerateServiceIdentity.",
-      "type": "object",
-      "properties": {},
-      "id": "GenerateServiceIdentityRequest"
-    },
-    "ShieldedInstanceConfig": {
-      "type": "object",
-      "properties": {
-        "enableSecureBoot": {
-          "type": "boolean",
-          "description": "Defines whether the instance has Secure Boot enabled."
-        }
-      },
-      "id": "ShieldedInstanceConfig",
-      "description": "A set of Shielded Instance options."
-    },
-    "StartNodeRequest": {
-      "type": "object",
-      "id": "StartNodeRequest",
-      "description": "Request for StartNode.",
-      "properties": {}
-    },
-    "AttachedDisk": {
-      "id": "AttachedDisk",
-      "type": "object",
-      "description": "A node-attached disk resource. Next ID: 8;",
-      "properties": {
-        "sourceDisk": {
-          "description": "Specifies the full path to an existing disk. For example: \"projects/my-project/zones/us-central1-c/disks/my-disk\".",
-          "type": "string"
-        },
-        "mode": {
-          "enum": [
-            "DISK_MODE_UNSPECIFIED",
-            "READ_WRITE",
-            "READ_ONLY"
-          ],
-          "enumDescriptions": [
-            "The disk mode is not known/set.",
-            "Attaches the disk in read-write mode. Only one TPU node can attach a disk in read-write mode at a time.",
-            "Attaches the disk in read-only mode. Multiple TPU nodes can attach a disk in read-only mode at a time."
-          ],
-          "description": "The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.",
-          "type": "string"
-        }
-      }
+      "description": "Response for GenerateServiceIdentity.",
+      "id": "GenerateServiceIdentityResponse"
     },
     "Node": {
-      "type": "object",
-      "id": "Node",
       "description": "A TPU instance.",
+      "type": "object",
       "properties": {
-        "shieldedInstanceConfig": {
-          "description": "Shielded Instance options.",
-          "$ref": "ShieldedInstanceConfig"
-        },
-        "name": {
-          "description": "Output only. Immutable. The name of the TPU.",
-          "readOnly": true,
-          "type": "string"
-        },
         "labels": {
           "description": "Resource labels to represent user-provided metadata.",
           "type": "object",
@@ -431,10 +38,64 @@
             "type": "string"
           }
         },
-        "state": {
+        "acceleratorType": {
           "type": "string",
+          "description": "Required. The type of hardware accelerators associated with this node."
+        },
+        "name": {
+          "type": "string",
+          "description": "Output only. Immutable. The name of the TPU.",
+          "readOnly": true
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "networkConfig": {
+          "description": "Network configurations for the TPU node.",
+          "$ref": "NetworkConfig"
+        },
+        "runtimeVersion": {
+          "description": "Required. The runtime version running in the Node.",
+          "type": "string"
+        },
+        "serviceAccount": {
+          "$ref": "ServiceAccount",
+          "description": "The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used."
+        },
+        "apiVersion": {
+          "description": "Output only. The API version that created this Node.",
+          "enumDescriptions": [
+            "API version is unknown.",
+            "TPU API V1Alpha1 version.",
+            "TPU API V1 version.",
+            "TPU API V2Alpha1 version.",
+            "TPU API V2 version."
+          ],
           "readOnly": true,
-          "description": "Output only. The current state for the TPU Node.",
+          "type": "string",
+          "enum": [
+            "API_VERSION_UNSPECIFIED",
+            "V1_ALPHA1",
+            "V1",
+            "V2_ALPHA1",
+            "V2"
+          ]
+        },
+        "id": {
+          "format": "int64",
+          "description": "Output only. The unique identifier for the TPU Node.",
+          "type": "string",
+          "readOnly": true
+        },
+        "schedulingConfig": {
+          "description": "The scheduling options for this node.",
+          "$ref": "SchedulingConfig"
+        },
+        "state": {
           "enum": [
             "STATE_UNSPECIFIED",
             "CREATING",
@@ -452,6 +113,8 @@
             "HIDDEN",
             "UNHIDING"
           ],
+          "readOnly": true,
+          "description": "Output only. The current state for the TPU Node.",
           "enumDescriptions": [
             "TPU node state is not known/set.",
             "TPU node is being created.",
@@ -468,95 +131,24 @@
             "TPU node is currently hiding.",
             "TPU node has been hidden.",
             "TPU node is currently unhiding."
-          ]
+          ],
+          "type": "string"
         },
         "symptoms": {
-          "items": {
-            "$ref": "Symptom"
-          },
+          "readOnly": true,
           "type": "array",
           "description": "Output only. The Symptoms that have occurred to the TPU Node.",
-          "readOnly": true
+          "items": {
+            "$ref": "Symptom"
+          }
+        },
+        "acceleratorConfig": {
+          "description": "The AccleratorConfig for the TPU Node.",
+          "$ref": "AcceleratorConfig"
         },
         "description": {
           "type": "string",
           "description": "The user-supplied description of the TPU. Maximum of 512 characters."
-        },
-        "acceleratorType": {
-          "description": "Required. The type of hardware accelerators associated with this node.",
-          "type": "string"
-        },
-        "tags": {
-          "type": "array",
-          "description": "Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "apiVersion": {
-          "description": "Output only. The API version that created this Node.",
-          "enum": [
-            "API_VERSION_UNSPECIFIED",
-            "V1_ALPHA1",
-            "V1",
-            "V2_ALPHA1",
-            "V2"
-          ],
-          "readOnly": true,
-          "type": "string",
-          "enumDescriptions": [
-            "API version is unknown.",
-            "TPU API V1Alpha1 version.",
-            "TPU API V1 version.",
-            "TPU API V2Alpha1 version.",
-            "TPU API V2 version."
-          ]
-        },
-        "acceleratorConfig": {
-          "$ref": "AcceleratorConfig",
-          "description": "The AccleratorConfig for the TPU Node."
-        },
-        "healthDescription": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. If this field is populated, it contains a description of why the TPU Node is unhealthy."
-        },
-        "health": {
-          "enum": [
-            "HEALTH_UNSPECIFIED",
-            "HEALTHY",
-            "TIMEOUT",
-            "UNHEALTHY_TENSORFLOW",
-            "UNHEALTHY_MAINTENANCE"
-          ],
-          "enumDescriptions": [
-            "Health status is unknown: not initialized or failed to retrieve.",
-            "The resource is healthy.",
-            "The resource is unresponsive.",
-            "The in-guest ML stack is unhealthy.",
-            "The node is under maintenance/priority boost caused rescheduling and will resume running once rescheduled."
-          ],
-          "description": "The health status of the TPU node.",
-          "type": "string"
-        },
-        "networkEndpoints": {
-          "description": "Output only. The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.",
-          "items": {
-            "$ref": "NetworkEndpoint"
-          },
-          "type": "array",
-          "readOnly": true
-        },
-        "metadata": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object",
-          "description": "Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script"
-        },
-        "runtimeVersion": {
-          "description": "Required. The runtime version running in the Node.",
-          "type": "string"
         },
         "dataDisks": {
           "items": {
@@ -565,225 +157,461 @@
           "description": "The additional data disks for the Node.",
           "type": "array"
         },
-        "id": {
-          "description": "Output only. The unique identifier for the TPU Node.",
-          "type": "string",
-          "format": "int64",
-          "readOnly": true
-        },
         "createTime": {
-          "readOnly": true,
-          "description": "Output only. The time when the node was created.",
           "format": "google-datetime",
-          "type": "string"
+          "readOnly": true,
+          "type": "string",
+          "description": "Output only. The time when the node was created."
         },
-        "serviceAccount": {
-          "description": "The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.",
-          "$ref": "ServiceAccount"
+        "networkEndpoints": {
+          "description": "Output only. The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.",
+          "readOnly": true,
+          "items": {
+            "$ref": "NetworkEndpoint"
+          },
+          "type": "array"
         },
-        "networkConfig": {
-          "$ref": "NetworkConfig",
-          "description": "Network configurations for the TPU node."
+        "healthDescription": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Output only. If this field is populated, it contains a description of why the TPU Node is unhealthy."
         },
-        "schedulingConfig": {
-          "description": "The scheduling options for this node.",
-          "$ref": "SchedulingConfig"
+        "metadata": {
+          "type": "object",
+          "description": "Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "shieldedInstanceConfig": {
+          "$ref": "ShieldedInstanceConfig",
+          "description": "Shielded Instance options."
+        },
+        "health": {
+          "description": "The health status of the TPU node.",
+          "type": "string",
+          "enumDescriptions": [
+            "Health status is unknown: not initialized or failed to retrieve.",
+            "The resource is healthy.",
+            "The resource is unresponsive.",
+            "The in-guest ML stack is unhealthy.",
+            "The node is under maintenance/priority boost caused rescheduling and will resume running once rescheduled."
+          ],
+          "enum": [
+            "HEALTH_UNSPECIFIED",
+            "HEALTHY",
+            "TIMEOUT",
+            "UNHEALTHY_TENSORFLOW",
+            "UNHEALTHY_MAINTENANCE"
+          ]
         },
         "cidrBlock": {
           "type": "string",
           "description": "The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block."
         }
+      },
+      "id": "Node"
+    },
+    "GuestAttributesValue": {
+      "description": "Array of guest attribute namespace/key/value tuples.",
+      "properties": {
+        "items": {
+          "description": "The list of guest attributes entries.",
+          "type": "array",
+          "items": {
+            "$ref": "GuestAttributesEntry"
+          }
+        }
+      },
+      "type": "object",
+      "id": "GuestAttributesValue"
+    },
+    "AcceleratorType": {
+      "type": "object",
+      "id": "AcceleratorType",
+      "description": "A accelerator type that a Node can be configured with.",
+      "properties": {
+        "acceleratorConfigs": {
+          "description": "The accelerator config.",
+          "items": {
+            "$ref": "AcceleratorConfig"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string",
+          "description": "The resource name."
+        },
+        "type": {
+          "type": "string",
+          "description": "the accelerator type."
+        }
       }
     },
+    "StopNodeRequest": {
+      "id": "StopNodeRequest",
+      "properties": {},
+      "type": "object",
+      "description": "Request for StopNode."
+    },
+    "AcceleratorConfig": {
+      "type": "object",
+      "description": "A TPU accelerator configuration.",
+      "id": "AcceleratorConfig",
+      "properties": {
+        "topology": {
+          "type": "string",
+          "description": "Required. Topology of TPU in chips."
+        },
+        "type": {
+          "description": "Required. Type of TPU.",
+          "enum": [
+            "TYPE_UNSPECIFIED",
+            "V2",
+            "V3",
+            "V4"
+          ],
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified version.",
+            "TPU v2.",
+            "TPU v3.",
+            "TPU v4."
+          ]
+        }
+      }
+    },
+    "StartNodeRequest": {
+      "id": "StartNodeRequest",
+      "properties": {},
+      "description": "Request for StartNode.",
+      "type": "object"
+    },
+    "RuntimeVersion": {
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "The runtime version."
+        },
+        "name": {
+          "description": "The resource name.",
+          "type": "string"
+        }
+      },
+      "description": "A runtime version that a Node can be configured with.",
+      "type": "object",
+      "id": "RuntimeVersion"
+    },
+    "ServiceIdentity": {
+      "description": "The per-product per-project service identity for Cloud TPU service.",
+      "properties": {
+        "email": {
+          "description": "The email address of the service identity.",
+          "type": "string"
+        }
+      },
+      "id": "ServiceIdentity",
+      "type": "object"
+    },
+    "ListRuntimeVersionsResponse": {
+      "properties": {
+        "unreachable": {
+          "description": "Locations that could not be reached.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "nextPageToken": {
+          "description": "The next page token or empty if none.",
+          "type": "string"
+        },
+        "runtimeVersions": {
+          "type": "array",
+          "items": {
+            "$ref": "RuntimeVersion"
+          },
+          "description": "The listed nodes."
+        }
+      },
+      "type": "object",
+      "description": "Response for ListRuntimeVersions.",
+      "id": "ListRuntimeVersionsResponse"
+    },
+    "GetGuestAttributesResponse": {
+      "properties": {
+        "guestAttributes": {
+          "type": "array",
+          "description": "The guest attributes for the TPU workers.",
+          "items": {
+            "$ref": "GuestAttributes"
+          }
+        }
+      },
+      "description": "Response for GetGuestAttributes.",
+      "type": "object",
+      "id": "GetGuestAttributesResponse"
+    },
+    "ListAcceleratorTypesResponse": {
+      "description": "Response for ListAcceleratorTypes.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "type": "string",
+          "description": "The next page token or empty if none."
+        },
+        "acceleratorTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "AcceleratorType"
+          },
+          "description": "The listed nodes."
+        },
+        "unreachable": {
+          "items": {
+            "type": "string"
+          },
+          "description": "Locations that could not be reached.",
+          "type": "array"
+        }
+      },
+      "id": "ListAcceleratorTypesResponse"
+    },
+    "Operation": {
+      "id": "Operation",
+      "description": "This resource represents a long-running operation that is the result of a network API call.",
+      "properties": {
+        "response": {
+          "type": "object",
+          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          }
+        },
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          }
+        },
+        "done": {
+          "type": "boolean",
+          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available."
+        },
+        "name": {
+          "type": "string",
+          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
+        }
+      },
+      "type": "object"
+    },
+    "ListLocationsResponse": {
+      "type": "object",
+      "description": "The response message for Locations.ListLocations.",
+      "properties": {
+        "locations": {
+          "type": "array",
+          "description": "A list of locations that matches the specified filter in the request.",
+          "items": {
+            "$ref": "Location"
+          }
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "The standard List next-page token."
+        }
+      },
+      "id": "ListLocationsResponse"
+    },
+    "ShieldedInstanceConfig": {
+      "properties": {
+        "enableSecureBoot": {
+          "description": "Defines whether the instance has Secure Boot enabled.",
+          "type": "boolean"
+        }
+      },
+      "id": "ShieldedInstanceConfig",
+      "description": "A set of Shielded Instance options.",
+      "type": "object"
+    },
     "GuestAttributes": {
+      "type": "object",
+      "description": "A guest attributes.",
+      "id": "GuestAttributes",
       "properties": {
         "queryPath": {
-          "type": "string",
-          "description": "The path to be queried. This can be the default namespace ('/') or a nested namespace ('/\\/') or a specified key ('/\\/\\')"
+          "description": "The path to be queried. This can be the default namespace ('/') or a nested namespace ('/\\/') or a specified key ('/\\/\\')",
+          "type": "string"
         },
         "queryValue": {
           "description": "The value of the requested queried path.",
           "$ref": "GuestAttributesValue"
         }
-      },
-      "id": "GuestAttributes",
-      "description": "A guest attributes.",
-      "type": "object"
+      }
     },
-    "OperationMetadata": {
-      "description": "Metadata describing an Operation",
+    "ListOperationsResponse": {
       "properties": {
-        "endTime": {
-          "format": "google-datetime",
-          "description": "The time the operation finished running.",
-          "type": "string"
-        },
-        "createTime": {
-          "format": "google-datetime",
+        "nextPageToken": {
           "type": "string",
-          "description": "The time the operation was created."
+          "description": "The standard List next-page token."
         },
-        "apiVersion": {
-          "description": "API version.",
-          "type": "string"
-        },
-        "statusDetail": {
-          "type": "string",
-          "description": "Human-readable status of the operation, if any."
-        },
-        "target": {
-          "type": "string",
-          "description": "Target of the operation - for example projects/project-1/connectivityTests/test-1"
-        },
-        "verb": {
-          "type": "string",
-          "description": "Name of the verb executed by the operation."
-        },
-        "cancelRequested": {
-          "type": "boolean",
-          "description": "Specifies if cancellation was requested for the operation."
+        "operations": {
+          "description": "A list of operations that matches the specified filter in the request.",
+          "type": "array",
+          "items": {
+            "$ref": "Operation"
+          }
         }
       },
-      "id": "OperationMetadata",
+      "id": "ListOperationsResponse",
+      "description": "The response message for Operations.ListOperations.",
       "type": "object"
     },
-    "Operation": {
+    "Status": {
+      "properties": {
+        "details": {
+          "type": "array",
+          "items": {
+            "additionalProperties": {
+              "type": "any",
+              "description": "Properties of the object. Contains field @type with type URL."
+            },
+            "type": "object"
+          },
+          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use."
+        },
+        "message": {
+          "type": "string",
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."
+        },
+        "code": {
+          "format": "int32",
+          "type": "integer",
+          "description": "The status code, which should be an enum value of google.rpc.Code."
+        }
+      },
+      "id": "Status",
       "type": "object",
-      "id": "Operation",
-      "properties": {
-        "response": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
-          "type": "object"
-        },
-        "name": {
-          "type": "string",
-          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
-        },
-        "metadata": {
-          "type": "object",
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."
-        },
-        "done": {
-          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
-          "type": "boolean"
-        },
-        "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
-        }
-      },
-      "description": "This resource represents a long-running operation that is the result of a network API call."
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+    },
+    "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+      "id": "Empty",
+      "type": "object",
+      "properties": {}
     },
     "Location": {
+      "type": "object",
       "properties": {
+        "name": {
+          "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+          "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "Service-specific metadata. For example the available capacity at the given location.",
+          "type": "object"
+        },
+        "locationId": {
+          "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+          "type": "string"
+        },
         "labels": {
-          "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
           "additionalProperties": {
             "type": "string"
           },
-          "type": "object"
-        },
-        "metadata": {
-          "description": "Service-specific metadata. For example the available capacity at the given location.",
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
-          },
-          "type": "object"
+          "type": "object",
+          "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}"
         },
         "displayName": {
           "type": "string",
           "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\"."
-        },
-        "name": {
-          "type": "string",
-          "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`"
-        },
-        "locationId": {
-          "type": "string",
-          "description": "The canonical id for this location. For example: `\"us-east1\"`."
         }
       },
       "description": "A resource that represents Google Cloud Platform location.",
-      "id": "Location",
-      "type": "object"
+      "id": "Location"
     },
-    "Symptom": {
-      "id": "Symptom",
+    "NetworkEndpoint": {
+      "type": "object",
+      "description": "A network endpoint over which a TPU worker can be reached.",
       "properties": {
-        "createTime": {
-          "format": "google-datetime",
-          "description": "Timestamp when the Symptom is created.",
+        "accessConfig": {
+          "$ref": "AccessConfig",
+          "description": "The access config for the TPU worker."
+        },
+        "ipAddress": {
+          "type": "string",
+          "description": "The internal IP address of this network endpoint."
+        },
+        "port": {
+          "description": "The port of this network endpoint.",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "id": "NetworkEndpoint"
+    },
+    "ServiceAccount": {
+      "properties": {
+        "email": {
+          "description": "Email address of the service account. If empty, default Compute service account will be used.",
           "type": "string"
         },
-        "details": {
-          "description": "Detailed information of the current Symptom.",
-          "type": "string"
-        },
-        "symptomType": {
+        "scope": {
+          "type": "array",
+          "description": "The list of scopes to be made available for this service account. If empty, access to all Cloud APIs will be allowed.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "A service account.",
+      "type": "object",
+      "id": "ServiceAccount"
+    },
+    "GenerateServiceIdentityRequest": {
+      "properties": {},
+      "type": "object",
+      "id": "GenerateServiceIdentityRequest",
+      "description": "Request for GenerateServiceIdentity."
+    },
+    "AttachedDisk": {
+      "properties": {
+        "mode": {
           "enumDescriptions": [
-            "Unspecified symptom.",
-            "TPU VM memory is low.",
-            "TPU runtime is out of memory.",
-            "TPU runtime execution has timed out.",
-            "TPU runtime fails to construct a mesh that recognizes each TPU device's neighbors.",
-            "TPU HBM is out of memory.",
-            "Abusive behaviors have been identified on the current project."
+            "The disk mode is not known/set.",
+            "Attaches the disk in read-write mode. Only one TPU node can attach a disk in read-write mode at a time.",
+            "Attaches the disk in read-only mode. Multiple TPU nodes can attach a disk in read-only mode at a time."
           ],
-          "type": "string",
-          "description": "Type of the Symptom.",
+          "description": "The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.",
           "enum": [
-            "SYMPTOM_TYPE_UNSPECIFIED",
-            "LOW_MEMORY",
-            "OUT_OF_MEMORY",
-            "EXECUTE_TIMED_OUT",
-            "MESH_BUILD_FAIL",
-            "HBM_OUT_OF_MEMORY",
-            "PROJECT_ABUSE"
-          ]
+            "DISK_MODE_UNSPECIFIED",
+            "READ_WRITE",
+            "READ_ONLY"
+          ],
+          "type": "string"
         },
-        "workerId": {
+        "sourceDisk": {
           "type": "string",
-          "description": "A string used to uniquely distinguish a worker within a TPU node."
+          "description": "Specifies the full path to an existing disk. For example: \"projects/my-project/zones/us-central1-c/disks/my-disk\"."
         }
       },
       "type": "object",
-      "description": "A Symptom instance."
-    },
-    "NetworkConfig": {
-      "id": "NetworkConfig",
-      "properties": {
-        "network": {
-          "description": "The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, \"default\" will be used.",
-          "type": "string"
-        },
-        "subnetwork": {
-          "description": "The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, \"default\" will be used.",
-          "type": "string"
-        },
-        "enableExternalIps": {
-          "type": "boolean",
-          "description": "Indicates that external IP addresses would be associated with the TPU workers. If set to false, the specified subnetwork or network should have Private Google Access enabled."
-        },
-        "canIpForward": {
-          "type": "boolean",
-          "description": "Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes."
-        }
-      },
-      "type": "object",
-      "description": "Network related configurations."
+      "description": "A node-attached disk resource. Next ID: 8;",
+      "id": "AttachedDisk"
     },
     "SchedulingConfig": {
       "type": "object",
-      "id": "SchedulingConfig",
       "properties": {
         "preemptible": {
           "type": "boolean",
@@ -794,50 +622,481 @@
           "description": "Whether the node is created under a reservation."
         }
       },
-      "description": "Sets the scheduling options for this node."
+      "description": "Sets the scheduling options for this node.",
+      "id": "SchedulingConfig"
+    },
+    "OperationMetadata": {
+      "properties": {
+        "statusDetail": {
+          "description": "Human-readable status of the operation, if any.",
+          "type": "string"
+        },
+        "cancelRequested": {
+          "type": "boolean",
+          "description": "Specifies if cancellation was requested for the operation."
+        },
+        "apiVersion": {
+          "description": "API version.",
+          "type": "string"
+        },
+        "endTime": {
+          "type": "string",
+          "format": "google-datetime",
+          "description": "The time the operation finished running."
+        },
+        "verb": {
+          "description": "Name of the verb executed by the operation.",
+          "type": "string"
+        },
+        "target": {
+          "description": "Target of the operation - for example projects/project-1/connectivityTests/test-1",
+          "type": "string"
+        },
+        "createTime": {
+          "description": "The time the operation was created.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "id": "OperationMetadata",
+      "description": "Metadata describing an Operation"
+    },
+    "GetGuestAttributesRequest": {
+      "properties": {
+        "queryPath": {
+          "description": "The guest attributes path to be queried.",
+          "type": "string"
+        },
+        "workerIds": {
+          "items": {
+            "type": "string"
+          },
+          "description": "The 0-based worker ID. If it is empty, all workers' GuestAttributes will be returned.",
+          "type": "array"
+        }
+      },
+      "description": "Request for GetGuestAttributes.",
+      "type": "object",
+      "id": "GetGuestAttributesRequest"
+    },
+    "Symptom": {
+      "properties": {
+        "workerId": {
+          "description": "A string used to uniquely distinguish a worker within a TPU node.",
+          "type": "string"
+        },
+        "details": {
+          "description": "Detailed information of the current Symptom.",
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "google-datetime",
+          "description": "Timestamp when the Symptom is created."
+        },
+        "symptomType": {
+          "type": "string",
+          "description": "Type of the Symptom.",
+          "enumDescriptions": [
+            "Unspecified symptom.",
+            "TPU VM memory is low.",
+            "TPU runtime is out of memory.",
+            "TPU runtime execution has timed out.",
+            "TPU runtime fails to construct a mesh that recognizes each TPU device's neighbors.",
+            "TPU HBM is out of memory.",
+            "Abusive behaviors have been identified on the current project."
+          ],
+          "enum": [
+            "SYMPTOM_TYPE_UNSPECIFIED",
+            "LOW_MEMORY",
+            "OUT_OF_MEMORY",
+            "EXECUTE_TIMED_OUT",
+            "MESH_BUILD_FAIL",
+            "HBM_OUT_OF_MEMORY",
+            "PROJECT_ABUSE"
+          ]
+        }
+      },
+      "id": "Symptom",
+      "description": "A Symptom instance.",
+      "type": "object"
+    },
+    "NetworkConfig": {
+      "description": "Network related configurations.",
+      "type": "object",
+      "id": "NetworkConfig",
+      "properties": {
+        "subnetwork": {
+          "type": "string",
+          "description": "The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, \"default\" will be used."
+        },
+        "canIpForward": {
+          "type": "boolean",
+          "description": "Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes."
+        },
+        "network": {
+          "description": "The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, \"default\" will be used.",
+          "type": "string"
+        },
+        "enableExternalIps": {
+          "type": "boolean",
+          "description": "Indicates that external IP addresses would be associated with the TPU workers. If set to false, the specified subnetwork or network should have Private Google Access enabled."
+        }
+      }
+    },
+    "AccessConfig": {
+      "id": "AccessConfig",
+      "properties": {
+        "externalIp": {
+          "type": "string",
+          "description": "Output only. An external IP address associated with the TPU worker.",
+          "readOnly": true
+        }
+      },
+      "type": "object",
+      "description": "An access config attached to the TPU worker."
+    },
+    "ListNodesResponse": {
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "Node"
+          },
+          "description": "The listed nodes."
+        },
+        "nextPageToken": {
+          "description": "The next page token or empty if none.",
+          "type": "string"
+        },
+        "unreachable": {
+          "type": "array",
+          "description": "Locations that could not be reached.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "ListNodesResponse",
+      "type": "object",
+      "description": "Response for ListNodes."
+    },
+    "GuestAttributesEntry": {
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "description": "Namespace for the guest attribute entry."
+        },
+        "value": {
+          "type": "string",
+          "description": "Value for the guest attribute entry."
+        },
+        "key": {
+          "type": "string",
+          "description": "Key for the guest attribute entry."
+        }
+      },
+      "description": "A guest attributes namespace/key/value entry.",
+      "id": "GuestAttributesEntry",
+      "type": "object"
     }
   },
+  "documentationLink": "https://cloud.google.com/tpu/",
+  "rootUrl": "https://tpu.googleapis.com/",
+  "revision": "20230216",
+  "servicePath": "",
+  "version_module": true,
+  "title": "Cloud TPU API",
+  "discoveryVersion": "v1",
+  "protocol": "rest",
+  "batchPath": "batch",
+  "baseUrl": "https://tpu.googleapis.com/",
+  "id": "tpu:v2",
   "resources": {
     "projects": {
       "resources": {
         "locations": {
           "resources": {
-            "runtimeVersions": {
+            "nodes": {
               "methods": {
                 "get": {
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/runtimeVersions/{runtimeVersionsId}",
+                  "description": "Gets the details of a node.",
+                  "httpMethod": "GET",
+                  "path": "v2/{+name}",
                   "parameters": {
                     "name": {
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
                       "description": "Required. The resource name.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/runtimeVersions/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$"
+                    }
+                  },
+                  "response": {
+                    "$ref": "Node"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "id": "tpu.projects.locations.nodes.get",
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "create": {
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "description": "Creates a node.",
+                  "request": {
+                    "$ref": "Node"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "id": "tpu.projects.locations.nodes.create",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "path": "v2/{+parent}/nodes",
+                  "parameters": {
+                    "parent": {
+                      "location": "path",
+                      "description": "Required. The parent resource name.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    },
+                    "nodeId": {
+                      "description": "The unqualified resource name.",
+                      "location": "query",
+                      "type": "string"
+                    }
+                  },
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes",
+                  "httpMethod": "POST"
+                },
+                "stop": {
+                  "request": {
+                    "$ref": "StopNodeRequest"
+                  },
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
+                      "required": true,
+                      "description": "Required. The resource name.",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "description": "Stops a node. This operation is only available with single TPU nodes.",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "path": "v2/{+name}:stop",
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:stop",
+                  "id": "tpu.projects.locations.nodes.stop"
+                },
+                "list": {
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
+                  "path": "v2/{+parent}/nodes",
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes",
+                  "id": "tpu.projects.locations.nodes.list",
+                  "parameters": {
+                    "pageToken": {
+                      "type": "string",
+                      "description": "The next_page_token value returned from a previous List request, if any.",
+                      "location": "query"
+                    },
+                    "parent": {
+                      "description": "Required. The parent resource name.",
+                      "type": "string",
+                      "location": "path",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    },
+                    "pageSize": {
+                      "format": "int32",
+                      "description": "The maximum number of items to return.",
+                      "location": "query",
+                      "type": "integer"
+                    }
+                  },
+                  "description": "Lists nodes.",
+                  "response": {
+                    "$ref": "ListNodesResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "patch": {
+                  "path": "v2/{+name}",
+                  "description": "Updates the configurations of a node.",
+                  "parameters": {
+                    "updateMask": {
+                      "location": "query",
+                      "type": "string",
+                      "description": "Required. Mask of fields from Node to update. Supported fields: [description, tags, labels, metadata, network_config.enable_external_ips].",
+                      "format": "google-fieldmask"
+                    },
+                    "name": {
+                      "description": "Output only. Immutable. The name of the TPU.",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
                       "type": "string",
                       "required": true,
                       "location": "path"
                     }
                   },
-                  "description": "Gets a runtime version.",
-                  "response": {
-                    "$ref": "RuntimeVersion"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "httpMethod": "GET",
-                  "id": "tpu.projects.locations.runtimeVersions.get",
-                  "path": "v2/{+name}"
-                },
-                "list": {
-                  "httpMethod": "GET",
+                  "request": {
+                    "$ref": "Node"
+                  },
+                  "id": "tpu.projects.locations.nodes.patch",
+                  "httpMethod": "PATCH",
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
                   "response": {
-                    "$ref": "ListRuntimeVersionsResponse"
+                    "$ref": "Operation"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ]
+                },
+                "getGuestAttributes": {
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:getGuestAttributes",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "POST",
+                  "request": {
+                    "$ref": "GetGuestAttributesRequest"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "id": "tpu.projects.locations.nodes.getGuestAttributes",
+                  "response": {
+                    "$ref": "GetGuestAttributesResponse"
+                  },
+                  "description": "Retrieves the guest attributes for the node.",
+                  "path": "v2/{+name}:getGuestAttributes",
+                  "parameters": {
+                    "name": {
+                      "description": "Required. The resource name.",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
+                      "location": "path",
+                      "type": "string",
+                      "required": true
+                    }
+                  }
+                },
+                "delete": {
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "id": "tpu.projects.locations.nodes.delete",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "path": "v2/{+name}",
+                  "httpMethod": "DELETE",
+                  "description": "Deletes a node.",
+                  "response": {
+                    "$ref": "Operation"
                   },
                   "parameters": {
-                    "filter": {
+                    "name": {
                       "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
+                      "description": "Required. The resource name.",
+                      "location": "path"
+                    }
+                  }
+                },
+                "start": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "request": {
+                    "$ref": "StartNodeRequest"
+                  },
+                  "path": "v2/{+name}:start",
+                  "httpMethod": "POST",
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
+                      "description": "Required. The resource name.",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "description": "Starts a node.",
+                  "id": "tpu.projects.locations.nodes.start",
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:start",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ]
+                }
+              }
+            },
+            "acceleratorTypes": {
+              "methods": {
+                "get": {
+                  "description": "Gets AcceleratorType.",
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "path": "v2/{+name}",
+                  "response": {
+                    "$ref": "AcceleratorType"
+                  },
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "type": "string",
+                      "description": "Required. The resource name.",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/acceleratorTypes/[^/]+$",
+                      "required": true
+                    }
+                  },
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/acceleratorTypes/{acceleratorTypesId}",
+                  "id": "tpu.projects.locations.acceleratorTypes.get"
+                },
+                "list": {
+                  "parameters": {
+                    "pageSize": {
                       "location": "query",
+                      "type": "integer",
+                      "description": "The maximum number of items to return.",
+                      "format": "int32"
+                    },
+                    "filter": {
+                      "location": "query",
+                      "type": "string",
                       "description": "List filter."
                     },
                     "pageToken": {
@@ -847,292 +1106,83 @@
                     },
                     "parent": {
                       "description": "Required. The parent resource name.",
-                      "required": true,
-                      "type": "string",
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
+                      "type": "string",
+                      "location": "path",
+                      "required": true
                     },
                     "orderBy": {
-                      "type": "string",
+                      "description": "Sort results.",
                       "location": "query",
-                      "description": "Sort results."
-                    },
-                    "pageSize": {
-                      "format": "int32",
-                      "description": "The maximum number of items to return.",
-                      "location": "query",
-                      "type": "integer"
-                    }
-                  },
-                  "path": "v2/{+parent}/runtimeVersions",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "id": "tpu.projects.locations.runtimeVersions.list",
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/runtimeVersions",
-                  "description": "Lists runtime versions supported by this API."
-                }
-              }
-            },
-            "nodes": {
-              "methods": {
-                "create": {
-                  "parameters": {
-                    "nodeId": {
-                      "description": "The unqualified resource name.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "parent": {
-                      "type": "string",
-                      "description": "Required. The parent resource name.",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "request": {
-                    "$ref": "Node"
-                  },
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "description": "Creates a node.",
-                  "path": "v2/{+parent}/nodes",
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "id": "tpu.projects.locations.nodes.create"
-                },
-                "start": {
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "path": "v2/{+name}:start",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "id": "tpu.projects.locations.nodes.start",
-                  "httpMethod": "POST",
-                  "description": "Starts a node.",
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                      "description": "Required. The resource name.",
-                      "type": "string",
-                      "required": true,
-                      "location": "path"
-                    }
-                  },
-                  "request": {
-                    "$ref": "StartNodeRequest"
-                  },
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:start"
-                },
-                "stop": {
-                  "path": "v2/{+name}:stop",
-                  "request": {
-                    "$ref": "StopNodeRequest"
-                  },
-                  "id": "tpu.projects.locations.nodes.stop",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                      "location": "path",
-                      "description": "Required. The resource name.",
-                      "type": "string",
-                      "required": true
-                    }
-                  },
-                  "description": "Stops a node. This operation is only available with single TPU nodes.",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:stop",
-                  "httpMethod": "POST"
-                },
-                "get": {
-                  "response": {
-                    "$ref": "Node"
-                  },
-                  "id": "tpu.projects.locations.nodes.get",
-                  "parameters": {
-                    "name": {
-                      "description": "Required. The resource name.",
-                      "location": "path",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
                       "type": "string"
                     }
                   },
-                  "description": "Gets the details of a node.",
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "path": "v2/{+name}",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "httpMethod": "GET"
-                },
-                "delete": {
-                  "parameters": {
-                    "name": {
-                      "required": true,
-                      "location": "path",
-                      "description": "Required. The resource name.",
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$"
-                    }
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "id": "tpu.projects.locations.nodes.delete",
-                  "path": "v2/{+name}",
-                  "description": "Deletes a node.",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
-                  "httpMethod": "DELETE"
-                },
-                "getGuestAttributes": {
-                  "path": "v2/{+name}:getGuestAttributes",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                      "required": true,
-                      "type": "string",
-                      "description": "Required. The resource name."
-                    }
-                  },
-                  "request": {
-                    "$ref": "GetGuestAttributesRequest"
-                  },
-                  "description": "Retrieves the guest attributes for the node.",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "GetGuestAttributesResponse"
-                  },
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:getGuestAttributes",
-                  "id": "tpu.projects.locations.nodes.getGuestAttributes",
-                  "httpMethod": "POST"
-                },
-                "list": {
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "parameters": {
-                    "parent": {
-                      "required": true,
-                      "description": "Required. The parent resource name.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "type": "string"
-                    },
-                    "pageToken": {
-                      "description": "The next_page_token value returned from a previous List request, if any.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "pageSize": {
-                      "type": "integer",
-                      "location": "query",
-                      "description": "The maximum number of items to return.",
-                      "format": "int32"
-                    }
-                  },
+                  "description": "Lists accelerator types supported by this API.",
                   "httpMethod": "GET",
-                  "description": "Lists nodes.",
                   "response": {
-                    "$ref": "ListNodesResponse"
+                    "$ref": "ListAcceleratorTypesResponse"
                   },
-                  "id": "tpu.projects.locations.nodes.list",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "path": "v2/{+parent}/nodes"
-                },
-                "patch": {
-                  "id": "tpu.projects.locations.nodes.patch",
-                  "httpMethod": "PATCH",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/acceleratorTypes",
                   "parameterOrder": [
-                    "name"
+                    "parent"
                   ],
-                  "request": {
-                    "$ref": "Node"
-                  },
-                  "description": "Updates the configurations of a node.",
-                  "path": "v2/{+name}",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameters": {
-                    "updateMask": {
-                      "format": "google-fieldmask",
-                      "description": "Required. Mask of fields from Node to update. Supported fields: [description, tags, labels, metadata, network_config.enable_external_ips].",
-                      "location": "query",
-                      "type": "string"
-                    },
-                    "name": {
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                      "location": "path",
-                      "description": "Output only. Immutable. The name of the TPU."
-                    }
-                  },
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}"
+                  "id": "tpu.projects.locations.acceleratorTypes.list",
+                  "path": "v2/{+parent}/acceleratorTypes"
                 }
               }
             },
             "operations": {
               "methods": {
-                "list": {
+                "delete": {
+                  "response": {
+                    "$ref": "Empty"
+                  },
                   "parameterOrder": [
                     "name"
                   ],
-                  "id": "tpu.projects.locations.operations.list",
+                  "httpMethod": "DELETE",
+                  "path": "v2/{+name}",
+                  "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                  "id": "tpu.projects.locations.operations.delete",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the operation resource to be deleted.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "location": "path"
+                    }
+                  }
+                },
+                "list": {
+                  "path": "v2/{+name}/operations",
                   "response": {
                     "$ref": "ListOperationsResponse"
                   },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "id": "tpu.projects.locations.operations.list",
                   "parameters": {
+                    "name": {
+                      "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "description": "The name of the operation's parent resource."
+                    },
+                    "filter": {
+                      "description": "The standard list filter.",
+                      "type": "string",
+                      "location": "query"
+                    },
                     "pageSize": {
                       "location": "query",
                       "type": "integer",
@@ -1143,55 +1193,30 @@
                       "location": "query",
                       "description": "The standard list page token.",
                       "type": "string"
-                    },
-                    "name": {
-                      "type": "string",
-                      "location": "path",
-                      "required": true,
-                      "description": "The name of the operation's parent resource.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$"
-                    },
-                    "filter": {
-                      "location": "query",
-                      "description": "The standard list filter.",
-                      "type": "string"
                     }
                   },
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations",
-                  "httpMethod": "GET",
-                  "path": "v2/{+name}/operations"
-                },
-                "delete": {
-                  "parameters": {
-                    "name": {
-                      "required": true,
-                      "description": "The name of the operation resource to be deleted.",
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
-                  "path": "v2/{+name}",
                   "parameterOrder": [
                     "name"
                   ],
+                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                  "httpMethod": "GET",
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations"
+                },
+                "cancel": {
                   "response": {
                     "$ref": "Empty"
                   },
-                  "id": "tpu.projects.locations.operations.delete",
-                  "httpMethod": "DELETE"
-                },
-                "cancel": {
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "POST",
+                  "id": "tpu.projects.locations.operations.cancel",
+                  "path": "v2/{+name}:cancel",
                   "parameters": {
                     "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "description": "The name of the operation resource to be cancelled.",
                       "location": "path",
+                      "description": "The name of the operation resource to be cancelled.",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                       "type": "string",
                       "required": true
                     }
@@ -1199,294 +1224,226 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "id": "tpu.projects.locations.operations.cancel",
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                   "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-                  "httpMethod": "POST",
-                  "path": "v2/{+name}:cancel",
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel"
+                },
+                "get": {
+                  "id": "tpu.projects.locations.operations.get",
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "type": "string",
+                      "required": true,
+                      "description": "The name of the operation resource."
+                    }
+                  },
+                  "path": "v2/{+name}",
                   "parameterOrder": [
                     "name"
                   ],
-                  "response": {
-                    "$ref": "Empty"
-                  }
-                },
-                "get": {
                   "httpMethod": "GET",
-                  "path": "v2/{+name}",
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameters": {
-                    "name": {
-                      "type": "string",
-                      "location": "path",
-                      "required": true,
-                      "description": "The name of the operation resource.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
-                    }
-                  },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                   "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "id": "tpu.projects.locations.operations.get"
+                  "response": {
+                    "$ref": "Operation"
+                  }
                 }
               }
             },
-            "acceleratorTypes": {
+            "runtimeVersions": {
               "methods": {
-                "get": {
-                  "description": "Gets AcceleratorType.",
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/acceleratorTypes/[^/]+$",
-                      "required": true,
-                      "description": "Required. The resource name.",
-                      "type": "string",
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/acceleratorTypes/{acceleratorTypesId}",
-                  "httpMethod": "GET",
-                  "path": "v2/{+name}",
-                  "id": "tpu.projects.locations.acceleratorTypes.get",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "AcceleratorType"
-                  },
+                "list": {
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "list": {
+                  ],
                   "parameters": {
-                    "filter": {
-                      "type": "string",
-                      "description": "List filter.",
-                      "location": "query"
+                    "pageSize": {
+                      "location": "query",
+                      "description": "The maximum number of items to return.",
+                      "type": "integer",
+                      "format": "int32"
                     },
                     "parent": {
-                      "required": true,
-                      "location": "path",
                       "type": "string",
                       "description": "Required. The parent resource name.",
+                      "location": "path",
+                      "required": true,
                       "pattern": "^projects/[^/]+/locations/[^/]+$"
                     },
-                    "orderBy": {
-                      "location": "query",
-                      "description": "Sort results.",
-                      "type": "string"
+                    "filter": {
+                      "description": "List filter.",
+                      "type": "string",
+                      "location": "query"
                     },
                     "pageToken": {
                       "location": "query",
                       "description": "The next_page_token value returned from a previous List request, if any.",
                       "type": "string"
                     },
-                    "pageSize": {
-                      "format": "int32",
-                      "description": "The maximum number of items to return.",
-                      "type": "integer",
+                    "orderBy": {
+                      "type": "string",
+                      "description": "Sort results.",
                       "location": "query"
                     }
                   },
-                  "path": "v2/{+parent}/acceleratorTypes",
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/runtimeVersions",
+                  "path": "v2/{+parent}/runtimeVersions",
+                  "id": "tpu.projects.locations.runtimeVersions.list",
+                  "description": "Lists runtime versions supported by this API.",
                   "parameterOrder": [
                     "parent"
                   ],
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "ListRuntimeVersionsResponse"
+                  }
+                },
+                "get": {
+                  "response": {
+                    "$ref": "RuntimeVersion"
+                  },
+                  "description": "Gets a runtime version.",
+                  "id": "tpu.projects.locations.runtimeVersions.get",
+                  "httpMethod": "GET",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "path": "v2/{+name}",
+                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/runtimeVersions/{runtimeVersionsId}",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/acceleratorTypes",
-                  "httpMethod": "GET",
-                  "response": {
-                    "$ref": "ListAcceleratorTypesResponse"
-                  },
-                  "id": "tpu.projects.locations.acceleratorTypes.list",
-                  "description": "Lists accelerator types supported by this API."
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/runtimeVersions/[^/]+$",
+                      "type": "string",
+                      "location": "path",
+                      "description": "Required. The resource name."
+                    }
+                  }
                 }
               }
             }
           },
           "methods": {
             "generateServiceIdentity": {
-              "description": "Generates the Cloud TPU service identity for the project.",
-              "response": {
-                "$ref": "GenerateServiceIdentityResponse"
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "request": {
+                "$ref": "GenerateServiceIdentityRequest"
               },
               "httpMethod": "POST",
-              "parameters": {
-                "parent": {
-                  "type": "string",
-                  "location": "path",
-                  "description": "Required. The parent resource name.",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "required": true
-                }
+              "response": {
+                "$ref": "GenerateServiceIdentityResponse"
               },
               "flatPath": "v2/projects/{projectsId}/locations/{locationsId}:generateServiceIdentity",
               "parameterOrder": [
                 "parent"
               ],
-              "path": "v2/{+parent}:generateServiceIdentity",
+              "description": "Generates the Cloud TPU service identity for the project.",
               "id": "tpu.projects.locations.generateServiceIdentity",
-              "request": {
-                "$ref": "GenerateServiceIdentityRequest"
+              "parameters": {
+                "parent": {
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "required": true,
+                  "location": "path",
+                  "description": "Required. The parent resource name.",
+                  "type": "string"
+                }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ]
+              "path": "v2/{+parent}:generateServiceIdentity"
             },
-            "get": {
-              "httpMethod": "GET",
-              "description": "Gets information about a location.",
-              "response": {
-                "$ref": "Location"
-              },
+            "list": {
               "parameterOrder": [
                 "name"
               ],
-              "id": "tpu.projects.locations.get",
-              "flatPath": "v2/projects/{projectsId}/locations/{locationsId}",
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "required": true,
-                  "description": "Resource name for the location.",
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$"
-                }
-              },
-              "path": "v2/{+name}",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ]
-            },
-            "list": {
+              "httpMethod": "GET",
+              "description": "Lists information about the supported locations for this service.",
               "flatPath": "v2/projects/{projectsId}/locations",
               "path": "v2/{+name}/locations",
-              "response": {
-                "$ref": "ListLocationsResponse"
-              },
-              "httpMethod": "GET",
-              "parameters": {
-                "pageToken": {
-                  "location": "query",
-                  "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "type": "integer",
-                  "format": "int32",
-                  "location": "query",
-                  "description": "The maximum number of results to return. If not set, the service selects a default."
-                },
-                "name": {
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$",
-                  "description": "The resource that owns the locations collection, if applicable.",
-                  "location": "path",
-                  "required": true
-                },
-                "filter": {
-                  "location": "query",
-                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
-                  "type": "string"
-                }
-              },
               "id": "tpu.projects.locations.list",
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "description": "Lists information about the supported locations for this service.",
+              "parameters": {
+                "name": {
+                  "pattern": "^projects/[^/]+$",
+                  "required": true,
+                  "description": "The resource that owns the locations collection, if applicable.",
+                  "location": "path",
+                  "type": "string"
+                },
+                "pageToken": {
+                  "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "filter": {
+                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
+                  "type": "string",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "description": "The maximum number of results to return. If not set, the service selects a default.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                }
+              },
+              "response": {
+                "$ref": "ListLocationsResponse"
+              }
+            },
+            "get": {
+              "httpMethod": "GET",
               "parameterOrder": [
                 "name"
-              ]
+              ],
+              "path": "v2/{+name}",
+              "response": {
+                "$ref": "Location"
+              },
+              "parameters": {
+                "name": {
+                  "description": "Resource name for the location.",
+                  "type": "string",
+                  "required": true,
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "id": "tpu.projects.locations.get",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "description": "Gets information about a location.",
+              "flatPath": "v2/projects/{projectsId}/locations/{locationsId}"
             }
           }
         }
       }
     }
   },
-  "discoveryVersion": "v1",
-  "mtlsRootUrl": "https://tpu.mtls.googleapis.com/",
-  "fullyEncodeReservedExpansion": true,
-  "protocol": "rest",
-  "ownerName": "Google",
-  "title": "Cloud TPU API",
-  "canonicalName": "TPU",
-  "rootUrl": "https://tpu.googleapis.com/",
-  "batchPath": "batch",
+  "kind": "discovery#restDescription",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
-  "ownerDomain": "google.com",
-  "baseUrl": "https://tpu.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "documentationLink": "https://cloud.google.com/tpu/",
   "parameters": {
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "location": "query",
-      "type": "string",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "location": "query",
-      "type": "string"
-    },
     "prettyPrint": {
       "type": "boolean",
       "description": "Returns response with indentations and line breaks.",
-      "default": "true",
-      "location": "query"
-    },
-    "fields": {
-      "type": "string",
       "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
-    },
-    "alt": {
-      "default": "json",
-      "location": "query",
-      "description": "Data format for response.",
-      "type": "string",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ]
-    },
-    "access_token": {
-      "type": "string",
-      "description": "OAuth access token.",
-      "location": "query"
-    },
-    "key": {
-      "type": "string",
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+      "default": "true"
     },
     "$.xgafv": {
       "description": "V1 error format.",
-      "type": "string",
       "enum": [
         "1",
         "2"
@@ -1495,23 +1452,66 @@
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
-      ]
-    },
-    "callback": {
-      "description": "JSONP",
-      "location": "query",
+      ],
       "type": "string"
     },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "type": "string",
       "location": "query",
+      "description": "JSONP"
+    },
+    "oauth_token": {
+      "type": "string",
+      "description": "OAuth 2.0 token for the current user.",
+      "location": "query"
+    },
+    "access_token": {
+      "type": "string",
+      "description": "OAuth access token.",
+      "location": "query"
+    },
+    "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "description": "Data format for response.",
+      "type": "string",
+      "location": "query",
+      "default": "json",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ]
+    },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "uploadType": {
+      "location": "query",
+      "type": "string",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
     }
   },
-  "id": "tpu:v2",
-  "basePath": "",
-  "version_module": true,
-  "revision": "20230216",
-  "version": "v2",
+  "description": "TPU API provides customers with access to Google TPU technology.",
   "name": "tpu"
 }

@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-compute/versions/v1
+  annotations:
+    config: compute_v1.yaml
+    directory: google/cloud/compute/v1
+    host: compute.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

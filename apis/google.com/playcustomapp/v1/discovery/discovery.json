@@ -1,125 +1,190 @@
 {
+  "ownerName": "Google",
   "protocol": "rest",
-  "name": "playcustomapp",
-  "schemas": {
-    "Organization": {
-      "id": "Organization",
-      "properties": {
-        "organizationName": {
-          "description": "Optional. A human-readable name of the organization, to help recognize the organization.",
-          "type": "string"
-        },
-        "organizationId": {
-          "description": "Required. ID of the organization.",
-          "type": "string"
-        }
-      },
-      "description": "Represents an organization that can access a custom app.",
-      "type": "object"
-    },
-    "CustomApp": {
-      "properties": {
-        "languageCode": {
-          "type": "string",
-          "description": "Default listing language in BCP 47 format."
-        },
-        "packageName": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. Package name of the created Android app. Only present in the API response."
-        },
-        "title": {
-          "type": "string",
-          "description": "Title for the Android app."
-        },
-        "organizations": {
-          "items": {
-            "$ref": "Organization"
-          },
-          "type": "array",
-          "description": "Organizations to which the custom app should be made available. If the request contains any organizations, then the app will be restricted to only these organizations. To support the organization linked to the developer account, the organization ID should be provided explicitly together with other organizations. If no organizations are provided, then the app is only available to the organization linked to the developer account."
-        }
-      },
-      "id": "CustomApp",
-      "type": "object",
-      "description": "This resource represents a custom app."
-    }
+  "baseUrl": "https://playcustomapp.googleapis.com/",
+  "id": "playcustomapp:v1",
+  "documentationLink": "https://developers.google.com/android/work/play/custom-app-api/",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "parameters": {
-    "alt": {
-      "description": "Data format for response.",
-      "default": "json",
-      "location": "query",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
+    "callback": {
       "type": "string",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
+      "location": "query",
+      "description": "JSONP"
+    },
+    "upload_protocol": {
+      "type": "string",
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
     },
     "access_token": {
-      "type": "string",
       "location": "query",
-      "description": "OAuth access token."
+      "description": "OAuth access token.",
+      "type": "string"
     },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "location": "query",
-      "type": "boolean",
-      "default": "true"
+      "type": "string"
     },
     "fields": {
       "location": "query",
       "type": "string",
       "description": "Selector specifying which fields to include in a partial response."
     },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "callback": {
-      "description": "JSONP",
-      "location": "query",
-      "type": "string"
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
     "$.xgafv": {
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
       ],
-      "description": "V1 error format.",
-      "type": "string",
+      "location": "query",
       "enum": [
         "1",
         "2"
       ],
-      "location": "query"
+      "description": "V1 error format.",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true"
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
     },
     "key": {
       "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string"
     },
-    "quotaUser": {
+    "alt": {
+      "default": "json",
       "location": "query",
       "type": "string",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "description": "Data format for response."
     },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+    "uploadType": {
+      "location": "query",
       "type": "string",
-      "location": "query"
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    }
+  },
+  "version": "v1",
+  "basePath": "",
+  "kind": "discovery#restDescription",
+  "schemas": {
+    "CustomApp": {
+      "description": "This resource represents a custom app.",
+      "type": "object",
+      "id": "CustomApp",
+      "properties": {
+        "title": {
+          "description": "Title for the Android app.",
+          "type": "string"
+        },
+        "packageName": {
+          "readOnly": true,
+          "description": "Output only. Package name of the created Android app. Only present in the API response.",
+          "type": "string"
+        },
+        "organizations": {
+          "type": "array",
+          "description": "Organizations to which the custom app should be made available. If the request contains any organizations, then the app will be restricted to only these organizations. To support the organization linked to the developer account, the organization ID should be provided explicitly together with other organizations. If no organizations are provided, then the app is only available to the organization linked to the developer account.",
+          "items": {
+            "$ref": "Organization"
+          }
+        },
+        "languageCode": {
+          "description": "Default listing language in BCP 47 format.",
+          "type": "string"
+        }
+      }
+    },
+    "Organization": {
+      "id": "Organization",
+      "type": "object",
+      "description": "Represents an organization that can access a custom app.",
+      "properties": {
+        "organizationId": {
+          "description": "Required. ID of the organization.",
+          "type": "string"
+        },
+        "organizationName": {
+          "type": "string",
+          "description": "Optional. A human-readable name of the organization, to help recognize the organization."
+        }
+      }
+    }
+  },
+  "resources": {
+    "accounts": {
+      "resources": {
+        "customApps": {
+          "methods": {
+            "create": {
+              "parameters": {
+                "account": {
+                  "location": "path",
+                  "description": "Developer account ID.",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64"
+                }
+              },
+              "response": {
+                "$ref": "CustomApp"
+              },
+              "description": "Creates a new custom app.",
+              "flatPath": "playcustomapp/v1/accounts/{account}/customApps",
+              "mediaUpload": {
+                "maxSize": "10737418240",
+                "protocols": {
+                  "simple": {
+                    "multipart": true,
+                    "path": "/upload/playcustomapp/v1/accounts/{account}/customApps"
+                  },
+                  "resumable": {
+                    "path": "/resumable/upload/playcustomapp/v1/accounts/{account}/customApps",
+                    "multipart": true
+                  }
+                },
+                "accept": [
+                  "*/*"
+                ]
+              },
+              "supportsMediaUpload": true,
+              "parameterOrder": [
+                "account"
+              ],
+              "id": "playcustomapp.accounts.customApps.create",
+              "request": {
+                "$ref": "CustomApp"
+              },
+              "path": "playcustomapp/v1/accounts/{account}/customApps",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidpublisher"
+              ],
+              "httpMethod": "POST"
+            }
+          }
+        }
+      }
     }
   },
   "auth": {
@@ -131,80 +196,15 @@
       }
     }
   },
+  "mtlsRootUrl": "https://playcustomapp.mtls.googleapis.com/",
+  "batchPath": "batch",
+  "revision": "20230222",
+  "description": "API to create and publish custom Android apps",
+  "fullyEncodeReservedExpansion": true,
   "discoveryVersion": "v1",
   "servicePath": "",
-  "id": "playcustomapp:v1",
+  "name": "playcustomapp",
   "ownerDomain": "google.com",
   "title": "Google Play Custom App Publishing API",
-  "fullyEncodeReservedExpansion": true,
-  "batchPath": "batch",
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
-  "documentationLink": "https://developers.google.com/android/work/play/custom-app-api/",
-  "description": "API to create and publish custom Android apps",
-  "baseUrl": "https://playcustomapp.googleapis.com/",
-  "basePath": "",
-  "kind": "discovery#restDescription",
-  "revision": "20230222",
-  "resources": {
-    "accounts": {
-      "resources": {
-        "customApps": {
-          "methods": {
-            "create": {
-              "parameterOrder": [
-                "account"
-              ],
-              "scopes": [
-                "https://www.googleapis.com/auth/androidpublisher"
-              ],
-              "response": {
-                "$ref": "CustomApp"
-              },
-              "mediaUpload": {
-                "accept": [
-                  "*/*"
-                ],
-                "maxSize": "10737418240",
-                "protocols": {
-                  "simple": {
-                    "path": "/upload/playcustomapp/v1/accounts/{account}/customApps",
-                    "multipart": true
-                  },
-                  "resumable": {
-                    "path": "/resumable/upload/playcustomapp/v1/accounts/{account}/customApps",
-                    "multipart": true
-                  }
-                }
-              },
-              "request": {
-                "$ref": "CustomApp"
-              },
-              "supportsMediaUpload": true,
-              "path": "playcustomapp/v1/accounts/{account}/customApps",
-              "httpMethod": "POST",
-              "id": "playcustomapp.accounts.customApps.create",
-              "parameters": {
-                "account": {
-                  "required": true,
-                  "type": "string",
-                  "location": "path",
-                  "format": "int64",
-                  "description": "Developer account ID."
-                }
-              },
-              "flatPath": "playcustomapp/v1/accounts/{account}/customApps",
-              "description": "Creates a new custom app."
-            }
-          }
-        }
-      }
-    }
-  },
-  "mtlsRootUrl": "https://playcustomapp.mtls.googleapis.com/",
-  "version": "v1",
-  "ownerName": "Google",
   "rootUrl": "https://playcustomapp.googleapis.com/"
 }

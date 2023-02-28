@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-watcher/versions/v1
+  annotations:
+    config: watcher.yaml
+    directory: google/watcher/v1
+    host: watcher.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

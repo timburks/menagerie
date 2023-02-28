@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-playablelocations/versions/v3
+  annotations:
+    config: playablelocations_v3.yaml
+    directory: google/maps/playablelocations/v3
+    host: playablelocations.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

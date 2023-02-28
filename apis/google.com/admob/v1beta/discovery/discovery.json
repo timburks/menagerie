@@ -1,64 +1,12 @@
 {
-  "documentationLink": "https://developers.google.com/admob/api/",
-  "name": "admob",
-  "description": "The AdMob API allows publishers to programmatically get information about their AdMob account. ",
-  "title": "AdMob API",
   "parameters": {
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "callback": {
-      "type": "string",
-      "description": "JSONP",
-      "location": "query"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
     "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
       "location": "query",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "enum": [
-        "1",
-        "2"
-      ],
       "type": "string",
-      "location": "query",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "location": "query",
-      "type": "string"
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
+      "description": "OAuth 2.0 token for the current user."
     },
     "alt": {
       "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "description": "Data format for response.",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
@@ -66,278 +14,68 @@
         "Responses with Content-Type of application/x-protobuf"
       ],
       "type": "string",
+      "location": "query",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "location": "query",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "description": "V1 error format.",
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ]
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
       "location": "query"
     },
     "prettyPrint": {
-      "type": "boolean",
+      "default": "true",
       "description": "Returns response with indentations and line breaks.",
       "location": "query",
-      "default": "true"
+      "type": "boolean"
     },
     "access_token": {
       "location": "query",
       "description": "OAuth access token.",
       "type": "string"
+    },
+    "quotaUser": {
+      "location": "query",
+      "type": "string",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "location": "query",
+      "type": "string"
     }
   },
-  "resources": {
-    "accounts": {
-      "resources": {
-        "adUnits": {
-          "methods": {
-            "list": {
-              "httpMethod": "GET",
-              "streamingType": "NONE",
-              "scopes": [
-                "https://www.googleapis.com/auth/admob.readonly"
-              ],
-              "response": {
-                "$ref": "ListAdUnitsResponse"
-              },
-              "path": "v1beta/{+parent}/adUnits",
-              "parameterOrder": [
-                "parent"
-              ],
-              "flatPath": "v1beta/accounts/{accountsId}/adUnits",
-              "description": "List the ad units under the specified AdMob account.",
-              "parameters": {
-                "pageSize": {
-                  "location": "query",
-                  "format": "int32",
-                  "type": "integer",
-                  "description": "The maximum number of ad units to return. If unspecified or 0, at most 10,000 ad units will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000."
-                },
-                "parent": {
-                  "type": "string",
-                  "required": true,
-                  "description": "Required. Resource name of the account to list ad units for. Example: accounts/pub-9876543210987654",
-                  "pattern": "^accounts/[^/]+$",
-                  "location": "path"
-                },
-                "pageToken": {
-                  "location": "query",
-                  "type": "string",
-                  "description": "The value returned by the last `ListAdUnitsResponse`; indicates that this is a continuation of a prior `ListAdUnits` call, and that the system should return the next page of data."
-                }
-              },
-              "id": "admob.accounts.adUnits.list"
-            }
-          }
-        },
-        "networkReport": {
-          "methods": {
-            "generate": {
-              "httpMethod": "POST",
-              "request": {
-                "$ref": "GenerateNetworkReportRequest"
-              },
-              "description": "Generates an AdMob Network report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses.",
-              "id": "admob.accounts.networkReport.generate",
-              "parameters": {
-                "parent": {
-                  "type": "string",
-                  "pattern": "^accounts/[^/]+$",
-                  "location": "path",
-                  "description": "Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654",
-                  "required": true
-                }
-              },
-              "response": {
-                "$ref": "GenerateNetworkReportResponse"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/admob.readonly",
-                "https://www.googleapis.com/auth/admob.report"
-              ],
-              "path": "v1beta/{+parent}/networkReport:generate",
-              "streamingType": "SERVER_SIDE",
-              "parameterOrder": [
-                "parent"
-              ],
-              "flatPath": "v1beta/accounts/{accountsId}/networkReport:generate"
-            }
-          }
-        },
-        "mediationReport": {
-          "methods": {
-            "generate": {
-              "httpMethod": "POST",
-              "response": {
-                "$ref": "GenerateMediationReportResponse"
-              },
-              "streamingType": "SERVER_SIDE",
-              "description": "Generates an AdMob mediation report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses.",
-              "parameterOrder": [
-                "parent"
-              ],
-              "path": "v1beta/{+parent}/mediationReport:generate",
-              "request": {
-                "$ref": "GenerateMediationReportRequest"
-              },
-              "id": "admob.accounts.mediationReport.generate",
-              "scopes": [
-                "https://www.googleapis.com/auth/admob.readonly",
-                "https://www.googleapis.com/auth/admob.report"
-              ],
-              "flatPath": "v1beta/accounts/{accountsId}/mediationReport:generate",
-              "parameters": {
-                "parent": {
-                  "type": "string",
-                  "pattern": "^accounts/[^/]+$",
-                  "description": "Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654",
-                  "location": "path",
-                  "required": true
-                }
-              }
-            }
-          }
-        },
-        "apps": {
-          "methods": {
-            "list": {
-              "path": "v1beta/{+parent}/apps",
-              "parameters": {
-                "pageSize": {
-                  "description": "The maximum number of apps to return. If unspecified or 0, at most 10,000 apps will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000.",
-                  "type": "integer",
-                  "format": "int32",
-                  "location": "query"
-                },
-                "pageToken": {
-                  "type": "string",
-                  "description": "The value returned by the last `ListAppsResponse`; indicates that this is a continuation of a prior `ListApps` call, and that the system should return the next page of data.",
-                  "location": "query"
-                },
-                "parent": {
-                  "location": "path",
-                  "required": true,
-                  "pattern": "^accounts/[^/]+$",
-                  "type": "string",
-                  "description": "Required. Resource name of the account to list apps for. Example: accounts/pub-9876543210987654"
-                }
-              },
-              "response": {
-                "$ref": "ListAppsResponse"
-              },
-              "id": "admob.accounts.apps.list",
-              "httpMethod": "GET",
-              "description": "List the apps under the specified AdMob account.",
-              "flatPath": "v1beta/accounts/{accountsId}/apps",
-              "streamingType": "NONE",
-              "parameterOrder": [
-                "parent"
-              ],
-              "scopes": [
-                "https://www.googleapis.com/auth/admob.readonly"
-              ]
-            }
-          }
-        },
-        "adSources": {
-          "methods": {
-            "list": {
-              "streamingType": "NONE",
-              "parameters": {
-                "pageSize": {
-                  "type": "integer",
-                  "description": "The maximum number of ad sources to return. If unspecified or 0, at most 10,000 ad sources will be returned. The maximum value is 20,000; values above 10,000 will be coerced to 20,000.",
-                  "location": "query",
-                  "format": "int32"
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "A page token, received from a previous `ListAdSources` call. Provide this to retrieve the subsequent page.",
-                  "type": "string"
-                },
-                "parent": {
-                  "type": "string",
-                  "required": true,
-                  "location": "path",
-                  "pattern": "^accounts/[^/]+$",
-                  "description": "Required. The parent which owns this collection of ad sources. Format: accounts/{publisher_id}"
-                }
-              },
-              "description": "List the ad sources.",
-              "id": "admob.accounts.adSources.list",
-              "path": "v1beta/{+parent}/adSources",
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "parent"
-              ],
-              "flatPath": "v1beta/accounts/{accountsId}/adSources",
-              "response": {
-                "$ref": "ListAdSourcesResponse"
-              }
-            }
-          }
-        }
-      },
-      "methods": {
-        "get": {
-          "parameterOrder": [
-            "name"
-          ],
-          "streamingType": "NONE",
-          "id": "admob.accounts.get",
-          "parameters": {
-            "name": {
-              "description": "Resource name of the publisher account to retrieve. Example: accounts/pub-9876543210987654",
-              "location": "path",
-              "type": "string",
-              "required": true,
-              "pattern": "^accounts/[^/]+$"
-            }
-          },
-          "httpMethod": "GET",
-          "flatPath": "v1beta/accounts/{accountsId}",
-          "response": {
-            "$ref": "PublisherAccount"
-          },
-          "description": "Gets information about the specified AdMob publisher account.",
-          "path": "v1beta/{+name}",
-          "scopes": [
-            "https://www.googleapis.com/auth/admob.readonly",
-            "https://www.googleapis.com/auth/admob.report"
-          ]
-        },
-        "list": {
-          "path": "v1beta/accounts",
-          "flatPath": "v1beta/accounts",
-          "httpMethod": "GET",
-          "streamingType": "NONE",
-          "description": "Lists the AdMob publisher account that was most recently signed in to from the AdMob UI. For more information, see https://support.google.com/admob/answer/10243672.",
-          "scopes": [
-            "https://www.googleapis.com/auth/admob.readonly",
-            "https://www.googleapis.com/auth/admob.report"
-          ],
-          "parameters": {
-            "pageSize": {
-              "description": "Maximum number of accounts to return.",
-              "format": "int32",
-              "type": "integer",
-              "location": "query"
-            },
-            "pageToken": {
-              "location": "query",
-              "description": "The value returned by the last `ListPublisherAccountsResponse`; indicates that this is a continuation of a prior `ListPublisherAccounts` call, and that the system should return the next page of data.",
-              "type": "string"
-            }
-          },
-          "parameterOrder": [],
-          "response": {
-            "$ref": "ListPublisherAccountsResponse"
-          },
-          "id": "admob.accounts.list"
-        }
-      }
-    }
-  },
-  "canonicalName": "AdMob",
-  "mtlsRootUrl": "https://admob.mtls.googleapis.com/",
-  "version": "v1beta",
-  "fullyEncodeReservedExpansion": true,
-  "protocol": "rest",
-  "version_module": true,
   "auth": {
     "oauth2": {
       "scopes": {
@@ -350,213 +88,359 @@
       }
     }
   },
+  "ownerDomain": "google.com",
+  "baseUrl": "https://admob.googleapis.com/",
   "batchPath": "batch",
-  "basePath": "",
-  "revision": "20230227",
-  "kind": "discovery#restDescription",
-  "id": "admob:v1beta",
   "servicePath": "",
+  "resources": {
+    "accounts": {
+      "resources": {
+        "mediationReport": {
+          "methods": {
+            "generate": {
+              "streamingType": "SERVER_SIDE",
+              "flatPath": "v1beta/accounts/{accountsId}/mediationReport:generate",
+              "parameterOrder": [
+                "parent"
+              ],
+              "description": "Generates an AdMob mediation report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses.",
+              "request": {
+                "$ref": "GenerateMediationReportRequest"
+              },
+              "id": "admob.accounts.mediationReport.generate",
+              "response": {
+                "$ref": "GenerateMediationReportResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/admob.readonly",
+                "https://www.googleapis.com/auth/admob.report"
+              ],
+              "path": "v1beta/{+parent}/mediationReport:generate",
+              "httpMethod": "POST",
+              "parameters": {
+                "parent": {
+                  "pattern": "^accounts/[^/]+$",
+                  "description": "Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654",
+                  "type": "string",
+                  "required": true,
+                  "location": "path"
+                }
+              }
+            }
+          }
+        },
+        "apps": {
+          "methods": {
+            "list": {
+              "path": "v1beta/{+parent}/apps",
+              "streamingType": "NONE",
+              "id": "admob.accounts.apps.list",
+              "response": {
+                "$ref": "ListAppsResponse"
+              },
+              "flatPath": "v1beta/accounts/{accountsId}/apps",
+              "scopes": [
+                "https://www.googleapis.com/auth/admob.readonly"
+              ],
+              "parameters": {
+                "pageToken": {
+                  "location": "query",
+                  "description": "The value returned by the last `ListAppsResponse`; indicates that this is a continuation of a prior `ListApps` call, and that the system should return the next page of data.",
+                  "type": "string"
+                },
+                "parent": {
+                  "required": true,
+                  "location": "path",
+                  "type": "string",
+                  "pattern": "^accounts/[^/]+$",
+                  "description": "Required. Resource name of the account to list apps for. Example: accounts/pub-9876543210987654"
+                },
+                "pageSize": {
+                  "format": "int32",
+                  "location": "query",
+                  "type": "integer",
+                  "description": "The maximum number of apps to return. If unspecified or 0, at most 10,000 apps will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000."
+                }
+              },
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "parent"
+              ],
+              "description": "List the apps under the specified AdMob account."
+            }
+          }
+        },
+        "adSources": {
+          "methods": {
+            "list": {
+              "httpMethod": "GET",
+              "parameters": {
+                "pageSize": {
+                  "location": "query",
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "The maximum number of ad sources to return. If unspecified or 0, at most 10,000 ad sources will be returned. The maximum value is 20,000; values above 10,000 will be coerced to 20,000."
+                },
+                "parent": {
+                  "location": "path",
+                  "type": "string",
+                  "pattern": "^accounts/[^/]+$",
+                  "description": "Required. The parent which owns this collection of ad sources. Format: accounts/{publisher_id}",
+                  "required": true
+                },
+                "pageToken": {
+                  "type": "string",
+                  "description": "A page token, received from a previous `ListAdSources` call. Provide this to retrieve the subsequent page.",
+                  "location": "query"
+                }
+              },
+              "description": "List the ad sources.",
+              "streamingType": "NONE",
+              "path": "v1beta/{+parent}/adSources",
+              "flatPath": "v1beta/accounts/{accountsId}/adSources",
+              "id": "admob.accounts.adSources.list",
+              "parameterOrder": [
+                "parent"
+              ],
+              "response": {
+                "$ref": "ListAdSourcesResponse"
+              }
+            }
+          }
+        },
+        "networkReport": {
+          "methods": {
+            "generate": {
+              "request": {
+                "$ref": "GenerateNetworkReportRequest"
+              },
+              "id": "admob.accounts.networkReport.generate",
+              "scopes": [
+                "https://www.googleapis.com/auth/admob.readonly",
+                "https://www.googleapis.com/auth/admob.report"
+              ],
+              "path": "v1beta/{+parent}/networkReport:generate",
+              "response": {
+                "$ref": "GenerateNetworkReportResponse"
+              },
+              "httpMethod": "POST",
+              "description": "Generates an AdMob Network report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses.",
+              "parameters": {
+                "parent": {
+                  "location": "path",
+                  "description": "Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654",
+                  "pattern": "^accounts/[^/]+$",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "streamingType": "SERVER_SIDE",
+              "parameterOrder": [
+                "parent"
+              ],
+              "flatPath": "v1beta/accounts/{accountsId}/networkReport:generate"
+            }
+          }
+        },
+        "adUnits": {
+          "methods": {
+            "list": {
+              "httpMethod": "GET",
+              "description": "List the ad units under the specified AdMob account.",
+              "parameters": {
+                "pageSize": {
+                  "format": "int32",
+                  "location": "query",
+                  "description": "The maximum number of ad units to return. If unspecified or 0, at most 10,000 ad units will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000.",
+                  "type": "integer"
+                },
+                "parent": {
+                  "required": true,
+                  "description": "Required. Resource name of the account to list ad units for. Example: accounts/pub-9876543210987654",
+                  "location": "path",
+                  "type": "string",
+                  "pattern": "^accounts/[^/]+$"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "The value returned by the last `ListAdUnitsResponse`; indicates that this is a continuation of a prior `ListAdUnits` call, and that the system should return the next page of data.",
+                  "type": "string"
+                }
+              },
+              "id": "admob.accounts.adUnits.list",
+              "path": "v1beta/{+parent}/adUnits",
+              "flatPath": "v1beta/accounts/{accountsId}/adUnits",
+              "parameterOrder": [
+                "parent"
+              ],
+              "scopes": [
+                "https://www.googleapis.com/auth/admob.readonly"
+              ],
+              "response": {
+                "$ref": "ListAdUnitsResponse"
+              },
+              "streamingType": "NONE"
+            }
+          }
+        }
+      },
+      "methods": {
+        "get": {
+          "path": "v1beta/{+name}",
+          "description": "Gets information about the specified AdMob publisher account.",
+          "httpMethod": "GET",
+          "flatPath": "v1beta/accounts/{accountsId}",
+          "response": {
+            "$ref": "PublisherAccount"
+          },
+          "streamingType": "NONE",
+          "id": "admob.accounts.get",
+          "scopes": [
+            "https://www.googleapis.com/auth/admob.readonly",
+            "https://www.googleapis.com/auth/admob.report"
+          ],
+          "parameters": {
+            "name": {
+              "description": "Resource name of the publisher account to retrieve. Example: accounts/pub-9876543210987654",
+              "location": "path",
+              "required": true,
+              "pattern": "^accounts/[^/]+$",
+              "type": "string"
+            }
+          },
+          "parameterOrder": [
+            "name"
+          ]
+        },
+        "list": {
+          "path": "v1beta/accounts",
+          "flatPath": "v1beta/accounts",
+          "scopes": [
+            "https://www.googleapis.com/auth/admob.readonly",
+            "https://www.googleapis.com/auth/admob.report"
+          ],
+          "id": "admob.accounts.list",
+          "streamingType": "NONE",
+          "description": "Lists the AdMob publisher account that was most recently signed in to from the AdMob UI. For more information, see https://support.google.com/admob/answer/10243672.",
+          "response": {
+            "$ref": "ListPublisherAccountsResponse"
+          },
+          "httpMethod": "GET",
+          "parameters": {
+            "pageSize": {
+              "location": "query",
+              "type": "integer",
+              "description": "Maximum number of accounts to return.",
+              "format": "int32"
+            },
+            "pageToken": {
+              "location": "query",
+              "description": "The value returned by the last `ListPublisherAccountsResponse`; indicates that this is a continuation of a prior `ListPublisherAccounts` call, and that the system should return the next page of data.",
+              "type": "string"
+            }
+          },
+          "parameterOrder": []
+        }
+      }
+    }
+  },
+  "version_module": true,
+  "documentationLink": "https://developers.google.com/admob/api/",
+  "revision": "20230227",
+  "version": "v1beta",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "ownerName": "Google",
-  "discoveryVersion": "v1",
-  "baseUrl": "https://admob.googleapis.com/",
+  "mtlsRootUrl": "https://admob.mtls.googleapis.com/",
+  "description": "The AdMob API allows publishers to programmatically get information about their AdMob account. ",
+  "basePath": "",
   "schemas": {
-    "StringList": {
-      "id": "StringList",
-      "description": "List of string values.",
+    "ListPublisherAccountsResponse": {
       "properties": {
-        "values": {
-          "description": "The string values.",
+        "nextPageToken": {
+          "type": "string",
+          "description": "If not empty, indicates that there might be more accounts for the request; you must pass this value in a new `ListPublisherAccountsRequest`."
+        },
+        "account": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "PublisherAccount"
+          },
+          "description": "Publisher that the client credentials can access."
+        }
+      },
+      "id": "ListPublisherAccountsResponse",
+      "type": "object",
+      "description": "Response for the publisher account list request."
+    },
+    "ReportRow": {
+      "type": "object",
+      "properties": {
+        "dimensionValues": {
+          "additionalProperties": {
+            "$ref": "ReportRowDimensionValue"
+          },
+          "description": "Map of dimension values in a row, with keys as enum name of the dimensions.",
+          "type": "object"
+        },
+        "metricValues": {
+          "type": "object",
+          "description": "Map of metric values in a row, with keys as enum name of the metrics. If a metric being requested has no value returned, the map will not include it.",
+          "additionalProperties": {
+            "$ref": "ReportRowMetricValue"
           }
         }
       },
-      "type": "object"
-    },
-    "NetworkReportSpecSortCondition": {
-      "properties": {
-        "dimension": {
-          "type": "string",
-          "enumDescriptions": [
-            "Default value for an unset field. Do not use.",
-            "A date in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
-            "A month in the YYYYMM format (for example, \"202107\"). Requests can specify at most one time dimension.",
-            "The date of the first day of a week in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
-            "The unique ID of the ad unit (for example, \"ca-app-pub-1234/1234\"). If AD_UNIT dimension is specified, then APP is included automatically.",
-            "The unique ID of the mobile application (for example, \"ca-app-pub-1234~1234\").",
-            "Type of the ad (for example, \"text\" or \"image\"), an ad delivery dimension. **Warning:** The dimension is incompatible with [AD_REQUESTS](#Metric.ENUM_VALUES.AD_REQUESTS), [MATCH_RATE](#Metric.ENUM_VALUES.MATCH_RATE) and [IMPRESSION_RPM](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics.",
-            "CLDR country code of the place where the ad views/clicks occur (for example, \"US\" or \"FR\"). This is a geography dimension.",
-            "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery dimension.",
-            "Mobile OS platform of the app (for example, \"Android\" or \"iOS\").",
-            "Mobile operating system version, e.g. \"iOS 13.5.1\".",
-            "GMA SDK version, e.g. \"iOS 7.62.0\".",
-            "For Android, the app version name can be found in versionName in PackageInfo. For iOS, the app version name can be found in CFBundleShortVersionString.",
-            "Restriction mode for ads serving (e.g. \"Non-personalized ads\")."
-          ],
-          "enum": [
-            "DIMENSION_UNSPECIFIED",
-            "DATE",
-            "MONTH",
-            "WEEK",
-            "AD_UNIT",
-            "APP",
-            "AD_TYPE",
-            "COUNTRY",
-            "FORMAT",
-            "PLATFORM",
-            "MOBILE_OS_VERSION",
-            "GMA_SDK_VERSION",
-            "APP_VERSION_NAME",
-            "SERVING_RESTRICTION"
-          ],
-          "description": "Sort by the specified dimension."
-        },
-        "order": {
-          "description": "Sorting order of the dimension or metric.",
-          "enumDescriptions": [
-            "Default value for an unset field. Do not use.",
-            "Sort dimension value or metric value in ascending order.",
-            "Sort dimension value or metric value in descending order."
-          ],
-          "type": "string",
-          "enum": [
-            "SORT_ORDER_UNSPECIFIED",
-            "ASCENDING",
-            "DESCENDING"
-          ]
-        },
-        "metric": {
-          "description": "Sort by the specified metric.",
-          "type": "string",
-          "enum": [
-            "METRIC_UNSPECIFIED",
-            "AD_REQUESTS",
-            "CLICKS",
-            "ESTIMATED_EARNINGS",
-            "IMPRESSIONS",
-            "IMPRESSION_CTR",
-            "IMPRESSION_RPM",
-            "MATCHED_REQUESTS",
-            "MATCH_RATE",
-            "SHOW_RATE"
-          ],
-          "enumDescriptions": [
-            "Default value for an unset field. Do not use.",
-            "The number of ad requests. The value is an integer. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
-            "The number of times a user clicks an ad. The value is an integer.",
-            "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000.",
-            "The total number of ads shown to users. The value is an integer.",
-            "The ratio of clicks over impressions. The value is a double precision (approximate) decimal value.",
-            "The estimated earnings per thousand ad impressions. The value is in micros. For example, $1.03 would be represented as 1030000. Equivalent to eCPM in the AdMob UI. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
-            "The number of times ads are returned in response to a request. The value is an integer.",
-            "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
-            "The ratio of ads that are displayed over ads that are returned, defined as impressions / matched requests. The value is a double precision (approximate) decimal value."
-          ]
-        }
-      },
-      "id": "NetworkReportSpecSortCondition",
-      "description": "Sorting direction to be applied on a dimension or a metric.",
-      "type": "object"
-    },
-    "ReportRowDimensionValue": {
-      "id": "ReportRowDimensionValue",
-      "type": "object",
-      "description": "Representation of a dimension value.",
-      "properties": {
-        "value": {
-          "type": "string",
-          "description": "Dimension value in the format specified in the report's spec Dimension enum."
-        },
-        "displayLabel": {
-          "type": "string",
-          "description": "The localized string representation of the value. If unspecified, the display label should be derived from the value."
-        }
-      }
-    },
-    "AdUnit": {
-      "type": "object",
-      "id": "AdUnit",
-      "properties": {
-        "name": {
-          "description": "Resource name for this ad unit. Format is accounts/{publisher_id}/adUnits/{ad_unit_id_fragment} Example: accounts/pub-9876543210987654/adUnits/0123456789",
-          "type": "string"
-        },
-        "adUnitId": {
-          "description": "The externally visible ID of the ad unit which can be used to integrate with the AdMob SDK. This is a read only property. Example: ca-app-pub-9876543210987654/0123456789",
-          "type": "string"
-        },
-        "appId": {
-          "description": "The externally visible ID of the app this ad unit is associated with. Example: ca-app-pub-9876543210987654~0123456789",
-          "type": "string"
-        },
-        "adFormat": {
-          "type": "string",
-          "description": "AdFormat of the ad unit. Possible values are as follows: \"APP_OPEN\" - App Open ad format. \"BANNER\" - Banner ad format. \"BANNER_INTERSTITIAL\" - Legacy format that can be used as either banner or interstitial. This format can no longer be created but can be targeted by mediation groups. \"INTERSTITIAL\" - A full screen ad. Supported ad types are \"RICH_MEDIA\" and \"VIDEO\". \"NATIVE\" - Native ad format. \"REWARDED\" - An ad that, once viewed, gets a callback verifying the view so that a reward can be given to the user. Supported ad types are \"RICH_MEDIA\" (interactive) and video where video can not be excluded. \"REWARDED_INTERSTITIAL\" - Rewarded Interstitial ad format. Only supports video ad type. See https://support.google.com/admob/answer/9884467."
-        },
-        "adTypes": {
-          "description": "Ad media type supported by this ad unit. Possible values as follows: \"RICH_MEDIA\" - Text, image, and other non-video media. \"VIDEO\" - Video media.",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "displayName": {
-          "type": "string",
-          "description": "The display name of the ad unit as shown in the AdMob UI, which is provided by the user. The maximum length allowed is 80 characters."
-        }
-      },
-      "description": "Describes an AdMob ad unit."
+      "description": "A row of the returning report.",
+      "id": "ReportRow"
     },
     "AppLinkedAppInfo": {
+      "type": "object",
       "properties": {
-        "displayName": {
-          "readOnly": true,
-          "description": "Output only. Display name of the app as it appears in the app store. This is an output-only field, and may be empty if the app cannot be found in the store.",
-          "type": "string"
-        },
         "appStoreId": {
           "type": "string",
           "description": "The app store ID of the app; present if and only if the app is linked to an app store. If the app is added to the Google Play store, it will be the application ID of the app. For example: \"com.example.myapp\". See https://developer.android.com/studio/build/application-id. If the app is added to the Apple App Store, it will be app store ID. For example \"105169111\". Note that setting the app store id is considered an irreversible action. Once an app is linked, it cannot be unlinked."
+        },
+        "displayName": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Output only. Display name of the app as it appears in the app store. This is an output-only field, and may be empty if the app cannot be found in the store."
         }
       },
-      "id": "AppLinkedAppInfo",
       "description": "Information from the app store if the app is linked to an app store.",
-      "type": "object"
+      "id": "AppLinkedAppInfo"
     },
-    "Date": {
-      "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
-      "id": "Date",
-      "type": "object",
+    "PublisherAccount": {
+      "id": "PublisherAccount",
+      "description": "A publisher account contains information relevant to the use of this API, such as the time zone used for the reports.",
       "properties": {
-        "month": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."
+        "publisherId": {
+          "description": "The unique ID by which this publisher account can be identified in the API requests (for example, pub-1234567890).",
+          "type": "string"
         },
-        "year": {
-          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
-          "format": "int32",
-          "type": "integer"
+        "reportingTimeZone": {
+          "description": "The time zone that is used in reports that are generated for this account. The value is a time-zone ID as specified by the CLDR project, for example, \"America/Los_Angeles\".",
+          "type": "string"
         },
-        "day": {
-          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
-          "type": "integer",
-          "format": "int32"
+        "name": {
+          "type": "string",
+          "description": "Resource name of this account. Format is accounts/{publisher_id}."
+        },
+        "currencyCode": {
+          "description": "Currency code of the earning-related metrics, which is the 3-letter code defined in ISO 4217. The daily average rate is used for the currency conversion.",
+          "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "DateRange": {
       "description": "Specification of a single date range. Both dates are inclusive.",
       "type": "object",
       "properties": {
         "startDate": {
-          "description": "Start date of the date range, inclusive. Must be less than or equal to the end date.",
-          "$ref": "Date"
+          "$ref": "Date",
+          "description": "Start date of the date range, inclusive. Must be less than or equal to the end date."
         },
         "endDate": {
           "$ref": "Date",
@@ -565,138 +449,106 @@
       },
       "id": "DateRange"
     },
-    "MediationReportSpecSortCondition": {
-      "id": "MediationReportSpecSortCondition",
-      "description": "Sorting direction to be applied on a dimension or a metric.",
+    "AppManualAppInfo": {
       "properties": {
-        "dimension": {
-          "enumDescriptions": [
-            "Default value for an unset field. Do not use.",
-            "A date in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
-            "A month in the YYYYMM format (for example, \"202107\"). Requests can specify at most one time dimension.",
-            "The date of the first day of a week in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
-            "The [unique ID of the ad source](/admob/api/v1/ad_sources) (for example, \"5450213213286189855\" and \"AdMob Network\" as label value).",
-            "The unique ID of the ad source instance (for example, \"ca-app-pub-1234:asi:5678\" and \"AdMob (default)\" as label value).",
-            "The unique ID of the ad unit (for example, \"ca-app-pub-1234/8790\"). If AD_UNIT dimension is specified, then APP is included automatically.",
-            "The unique ID of the mobile application (for example, \"ca-app-pub-1234~1234\").",
-            "The unique ID of the mediation group (for example, \"ca-app-pub-1234:mg:1234\" and \"AdMob (default)\" as label value).",
-            "CLDR country code of the place where the ad views/clicks occur (for example, \"US\" or \"FR\"). This is a geography dimension.",
-            "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery dimension.",
-            "Mobile OS platform of the app (for example, \"Android\" or \"iOS\").",
-            "Mobile operating system version, e.g. \"iOS 13.5.1\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
-            "GMA SDK version, e.g. \"iOS 7.62.0\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
-            "For Android, the app version name can be found in versionName in PackageInfo. For iOS, the app version name can be found in CFBundleShortVersionString. **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
-            "Restriction mode for ads serving (e.g. \"Non-personalized ads\"). **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) metric."
-          ],
-          "description": "Sort by the specified dimension.",
-          "enum": [
-            "DIMENSION_UNSPECIFIED",
-            "DATE",
-            "MONTH",
-            "WEEK",
-            "AD_SOURCE",
-            "AD_SOURCE_INSTANCE",
-            "AD_UNIT",
-            "APP",
-            "MEDIATION_GROUP",
-            "COUNTRY",
-            "FORMAT",
-            "PLATFORM",
-            "MOBILE_OS_VERSION",
-            "GMA_SDK_VERSION",
-            "APP_VERSION_NAME",
-            "SERVING_RESTRICTION"
-          ],
-          "type": "string"
-        },
-        "order": {
-          "enum": [
-            "SORT_ORDER_UNSPECIFIED",
-            "ASCENDING",
-            "DESCENDING"
-          ],
+        "displayName": {
           "type": "string",
-          "description": "Sorting order of the dimension or metric.",
-          "enumDescriptions": [
-            "Default value for an unset field. Do not use.",
-            "Sort dimension value or metric value in ascending order.",
-            "Sort dimension value or metric value in descending order."
-          ]
-        },
-        "metric": {
-          "description": "Sort by the specified metric.",
-          "enumDescriptions": [
-            "Default value for an unset field. Do not use.",
-            "The number of requests. The value is an integer.",
-            "The number of times a user clicks an ad. The value is an integer.",
-            "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000. Estimated earnings per mediation group and per ad source instance level is supported dating back to October 20, 2019. Third-party estimated earnings will show 0 for dates prior to October 20, 2019.",
-            "The total number of ads shown to users. The value is an integer.",
-            "The ratio of clicks over impressions. The value is a double precision (approximate) decimal value.",
-            "The number of times ads are returned in response to a request. The value is an integer.",
-            "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value.",
-            "The third-party ad network's estimated average eCPM. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $2.30 would be represented as 2300000. The estimated average eCPM per mediation group and per ad source instance level is supported dating back to October 20, 2019. Third-party estimated average eCPM will show 0 for dates prior to October 20, 2019."
-          ],
-          "enum": [
-            "METRIC_UNSPECIFIED",
-            "AD_REQUESTS",
-            "CLICKS",
-            "ESTIMATED_EARNINGS",
-            "IMPRESSIONS",
-            "IMPRESSION_CTR",
-            "MATCHED_REQUESTS",
-            "MATCH_RATE",
-            "OBSERVED_ECPM"
-          ],
-          "type": "string"
+          "description": "The display name of the app as shown in the AdMob UI, which is provided by the user. The maximum length allowed is 80 characters."
         }
       },
-      "type": "object"
+      "type": "object",
+      "description": "Information provided for manual apps which are not linked to an application store (Example: Google Play, App Store).",
+      "id": "AppManualAppInfo"
     },
-    "ListAdSourcesResponse": {
-      "description": "Response for the ListAdSourcesRequest.",
+    "ListAdUnitsResponse": {
       "properties": {
         "nextPageToken": {
           "type": "string",
-          "description": "Used to set the `page_token` in the `ListAdSourcesRequest` to retrieve the next page. If this field is omitted, there are no subsequent pages."
+          "description": "If not empty, indicates that there may be more ad units for the request; this value should be passed in a new `ListAdUnitsRequest`."
         },
-        "adSources": {
-          "description": "The ad sources.",
+        "adUnits": {
+          "type": "array",
+          "description": "The resulting ad units for the requested account.",
           "items": {
-            "$ref": "AdSource"
-          },
-          "type": "array"
+            "$ref": "AdUnit"
+          }
         }
       },
-      "id": "ListAdSourcesResponse",
+      "description": "Response for the ad units list request.",
+      "id": "ListAdUnitsResponse",
       "type": "object"
     },
-    "PublisherAccount": {
-      "description": "A publisher account contains information relevant to the use of this API, such as the time zone used for the reports.",
+    "ReportFooter": {
+      "id": "ReportFooter",
+      "description": "Groups data available after report generation, for example, warnings and row counts. Always sent as the last message in the stream response.",
+      "type": "object",
       "properties": {
-        "currencyCode": {
+        "matchingRowCount": {
+          "description": "Total number of rows that matched the request. Warning: This count does NOT always match the number of rows in the response. Do not make that assumption when processing the response.",
           "type": "string",
-          "description": "Currency code of the earning-related metrics, which is the 3-letter code defined in ISO 4217. The daily average rate is used for the currency conversion."
+          "format": "int64"
         },
-        "publisherId": {
-          "description": "The unique ID by which this publisher account can be identified in the API requests (for example, pub-1234567890).",
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "ReportWarning"
+          },
+          "description": "Warnings associated with generation of the report."
+        }
+      }
+    },
+    "App": {
+      "id": "App",
+      "description": "Describes an AdMob app for a specific platform (For example: Android or iOS).",
+      "properties": {
+        "appId": {
+          "type": "string",
+          "description": "The externally visible ID of the app which can be used to integrate with the AdMob SDK. This is a read only property. Example: ca-app-pub-9876543210987654~0123456789"
+        },
+        "manualAppInfo": {
+          "description": "The information for an app that is not linked to any app store. After an app is linked, this information is still retrivable. If no name is provided for the app upon creation, a placeholder name will be used.",
+          "$ref": "AppManualAppInfo"
+        },
+        "platform": {
+          "description": "Describes the platform of the app. Limited to \"IOS\" and \"ANDROID\".",
           "type": "string"
         },
-        "reportingTimeZone": {
+        "appApprovalState": {
+          "enum": [
+            "APP_APPROVAL_STATE_UNSPECIFIED",
+            "ACTION_REQUIRED",
+            "IN_REVIEW",
+            "APPROVED"
+          ],
+          "description": "Output only. The approval state for the app.",
+          "readOnly": true,
           "type": "string",
-          "description": "The time zone that is used in reports that are generated for this account. The value is a time-zone ID as specified by the CLDR project, for example, \"America/Los_Angeles\"."
+          "enumDescriptions": [
+            "Default value for an unset field. Do not use.",
+            "The app requires additional user action to be approved. Please refer to https://support.google.com/admob/answer/10564477 for details and next steps.",
+            "The app is pending review.",
+            "The app is approved and can serve ads."
+          ]
         },
         "name": {
           "type": "string",
-          "description": "Resource name of this account. Format is accounts/{publisher_id}."
+          "description": "Resource name for this app. Format is accounts/{publisher_id}/apps/{app_id_fragment} Example: accounts/pub-9876543210987654/apps/0123456789"
+        },
+        "linkedAppInfo": {
+          "$ref": "AppLinkedAppInfo",
+          "description": "Immutable. The information for an app that is linked to an app store. This field is present if and only if the app is linked to an app store."
         }
       },
-      "type": "object",
-      "id": "PublisherAccount"
+      "type": "object"
     },
     "NetworkReportSpecDimensionFilter": {
-      "id": "NetworkReportSpecDimensionFilter",
+      "description": "Describes which report rows to match based on their dimension values.",
       "type": "object",
       "properties": {
+        "matchesAny": {
+          "$ref": "StringList",
+          "description": "Matches a row if its value for the specified dimension is in one of the values specified in this condition."
+        },
         "dimension": {
           "description": "Applies the filter criterion to the specified dimension.",
           "enum": [
@@ -732,20 +584,145 @@
             "For Android, the app version name can be found in versionName in PackageInfo. For iOS, the app version name can be found in CFBundleShortVersionString.",
             "Restriction mode for ads serving (e.g. \"Non-personalized ads\")."
           ]
-        },
-        "matchesAny": {
-          "$ref": "StringList",
-          "description": "Matches a row if its value for the specified dimension is in one of the values specified in this condition."
         }
       },
-      "description": "Describes which report rows to match based on their dimension values."
+      "id": "NetworkReportSpecDimensionFilter"
+    },
+    "GenerateNetworkReportResponse": {
+      "properties": {
+        "footer": {
+          "description": "Additional information about the generated report, such as warnings about the data.",
+          "$ref": "ReportFooter"
+        },
+        "row": {
+          "description": "Actual report data.",
+          "$ref": "ReportRow"
+        },
+        "header": {
+          "description": "Report generation settings that describes the report contents, such as the report date range and localization settings.",
+          "$ref": "ReportHeader"
+        }
+      },
+      "type": "object",
+      "description": "The streaming response for the AdMob Network report where the first response contains the report header, then a stream of row responses, and finally a footer as the last response message. For example: [{ \"header\": { \"dateRange\": { \"startDate\": {\"year\": 2018, \"month\": 9, \"day\": 1}, \"endDate\": {\"year\": 2018, \"month\": 9, \"day\": 1} }, \"localizationSettings\": { \"currencyCode\": \"USD\", \"languageCode\": \"en-US\" } } }, { \"row\": { \"dimensionValues\": { \"DATE\": {\"value\": \"20180918\"}, \"APP\": { \"value\": \"ca-app-pub-8123415297019784~1001342552\", displayLabel: \"My app name!\" } }, \"metricValues\": { \"ESTIMATED_EARNINGS\": {\"microsValue\": 6500000} } } }, { \"footer\": {\"matchingRowCount\": 1} }]",
+      "id": "GenerateNetworkReportResponse"
+    },
+    "NetworkReportSpec": {
+      "type": "object",
+      "id": "NetworkReportSpec",
+      "properties": {
+        "localizationSettings": {
+          "description": "Localization settings of the report.",
+          "$ref": "LocalizationSettings"
+        },
+        "metrics": {
+          "items": {
+            "type": "string",
+            "enumDescriptions": [
+              "Default value for an unset field. Do not use.",
+              "The number of ad requests. The value is an integer. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
+              "The number of times a user clicks an ad. The value is an integer.",
+              "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000.",
+              "The total number of ads shown to users. The value is an integer.",
+              "The ratio of clicks over impressions. The value is a double precision (approximate) decimal value.",
+              "The estimated earnings per thousand ad impressions. The value is in micros. For example, $1.03 would be represented as 1030000. Equivalent to eCPM in the AdMob UI. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
+              "The number of times ads are returned in response to a request. The value is an integer.",
+              "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
+              "The ratio of ads that are displayed over ads that are returned, defined as impressions / matched requests. The value is a double precision (approximate) decimal value."
+            ],
+            "enum": [
+              "METRIC_UNSPECIFIED",
+              "AD_REQUESTS",
+              "CLICKS",
+              "ESTIMATED_EARNINGS",
+              "IMPRESSIONS",
+              "IMPRESSION_CTR",
+              "IMPRESSION_RPM",
+              "MATCHED_REQUESTS",
+              "MATCH_RATE",
+              "SHOW_RATE"
+            ]
+          },
+          "description": "List of metrics of the report. A report must specify at least one metric.",
+          "type": "array"
+        },
+        "dateRange": {
+          "description": "The date range for which the report is generated.",
+          "$ref": "DateRange"
+        },
+        "timeZone": {
+          "description": "A report time zone. Accepts an IANA TZ name values, such as \"America/Los_Angeles.\" If no time zone is defined, the account default takes effect. Check default value by the get account action. **Warning:** The \"America/Los_Angeles\" is the only supported value at the moment.",
+          "type": "string"
+        },
+        "dimensions": {
+          "items": {
+            "type": "string",
+            "enumDescriptions": [
+              "Default value for an unset field. Do not use.",
+              "A date in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
+              "A month in the YYYYMM format (for example, \"202107\"). Requests can specify at most one time dimension.",
+              "The date of the first day of a week in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
+              "The unique ID of the ad unit (for example, \"ca-app-pub-1234/1234\"). If AD_UNIT dimension is specified, then APP is included automatically.",
+              "The unique ID of the mobile application (for example, \"ca-app-pub-1234~1234\").",
+              "Type of the ad (for example, \"text\" or \"image\"), an ad delivery dimension. **Warning:** The dimension is incompatible with [AD_REQUESTS](#Metric.ENUM_VALUES.AD_REQUESTS), [MATCH_RATE](#Metric.ENUM_VALUES.MATCH_RATE) and [IMPRESSION_RPM](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics.",
+              "CLDR country code of the place where the ad views/clicks occur (for example, \"US\" or \"FR\"). This is a geography dimension.",
+              "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery dimension.",
+              "Mobile OS platform of the app (for example, \"Android\" or \"iOS\").",
+              "Mobile operating system version, e.g. \"iOS 13.5.1\".",
+              "GMA SDK version, e.g. \"iOS 7.62.0\".",
+              "For Android, the app version name can be found in versionName in PackageInfo. For iOS, the app version name can be found in CFBundleShortVersionString.",
+              "Restriction mode for ads serving (e.g. \"Non-personalized ads\")."
+            ],
+            "enum": [
+              "DIMENSION_UNSPECIFIED",
+              "DATE",
+              "MONTH",
+              "WEEK",
+              "AD_UNIT",
+              "APP",
+              "AD_TYPE",
+              "COUNTRY",
+              "FORMAT",
+              "PLATFORM",
+              "MOBILE_OS_VERSION",
+              "GMA_SDK_VERSION",
+              "APP_VERSION_NAME",
+              "SERVING_RESTRICTION"
+            ]
+          },
+          "description": "List of dimensions of the report. The value combination of these dimensions determines the row of the report. If no dimensions are specified, the report returns a single row of requested metrics for the entire account.",
+          "type": "array"
+        },
+        "maxReportRows": {
+          "type": "integer",
+          "description": "Maximum number of report data rows to return. If the value is not set, the API returns as many rows as possible, up to 100000. Acceptable values are 1-100000, inclusive. Values larger than 100000 return an error.",
+          "format": "int32"
+        },
+        "dimensionFilters": {
+          "items": {
+            "$ref": "NetworkReportSpecDimensionFilter"
+          },
+          "type": "array",
+          "description": "Describes which report rows to match based on their dimension values."
+        },
+        "sortConditions": {
+          "description": "Describes the sorting of report rows. The order of the condition in the list defines its precedence; the earlier the condition, the higher its precedence. If no sort conditions are specified, the row ordering is undefined.",
+          "items": {
+            "$ref": "NetworkReportSpecSortCondition"
+          },
+          "type": "array"
+        }
+      },
+      "description": "The specification for generating an AdMob Network report. For example, the specification to get clicks and estimated earnings for only the 'US' and 'CN' countries can look like the following example: { 'date_range': { 'start_date': {'year': 2021, 'month': 9, 'day': 1}, 'end_date': {'year': 2021, 'month': 9, 'day': 30} }, 'dimensions': ['DATE', 'APP', 'COUNTRY'], 'metrics': ['CLICKS', 'ESTIMATED_EARNINGS'], 'dimension_filters': [ { 'dimension': 'COUNTRY', 'matches_any': {'values': [{'value': 'US', 'value': 'CN'}]} } ], 'sort_conditions': [ {'dimension':'APP', order: 'ASCENDING'}, {'metric':'CLICKS', order: 'DESCENDING'} ], 'localization_settings': { 'currency_code': 'USD', 'language_code': 'en-US' } } For a better understanding, you can treat the preceding specification like the following pseudo SQL: SELECT DATE, APP, COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE \u003e= '2021-09-01' AND DATE \u003c= '2021-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY DATE, APP, COUNTRY ORDER BY APP ASC, CLICKS DESC;"
     },
     "MediationReportSpecDimensionFilter": {
+      "type": "object",
+      "id": "MediationReportSpecDimensionFilter",
       "description": "Describes which report rows to match based on their dimension values.",
       "properties": {
         "matchesAny": {
-          "description": "Matches a row if its value for the specified dimension is in one of the values specified in this condition.",
-          "$ref": "StringList"
+          "$ref": "StringList",
+          "description": "Matches a row if its value for the specified dimension is in one of the values specified in this condition."
         },
         "dimension": {
           "type": "string",
@@ -787,63 +764,90 @@
           ],
           "description": "Applies the filter criterion to the specified dimension."
         }
-      },
-      "id": "MediationReportSpecDimensionFilter",
-      "type": "object"
-    },
-    "ReportRow": {
-      "id": "ReportRow",
-      "description": "A row of the returning report.",
-      "type": "object",
-      "properties": {
-        "dimensionValues": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "ReportRowDimensionValue"
-          },
-          "description": "Map of dimension values in a row, with keys as enum name of the dimensions."
-        },
-        "metricValues": {
-          "additionalProperties": {
-            "$ref": "ReportRowMetricValue"
-          },
-          "description": "Map of metric values in a row, with keys as enum name of the metrics. If a metric being requested has no value returned, the map will not include it.",
-          "type": "object"
-        }
       }
     },
-    "LocalizationSettings": {
-      "description": "Localization settings for reports, such as currency and language. It affects how metrics are calculated.",
+    "AdUnit": {
+      "id": "AdUnit",
       "properties": {
-        "currencyCode": {
+        "appId": {
           "type": "string",
-          "description": "Currency code of the earning related metrics, which is the 3-letter code defined in ISO 4217. The daily average rate is used for the currency conversion. Defaults to the account currency code if unspecified."
+          "description": "The externally visible ID of the app this ad unit is associated with. Example: ca-app-pub-9876543210987654~0123456789"
         },
-        "languageCode": {
-          "description": "Language used for any localized text, such as some dimension value display labels. The language tag defined in the IETF BCP47. Defaults to 'en-US' if unspecified.",
+        "name": {
+          "description": "Resource name for this ad unit. Format is accounts/{publisher_id}/adUnits/{ad_unit_id_fragment} Example: accounts/pub-9876543210987654/adUnits/0123456789",
+          "type": "string"
+        },
+        "adTypes": {
+          "type": "array",
+          "description": "Ad media type supported by this ad unit. Possible values as follows: \"RICH_MEDIA\" - Text, image, and other non-video media. \"VIDEO\" - Video media.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "displayName": {
+          "description": "The display name of the ad unit as shown in the AdMob UI, which is provided by the user. The maximum length allowed is 80 characters.",
+          "type": "string"
+        },
+        "adFormat": {
+          "type": "string",
+          "description": "AdFormat of the ad unit. Possible values are as follows: \"APP_OPEN\" - App Open ad format. \"BANNER\" - Banner ad format. \"BANNER_INTERSTITIAL\" - Legacy format that can be used as either banner or interstitial. This format can no longer be created but can be targeted by mediation groups. \"INTERSTITIAL\" - A full screen ad. Supported ad types are \"RICH_MEDIA\" and \"VIDEO\". \"NATIVE\" - Native ad format. \"REWARDED\" - An ad that, once viewed, gets a callback verifying the view so that a reward can be given to the user. Supported ad types are \"RICH_MEDIA\" (interactive) and video where video can not be excluded. \"REWARDED_INTERSTITIAL\" - Rewarded Interstitial ad format. Only supports video ad type. See https://support.google.com/admob/answer/9884467."
+        },
+        "adUnitId": {
+          "description": "The externally visible ID of the ad unit which can be used to integrate with the AdMob SDK. This is a read only property. Example: ca-app-pub-9876543210987654/0123456789",
           "type": "string"
         }
       },
       "type": "object",
-      "id": "LocalizationSettings"
+      "description": "Describes an AdMob ad unit."
     },
-    "NetworkReportSpec": {
+    "GenerateMediationReportRequest": {
+      "description": "Request to generate an AdMob mediation report.",
+      "type": "object",
+      "properties": {
+        "reportSpec": {
+          "$ref": "MediationReportSpec",
+          "description": "Network report specification."
+        }
+      },
+      "id": "GenerateMediationReportRequest"
+    },
+    "AdSource": {
+      "description": "Definition of a mediation ad source.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Display name of this ad source."
+        },
+        "adSourceId": {
+          "type": "string",
+          "description": "ID of this ad source."
+        },
+        "name": {
+          "type": "string",
+          "description": "Resource name of this ad source. Format is: accounts/{publisher_id}/adSources/{ad_source_id}"
+        }
+      },
+      "type": "object",
+      "id": "AdSource"
+    },
+    "MediationReportSpec": {
+      "description": "The specification for generating an AdMob Mediation report. For example, the specification to get observed ECPM sliced by ad source and app for the 'US' and 'CN' countries can look like the following example: { \"date_range\": { \"start_date\": {\"year\": 2021, \"month\": 9, \"day\": 1}, \"end_date\": {\"year\": 2021, \"month\": 9, \"day\": 30} }, \"dimensions\": [\"AD_SOURCE\", \"APP\", \"COUNTRY\"], \"metrics\": [\"OBSERVED_ECPM\"], \"dimension_filters\": [ { \"dimension\": \"COUNTRY\", \"matches_any\": {\"values\": [{\"value\": \"US\", \"value\": \"CN\"}]} } ], \"sort_conditions\": [ {\"dimension\":\"APP\", order: \"ASCENDING\"} ], \"localization_settings\": { \"currency_code\": \"USD\", \"language_code\": \"en-US\" } } For a better understanding, you can treat the preceding specification like the following pseudo SQL: SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM FROM MEDIATION_REPORT WHERE DATE \u003e= '2021-09-01' AND DATE \u003c= '2021-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY AD_SOURCE, APP, COUNTRY ORDER BY APP ASC;",
+      "type": "object",
+      "id": "MediationReportSpec",
       "properties": {
         "metrics": {
           "type": "array",
-          "description": "List of metrics of the report. A report must specify at least one metric.",
           "items": {
             "enumDescriptions": [
               "Default value for an unset field. Do not use.",
-              "The number of ad requests. The value is an integer. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
+              "The number of requests. The value is an integer.",
               "The number of times a user clicks an ad. The value is an integer.",
-              "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000.",
+              "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000. Estimated earnings per mediation group and per ad source instance level is supported dating back to October 20, 2019. Third-party estimated earnings will show 0 for dates prior to October 20, 2019.",
               "The total number of ads shown to users. The value is an integer.",
               "The ratio of clicks over impressions. The value is a double precision (approximate) decimal value.",
-              "The estimated earnings per thousand ad impressions. The value is in micros. For example, $1.03 would be represented as 1030000. Equivalent to eCPM in the AdMob UI. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
               "The number of times ads are returned in response to a request. The value is an integer.",
-              "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
-              "The ratio of ads that are displayed over ads that are returned, defined as impressions / matched requests. The value is a double precision (approximate) decimal value."
+              "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value.",
+              "The third-party ad network's estimated average eCPM. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $2.30 would be represented as 2300000. The estimated average eCPM per mediation group and per ad source instance level is supported dating back to October 20, 2019. Third-party estimated average eCPM will show 0 for dates prior to October 20, 2019."
             ],
             "enum": [
               "METRIC_UNSPECIFIED",
@@ -852,96 +856,60 @@
               "ESTIMATED_EARNINGS",
               "IMPRESSIONS",
               "IMPRESSION_CTR",
-              "IMPRESSION_RPM",
               "MATCHED_REQUESTS",
               "MATCH_RATE",
-              "SHOW_RATE"
+              "OBSERVED_ECPM"
             ],
             "type": "string"
-          }
-        },
-        "localizationSettings": {
-          "description": "Localization settings of the report.",
-          "$ref": "LocalizationSettings"
+          },
+          "description": "List of metrics of the report. A report must specify at least one metric."
         },
         "dimensionFilters": {
           "type": "array",
-          "description": "Describes which report rows to match based on their dimension values.",
           "items": {
-            "$ref": "NetworkReportSpecDimensionFilter"
-          }
+            "$ref": "MediationReportSpecDimensionFilter"
+          },
+          "description": "Describes which report rows to match based on their dimension values."
+        },
+        "localizationSettings": {
+          "$ref": "LocalizationSettings",
+          "description": "Localization settings of the report."
+        },
+        "timeZone": {
+          "type": "string",
+          "description": "A report time zone. Accepts an IANA TZ name values, such as \"America/Los_Angeles.\" If no time zone is defined, the account default takes effect. Check default value by the get account action. **Warning:** The \"America/Los_Angeles\" is the only supported value at the moment."
+        },
+        "sortConditions": {
+          "description": "Describes the sorting of report rows. The order of the condition in the list defines its precedence; the earlier the condition, the higher its precedence. If no sort conditions are specified, the row ordering is undefined.",
+          "items": {
+            "$ref": "MediationReportSpecSortCondition"
+          },
+          "type": "array"
+        },
+        "dateRange": {
+          "$ref": "DateRange",
+          "description": "The date range for which the report is generated."
         },
         "dimensions": {
-          "description": "List of dimensions of the report. The value combination of these dimensions determines the row of the report. If no dimensions are specified, the report returns a single row of requested metrics for the entire account.",
           "items": {
-            "enum": [
-              "DIMENSION_UNSPECIFIED",
-              "DATE",
-              "MONTH",
-              "WEEK",
-              "AD_UNIT",
-              "APP",
-              "AD_TYPE",
-              "COUNTRY",
-              "FORMAT",
-              "PLATFORM",
-              "MOBILE_OS_VERSION",
-              "GMA_SDK_VERSION",
-              "APP_VERSION_NAME",
-              "SERVING_RESTRICTION"
-            ],
             "enumDescriptions": [
               "Default value for an unset field. Do not use.",
               "A date in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
               "A month in the YYYYMM format (for example, \"202107\"). Requests can specify at most one time dimension.",
               "The date of the first day of a week in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
-              "The unique ID of the ad unit (for example, \"ca-app-pub-1234/1234\"). If AD_UNIT dimension is specified, then APP is included automatically.",
+              "The [unique ID of the ad source](/admob/api/v1/ad_sources) (for example, \"5450213213286189855\" and \"AdMob Network\" as label value).",
+              "The unique ID of the ad source instance (for example, \"ca-app-pub-1234:asi:5678\" and \"AdMob (default)\" as label value).",
+              "The unique ID of the ad unit (for example, \"ca-app-pub-1234/8790\"). If AD_UNIT dimension is specified, then APP is included automatically.",
               "The unique ID of the mobile application (for example, \"ca-app-pub-1234~1234\").",
-              "Type of the ad (for example, \"text\" or \"image\"), an ad delivery dimension. **Warning:** The dimension is incompatible with [AD_REQUESTS](#Metric.ENUM_VALUES.AD_REQUESTS), [MATCH_RATE](#Metric.ENUM_VALUES.MATCH_RATE) and [IMPRESSION_RPM](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics.",
+              "The unique ID of the mediation group (for example, \"ca-app-pub-1234:mg:1234\" and \"AdMob (default)\" as label value).",
               "CLDR country code of the place where the ad views/clicks occur (for example, \"US\" or \"FR\"). This is a geography dimension.",
               "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery dimension.",
               "Mobile OS platform of the app (for example, \"Android\" or \"iOS\").",
-              "Mobile operating system version, e.g. \"iOS 13.5.1\".",
-              "GMA SDK version, e.g. \"iOS 7.62.0\".",
-              "For Android, the app version name can be found in versionName in PackageInfo. For iOS, the app version name can be found in CFBundleShortVersionString.",
-              "Restriction mode for ads serving (e.g. \"Non-personalized ads\")."
+              "Mobile operating system version, e.g. \"iOS 13.5.1\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
+              "GMA SDK version, e.g. \"iOS 7.62.0\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
+              "For Android, the app version name can be found in versionName in PackageInfo. For iOS, the app version name can be found in CFBundleShortVersionString. **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
+              "Restriction mode for ads serving (e.g. \"Non-personalized ads\"). **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) metric."
             ],
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "sortConditions": {
-          "description": "Describes the sorting of report rows. The order of the condition in the list defines its precedence; the earlier the condition, the higher its precedence. If no sort conditions are specified, the row ordering is undefined.",
-          "items": {
-            "$ref": "NetworkReportSpecSortCondition"
-          },
-          "type": "array"
-        },
-        "timeZone": {
-          "description": "A report time zone. Accepts an IANA TZ name values, such as \"America/Los_Angeles.\" If no time zone is defined, the account default takes effect. Check default value by the get account action. **Warning:** The \"America/Los_Angeles\" is the only supported value at the moment.",
-          "type": "string"
-        },
-        "dateRange": {
-          "description": "The date range for which the report is generated.",
-          "$ref": "DateRange"
-        },
-        "maxReportRows": {
-          "description": "Maximum number of report data rows to return. If the value is not set, the API returns as many rows as possible, up to 100000. Acceptable values are 1-100000, inclusive. Values larger than 100000 return an error.",
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "description": "The specification for generating an AdMob Network report. For example, the specification to get clicks and estimated earnings for only the 'US' and 'CN' countries can look like the following example: { 'date_range': { 'start_date': {'year': 2021, 'month': 9, 'day': 1}, 'end_date': {'year': 2021, 'month': 9, 'day': 30} }, 'dimensions': ['DATE', 'APP', 'COUNTRY'], 'metrics': ['CLICKS', 'ESTIMATED_EARNINGS'], 'dimension_filters': [ { 'dimension': 'COUNTRY', 'matches_any': {'values': [{'value': 'US', 'value': 'CN'}]} } ], 'sort_conditions': [ {'dimension':'APP', order: 'ASCENDING'}, {'metric':'CLICKS', order: 'DESCENDING'} ], 'localization_settings': { 'currency_code': 'USD', 'language_code': 'en-US' } } For a better understanding, you can treat the preceding specification like the following pseudo SQL: SELECT DATE, APP, COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE \u003e= '2021-09-01' AND DATE \u003c= '2021-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY DATE, APP, COUNTRY ORDER BY APP ASC, CLICKS DESC;",
-      "type": "object",
-      "id": "NetworkReportSpec"
-    },
-    "MediationReportSpec": {
-      "type": "object",
-      "properties": {
-        "dimensions": {
-          "description": "List of dimensions of the report. The value combination of these dimensions determines the row of the report. If no dimensions are specified, the report returns a single row of requested metrics for the entire account.",
-          "items": {
-            "type": "string",
             "enum": [
               "DIMENSION_UNSPECIFIED",
               "DATE",
@@ -960,122 +928,209 @@
               "APP_VERSION_NAME",
               "SERVING_RESTRICTION"
             ],
-            "enumDescriptions": [
-              "Default value for an unset field. Do not use.",
-              "A date in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
-              "A month in the YYYYMM format (for example, \"202107\"). Requests can specify at most one time dimension.",
-              "The date of the first day of a week in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
-              "The [unique ID of the ad source](/admob/api/v1/ad_sources) (for example, \"5450213213286189855\" and \"AdMob Network\" as label value).",
-              "The unique ID of the ad source instance (for example, \"ca-app-pub-1234:asi:5678\" and \"AdMob (default)\" as label value).",
-              "The unique ID of the ad unit (for example, \"ca-app-pub-1234/8790\"). If AD_UNIT dimension is specified, then APP is included automatically.",
-              "The unique ID of the mobile application (for example, \"ca-app-pub-1234~1234\").",
-              "The unique ID of the mediation group (for example, \"ca-app-pub-1234:mg:1234\" and \"AdMob (default)\" as label value).",
-              "CLDR country code of the place where the ad views/clicks occur (for example, \"US\" or \"FR\"). This is a geography dimension.",
-              "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery dimension.",
-              "Mobile OS platform of the app (for example, \"Android\" or \"iOS\").",
-              "Mobile operating system version, e.g. \"iOS 13.5.1\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
-              "GMA SDK version, e.g. \"iOS 7.62.0\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
-              "For Android, the app version name can be found in versionName in PackageInfo. For iOS, the app version name can be found in CFBundleShortVersionString. **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
-              "Restriction mode for ads serving (e.g. \"Non-personalized ads\"). **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) metric."
-            ]
+            "type": "string"
           },
-          "type": "array"
-        },
-        "dimensionFilters": {
-          "items": {
-            "$ref": "MediationReportSpecDimensionFilter"
-          },
-          "description": "Describes which report rows to match based on their dimension values.",
-          "type": "array"
-        },
-        "sortConditions": {
-          "items": {
-            "$ref": "MediationReportSpecSortCondition"
-          },
-          "type": "array",
-          "description": "Describes the sorting of report rows. The order of the condition in the list defines its precedence; the earlier the condition, the higher its precedence. If no sort conditions are specified, the row ordering is undefined."
-        },
-        "metrics": {
-          "description": "List of metrics of the report. A report must specify at least one metric.",
-          "items": {
-            "enumDescriptions": [
-              "Default value for an unset field. Do not use.",
-              "The number of requests. The value is an integer.",
-              "The number of times a user clicks an ad. The value is an integer.",
-              "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000. Estimated earnings per mediation group and per ad source instance level is supported dating back to October 20, 2019. Third-party estimated earnings will show 0 for dates prior to October 20, 2019.",
-              "The total number of ads shown to users. The value is an integer.",
-              "The ratio of clicks over impressions. The value is a double precision (approximate) decimal value.",
-              "The number of times ads are returned in response to a request. The value is an integer.",
-              "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value.",
-              "The third-party ad network's estimated average eCPM. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $2.30 would be represented as 2300000. The estimated average eCPM per mediation group and per ad source instance level is supported dating back to October 20, 2019. Third-party estimated average eCPM will show 0 for dates prior to October 20, 2019."
-            ],
-            "type": "string",
-            "enum": [
-              "METRIC_UNSPECIFIED",
-              "AD_REQUESTS",
-              "CLICKS",
-              "ESTIMATED_EARNINGS",
-              "IMPRESSIONS",
-              "IMPRESSION_CTR",
-              "MATCHED_REQUESTS",
-              "MATCH_RATE",
-              "OBSERVED_ECPM"
-            ]
-          },
+          "description": "List of dimensions of the report. The value combination of these dimensions determines the row of the report. If no dimensions are specified, the report returns a single row of requested metrics for the entire account.",
           "type": "array"
         },
         "maxReportRows": {
+          "description": "Maximum number of report data rows to return. If the value is not set, the API returns as many rows as possible, up to 100000. Acceptable values are 1-100000, inclusive. Values larger than 100000 return an error.",
           "format": "int32",
-          "type": "integer",
-          "description": "Maximum number of report data rows to return. If the value is not set, the API returns as many rows as possible, up to 100000. Acceptable values are 1-100000, inclusive. Values larger than 100000 return an error."
+          "type": "integer"
+        }
+      }
+    },
+    "ReportRowDimensionValue": {
+      "id": "ReportRowDimensionValue",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "Dimension value in the format specified in the report's spec Dimension enum."
         },
-        "localizationSettings": {
-          "description": "Localization settings of the report.",
-          "$ref": "LocalizationSettings"
-        },
-        "dateRange": {
-          "description": "The date range for which the report is generated.",
-          "$ref": "DateRange"
-        },
-        "timeZone": {
-          "description": "A report time zone. Accepts an IANA TZ name values, such as \"America/Los_Angeles.\" If no time zone is defined, the account default takes effect. Check default value by the get account action. **Warning:** The \"America/Los_Angeles\" is the only supported value at the moment.",
-          "type": "string"
+        "displayLabel": {
+          "type": "string",
+          "description": "The localized string representation of the value. If unspecified, the display label should be derived from the value."
         }
       },
-      "id": "MediationReportSpec",
-      "description": "The specification for generating an AdMob Mediation report. For example, the specification to get observed ECPM sliced by ad source and app for the 'US' and 'CN' countries can look like the following example: { \"date_range\": { \"start_date\": {\"year\": 2021, \"month\": 9, \"day\": 1}, \"end_date\": {\"year\": 2021, \"month\": 9, \"day\": 30} }, \"dimensions\": [\"AD_SOURCE\", \"APP\", \"COUNTRY\"], \"metrics\": [\"OBSERVED_ECPM\"], \"dimension_filters\": [ { \"dimension\": \"COUNTRY\", \"matches_any\": {\"values\": [{\"value\": \"US\", \"value\": \"CN\"}]} } ], \"sort_conditions\": [ {\"dimension\":\"APP\", order: \"ASCENDING\"} ], \"localization_settings\": { \"currency_code\": \"USD\", \"language_code\": \"en-US\" } } For a better understanding, you can treat the preceding specification like the following pseudo SQL: SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM FROM MEDIATION_REPORT WHERE DATE \u003e= '2021-09-01' AND DATE \u003c= '2021-09-30' AND COUNTRY IN ('US', 'CN') GROUP BY AD_SOURCE, APP, COUNTRY ORDER BY APP ASC;"
+      "description": "Representation of a dimension value.",
+      "type": "object"
     },
-    "ListAdUnitsResponse": {
-      "description": "Response for the ad units list request.",
+    "GenerateMediationReportResponse": {
+      "properties": {
+        "row": {
+          "$ref": "ReportRow",
+          "description": "Actual report data."
+        },
+        "header": {
+          "$ref": "ReportHeader",
+          "description": "Report generation settings that describes the report contents, such as the report date range and localization settings."
+        },
+        "footer": {
+          "description": "Additional information about the generated report, such as warnings about the data.",
+          "$ref": "ReportFooter"
+        }
+      },
+      "type": "object",
+      "description": "The streaming response for the AdMob mediation report where the first response contains the report header, then a stream of row responses, and finally a footer as the last response message. For example: [{ \"header\": { \"date_range\": { \"start_date\": {\"year\": 2018, \"month\": 9, \"day\": 1}, \"end_date\": {\"year\": 2018, \"month\": 9, \"day\": 1} }, \"localization_settings\": { \"currency_code\": \"USD\", \"language_code\": \"en-US\" } } }, { \"row\": { \"dimension_values\": { \"DATE\": {\"value\": \"20180918\"}, \"APP\": { \"value\": \"ca-app-pub-8123415297019784~1001342552\", \"display_label\": \"My app name!\" } }, \"metric_values\": { \"ESTIMATED_EARNINGS\": {\"decimal_value\": \"1324746\"} } } }, { \"footer\": {\"matching_row_count\": 1} }]",
+      "id": "GenerateMediationReportResponse"
+    },
+    "StringList": {
+      "id": "StringList",
+      "type": "object",
+      "description": "List of string values.",
+      "properties": {
+        "values": {
+          "description": "The string values.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ListAppsResponse": {
+      "description": "Response for the apps list request.",
+      "type": "object",
       "properties": {
         "nextPageToken": {
           "type": "string",
-          "description": "If not empty, indicates that there may be more ad units for the request; this value should be passed in a new `ListAdUnitsRequest`."
+          "description": "If not empty, indicates that there may be more apps for the request; this value should be passed in a new `ListAppsRequest`."
         },
-        "adUnits": {
+        "apps": {
+          "type": "array",
           "items": {
-            "$ref": "AdUnit"
+            "$ref": "App"
           },
-          "description": "The resulting ad units for the requested account.",
-          "type": "array"
+          "description": "The resulting apps for the requested account."
         }
       },
-      "type": "object",
-      "id": "ListAdUnitsResponse"
+      "id": "ListAppsResponse"
     },
-    "GenerateNetworkReportRequest": {
+    "LocalizationSettings": {
+      "description": "Localization settings for reports, such as currency and language. It affects how metrics are calculated.",
+      "type": "object",
       "properties": {
-        "reportSpec": {
-          "$ref": "NetworkReportSpec",
-          "description": "Network report specification."
+        "languageCode": {
+          "type": "string",
+          "description": "Language used for any localized text, such as some dimension value display labels. The language tag defined in the IETF BCP47. Defaults to 'en-US' if unspecified."
+        },
+        "currencyCode": {
+          "description": "Currency code of the earning related metrics, which is the 3-letter code defined in ISO 4217. The daily average rate is used for the currency conversion. Defaults to the account currency code if unspecified.",
+          "type": "string"
         }
       },
-      "description": "Request to generate an AdMob Network report.",
+      "id": "LocalizationSettings"
+    },
+    "MediationReportSpecSortCondition": {
+      "id": "MediationReportSpecSortCondition",
+      "description": "Sorting direction to be applied on a dimension or a metric.",
+      "properties": {
+        "dimension": {
+          "description": "Sort by the specified dimension.",
+          "type": "string",
+          "enumDescriptions": [
+            "Default value for an unset field. Do not use.",
+            "A date in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
+            "A month in the YYYYMM format (for example, \"202107\"). Requests can specify at most one time dimension.",
+            "The date of the first day of a week in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
+            "The [unique ID of the ad source](/admob/api/v1/ad_sources) (for example, \"5450213213286189855\" and \"AdMob Network\" as label value).",
+            "The unique ID of the ad source instance (for example, \"ca-app-pub-1234:asi:5678\" and \"AdMob (default)\" as label value).",
+            "The unique ID of the ad unit (for example, \"ca-app-pub-1234/8790\"). If AD_UNIT dimension is specified, then APP is included automatically.",
+            "The unique ID of the mobile application (for example, \"ca-app-pub-1234~1234\").",
+            "The unique ID of the mediation group (for example, \"ca-app-pub-1234:mg:1234\" and \"AdMob (default)\" as label value).",
+            "CLDR country code of the place where the ad views/clicks occur (for example, \"US\" or \"FR\"). This is a geography dimension.",
+            "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery dimension.",
+            "Mobile OS platform of the app (for example, \"Android\" or \"iOS\").",
+            "Mobile operating system version, e.g. \"iOS 13.5.1\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
+            "GMA SDK version, e.g. \"iOS 7.62.0\". **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
+            "For Android, the app version name can be found in versionName in PackageInfo. For iOS, the app version name can be found in CFBundleShortVersionString. **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS), [OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.",
+            "Restriction mode for ads serving (e.g. \"Non-personalized ads\"). **Warning:** The dimension is incompatible with [ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) metric."
+          ],
+          "enum": [
+            "DIMENSION_UNSPECIFIED",
+            "DATE",
+            "MONTH",
+            "WEEK",
+            "AD_SOURCE",
+            "AD_SOURCE_INSTANCE",
+            "AD_UNIT",
+            "APP",
+            "MEDIATION_GROUP",
+            "COUNTRY",
+            "FORMAT",
+            "PLATFORM",
+            "MOBILE_OS_VERSION",
+            "GMA_SDK_VERSION",
+            "APP_VERSION_NAME",
+            "SERVING_RESTRICTION"
+          ]
+        },
+        "metric": {
+          "enum": [
+            "METRIC_UNSPECIFIED",
+            "AD_REQUESTS",
+            "CLICKS",
+            "ESTIMATED_EARNINGS",
+            "IMPRESSIONS",
+            "IMPRESSION_CTR",
+            "MATCHED_REQUESTS",
+            "MATCH_RATE",
+            "OBSERVED_ECPM"
+          ],
+          "type": "string",
+          "enumDescriptions": [
+            "Default value for an unset field. Do not use.",
+            "The number of requests. The value is an integer.",
+            "The number of times a user clicks an ad. The value is an integer.",
+            "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000. Estimated earnings per mediation group and per ad source instance level is supported dating back to October 20, 2019. Third-party estimated earnings will show 0 for dates prior to October 20, 2019.",
+            "The total number of ads shown to users. The value is an integer.",
+            "The ratio of clicks over impressions. The value is a double precision (approximate) decimal value.",
+            "The number of times ads are returned in response to a request. The value is an integer.",
+            "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value.",
+            "The third-party ad network's estimated average eCPM. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $2.30 would be represented as 2300000. The estimated average eCPM per mediation group and per ad source instance level is supported dating back to October 20, 2019. Third-party estimated average eCPM will show 0 for dates prior to October 20, 2019."
+          ],
+          "description": "Sort by the specified metric."
+        },
+        "order": {
+          "description": "Sorting order of the dimension or metric.",
+          "enumDescriptions": [
+            "Default value for an unset field. Do not use.",
+            "Sort dimension value or metric value in ascending order.",
+            "Sort dimension value or metric value in descending order."
+          ],
+          "type": "string",
+          "enum": [
+            "SORT_ORDER_UNSPECIFIED",
+            "ASCENDING",
+            "DESCENDING"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "ReportRowMetricValue": {
+      "description": "Representation of a metric value.",
       "type": "object",
-      "id": "GenerateNetworkReportRequest"
+      "properties": {
+        "doubleValue": {
+          "format": "double",
+          "description": "Double precision (approximate) decimal values. Rates are from 0 to 1.",
+          "type": "number"
+        },
+        "microsValue": {
+          "format": "int64",
+          "type": "string",
+          "description": "Amount in micros. One million is equivalent to one unit. Currency value is in the unit (USD, EUR or other) specified by the request. For example, $6.50 whould be represented as 6500000 micros."
+        },
+        "integerValue": {
+          "description": "Metric integer value.",
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "id": "ReportRowMetricValue"
     },
     "ReportHeader": {
-      "id": "ReportHeader",
       "description": "Groups data helps to treat the generated report. Always sent as a first message in the stream response.",
       "properties": {
         "reportingTimeZone": {
@@ -1083,69 +1138,52 @@
           "type": "string"
         },
         "localizationSettings": {
-          "description": "Localization settings of the report. This is identical to the settings in the report request.",
-          "$ref": "LocalizationSettings"
+          "$ref": "LocalizationSettings",
+          "description": "Localization settings of the report. This is identical to the settings in the report request."
         },
         "dateRange": {
-          "$ref": "DateRange",
-          "description": "The date range for which the report is generated. This is identical to the range specified in the report request."
+          "description": "The date range for which the report is generated. This is identical to the range specified in the report request.",
+          "$ref": "DateRange"
         }
       },
+      "id": "ReportHeader",
       "type": "object"
     },
-    "GenerateMediationReportRequest": {
-      "description": "Request to generate an AdMob mediation report.",
+    "GenerateNetworkReportRequest": {
+      "description": "Request to generate an AdMob Network report.",
+      "type": "object",
       "properties": {
         "reportSpec": {
-          "$ref": "MediationReportSpec",
+          "$ref": "NetworkReportSpec",
           "description": "Network report specification."
         }
       },
-      "id": "GenerateMediationReportRequest",
-      "type": "object"
+      "id": "GenerateNetworkReportRequest"
     },
-    "ListPublisherAccountsResponse": {
-      "description": "Response for the publisher account list request.",
+    "ListAdSourcesResponse": {
+      "description": "Response for the ListAdSourcesRequest.",
+      "id": "ListAdSourcesResponse",
       "properties": {
-        "account": {
-          "type": "array",
+        "adSources": {
+          "description": "The ad sources.",
           "items": {
-            "$ref": "PublisherAccount"
+            "$ref": "AdSource"
           },
-          "description": "Publisher that the client credentials can access."
+          "type": "array"
         },
         "nextPageToken": {
           "type": "string",
-          "description": "If not empty, indicates that there might be more accounts for the request; you must pass this value in a new `ListPublisherAccountsRequest`."
+          "description": "Used to set the `page_token` in the `ListAdSourcesRequest` to retrieve the next page. If this field is omitted, there are no subsequent pages."
         }
       },
-      "type": "object",
-      "id": "ListPublisherAccountsResponse"
-    },
-    "AdSource": {
-      "id": "AdSource",
-      "properties": {
-        "name": {
-          "description": "Resource name of this ad source. Format is: accounts/{publisher_id}/adSources/{ad_source_id}",
-          "type": "string"
-        },
-        "title": {
-          "description": "Display name of this ad source.",
-          "type": "string"
-        },
-        "adSourceId": {
-          "type": "string",
-          "description": "ID of this ad source."
-        }
-      },
-      "description": "Definition of a mediation ad source.",
       "type": "object"
     },
     "ReportWarning": {
-      "id": "ReportWarning",
-      "description": "Warnings associated with generation of the report.",
-      "type": "object",
       "properties": {
+        "description": {
+          "type": "string",
+          "description": "Describes the details of the warning message, in English."
+        },
         "type": {
           "enum": [
             "TYPE_UNSPECIFIED",
@@ -1154,175 +1192,137 @@
             "OTHER",
             "REPORT_CURRENCY_NOT_ACCOUNT_CURRENCY"
           ],
+          "type": "string",
+          "description": "Type of the warning.",
           "enumDescriptions": [
             "Default value for an unset field. Do not use.",
             "Some data in this report is aggregated based on a time zone different from the requested time zone. This could happen if a local time-zone report has the start time before the last time this time zone changed. The description field will contain the date of the last time zone change.",
             "There is an unusual delay in processing the source data for the requested date range. The report results might be less up to date than usual. AdMob is aware of the issue and is actively working to resolve it.",
             "Warnings that are exposed without a specific type. Useful when new warning types are added but the API is not changed yet.",
             "The currency being requested is not the account currency. The earning metrics will be based on the requested currency, and thus not a good estimation of the final payment anymore, due to the currency rate fluctuation."
-          ],
-          "type": "string",
-          "description": "Type of the warning."
-        },
-        "description": {
-          "description": "Describes the details of the warning message, in English.",
-          "type": "string"
-        }
-      }
-    },
-    "GenerateNetworkReportResponse": {
-      "type": "object",
-      "properties": {
-        "footer": {
-          "description": "Additional information about the generated report, such as warnings about the data.",
-          "$ref": "ReportFooter"
-        },
-        "header": {
-          "description": "Report generation settings that describes the report contents, such as the report date range and localization settings.",
-          "$ref": "ReportHeader"
-        },
-        "row": {
-          "$ref": "ReportRow",
-          "description": "Actual report data."
-        }
-      },
-      "description": "The streaming response for the AdMob Network report where the first response contains the report header, then a stream of row responses, and finally a footer as the last response message. For example: [{ \"header\": { \"dateRange\": { \"startDate\": {\"year\": 2018, \"month\": 9, \"day\": 1}, \"endDate\": {\"year\": 2018, \"month\": 9, \"day\": 1} }, \"localizationSettings\": { \"currencyCode\": \"USD\", \"languageCode\": \"en-US\" } } }, { \"row\": { \"dimensionValues\": { \"DATE\": {\"value\": \"20180918\"}, \"APP\": { \"value\": \"ca-app-pub-8123415297019784~1001342552\", displayLabel: \"My app name!\" } }, \"metricValues\": { \"ESTIMATED_EARNINGS\": {\"microsValue\": 6500000} } } }, { \"footer\": {\"matchingRowCount\": 1} }]",
-      "id": "GenerateNetworkReportResponse"
-    },
-    "ReportFooter": {
-      "description": "Groups data available after report generation, for example, warnings and row counts. Always sent as the last message in the stream response.",
-      "id": "ReportFooter",
-      "properties": {
-        "warnings": {
-          "description": "Warnings associated with generation of the report.",
-          "type": "array",
-          "items": {
-            "$ref": "ReportWarning"
-          }
-        },
-        "matchingRowCount": {
-          "description": "Total number of rows that matched the request. Warning: This count does NOT always match the number of rows in the response. Do not make that assumption when processing the response.",
-          "format": "int64",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "ReportRowMetricValue": {
-      "properties": {
-        "doubleValue": {
-          "description": "Double precision (approximate) decimal values. Rates are from 0 to 1.",
-          "format": "double",
-          "type": "number"
-        },
-        "integerValue": {
-          "description": "Metric integer value.",
-          "format": "int64",
-          "type": "string"
-        },
-        "microsValue": {
-          "description": "Amount in micros. One million is equivalent to one unit. Currency value is in the unit (USD, EUR or other) specified by the request. For example, $6.50 whould be represented as 6500000 micros.",
-          "format": "int64",
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "id": "ReportRowMetricValue",
-      "description": "Representation of a metric value."
-    },
-    "ListAppsResponse": {
-      "properties": {
-        "nextPageToken": {
-          "type": "string",
-          "description": "If not empty, indicates that there may be more apps for the request; this value should be passed in a new `ListAppsRequest`."
-        },
-        "apps": {
-          "description": "The resulting apps for the requested account.",
-          "type": "array",
-          "items": {
-            "$ref": "App"
-          }
-        }
-      },
-      "description": "Response for the apps list request.",
-      "type": "object",
-      "id": "ListAppsResponse"
-    },
-    "AppManualAppInfo": {
-      "id": "AppManualAppInfo",
-      "description": "Information provided for manual apps which are not linked to an application store (Example: Google Play, App Store).",
-      "properties": {
-        "displayName": {
-          "type": "string",
-          "description": "The display name of the app as shown in the AdMob UI, which is provided by the user. The maximum length allowed is 80 characters."
-        }
-      },
-      "type": "object"
-    },
-    "GenerateMediationReportResponse": {
-      "id": "GenerateMediationReportResponse",
-      "type": "object",
-      "properties": {
-        "row": {
-          "description": "Actual report data.",
-          "$ref": "ReportRow"
-        },
-        "footer": {
-          "description": "Additional information about the generated report, such as warnings about the data.",
-          "$ref": "ReportFooter"
-        },
-        "header": {
-          "description": "Report generation settings that describes the report contents, such as the report date range and localization settings.",
-          "$ref": "ReportHeader"
-        }
-      },
-      "description": "The streaming response for the AdMob mediation report where the first response contains the report header, then a stream of row responses, and finally a footer as the last response message. For example: [{ \"header\": { \"date_range\": { \"start_date\": {\"year\": 2018, \"month\": 9, \"day\": 1}, \"end_date\": {\"year\": 2018, \"month\": 9, \"day\": 1} }, \"localization_settings\": { \"currency_code\": \"USD\", \"language_code\": \"en-US\" } } }, { \"row\": { \"dimension_values\": { \"DATE\": {\"value\": \"20180918\"}, \"APP\": { \"value\": \"ca-app-pub-8123415297019784~1001342552\", \"display_label\": \"My app name!\" } }, \"metric_values\": { \"ESTIMATED_EARNINGS\": {\"decimal_value\": \"1324746\"} } } }, { \"footer\": {\"matching_row_count\": 1} }]"
-    },
-    "App": {
-      "type": "object",
-      "id": "App",
-      "properties": {
-        "platform": {
-          "description": "Describes the platform of the app. Limited to \"IOS\" and \"ANDROID\".",
-          "type": "string"
-        },
-        "name": {
-          "type": "string",
-          "description": "Resource name for this app. Format is accounts/{publisher_id}/apps/{app_id_fragment} Example: accounts/pub-9876543210987654/apps/0123456789"
-        },
-        "linkedAppInfo": {
-          "$ref": "AppLinkedAppInfo",
-          "description": "Immutable. The information for an app that is linked to an app store. This field is present if and only if the app is linked to an app store."
-        },
-        "appId": {
-          "description": "The externally visible ID of the app which can be used to integrate with the AdMob SDK. This is a read only property. Example: ca-app-pub-9876543210987654~0123456789",
-          "type": "string"
-        },
-        "manualAppInfo": {
-          "$ref": "AppManualAppInfo",
-          "description": "The information for an app that is not linked to any app store. After an app is linked, this information is still retrivable. If no name is provided for the app upon creation, a placeholder name will be used."
-        },
-        "appApprovalState": {
-          "type": "string",
-          "enumDescriptions": [
-            "Default value for an unset field. Do not use.",
-            "The app requires additional user action to be approved. Please refer to https://support.google.com/admob/answer/10564477 for details and next steps.",
-            "The app is pending review.",
-            "The app is approved and can serve ads."
-          ],
-          "readOnly": true,
-          "description": "Output only. The approval state for the app.",
-          "enum": [
-            "APP_APPROVAL_STATE_UNSPECIFIED",
-            "ACTION_REQUIRED",
-            "IN_REVIEW",
-            "APPROVED"
           ]
         }
       },
-      "description": "Describes an AdMob app for a specific platform (For example: Android or iOS)."
+      "id": "ReportWarning",
+      "type": "object",
+      "description": "Warnings associated with generation of the report."
+    },
+    "NetworkReportSpecSortCondition": {
+      "properties": {
+        "dimension": {
+          "enum": [
+            "DIMENSION_UNSPECIFIED",
+            "DATE",
+            "MONTH",
+            "WEEK",
+            "AD_UNIT",
+            "APP",
+            "AD_TYPE",
+            "COUNTRY",
+            "FORMAT",
+            "PLATFORM",
+            "MOBILE_OS_VERSION",
+            "GMA_SDK_VERSION",
+            "APP_VERSION_NAME",
+            "SERVING_RESTRICTION"
+          ],
+          "description": "Sort by the specified dimension.",
+          "type": "string",
+          "enumDescriptions": [
+            "Default value for an unset field. Do not use.",
+            "A date in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
+            "A month in the YYYYMM format (for example, \"202107\"). Requests can specify at most one time dimension.",
+            "The date of the first day of a week in the YYYYMMDD format (for example, \"20210701\"). Requests can specify at most one time dimension.",
+            "The unique ID of the ad unit (for example, \"ca-app-pub-1234/1234\"). If AD_UNIT dimension is specified, then APP is included automatically.",
+            "The unique ID of the mobile application (for example, \"ca-app-pub-1234~1234\").",
+            "Type of the ad (for example, \"text\" or \"image\"), an ad delivery dimension. **Warning:** The dimension is incompatible with [AD_REQUESTS](#Metric.ENUM_VALUES.AD_REQUESTS), [MATCH_RATE](#Metric.ENUM_VALUES.MATCH_RATE) and [IMPRESSION_RPM](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics.",
+            "CLDR country code of the place where the ad views/clicks occur (for example, \"US\" or \"FR\"). This is a geography dimension.",
+            "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery dimension.",
+            "Mobile OS platform of the app (for example, \"Android\" or \"iOS\").",
+            "Mobile operating system version, e.g. \"iOS 13.5.1\".",
+            "GMA SDK version, e.g. \"iOS 7.62.0\".",
+            "For Android, the app version name can be found in versionName in PackageInfo. For iOS, the app version name can be found in CFBundleShortVersionString.",
+            "Restriction mode for ads serving (e.g. \"Non-personalized ads\")."
+          ]
+        },
+        "order": {
+          "type": "string",
+          "description": "Sorting order of the dimension or metric.",
+          "enumDescriptions": [
+            "Default value for an unset field. Do not use.",
+            "Sort dimension value or metric value in ascending order.",
+            "Sort dimension value or metric value in descending order."
+          ],
+          "enum": [
+            "SORT_ORDER_UNSPECIFIED",
+            "ASCENDING",
+            "DESCENDING"
+          ]
+        },
+        "metric": {
+          "type": "string",
+          "enumDescriptions": [
+            "Default value for an unset field. Do not use.",
+            "The number of ad requests. The value is an integer. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
+            "The number of times a user clicks an ad. The value is an integer.",
+            "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000.",
+            "The total number of ads shown to users. The value is an integer.",
+            "The ratio of clicks over impressions. The value is a double precision (approximate) decimal value.",
+            "The estimated earnings per thousand ad impressions. The value is in micros. For example, $1.03 would be represented as 1030000. Equivalent to eCPM in the AdMob UI. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
+            "The number of times ads are returned in response to a request. The value is an integer.",
+            "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
+            "The ratio of ads that are displayed over ads that are returned, defined as impressions / matched requests. The value is a double precision (approximate) decimal value."
+          ],
+          "description": "Sort by the specified metric.",
+          "enum": [
+            "METRIC_UNSPECIFIED",
+            "AD_REQUESTS",
+            "CLICKS",
+            "ESTIMATED_EARNINGS",
+            "IMPRESSIONS",
+            "IMPRESSION_CTR",
+            "IMPRESSION_RPM",
+            "MATCHED_REQUESTS",
+            "MATCH_RATE",
+            "SHOW_RATE"
+          ]
+        }
+      },
+      "description": "Sorting direction to be applied on a dimension or a metric.",
+      "id": "NetworkReportSpecSortCondition",
+      "type": "object"
+    },
+    "Date": {
+      "id": "Date",
+      "properties": {
+        "day": {
+          "format": "int32",
+          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+          "type": "integer"
+        },
+        "year": {
+          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "month": {
+          "format": "int32",
+          "type": "integer",
+          "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."
+        }
+      },
+      "type": "object",
+      "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp"
     }
   },
-  "ownerDomain": "google.com",
-  "rootUrl": "https://admob.googleapis.com/"
+  "name": "admob",
+  "rootUrl": "https://admob.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "id": "admob:v1beta",
+  "fullyEncodeReservedExpansion": true,
+  "title": "AdMob API",
+  "ownerName": "Google",
+  "canonicalName": "AdMob",
+  "discoveryVersion": "v1",
+  "protocol": "rest"
 }

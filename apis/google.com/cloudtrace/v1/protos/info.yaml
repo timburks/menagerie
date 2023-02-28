@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-cloudtrace/versions/v1
+  annotations:
+    config: cloudtrace_v1.yaml
+    directory: google/devtools/cloudtrace/v1
+    host: cloudtrace.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v1test2
+  parent: apis/google.com-remoteworkers
+data:
+  displayName: v1test2

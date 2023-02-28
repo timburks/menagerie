@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-bigquerymigration/versions/v2
+  annotations:
+    config: bigquerymigration_v2.yaml
+    directory: google/cloud/bigquery/migration/v2
+    host: bigquerymigration.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

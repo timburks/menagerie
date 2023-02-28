@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-gkehub/versions/v1beta
+  annotations:
+    config: gkehub_v1beta.yaml
+    directory: google/cloud/gkehub/v1beta
+    host: gkehub.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

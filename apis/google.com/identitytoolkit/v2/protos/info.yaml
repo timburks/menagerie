@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-identitytoolkit/versions/v2
+  annotations:
+    config: identitytoolkit_v2.yaml
+    directory: google/cloud/identitytoolkit/v2
+    host: identitytoolkit.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

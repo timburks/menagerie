@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-dataplex/versions/v1
+  annotations:
+    config: dataplex_v1.yaml
+    directory: google/cloud/dataplex/v1
+    host: dataplex.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

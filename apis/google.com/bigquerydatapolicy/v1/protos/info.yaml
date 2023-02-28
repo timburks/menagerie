@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-bigquerydatapolicy/versions/v1
+  annotations:
+    config: bigquerydatapolicy_v1.yaml
+    directory: google/cloud/bigquery/datapolicies/v1
+    host: bigquerydatapolicy.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v1alpha2
+  parent: apis/google.com-dataform
+data:
+  displayName: v1alpha2

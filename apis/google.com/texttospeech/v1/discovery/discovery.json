@@ -1,224 +1,8 @@
 {
-  "resources": {
-    "operations": {
-      "methods": {
-        "cancel": {
-          "httpMethod": "POST",
-          "response": {
-            "$ref": "Empty"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "path": "v1/{+name}:cancel",
-          "request": {
-            "$ref": "CancelOperationRequest"
-          },
-          "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-          "id": "texttospeech.operations.cancel",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "name": {
-              "description": "The name of the operation resource to be cancelled.",
-              "pattern": "^operations/.*$",
-              "location": "path",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "flatPath": "v1/operations/{operationsId}:cancel"
-        },
-        "delete": {
-          "parameters": {
-            "name": {
-              "pattern": "^operations/.*$",
-              "required": true,
-              "type": "string",
-              "location": "path",
-              "description": "The name of the operation resource to be deleted."
-            }
-          },
-          "path": "v1/{+name}",
-          "httpMethod": "DELETE",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "response": {
-            "$ref": "Empty"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
-          "id": "texttospeech.operations.delete",
-          "flatPath": "v1/operations/{operationsId}"
-        }
-      }
-    },
-    "text": {
-      "methods": {
-        "synthesize": {
-          "parameters": {},
-          "request": {
-            "$ref": "SynthesizeSpeechRequest"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "path": "v1/text:synthesize",
-          "id": "texttospeech.text.synthesize",
-          "description": "Synthesizes speech synchronously: receive results after all text input has been processed.",
-          "flatPath": "v1/text:synthesize",
-          "response": {
-            "$ref": "SynthesizeSpeechResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST"
-        }
-      }
-    },
-    "projects": {
-      "resources": {
-        "locations": {
-          "resources": {
-            "operations": {
-              "methods": {
-                "list": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "id": "texttospeech.projects.locations.operations.list",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "path": "v1/{+name}/operations",
-                  "response": {
-                    "$ref": "ListOperationsResponse"
-                  },
-                  "parameters": {
-                    "pageSize": {
-                      "type": "integer",
-                      "location": "query",
-                      "format": "int32",
-                      "description": "The standard list page size."
-                    },
-                    "pageToken": {
-                      "description": "The standard list page token.",
-                      "location": "query",
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "description": "The name of the operation's parent resource.",
-                      "required": true
-                    },
-                    "filter": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "The standard list filter."
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
-                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
-                  "httpMethod": "GET"
-                },
-                "get": {
-                  "parameters": {
-                    "name": {
-                      "type": "string",
-                      "description": "The name of the operation resource.",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "httpMethod": "GET",
-                  "id": "texttospeech.projects.locations.operations.get",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "path": "v1/{+name}",
-                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
-                  "response": {
-                    "$ref": "Operation"
-                  }
-                }
-              }
-            }
-          },
-          "methods": {
-            "synthesizeLongAudio": {
-              "path": "v1/{+parent}:synthesizeLongAudio",
-              "httpMethod": "POST",
-              "response": {
-                "$ref": "Operation"
-              },
-              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:synthesizeLongAudio",
-              "id": "texttospeech.projects.locations.synthesizeLongAudio",
-              "description": "Synthesizes long form text asynchronously.",
-              "parameters": {
-                "parent": {
-                  "description": "The resource states of the request in the form of `projects/*/locations/*/voices/*`.",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "location": "path",
-                  "type": "string",
-                  "required": true
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameterOrder": [
-                "parent"
-              ],
-              "request": {
-                "$ref": "SynthesizeLongAudioRequest"
-              }
-            }
-          }
-        }
-      }
-    },
-    "voices": {
-      "methods": {
-        "list": {
-          "parameters": {
-            "languageCode": {
-              "description": "Optional. Recommended. [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If not specified, the API will return all supported voices. If specified, the ListVoices call will only return voices that can be used to synthesize this language_code. For example, if you specify `\"en-NZ\"`, all `\"en-NZ\"` voices will be returned. If you specify `\"no\"`, both `\"no-\\*\"` (Norwegian) and `\"nb-\\*\"` (Norwegian Bokmal) voices will be returned.",
-              "location": "query",
-              "type": "string"
-            }
-          },
-          "flatPath": "v1/voices",
-          "response": {
-            "$ref": "ListVoicesResponse"
-          },
-          "httpMethod": "GET",
-          "path": "v1/voices",
-          "description": "Returns a list of Voice supported for synthesis.",
-          "parameterOrder": [],
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "id": "texttospeech.voices.list"
-        }
-      }
-    }
-  },
-  "documentationLink": "https://cloud.google.com/text-to-speech/",
-  "protocol": "rest",
+  "canonicalName": "Texttospeech",
+  "batchPath": "batch",
+  "servicePath": "",
   "version": "v1",
-  "fullyEncodeReservedExpansion": true,
-  "ownerName": "Google",
-  "basePath": "",
   "auth": {
     "oauth2": {
       "scopes": {
@@ -228,212 +12,70 @@
       }
     }
   },
-  "batchPath": "batch",
   "title": "Cloud Text-to-Speech API",
+  "mtlsRootUrl": "https://texttospeech.mtls.googleapis.com/",
+  "description": "Synthesizes natural-sounding speech by applying powerful neural network models.",
   "ownerDomain": "google.com",
-  "rootUrl": "https://texttospeech.googleapis.com/",
-  "parameters": {
-    "callback": {
-      "type": "string",
-      "description": "JSONP",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "location": "query",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "description": "V1 error format.",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "type": "string"
-    },
-    "alt": {
-      "description": "Data format for response.",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "default": "json",
-      "type": "string",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ]
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "fields": {
-      "location": "query",
-      "type": "string",
-      "description": "Selector specifying which fields to include in a partial response."
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "quotaUser": {
-      "type": "string",
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
-    },
-    "prettyPrint": {
-      "default": "true",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "location": "query"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "location": "query",
-      "type": "string"
-    },
-    "key": {
-      "location": "query",
-      "type": "string",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    }
-  },
-  "name": "texttospeech",
-  "discoveryVersion": "v1",
-  "servicePath": "",
+  "fullyEncodeReservedExpansion": true,
+  "baseUrl": "https://texttospeech.googleapis.com/",
   "schemas": {
-    "CustomVoiceParams": {
-      "description": "Description of the custom voice to be synthesized.",
-      "id": "CustomVoiceParams",
-      "type": "object",
+    "GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata": {
+      "id": "GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata",
       "properties": {
-        "reportedUsage": {
-          "description": "Optional. The usage of the synthesized audio to be reported.",
-          "enum": [
-            "REPORTED_USAGE_UNSPECIFIED",
-            "REALTIME",
-            "OFFLINE"
-          ],
+        "progressPercentage": {
+          "description": "The progress of the most recent processing update in percentage, ie. 70.0%.",
+          "format": "double",
+          "type": "number"
+        },
+        "startTime": {
           "type": "string",
-          "enumDescriptions": [
-            "Request with reported usage unspecified will be rejected.",
-            "For scenarios where the synthesized audio is not downloadable and can only be used once. For example, real-time request in IVR system.",
-            "For scenarios where the synthesized audio is downloadable and can be reused. For example, the synthesized audio is downloaded, stored in customer service system and played repeatedly."
-          ]
-        },
-        "model": {
-          "type": "string",
-          "description": "Required. The name of the AutoML model that synthesizes the custom voice."
-        }
-      }
-    },
-    "VoiceSelectionParams": {
-      "type": "object",
-      "id": "VoiceSelectionParams",
-      "description": "Description of which voice to use for a synthesis request.",
-      "properties": {
-        "customVoice": {
-          "$ref": "CustomVoiceParams",
-          "description": "The configuration for a custom voice. If [CustomVoiceParams.model] is set, the service will choose the custom voice matching the specified configuration."
-        },
-        "ssmlGender": {
-          "enumDescriptions": [
-            "An unspecified gender. In VoiceSelectionParams, this means that the client doesn't care which gender the selected voice will have. In the Voice field of ListVoicesResponse, this may mean that the voice doesn't fit any of the other categories in this enum, or that the gender of the voice isn't known.",
-            "A male voice.",
-            "A female voice.",
-            "A gender-neutral voice. This voice is not yet supported."
-          ],
-          "type": "string",
-          "description": "The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement; if a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.",
-          "enum": [
-            "SSML_VOICE_GENDER_UNSPECIFIED",
-            "MALE",
-            "FEMALE",
-            "NEUTRAL"
-          ]
-        },
-        "name": {
-          "description": "The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and gender.",
-          "type": "string"
-        },
-        "languageCode": {
-          "description": "Required. The language (and potentially also the region) of the voice expressed as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g. \"en-US\". This should not include a script tag (e.g. use \"cmn-cn\" rather than \"cmn-Hant-cn\"), because the script will be inferred from the input provided in the SynthesisInput. The TTS service will use this parameter to help choose an appropriate voice. Note that the TTS service may choose a voice with a slightly different language code than the one selected; it may substitute a different region (e.g. using en-US rather than en-CA if there isn't a Canadian voice available), or even a different language, e.g. using \"nb\" (Norwegian Bokmal) instead of \"no\" (Norwegian)\".",
-          "type": "string"
-        }
-      }
-    },
-    "ListOperationsResponse": {
-      "id": "ListOperationsResponse",
-      "type": "object",
-      "description": "The response message for Operations.ListOperations.",
-      "properties": {
-        "operations": {
-          "items": {
-            "$ref": "Operation"
-          },
-          "description": "A list of operations that matches the specified filter in the request.",
-          "type": "array"
-        },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        }
-      }
-    },
-    "Empty": {
-      "type": "object",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
-      "properties": {},
-      "id": "Empty"
-    },
-    "SynthesizeSpeechRequest": {
-      "description": "The top-level message sent by the client for the `SynthesizeSpeech` method.",
-      "properties": {
-        "audioConfig": {
-          "$ref": "AudioConfig",
-          "description": "Required. The configuration of the synthesized audio."
-        },
-        "input": {
-          "description": "Required. The Synthesizer requires either plain text or SSML as input.",
-          "$ref": "SynthesisInput"
-        },
-        "voice": {
-          "description": "Required. The desired voice of the synthesized audio.",
-          "$ref": "VoiceSelectionParams"
+          "description": "Time when the request was received.",
+          "format": "google-datetime"
         }
       },
-      "type": "object",
-      "id": "SynthesizeSpeechRequest"
-    },
-    "ListVoicesResponse": {
-      "description": "The message returned to the client by the `ListVoices` method.",
-      "properties": {
-        "voices": {
-          "items": {
-            "$ref": "Voice"
-          },
-          "type": "array",
-          "description": "The list of voices."
-        }
-      },
-      "id": "ListVoicesResponse",
+      "description": "Metadata for response returned by the `SynthesizeLongAudio` method.",
       "type": "object"
     },
-    "SynthesisInput": {
+    "CancelOperationRequest": {
+      "properties": {},
       "type": "object",
-      "id": "SynthesisInput",
-      "description": "Contains text input to be synthesized. Either `text` or `ssml` must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000 bytes.",
+      "description": "The request message for Operations.CancelOperation.",
+      "id": "CancelOperationRequest"
+    },
+    "Status": {
+      "type": "object",
+      "id": "Status",
+      "properties": {
+        "details": {
+          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+          "items": {
+            "additionalProperties": {
+              "type": "any",
+              "description": "Properties of the object. Contains field @type with type URL."
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "message": {
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The status code, which should be an enum value of google.rpc.Code."
+        }
+      },
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+    },
+    "Empty": {
+      "properties": {},
+      "type": "object",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+      "id": "Empty"
+    },
+    "SynthesisInput": {
       "properties": {
         "text": {
           "description": "The raw text to be synthesized.",
@@ -443,29 +85,100 @@
           "description": "The SSML document to be synthesized. The SSML document must be valid and well-formed. Otherwise the RPC will fail and return google.rpc.Code.INVALID_ARGUMENT. For more information, see [SSML](https://cloud.google.com/text-to-speech/docs/ssml).",
           "type": "string"
         }
+      },
+      "type": "object",
+      "description": "Contains text input to be synthesized. Either `text` or `ssml` must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. The input size is limited to 5000 bytes.",
+      "id": "SynthesisInput"
+    },
+    "SynthesizeLongAudioMetadata": {
+      "properties": {
+        "startTime": {
+          "format": "google-datetime",
+          "type": "string",
+          "description": "Time when the request was received."
+        },
+        "progressPercentage": {
+          "description": "The progress of the most recent processing update in percentage, ie. 70.0%.",
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "type": "object",
+      "description": "Metadata for response returned by the `SynthesizeLongAudio` method.",
+      "id": "SynthesizeLongAudioMetadata"
+    },
+    "VoiceSelectionParams": {
+      "type": "object",
+      "properties": {
+        "customVoice": {
+          "$ref": "CustomVoiceParams",
+          "description": "The configuration for a custom voice. If [CustomVoiceParams.model] is set, the service will choose the custom voice matching the specified configuration."
+        },
+        "languageCode": {
+          "type": "string",
+          "description": "Required. The language (and potentially also the region) of the voice expressed as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g. \"en-US\". This should not include a script tag (e.g. use \"cmn-cn\" rather than \"cmn-Hant-cn\"), because the script will be inferred from the input provided in the SynthesisInput. The TTS service will use this parameter to help choose an appropriate voice. Note that the TTS service may choose a voice with a slightly different language code than the one selected; it may substitute a different region (e.g. using en-US rather than en-CA if there isn't a Canadian voice available), or even a different language, e.g. using \"nb\" (Norwegian Bokmal) instead of \"no\" (Norwegian)\"."
+        },
+        "name": {
+          "description": "The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and gender.",
+          "type": "string"
+        },
+        "ssmlGender": {
+          "type": "string",
+          "enumDescriptions": [
+            "An unspecified gender. In VoiceSelectionParams, this means that the client doesn't care which gender the selected voice will have. In the Voice field of ListVoicesResponse, this may mean that the voice doesn't fit any of the other categories in this enum, or that the gender of the voice isn't known.",
+            "A male voice.",
+            "A female voice.",
+            "A gender-neutral voice. This voice is not yet supported."
+          ],
+          "description": "The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement; if a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.",
+          "enum": [
+            "SSML_VOICE_GENDER_UNSPECIFIED",
+            "MALE",
+            "FEMALE",
+            "NEUTRAL"
+          ]
+        }
+      },
+      "description": "Description of which voice to use for a synthesis request.",
+      "id": "VoiceSelectionParams"
+    },
+    "ListOperationsResponse": {
+      "type": "object",
+      "id": "ListOperationsResponse",
+      "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "$ref": "Operation"
+          },
+          "description": "A list of operations that matches the specified filter in the request."
+        }
+      },
+      "description": "The response message for Operations.ListOperations."
+    },
+    "ListVoicesResponse": {
+      "id": "ListVoicesResponse",
+      "description": "The message returned to the client by the `ListVoices` method.",
+      "type": "object",
+      "properties": {
+        "voices": {
+          "type": "array",
+          "description": "The list of voices.",
+          "items": {
+            "$ref": "Voice"
+          }
+        }
       }
     },
     "Voice": {
+      "description": "Description of a voice supported by the TTS service.",
       "type": "object",
       "id": "Voice",
-      "description": "Description of a voice supported by the TTS service.",
       "properties": {
-        "naturalSampleRateHertz": {
-          "description": "The natural sample rate (in hertz) for this voice.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "languageCodes": {
-          "description": "The languages that this voice supports, expressed as [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g. \"en-US\", \"es-419\", \"cmn-tw\").",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "name": {
-          "description": "The name of this voice. Each distinct voice has a unique name.",
-          "type": "string"
-        },
         "ssmlGender": {
           "enumDescriptions": [
             "An unspecified gender. In VoiceSelectionParams, this means that the client doesn't care which gender the selected voice will have. In the Voice field of ListVoicesResponse, this may mean that the voice doesn't fit any of the other categories in this enum, or that the gender of the voice isn't known.",
@@ -481,54 +194,88 @@
           ],
           "description": "The gender of this voice.",
           "type": "string"
+        },
+        "languageCodes": {
+          "type": "array",
+          "description": "The languages that this voice supports, expressed as [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g. \"en-US\", \"es-419\", \"cmn-tw\").",
+          "items": {
+            "type": "string"
+          }
+        },
+        "naturalSampleRateHertz": {
+          "type": "integer",
+          "description": "The natural sample rate (in hertz) for this voice.",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of this voice. Each distinct voice has a unique name."
         }
       }
     },
-    "SynthesizeLongAudioMetadata": {
-      "description": "Metadata for response returned by the `SynthesizeLongAudio` method.",
-      "type": "object",
+    "SynthesizeSpeechRequest": {
+      "id": "SynthesizeSpeechRequest",
       "properties": {
-        "startTime": {
-          "format": "google-datetime",
-          "type": "string",
-          "description": "Time when the request was received."
+        "voice": {
+          "$ref": "VoiceSelectionParams",
+          "description": "Required. The desired voice of the synthesized audio."
         },
-        "progressPercentage": {
-          "type": "number",
-          "format": "double",
-          "description": "The progress of the most recent processing update in percentage, ie. 70.0%."
+        "audioConfig": {
+          "$ref": "AudioConfig",
+          "description": "Required. The configuration of the synthesized audio."
+        },
+        "input": {
+          "description": "Required. The Synthesizer requires either plain text or SSML as input.",
+          "$ref": "SynthesisInput"
         }
       },
-      "id": "SynthesizeLongAudioMetadata"
+      "type": "object",
+      "description": "The top-level message sent by the client for the `SynthesizeSpeech` method."
+    },
+    "SynthesizeLongAudioRequest": {
+      "id": "SynthesizeLongAudioRequest",
+      "description": "The top-level message sent by the client for the `SynthesizeLongAudio` method.",
+      "properties": {
+        "input": {
+          "$ref": "SynthesisInput",
+          "description": "Required. The Synthesizer requires either plain text or SSML as input."
+        },
+        "audioConfig": {
+          "description": "Required. The configuration of the synthesized audio.",
+          "$ref": "AudioConfig"
+        },
+        "voice": {
+          "description": "The desired voice of the synthesized audio.",
+          "$ref": "VoiceSelectionParams"
+        },
+        "outputGcsUri": {
+          "type": "string",
+          "description": "Specifies a Cloud Storage URI for the synthesis results. Must be specified in the format: `gs://bucket_name/object_name`, and the bucket must already exist."
+        }
+      },
+      "type": "object"
     },
     "AudioConfig": {
+      "type": "object",
+      "id": "AudioConfig",
+      "description": "Description of audio data to be synthesized.",
       "properties": {
-        "pitch": {
-          "format": "double",
-          "description": "Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.",
-          "type": "number"
+        "sampleRateHertz": {
+          "description": "Optional. The synthesis sample rate (in hertz) for this audio. When this is specified in SynthesizeSpeechRequest, if this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality), unless the specified sample rate is not supported for the encoding chosen, in which case it will fail the request and return google.rpc.Code.INVALID_ARGUMENT.",
+          "format": "int32",
+          "type": "integer"
         },
         "speakingRate": {
+          "type": "number",
           "description": "Optional. Input only. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values \u003c 0.25 or \u003e 4.0 will return an error.",
-          "format": "double",
-          "type": "number"
-        },
-        "sampleRateHertz": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Optional. The synthesis sample rate (in hertz) for this audio. When this is specified in SynthesizeSpeechRequest, if this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality), unless the specified sample rate is not supported for the encoding chosen, in which case it will fail the request and return google.rpc.Code.INVALID_ARGUMENT."
-        },
-        "volumeGainDb": {
-          "description": "Optional. Input only. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. Strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.",
-          "format": "double",
-          "type": "number"
+          "format": "double"
         },
         "effectsProfileId": {
-          "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "Optional. Input only. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. See [audio profiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for current supported profile ids."
+          "description": "Optional. Input only. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. See [audio profiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for current supported profile ids.",
+          "type": "array"
         },
         "audioEncoding": {
           "enumDescriptions": [
@@ -539,6 +286,7 @@
             "8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law. Audio content returned as MULAW also contains a WAV header.",
             "8-bit samples that compand 14-bit audio samples using G.711 PCMU/A-law. Audio content returned as ALAW also contains a WAV header."
           ],
+          "type": "string",
           "description": "Required. The format of the audio byte stream.",
           "enum": [
             "AUDIO_ENCODING_UNSPECIFIED",
@@ -547,37 +295,76 @@
             "OGG_OPUS",
             "MULAW",
             "ALAW"
-          ],
-          "type": "string"
+          ]
+        },
+        "pitch": {
+          "format": "double",
+          "type": "number",
+          "description": "Optional. Input only. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch."
+        },
+        "volumeGainDb": {
+          "type": "number",
+          "description": "Optional. Input only. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. Strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.",
+          "format": "double"
+        }
+      }
+    },
+    "SynthesizeSpeechResponse": {
+      "description": "The message returned to the client by the `SynthesizeSpeech` method.",
+      "properties": {
+        "audioContent": {
+          "format": "byte",
+          "type": "string",
+          "description": "The audio data bytes encoded as specified in the request, including the header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64."
         }
       },
-      "id": "AudioConfig",
-      "type": "object",
-      "description": "Description of audio data to be synthesized."
+      "id": "SynthesizeSpeechResponse",
+      "type": "object"
     },
-    "CancelOperationRequest": {
-      "description": "The request message for Operations.CancelOperation.",
+    "CustomVoiceParams": {
       "type": "object",
-      "properties": {},
-      "id": "CancelOperationRequest"
+      "id": "CustomVoiceParams",
+      "properties": {
+        "reportedUsage": {
+          "description": "Optional. The usage of the synthesized audio to be reported.",
+          "type": "string",
+          "enum": [
+            "REPORTED_USAGE_UNSPECIFIED",
+            "REALTIME",
+            "OFFLINE"
+          ],
+          "enumDescriptions": [
+            "Request with reported usage unspecified will be rejected.",
+            "For scenarios where the synthesized audio is not downloadable and can only be used once. For example, real-time request in IVR system.",
+            "For scenarios where the synthesized audio is downloadable and can be reused. For example, the synthesized audio is downloaded, stored in customer service system and played repeatedly."
+          ]
+        },
+        "model": {
+          "type": "string",
+          "description": "Required. The name of the AutoML model that synthesizes the custom voice."
+        }
+      },
+      "description": "Description of the custom voice to be synthesized."
     },
     "Operation": {
+      "id": "Operation",
       "description": "This resource represents a long-running operation that is the result of a network API call.",
+      "type": "object",
       "properties": {
-        "response": {
+        "name": {
+          "type": "string",
+          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
+        },
+        "metadata": {
           "additionalProperties": {
             "type": "any",
             "description": "Properties of the object. Contains field @type with type URL."
           },
+          "type": "object",
+          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."
+        },
+        "response": {
           "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
-          "type": "object"
-        },
-        "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
-        },
-        "metadata": {
-          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
           "additionalProperties": {
             "type": "any",
             "description": "Properties of the object. Contains field @type with type URL."
@@ -585,107 +372,320 @@
           "type": "object"
         },
         "done": {
-          "type": "boolean",
-          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available."
+          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+          "type": "boolean"
         },
-        "name": {
-          "type": "string",
-          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
-        }
-      },
-      "type": "object",
-      "id": "Operation"
-    },
-    "Status": {
-      "id": "Status",
-      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
-      "properties": {
-        "details": {
-          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
-          "items": {
-            "additionalProperties": {
-              "description": "Properties of the object. Contains field @type with type URL.",
-              "type": "any"
-            },
-            "type": "object"
-          },
-          "type": "array"
-        },
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "description": "The status code, which should be an enum value of google.rpc.Code."
-        },
-        "message": {
-          "type": "string",
-          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."
-        }
-      },
-      "type": "object"
-    },
-    "SynthesizeSpeechResponse": {
-      "type": "object",
-      "id": "SynthesizeSpeechResponse",
-      "properties": {
-        "audioContent": {
-          "description": "The audio data bytes encoded as specified in the request, including the header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64.",
-          "format": "byte",
-          "type": "string"
-        }
-      },
-      "description": "The message returned to the client by the `SynthesizeSpeech` method."
-    },
-    "SynthesizeLongAudioRequest": {
-      "description": "The top-level message sent by the client for the `SynthesizeLongAudio` method.",
-      "type": "object",
-      "id": "SynthesizeLongAudioRequest",
-      "properties": {
-        "outputGcsUri": {
-          "description": "Specifies a Cloud Storage URI for the synthesis results. Must be specified in the format: `gs://bucket_name/object_name`, and the bucket must already exist.",
-          "type": "string"
-        },
-        "voice": {
-          "description": "The desired voice of the synthesized audio.",
-          "$ref": "VoiceSelectionParams"
-        },
-        "input": {
-          "description": "Required. The Synthesizer requires either plain text or SSML as input.",
-          "$ref": "SynthesisInput"
-        },
-        "audioConfig": {
-          "$ref": "AudioConfig",
-          "description": "Required. The configuration of the synthesized audio."
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
         }
       }
-    },
-    "GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata": {
-      "type": "object",
-      "id": "GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata",
-      "properties": {
-        "progressPercentage": {
-          "description": "The progress of the most recent processing update in percentage, ie. 70.0%.",
-          "format": "double",
-          "type": "number"
-        },
-        "startTime": {
-          "description": "Time when the request was received.",
-          "type": "string",
-          "format": "google-datetime"
-        }
-      },
-      "description": "Metadata for response returned by the `SynthesizeLongAudio` method."
     }
   },
   "version_module": true,
-  "mtlsRootUrl": "https://texttospeech.mtls.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "baseUrl": "https://texttospeech.googleapis.com/",
-  "description": "Synthesizes natural-sounding speech by applying powerful neural network models.",
-  "revision": "20230221",
+  "discoveryVersion": "v1",
+  "name": "texttospeech",
+  "documentationLink": "https://cloud.google.com/text-to-speech/",
   "id": "texttospeech:v1",
+  "parameters": {
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "upload_protocol": {
+      "type": "string",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "default": "true",
+      "type": "boolean",
+      "description": "Returns response with indentations and line breaks.",
+      "location": "query"
+    },
+    "callback": {
+      "location": "query",
+      "type": "string",
+      "description": "JSONP"
+    },
+    "alt": {
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "description": "Data format for response.",
+      "type": "string",
+      "location": "query"
+    },
+    "access_token": {
+      "location": "query",
+      "type": "string",
+      "description": "OAuth access token."
+    },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "location": "query",
+      "type": "string"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "type": "string",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "location": "query"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    }
+  },
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "canonicalName": "Texttospeech"
+  "protocol": "rest",
+  "rootUrl": "https://texttospeech.googleapis.com/",
+  "basePath": "",
+  "revision": "20230221",
+  "kind": "discovery#restDescription",
+  "resources": {
+    "text": {
+      "methods": {
+        "synthesize": {
+          "path": "v1/text:synthesize",
+          "httpMethod": "POST",
+          "parameterOrder": [],
+          "request": {
+            "$ref": "SynthesizeSpeechRequest"
+          },
+          "response": {
+            "$ref": "SynthesizeSpeechResponse"
+          },
+          "id": "texttospeech.text.synthesize",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {},
+          "flatPath": "v1/text:synthesize",
+          "description": "Synthesizes speech synchronously: receive results after all text input has been processed."
+        }
+      }
+    },
+    "projects": {
+      "resources": {
+        "locations": {
+          "methods": {
+            "synthesizeLongAudio": {
+              "id": "texttospeech.projects.locations.synthesizeLongAudio",
+              "response": {
+                "$ref": "Operation"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:synthesizeLongAudio",
+              "description": "Synthesizes long form text asynchronously.",
+              "path": "v1/{+parent}:synthesizeLongAudio",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "httpMethod": "POST",
+              "request": {
+                "$ref": "SynthesizeLongAudioRequest"
+              },
+              "parameters": {
+                "parent": {
+                  "description": "The resource states of the request in the form of `projects/*/locations/*/voices/*`.",
+                  "required": true,
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "resources": {
+            "operations": {
+              "methods": {
+                "get": {
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "description": "The name of the operation resource.",
+                      "location": "path",
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
+                    }
+                  },
+                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "path": "v1/{+name}",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "id": "texttospeech.projects.locations.operations.get",
+                  "httpMethod": "GET"
+                },
+                "list": {
+                  "httpMethod": "GET",
+                  "id": "texttospeech.projects.locations.operations.list",
+                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                  "response": {
+                    "$ref": "ListOperationsResponse"
+                  },
+                  "path": "v1/{+name}/operations",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "pageToken": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "The standard list page token."
+                    },
+                    "filter": {
+                      "description": "The standard list filter.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "pageSize": {
+                      "location": "query",
+                      "format": "int32",
+                      "type": "integer",
+                      "description": "The standard list page size."
+                    },
+                    "name": {
+                      "description": "The name of the operation's parent resource.",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "type": "string",
+                      "location": "path"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "voices": {
+      "methods": {
+        "list": {
+          "id": "texttospeech.voices.list",
+          "description": "Returns a list of Voice supported for synthesis.",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "httpMethod": "GET",
+          "path": "v1/voices",
+          "flatPath": "v1/voices",
+          "parameterOrder": [],
+          "parameters": {
+            "languageCode": {
+              "description": "Optional. Recommended. [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If not specified, the API will return all supported voices. If specified, the ListVoices call will only return voices that can be used to synthesize this language_code. For example, if you specify `\"en-NZ\"`, all `\"en-NZ\"` voices will be returned. If you specify `\"no\"`, both `\"no-\\*\"` (Norwegian) and `\"nb-\\*\"` (Norwegian Bokmal) voices will be returned.",
+              "type": "string",
+              "location": "query"
+            }
+          },
+          "response": {
+            "$ref": "ListVoicesResponse"
+          }
+        }
+      }
+    },
+    "operations": {
+      "methods": {
+        "delete": {
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "path": "v1/{+name}",
+          "parameterOrder": [
+            "name"
+          ],
+          "httpMethod": "DELETE",
+          "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+          "id": "texttospeech.operations.delete",
+          "flatPath": "v1/operations/{operationsId}",
+          "response": {
+            "$ref": "Empty"
+          },
+          "parameters": {
+            "name": {
+              "pattern": "^operations/.*$",
+              "type": "string",
+              "required": true,
+              "location": "path",
+              "description": "The name of the operation resource to be deleted."
+            }
+          }
+        },
+        "cancel": {
+          "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+          "request": {
+            "$ref": "CancelOperationRequest"
+          },
+          "path": "v1/{+name}:cancel",
+          "parameterOrder": [
+            "name"
+          ],
+          "id": "texttospeech.operations.cancel",
+          "parameters": {
+            "name": {
+              "type": "string",
+              "required": true,
+              "location": "path",
+              "description": "The name of the operation resource to be cancelled.",
+              "pattern": "^operations/.*$"
+            }
+          },
+          "response": {
+            "$ref": "Empty"
+          },
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1/operations/{operationsId}:cancel"
+        }
+      }
+    }
+  },
+  "ownerName": "Google"
 }

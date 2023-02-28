@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-videostitcher/versions/v1
+  annotations:
+    config: videostitcher_v1.yaml
+    directory: google/cloud/video/stitcher/v1
+    host: videostitcher.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

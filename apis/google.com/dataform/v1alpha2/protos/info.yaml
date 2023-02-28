@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-dataform/versions/v1alpha2
+  annotations:
+    config: dataform_v1alpha2.yaml
+    directory: google/cloud/dataform/v1alpha2
+    host: dataform.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

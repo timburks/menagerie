@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v4beta1
+  parent: apis/google.com-jobs
+data:
+  displayName: v4beta1

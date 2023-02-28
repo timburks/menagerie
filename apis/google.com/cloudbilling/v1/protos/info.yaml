@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-cloudbilling/versions/v1
+  annotations:
+    config: cloudbilling_v1.yaml
+    directory: google/cloud/billing/v1
+    host: cloudbilling.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

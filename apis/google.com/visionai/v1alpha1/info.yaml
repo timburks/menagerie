@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v1alpha1
+  parent: apis/google.com-visionai
+data:
+  displayName: v1alpha1

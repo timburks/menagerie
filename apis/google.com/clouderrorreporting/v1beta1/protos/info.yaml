@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-clouderrorreporting/versions/v1beta1
+  annotations:
+    config: clouderrorreporting_v1beta1.yaml
+    directory: google/devtools/clouderrorreporting/v1beta1
+    host: clouderrorreporting.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

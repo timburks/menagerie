@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v1beta
+  parent: apis/google.com-iam
+data:
+  displayName: v1beta

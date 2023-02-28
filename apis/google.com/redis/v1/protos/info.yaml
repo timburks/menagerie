@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-redis/versions/v1
+  annotations:
+    config: redis_v1.yaml
+    directory: google/cloud/redis/v1
+    host: redis.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

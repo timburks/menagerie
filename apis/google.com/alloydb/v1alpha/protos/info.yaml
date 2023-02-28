@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-alloydb/versions/v1alpha
+  annotations:
+    config: alloydb_v1alpha.yaml
+    directory: google/cloud/alloydb/v1alpha
+    host: alloydb.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

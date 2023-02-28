@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-servicecontrol/versions/v1
+  annotations:
+    config: servicecontrol.yaml
+    directory: google/api/servicecontrol/v1
+    host: servicecontrol.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

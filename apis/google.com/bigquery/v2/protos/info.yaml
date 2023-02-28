@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-bigquery/versions/v2
+  annotations:
+    config: bigquery_v2.yaml
+    directory: google/cloud/bigquery/v2
+    host: bigquery.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

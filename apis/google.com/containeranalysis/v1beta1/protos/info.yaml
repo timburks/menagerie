@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-containeranalysis/versions/v1beta1
+  annotations:
+    config: containeranalysis_v1beta1.yaml
+    directory: google/devtools/containeranalysis/v1beta1
+    host: containeranalysis.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

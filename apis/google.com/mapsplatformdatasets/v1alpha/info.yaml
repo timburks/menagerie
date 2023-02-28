@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v1alpha
+  parent: apis/google.com-mapsplatformdatasets
+data:
+  displayName: v1alpha

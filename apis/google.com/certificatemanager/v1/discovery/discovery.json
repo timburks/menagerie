@@ -1,1275 +1,19 @@
 {
-  "mtlsRootUrl": "https://certificatemanager.mtls.googleapis.com/",
-  "fullyEncodeReservedExpansion": true,
-  "baseUrl": "https://certificatemanager.googleapis.com/",
   "documentationLink": "https://cloud.google.com/certificate-manager",
-  "protocol": "rest",
-  "name": "certificatemanager",
-  "revision": "20230220",
-  "servicePath": "",
-  "resources": {
-    "projects": {
-      "resources": {
-        "locations": {
-          "resources": {
-            "certificateIssuanceConfigs": {
-              "methods": {
-                "get": {
-                  "id": "certificatemanager.projects.locations.certificateIssuanceConfigs.get",
-                  "response": {
-                    "$ref": "CertificateIssuanceConfig"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateIssuanceConfigs/{certificateIssuanceConfigsId}",
-                  "parameters": {
-                    "name": {
-                      "description": "Required. A name of the certificate issuance config to describe. Must be in the format `projects/*/locations/*/certificateIssuanceConfigs/*`.",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/certificateIssuanceConfigs/[^/]+$",
-                      "location": "path",
-                      "type": "string"
-                    }
-                  },
-                  "description": "Gets details of a single CertificateIssuanceConfig.",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "path": "v1/{+name}",
-                  "httpMethod": "GET"
-                },
-                "list": {
-                  "path": "v1/{+parent}/certificateIssuanceConfigs",
-                  "httpMethod": "GET",
-                  "response": {
-                    "$ref": "ListCertificateIssuanceConfigsResponse"
-                  },
-                  "parameters": {
-                    "orderBy": {
-                      "description": "A list of Certificate Config field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix \" desc\".",
-                      "location": "query",
-                      "type": "string"
-                    },
-                    "pageToken": {
-                      "type": "string",
-                      "description": "The value returned by the last `ListCertificateIssuanceConfigsResponse`. Indicates that this is a continuation of a prior `ListCertificateIssuanceConfigs` call, and that the system should return the next page of data.",
-                      "location": "query"
-                    },
-                    "filter": {
-                      "description": "Filter expression to restrict the Certificates Configs returned.",
-                      "location": "query",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "description": "Maximum number of certificate configs to return per call.",
-                      "type": "integer",
-                      "format": "int32"
-                    },
-                    "parent": {
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "required": true,
-                      "description": "Required. The project and location from which the certificate should be listed, specified in the format `projects/*/locations/*`."
-                    }
-                  },
-                  "description": "Lists CertificateIssuanceConfigs in a given project and location.",
-                  "id": "certificatemanager.projects.locations.certificateIssuanceConfigs.list",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateIssuanceConfigs"
-                },
-                "delete": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/certificateIssuanceConfigs/[^/]+$",
-                      "description": "Required. A name of the certificate issuance config to delete. Must be in the format `projects/*/locations/*/certificateIssuanceConfigs/*`.",
-                      "required": true,
-                      "location": "path",
-                      "type": "string"
-                    }
-                  },
-                  "id": "certificatemanager.projects.locations.certificateIssuanceConfigs.delete",
-                  "path": "v1/{+name}",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "description": "Deletes a single CertificateIssuanceConfig.",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateIssuanceConfigs/{certificateIssuanceConfigsId}",
-                  "httpMethod": "DELETE",
-                  "response": {
-                    "$ref": "Operation"
-                  }
-                },
-                "create": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateIssuanceConfigs",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "id": "certificatemanager.projects.locations.certificateIssuanceConfigs.create",
-                  "description": "Creates a new CertificateIssuanceConfig in a given project and location.",
-                  "path": "v1/{+parent}/certificateIssuanceConfigs",
-                  "request": {
-                    "$ref": "CertificateIssuanceConfig"
-                  },
-                  "httpMethod": "POST",
-                  "parameters": {
-                    "certificateIssuanceConfigId": {
-                      "location": "query",
-                      "description": "Required. A user-provided name of the certificate config.",
-                      "type": "string"
-                    },
-                    "parent": {
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "required": true,
-                      "type": "string",
-                      "description": "Required. The parent resource of the certificate issuance config. Must be in the format `projects/*/locations/*`."
-                    }
-                  },
-                  "response": {
-                    "$ref": "Operation"
-                  }
-                }
-              }
-            },
-            "certificateMaps": {
-              "resources": {
-                "certificateMapEntries": {
-                  "methods": {
-                    "create": {
-                      "description": "Creates a new CertificateMapEntry in a given project and location.",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "parent": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+$",
-                          "required": true,
-                          "description": "Required. The parent resource of the certificate map entry. Must be in the format `projects/*/locations/*/certificateMaps/*`.",
-                          "location": "path",
-                          "type": "string"
-                        },
-                        "certificateMapEntryId": {
-                          "location": "query",
-                          "description": "Required. A user-provided name of the certificate map entry.",
-                          "type": "string"
-                        }
-                      },
-                      "path": "v1/{+parent}/certificateMapEntries",
-                      "response": {
-                        "$ref": "Operation"
-                      },
-                      "httpMethod": "POST",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries",
-                      "id": "certificatemanager.projects.locations.certificateMaps.certificateMapEntries.create",
-                      "request": {
-                        "$ref": "CertificateMapEntry"
-                      }
-                    },
-                    "delete": {
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+/certificateMapEntries/[^/]+$",
-                          "required": true,
-                          "location": "path",
-                          "type": "string",
-                          "description": "Required. A name of the certificate map entry to delete. Must be in the format `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`."
-                        }
-                      },
-                      "httpMethod": "DELETE",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "description": "Deletes a single CertificateMapEntry.",
-                      "path": "v1/{+name}",
-                      "response": {
-                        "$ref": "Operation"
-                      },
-                      "id": "certificatemanager.projects.locations.certificateMaps.certificateMapEntries.delete",
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries/{certificateMapEntriesId}"
-                    },
-                    "patch": {
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "response": {
-                        "$ref": "Operation"
-                      },
-                      "id": "certificatemanager.projects.locations.certificateMaps.certificateMapEntries.patch",
-                      "path": "v1/{+name}",
-                      "description": "Updates a CertificateMapEntry.",
-                      "httpMethod": "PATCH",
-                      "request": {
-                        "$ref": "CertificateMapEntry"
-                      },
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries/{certificateMapEntriesId}",
-                      "parameters": {
-                        "updateMask": {
-                          "description": "Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.",
-                          "format": "google-fieldmask",
-                          "location": "query",
-                          "type": "string"
-                        },
-                        "name": {
-                          "description": "A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.",
-                          "required": true,
-                          "type": "string",
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+/certificateMapEntries/[^/]+$"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    },
-                    "get": {
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries/{certificateMapEntriesId}",
-                      "id": "certificatemanager.projects.locations.certificateMaps.certificateMapEntries.get",
-                      "path": "v1/{+name}",
-                      "parameters": {
-                        "name": {
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+/certificateMapEntries/[^/]+$",
-                          "required": true,
-                          "location": "path",
-                          "description": "Required. A name of the certificate map entry to describe. Must be in the format `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`."
-                        }
-                      },
-                      "response": {
-                        "$ref": "CertificateMapEntry"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "description": "Gets details of a single CertificateMapEntry.",
-                      "httpMethod": "GET"
-                    },
-                    "list": {
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries",
-                      "path": "v1/{+parent}/certificateMapEntries",
-                      "response": {
-                        "$ref": "ListCertificateMapEntriesResponse"
-                      },
-                      "httpMethod": "GET",
-                      "description": "Lists CertificateMapEntries in a given project and location.",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "parameters": {
-                        "orderBy": {
-                          "description": "A list of Certificate Map Entry field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix \" desc\".",
-                          "type": "string",
-                          "location": "query"
-                        },
-                        "pageSize": {
-                          "location": "query",
-                          "type": "integer",
-                          "description": "Maximum number of certificate map entries to return. The service may return fewer than this value. If unspecified, at most 50 certificate map entries will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
-                          "format": "int32"
-                        },
-                        "parent": {
-                          "description": "Required. The project, location and certificate map from which the certificate map entries should be listed, specified in the format `projects/*/locations/*/certificateMaps/*`.",
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+$",
-                          "required": true,
-                          "type": "string"
-                        },
-                        "pageToken": {
-                          "type": "string",
-                          "description": "The value returned by the last `ListCertificateMapEntriesResponse`. Indicates that this is a continuation of a prior `ListCertificateMapEntries` call, and that the system should return the next page of data.",
-                          "location": "query"
-                        },
-                        "filter": {
-                          "location": "query",
-                          "description": "Filter expression to restrict the returned Certificate Map Entries.",
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "id": "certificatemanager.projects.locations.certificateMaps.certificateMapEntries.list"
-                    }
-                  }
-                }
-              },
-              "methods": {
-                "patch": {
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}",
-                  "parameters": {
-                    "updateMask": {
-                      "description": "Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.",
-                      "type": "string",
-                      "location": "query",
-                      "format": "google-fieldmask"
-                    },
-                    "name": {
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+$",
-                      "description": "A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "httpMethod": "PATCH",
-                  "request": {
-                    "$ref": "CertificateMap"
-                  },
-                  "description": "Updates a CertificateMap.",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "id": "certificatemanager.projects.locations.certificateMaps.patch",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "path": "v1/{+name}",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "get": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "id": "certificatemanager.projects.locations.certificateMaps.get",
-                  "path": "v1/{+name}",
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "description": "Gets details of a single CertificateMap.",
-                  "response": {
-                    "$ref": "CertificateMap"
-                  },
-                  "parameters": {
-                    "name": {
-                      "type": "string",
-                      "description": "Required. A name of the certificate map to describe. Must be in the format `projects/*/locations/*/certificateMaps/*`.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+$",
-                      "required": true,
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}"
-                },
-                "delete": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "description": "Deletes a single CertificateMap. A Certificate Map can't be deleted if it contains Certificate Map Entries. Remove all the entries from the map before calling this method.",
-                  "path": "v1/{+name}",
-                  "id": "certificatemanager.projects.locations.certificateMaps.delete",
-                  "httpMethod": "DELETE",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "Required. A name of the certificate map to delete. Must be in the format `projects/*/locations/*/certificateMaps/*`.",
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+$",
-                      "location": "path",
-                      "required": true
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}",
-                  "response": {
-                    "$ref": "Operation"
-                  }
-                },
-                "create": {
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "request": {
-                    "$ref": "CertificateMap"
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps",
-                  "id": "certificatemanager.projects.locations.certificateMaps.create",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "description": "Creates a new CertificateMap in a given project and location.",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "parent": {
-                      "required": true,
-                      "location": "path",
-                      "description": "Required. The parent resource of the certificate map. Must be in the format `projects/*/locations/*`.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string"
-                    },
-                    "certificateMapId": {
-                      "description": "Required. A user-provided name of the certificate map.",
-                      "type": "string",
-                      "location": "query"
-                    }
-                  },
-                  "path": "v1/{+parent}/certificateMaps",
-                  "httpMethod": "POST"
-                },
-                "list": {
-                  "httpMethod": "GET",
-                  "response": {
-                    "$ref": "ListCertificateMapsResponse"
-                  },
-                  "path": "v1/{+parent}/certificateMaps",
-                  "parameters": {
-                    "pageToken": {
-                      "description": "The value returned by the last `ListCertificateMapsResponse`. Indicates that this is a continuation of a prior `ListCertificateMaps` call, and that the system should return the next page of data.",
-                      "location": "query",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "format": "int32",
-                      "description": "Maximum number of certificate maps to return per call.",
-                      "type": "integer",
-                      "location": "query"
-                    },
-                    "orderBy": {
-                      "location": "query",
-                      "type": "string",
-                      "description": "A list of Certificate Map field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix \" desc\"."
-                    },
-                    "parent": {
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "type": "string",
-                      "location": "path",
-                      "description": "Required. The project and location from which the certificate maps should be listed, specified in the format `projects/*/locations/*`."
-                    },
-                    "filter": {
-                      "location": "query",
-                      "description": "Filter expression to restrict the Certificates Maps returned.",
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps",
-                  "id": "certificatemanager.projects.locations.certificateMaps.list",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "description": "Lists CertificateMaps in a given project and location."
-                }
-              }
-            },
-            "certificates": {
-              "methods": {
-                "create": {
-                  "path": "v1/{+parent}/certificates",
-                  "httpMethod": "POST",
-                  "parameters": {
-                    "parent": {
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "description": "Required. The parent resource of the certificate. Must be in the format `projects/*/locations/*`.",
-                      "location": "path",
-                      "required": true
-                    },
-                    "certificateId": {
-                      "location": "query",
-                      "type": "string",
-                      "description": "Required. A user-provided name of the certificate."
-                    }
-                  },
-                  "request": {
-                    "$ref": "Certificate"
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificates",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "id": "certificatemanager.projects.locations.certificates.create",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "description": "Creates a new Certificate in a given project and location."
-                },
-                "patch": {
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "id": "certificatemanager.projects.locations.certificates.patch",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificates/{certificatesId}",
-                  "parameters": {
-                    "updateMask": {
-                      "format": "google-fieldmask",
-                      "description": "Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.",
-                      "location": "query",
-                      "type": "string"
-                    },
-                    "name": {
-                      "required": true,
-                      "description": "A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/*/locations/*/certificates/*`.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/certificates/[^/]+$",
-                      "type": "string",
-                      "location": "path"
-                    }
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "request": {
-                    "$ref": "Certificate"
-                  },
-                  "path": "v1/{+name}",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "description": "Updates a Certificate.",
-                  "httpMethod": "PATCH"
-                },
-                "list": {
-                  "id": "certificatemanager.projects.locations.certificates.list",
-                  "description": "Lists Certificates in a given project and location.",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificates",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "response": {
-                    "$ref": "ListCertificatesResponse"
-                  },
-                  "parameters": {
-                    "orderBy": {
-                      "location": "query",
-                      "description": "A list of Certificate field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix \" desc\".",
-                      "type": "string"
-                    },
-                    "pageToken": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "The value returned by the last `ListCertificatesResponse`. Indicates that this is a continuation of a prior `ListCertificates` call, and that the system should return the next page of data."
-                    },
-                    "filter": {
-                      "description": "Filter expression to restrict the Certificates returned.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "parent": {
-                      "type": "string",
-                      "description": "Required. The project and location from which the certificate should be listed, specified in the format `projects/*/locations/*`.",
-                      "required": true,
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$"
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "type": "integer",
-                      "description": "Maximum number of certificates to return per call.",
-                      "format": "int32"
-                    }
-                  },
-                  "httpMethod": "GET",
-                  "path": "v1/{+parent}/certificates",
-                  "parameterOrder": [
-                    "parent"
-                  ]
-                },
-                "delete": {
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificates/{certificatesId}",
-                  "description": "Deletes a single Certificate.",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "path": "v1/{+name}",
-                  "id": "certificatemanager.projects.locations.certificates.delete",
-                  "parameters": {
-                    "name": {
-                      "type": "string",
-                      "description": "Required. A name of the certificate to delete. Must be in the format `projects/*/locations/*/certificates/*`.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/certificates/[^/]+$",
-                      "location": "path",
-                      "required": true
-                    }
-                  },
-                  "httpMethod": "DELETE",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "get": {
-                  "id": "certificatemanager.projects.locations.certificates.get",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificates/{certificatesId}",
-                  "parameters": {
-                    "name": {
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/certificates/[^/]+$",
-                      "location": "path",
-                      "description": "Required. A name of the certificate to describe. Must be in the format `projects/*/locations/*/certificates/*`.",
-                      "required": true
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "response": {
-                    "$ref": "Certificate"
-                  },
-                  "httpMethod": "GET",
-                  "description": "Gets details of a single Certificate.",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "path": "v1/{+name}"
-                }
-              }
-            },
-            "dnsAuthorizations": {
-              "methods": {
-                "patch": {
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations/{dnsAuthorizationsId}",
-                  "id": "certificatemanager.projects.locations.dnsAuthorizations.patch",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "description": "Updates a DnsAuthorization.",
-                  "request": {
-                    "$ref": "DnsAuthorization"
-                  },
-                  "path": "v1/{+name}",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "httpMethod": "PATCH",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.",
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/dnsAuthorizations/[^/]+$",
-                      "required": true
-                    },
-                    "updateMask": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.",
-                      "format": "google-fieldmask"
-                    }
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ]
-                },
-                "list": {
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "id": "certificatemanager.projects.locations.dnsAuthorizations.list",
-                  "response": {
-                    "$ref": "ListDnsAuthorizationsResponse"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations",
-                  "description": "Lists DnsAuthorizations in a given project and location.",
-                  "httpMethod": "GET",
-                  "path": "v1/{+parent}/dnsAuthorizations",
-                  "parameters": {
-                    "pageToken": {
-                      "description": "The value returned by the last `ListDnsAuthorizationsResponse`. Indicates that this is a continuation of a prior `ListDnsAuthorizations` call, and that the system should return the next page of data.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "orderBy": {
-                      "description": "A list of Dns Authorization field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix \" desc\".",
-                      "location": "query",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "description": "Maximum number of dns authorizations to return per call.",
-                      "format": "int32",
-                      "type": "integer"
-                    },
-                    "parent": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "description": "Required. The project and location from which the dns authorizations should be listed, specified in the format `projects/*/locations/*`.",
-                      "required": true,
-                      "location": "path",
-                      "type": "string"
-                    },
-                    "filter": {
-                      "description": "Filter expression to restrict the Dns Authorizations returned.",
-                      "location": "query",
-                      "type": "string"
-                    }
-                  }
-                },
-                "get": {
-                  "path": "v1/{+name}",
-                  "httpMethod": "GET",
-                  "description": "Gets details of a single DnsAuthorization.",
-                  "id": "certificatemanager.projects.locations.dnsAuthorizations.get",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/dnsAuthorizations/[^/]+$",
-                      "required": true,
-                      "type": "string",
-                      "description": "Required. A name of the dns authorization to describe. Must be in the format `projects/*/locations/*/dnsAuthorizations/*`."
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations/{dnsAuthorizationsId}",
-                  "response": {
-                    "$ref": "DnsAuthorization"
-                  }
-                },
-                "delete": {
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations/{dnsAuthorizationsId}",
-                  "httpMethod": "DELETE",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameters": {
-                    "name": {
-                      "description": "Required. A name of the dns authorization to delete. Must be in the format `projects/*/locations/*/dnsAuthorizations/*`.",
-                      "location": "path",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/dnsAuthorizations/[^/]+$",
-                      "type": "string"
-                    }
-                  },
-                  "id": "certificatemanager.projects.locations.dnsAuthorizations.delete",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "description": "Deletes a single DnsAuthorization.",
-                  "path": "v1/{+name}",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "create": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameters": {
-                    "dnsAuthorizationId": {
-                      "type": "string",
-                      "description": "Required. A user-provided name of the dns authorization.",
-                      "location": "query"
-                    },
-                    "parent": {
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "description": "Required. The parent resource of the dns authorization. Must be in the format `projects/*/locations/*`."
-                    }
-                  },
-                  "description": "Creates a new DnsAuthorization in a given project and location.",
-                  "id": "certificatemanager.projects.locations.dnsAuthorizations.create",
-                  "request": {
-                    "$ref": "DnsAuthorization"
-                  },
-                  "path": "v1/{+parent}/dnsAuthorizations",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations",
-                  "httpMethod": "POST"
-                }
-              }
-            },
-            "operations": {
-              "methods": {
-                "get": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "httpMethod": "GET",
-                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
-                  "id": "certificatemanager.projects.locations.operations.get",
-                  "parameters": {
-                    "name": {
-                      "type": "string",
-                      "required": true,
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "description": "The name of the operation resource."
-                    }
-                  },
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "path": "v1/{+name}"
-                },
-                "list": {
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the operation's parent resource.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    },
-                    "pageSize": {
-                      "description": "The standard list page size.",
-                      "location": "query",
-                      "type": "integer",
-                      "format": "int32"
-                    },
-                    "filter": {
-                      "description": "The standard list filter.",
-                      "location": "query",
-                      "type": "string"
-                    },
-                    "pageToken": {
-                      "description": "The standard list page token.",
-                      "location": "query",
-                      "type": "string"
-                    }
-                  },
-                  "response": {
-                    "$ref": "ListOperationsResponse"
-                  },
-                  "httpMethod": "GET",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "path": "v1/{+name}/operations",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
-                  "id": "certificatemanager.projects.locations.operations.list"
-                },
-                "cancel": {
-                  "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-                  "httpMethod": "POST",
-                  "id": "certificatemanager.projects.locations.operations.cancel",
-                  "path": "v1/{+name}:cancel",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameters": {
-                    "name": {
-                      "type": "string",
-                      "description": "The name of the operation resource to be cancelled.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "required": true,
-                      "location": "path"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "request": {
-                    "$ref": "CancelOperationRequest"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ]
-                },
-                "delete": {
-                  "path": "v1/{+name}",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "type": "string",
-                      "required": true,
-                      "description": "The name of the operation resource to be deleted.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
-                    }
-                  },
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "id": "certificatemanager.projects.locations.operations.delete",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "httpMethod": "DELETE",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`."
-                }
-              }
-            }
-          },
-          "methods": {
-            "list": {
-              "description": "Lists information about the supported locations for this service.",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "id": "certificatemanager.projects.locations.list",
-              "parameters": {
-                "pageSize": {
-                  "description": "The maximum number of results to return. If not set, the service selects a default.",
-                  "type": "integer",
-                  "location": "query",
-                  "format": "int32"
-                },
-                "name": {
-                  "type": "string",
-                  "required": true,
-                  "description": "The resource that owns the locations collection, if applicable.",
-                  "location": "path",
-                  "pattern": "^projects/[^/]+$"
-                },
-                "filter": {
-                  "location": "query",
-                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
-                  "type": "string"
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.",
-                  "type": "string"
-                }
-              },
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "name"
-              ],
-              "flatPath": "v1/projects/{projectsId}/locations",
-              "path": "v1/{+name}/locations",
-              "response": {
-                "$ref": "ListLocationsResponse"
-              }
-            },
-            "get": {
-              "id": "certificatemanager.projects.locations.get",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "response": {
-                "$ref": "Location"
-              },
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "Resource name for the location.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$"
-                }
-              },
-              "path": "v1/{+name}",
-              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
-              "description": "Gets information about a location.",
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET"
-            }
-          }
-        }
-      }
-    }
-  },
-  "basePath": "",
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
-  "ownerName": "Google",
-  "parameters": {
-    "alt": {
-      "description": "Data format for response.",
-      "location": "query",
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "default": "json"
-    },
-    "callback": {
-      "type": "string",
-      "location": "query",
-      "description": "JSONP"
-    },
-    "$.xgafv": {
-      "type": "string",
-      "description": "V1 error format.",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query"
-    },
-    "key": {
-      "location": "query",
-      "type": "string",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
-    "fields": {
-      "type": "string",
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "location": "query",
-      "type": "string"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "location": "query",
-      "type": "string"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "location": "query",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "location": "query",
-      "default": "true"
-    }
-  },
-  "version": "v1",
+  "title": "Certificate Manager API",
+  "fullyEncodeReservedExpansion": true,
   "id": "certificatemanager:v1",
-  "kind": "discovery#restDescription",
+  "discoveryVersion": "v1",
+  "baseUrl": "https://certificatemanager.googleapis.com/",
+  "version_module": true,
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "name": "certificatemanager",
   "schemas": {
-    "ListCertificateMapsResponse": {
-      "description": "Response for the `ListCertificateMaps` method.",
-      "properties": {
-        "certificateMaps": {
-          "type": "array",
-          "items": {
-            "$ref": "CertificateMap"
-          },
-          "description": "A list of certificate maps for the parent resource."
-        },
-        "unreachable": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Locations that could not be reached."
-        },
-        "nextPageToken": {
-          "description": "If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`.",
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "id": "ListCertificateMapsResponse"
-    },
-    "Status": {
-      "id": "Status",
-      "type": "object",
-      "properties": {
-        "code": {
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "message": {
-          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
-          "type": "string"
-        },
-        "details": {
-          "items": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "any",
-              "description": "Properties of the object. Contains field @type with type URL."
-            }
-          },
-          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
-          "type": "array"
-        }
-      },
-      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
-    },
-    "CertificateMap": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "description": "One or more paragraphs of text description of a certificate map.",
-          "type": "string"
-        },
-        "updateTime": {
-          "type": "string",
-          "description": "Output only. The update timestamp of a Certificate Map.",
-          "format": "google-datetime",
-          "readOnly": true
-        },
-        "labels": {
-          "description": "Set of labels associated with a Certificate Map.",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "createTime": {
-          "readOnly": true,
-          "format": "google-datetime",
-          "type": "string",
-          "description": "Output only. The creation timestamp of a Certificate Map."
-        },
-        "gclbTargets": {
-          "readOnly": true,
-          "description": "Output only. A list of GCLB targets that use this Certificate Map. A Target Proxy is only present on this list if it's attached to a Forwarding Rule.",
-          "items": {
-            "$ref": "GclbTarget"
-          },
-          "type": "array"
-        },
-        "name": {
-          "description": "A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.",
-          "type": "string"
-        }
-      },
-      "description": "Defines a collection of certificate configurations.",
-      "id": "CertificateMap"
-    },
-    "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
-      "type": "object",
-      "properties": {},
-      "id": "Empty"
-    },
-    "IpConfig": {
-      "id": "IpConfig",
-      "description": "Defines IP configuration where this Certificate Map is serving.",
-      "type": "object",
-      "properties": {
-        "ipAddress": {
-          "description": "Output only. An external IP address.",
-          "type": "string",
-          "readOnly": true
-        },
-        "ports": {
-          "description": "Output only. Ports.",
-          "readOnly": true,
-          "type": "array",
-          "items": {
-            "type": "integer",
-            "format": "uint32"
-          }
-        }
-      }
-    },
-    "DnsAuthorization": {
-      "id": "DnsAuthorization",
-      "properties": {
-        "domain": {
-          "description": "Required. Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.",
-          "type": "string"
-        },
-        "updateTime": {
-          "type": "string",
-          "format": "google-datetime",
-          "readOnly": true,
-          "description": "Output only. The last update timestamp of a DnsAuthorization."
-        },
-        "createTime": {
-          "description": "Output only. The creation timestamp of a DnsAuthorization.",
-          "readOnly": true,
-          "type": "string",
-          "format": "google-datetime"
-        },
-        "name": {
-          "type": "string",
-          "description": "A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`."
-        },
-        "dnsResourceRecord": {
-          "description": "Output only. DNS Resource Record that needs to be added to DNS configuration.",
-          "readOnly": true,
-          "$ref": "DnsResourceRecord"
-        },
-        "labels": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Set of labels associated with a DnsAuthorization."
-        },
-        "description": {
-          "type": "string",
-          "description": "One or more paragraphs of text description of a DnsAuthorization."
-        }
-      },
-      "description": "A DnsAuthorization resource describes a way to perform domain authorization for certificate issuance.",
-      "type": "object"
-    },
     "AuthorizationAttemptInfo": {
-      "type": "object",
       "properties": {
-        "details": {
-          "readOnly": true,
-          "description": "Output only. Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use FailureReason enum.",
-          "type": "string"
-        },
         "failureReason": {
           "enum": [
             "FAILURE_REASON_UNSPECIFIED",
@@ -1277,21 +21,33 @@
             "CAA",
             "RATE_LIMITED"
           ],
-          "description": "Output only. Reason for failure of the authorization attempt for the domain.",
-          "type": "string",
+          "readOnly": true,
           "enumDescriptions": [
             "FailureReason is unspecified.",
             "There was a problem with the user's DNS or load balancer configuration for this domain.",
             "Certificate issuance forbidden by an explicit CAA record for the domain or a failure to check CAA records for the domain.",
             "Reached a CA or internal rate-limit for the domain, e.g. for certificates per top-level private domain."
           ],
-          "readOnly": true
+          "type": "string",
+          "description": "Output only. Reason for failure of the authorization attempt for the domain."
         },
         "domain": {
           "type": "string",
           "description": "Domain name of the authorization attempt."
         },
+        "details": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Output only. Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use FailureReason enum."
+        },
         "state": {
+          "type": "string",
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "AUTHORIZING",
+            "AUTHORIZED",
+            "FAILED"
+          ],
           "description": "Output only. State of the domain for managed certificate issuance.",
           "enumDescriptions": [
             "State is unspecified.",
@@ -1299,375 +55,41 @@
             "A managed certificate can be provisioned, no issues for this domain.",
             "Attempt to authorize the domain failed. This prevents the Managed Certificate from being issued. See `failure_reason` and `details` fields for more information."
           ],
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "AUTHORIZING",
-            "AUTHORIZED",
-            "FAILED"
-          ],
-          "type": "string",
           "readOnly": true
         }
       },
-      "id": "AuthorizationAttemptInfo",
-      "description": "State of the latest attempt to authorize a domain for certificate issuance."
-    },
-    "Operation": {
-      "description": "This resource represents a long-running operation that is the result of a network API call.",
-      "id": "Operation",
-      "properties": {
-        "metadata": {
-          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
-          },
-          "type": "object"
-        },
-        "response": {
-          "type": "object",
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`."
-        },
-        "done": {
-          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
-          "type": "boolean"
-        },
-        "name": {
-          "type": "string",
-          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
-        },
-        "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
-        }
-      },
-      "type": "object"
-    },
-    "ListCertificatesResponse": {
-      "properties": {
-        "nextPageToken": {
-          "description": "If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`.",
-          "type": "string"
-        },
-        "unreachable": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array",
-          "description": "A list of locations that could not be reached."
-        },
-        "certificates": {
-          "type": "array",
-          "description": "A list of certificates for the parent resource.",
-          "items": {
-            "$ref": "Certificate"
-          }
-        }
-      },
-      "description": "Response for the `ListCertificates` method.",
-      "id": "ListCertificatesResponse",
-      "type": "object"
-    },
-    "ListLocationsResponse": {
+      "description": "State of the latest attempt to authorize a domain for certificate issuance.",
       "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        },
-        "locations": {
-          "type": "array",
-          "description": "A list of locations that matches the specified filter in the request.",
-          "items": {
-            "$ref": "Location"
-          }
-        }
-      },
-      "description": "The response message for Locations.ListLocations.",
-      "id": "ListLocationsResponse"
-    },
-    "OperationMetadata": {
-      "type": "object",
-      "properties": {
-        "endTime": {
-          "type": "string",
-          "description": "The time the operation finished running.",
-          "format": "google-datetime"
-        },
-        "verb": {
-          "type": "string",
-          "description": "Name of the verb executed by the operation."
-        },
-        "requestedCancellation": {
-          "description": "Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-          "type": "boolean"
-        },
-        "apiVersion": {
-          "type": "string",
-          "description": "API version used to start the operation."
-        },
-        "statusMessage": {
-          "type": "string",
-          "description": "Human-readable status of the operation, if any."
-        },
-        "target": {
-          "description": "Server-defined resource path for the target of the operation.",
-          "type": "string"
-        },
-        "createTime": {
-          "format": "google-datetime",
-          "type": "string",
-          "description": "The time the operation was created."
-        }
-      },
-      "description": "Represents the metadata of the long-running operation. Output only.",
-      "id": "OperationMetadata"
-    },
-    "ManagedCertificate": {
-      "type": "object",
-      "properties": {
-        "provisioningIssue": {
-          "$ref": "ProvisioningIssue",
-          "readOnly": true,
-          "description": "Output only. Information about issues with provisioning a Managed Certificate."
-        },
-        "authorizationAttemptInfo": {
-          "items": {
-            "$ref": "AuthorizationAttemptInfo"
-          },
-          "description": "Output only. Detailed state of the latest authorization attempt for each domain specified for managed certificate resource.",
-          "readOnly": true,
-          "type": "array"
-        },
-        "issuanceConfig": {
-          "description": "Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.",
-          "type": "string"
-        },
-        "dnsAuthorizations": {
-          "type": "array",
-          "description": "Immutable. Authorizations that will be used for performing domain authorization.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "state": {
-          "description": "Output only. State of the managed certificate resource.",
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "PROVISIONING",
-            "FAILED",
-            "ACTIVE"
-          ],
-          "enumDescriptions": [
-            "State is unspecified.",
-            "Certificate Manager attempts to provision or renew the certificate. If the process takes longer than expected, consult the `provisioning_issue` field.",
-            "Multiple certificate provisioning attempts failed and Certificate Manager gave up. To try again, delete and create a new managed Certificate resource. For details see the `provisioning_issue` field.",
-            "The certificate management is working, and a certificate has been provisioned."
-          ],
-          "type": "string",
-          "readOnly": true
-        },
-        "domains": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array",
-          "description": "Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution."
-        }
-      },
-      "description": "Configuration and state of a Managed Certificate. Certificate Manager provisions and renews Managed Certificates automatically, for as long as it's authorized to do so.",
-      "id": "ManagedCertificate"
-    },
-    "SelfManagedCertificate": {
-      "type": "object",
-      "description": "Certificate data for a SelfManaged Certificate. SelfManaged Certificates are uploaded by the user. Updating such certificates before they expire remains the user's responsibility.",
-      "id": "SelfManagedCertificate",
-      "properties": {
-        "pemCertificate": {
-          "description": "Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by intermediate ones if any.",
-          "type": "string"
-        },
-        "pemPrivateKey": {
-          "description": "Input only. The PEM-encoded private key of the leaf certificate.",
-          "type": "string"
-        }
-      }
-    },
-    "ListOperationsResponse": {
-      "type": "object",
-      "properties": {
-        "operations": {
-          "type": "array",
-          "items": {
-            "$ref": "Operation"
-          },
-          "description": "A list of operations that matches the specified filter in the request."
-        },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        }
-      },
-      "description": "The response message for Operations.ListOperations.",
-      "id": "ListOperationsResponse"
+      "id": "AuthorizationAttemptInfo"
     },
     "ProvisioningIssue": {
+      "type": "object",
       "id": "ProvisioningIssue",
+      "description": "Information about issues with provisioning a Managed Certificate.",
       "properties": {
+        "details": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Output only. Human readable explanation about the issue. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum."
+        },
         "reason": {
+          "readOnly": true,
           "type": "string",
           "enumDescriptions": [
             "Reason is unspecified.",
             "Certificate provisioning failed due to an issue with one or more of the domains on the certificate. For details of which domains failed, consult the `authorization_attempt_info` field.",
             "Exceeded Certificate Authority quotas or internal rate limits of the system. Provisioning may take longer to complete."
           ],
-          "readOnly": true,
           "enum": [
             "REASON_UNSPECIFIED",
             "AUTHORIZATION_ISSUE",
             "RATE_LIMITED"
           ],
           "description": "Output only. Reason for provisioning failures."
-        },
-        "details": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. Human readable explanation about the issue. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum."
         }
-      },
-      "description": "Information about issues with provisioning a Managed Certificate.",
-      "type": "object"
-    },
-    "Certificate": {
-      "type": "object",
-      "description": "Defines TLS certificate.",
-      "properties": {
-        "pemCertificate": {
-          "readOnly": true,
-          "description": "Output only. The PEM-encoded certificate chain.",
-          "type": "string"
-        },
-        "selfManaged": {
-          "$ref": "SelfManagedCertificate",
-          "description": "If set, defines data of a self-managed certificate."
-        },
-        "sanDnsnames": {
-          "readOnly": true,
-          "type": "array",
-          "description": "Output only. The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6). Managed certificates that haven't been provisioned yet have this field populated with a value of the managed.domains field.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "managed": {
-          "description": "If set, contains configuration and state of a managed certificate.",
-          "$ref": "ManagedCertificate"
-        },
-        "scope": {
-          "type": "string",
-          "enumDescriptions": [
-            "Certificates with default scope are served from core Google data centers. If unsure, choose this option.",
-            "Certificates with scope EDGE_CACHE are special-purposed certificates, served from non-core Google data centers."
-          ],
-          "description": "Immutable. The scope of the certificate.",
-          "enum": [
-            "DEFAULT",
-            "EDGE_CACHE"
-          ]
-        },
-        "updateTime": {
-          "format": "google-datetime",
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. The last update timestamp of a Certificate."
-        },
-        "expireTime": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. The expiry timestamp of a Certificate.",
-          "format": "google-datetime"
-        },
-        "createTime": {
-          "type": "string",
-          "readOnly": true,
-          "format": "google-datetime",
-          "description": "Output only. The creation timestamp of a Certificate."
-        },
-        "name": {
-          "type": "string",
-          "description": "A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/*/locations/*/certificates/*`."
-        },
-        "description": {
-          "type": "string",
-          "description": "One or more paragraphs of text description of a certificate."
-        },
-        "labels": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Set of labels associated with a Certificate."
-        }
-      },
-      "id": "Certificate"
-    },
-    "GclbTarget": {
-      "properties": {
-        "ipConfigs": {
-          "type": "array",
-          "items": {
-            "$ref": "IpConfig"
-          },
-          "readOnly": true,
-          "description": "Output only. IP configurations for this Target Proxy where the Certificate Map is serving."
-        },
-        "targetHttpsProxy": {
-          "type": "string",
-          "description": "Output only. This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetHttpsProxies/*`.",
-          "readOnly": true
-        },
-        "targetSslProxy": {
-          "readOnly": true,
-          "type": "string",
-          "description": "Output only. This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetSslProxies/*`."
-        }
-      },
-      "id": "GclbTarget",
-      "type": "object",
-      "description": "Describes a Target Proxy that uses this Certificate Map."
-    },
-    "ListCertificateIssuanceConfigsResponse": {
-      "id": "ListCertificateIssuanceConfigsResponse",
-      "type": "object",
-      "properties": {
-        "certificateIssuanceConfigs": {
-          "type": "array",
-          "description": "A list of certificate configs for the parent resource.",
-          "items": {
-            "$ref": "CertificateIssuanceConfig"
-          }
-        },
-        "nextPageToken": {
-          "type": "string",
-          "description": "If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`."
-        },
-        "unreachable": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array",
-          "description": "Locations that could not be reached."
-        }
-      },
-      "description": "Response for the `ListCertificateIssuanceConfigs` method."
+      }
     },
     "DnsResourceRecord": {
-      "description": "The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be usable by certificate.",
-      "id": "DnsResourceRecord",
       "properties": {
         "type": {
           "readOnly": true,
@@ -1681,68 +103,136 @@
         },
         "data": {
           "readOnly": true,
-          "type": "string",
-          "description": "Output only. Data of the DNS Resource Record."
+          "description": "Output only. Data of the DNS Resource Record.",
+          "type": "string"
         }
       },
+      "description": "The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be usable by certificate.",
+      "id": "DnsResourceRecord",
       "type": "object"
     },
-    "CertificateAuthorityConfig": {
-      "id": "CertificateAuthorityConfig",
+    "CertificateMap": {
+      "id": "CertificateMap",
+      "description": "Defines a collection of certificate configurations.",
       "properties": {
-        "certificateAuthorityServiceConfig": {
-          "description": "Defines a CertificateAuthorityServiceConfig.",
-          "$ref": "CertificateAuthorityServiceConfig"
-        }
-      },
-      "description": "The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc.",
-      "type": "object"
-    },
-    "ListDnsAuthorizationsResponse": {
-      "type": "object",
-      "description": "Response for the `ListDnsAuthorizations` method.",
-      "id": "ListDnsAuthorizationsResponse",
-      "properties": {
-        "dnsAuthorizations": {
-          "description": "A list of dns authorizations for the parent resource.",
-          "items": {
-            "$ref": "DnsAuthorization"
-          },
-          "type": "array"
+        "description": {
+          "description": "One or more paragraphs of text description of a certificate map.",
+          "type": "string"
         },
-        "unreachable": {
+        "gclbTargets": {
+          "readOnly": true,
+          "type": "array",
+          "description": "Output only. A list of GCLB targets that use this Certificate Map. A Target Proxy is only present on this list if it's attached to a Forwarding Rule.",
           "items": {
+            "$ref": "GclbTarget"
+          }
+        },
+        "labels": {
+          "description": "Set of labels associated with a Certificate Map.",
+          "additionalProperties": {
             "type": "string"
           },
-          "description": "Locations that could not be reached.",
-          "type": "array"
+          "type": "object"
         },
-        "nextPageToken": {
+        "updateTime": {
+          "format": "google-datetime",
           "type": "string",
-          "description": "If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`."
+          "readOnly": true,
+          "description": "Output only. The update timestamp of a Certificate Map."
+        },
+        "createTime": {
+          "type": "string",
+          "description": "Output only. The creation timestamp of a Certificate Map.",
+          "format": "google-datetime",
+          "readOnly": true
+        },
+        "name": {
+          "description": "A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+      "type": "object",
+      "id": "Empty",
+      "properties": {}
+    },
+    "Operation": {
+      "id": "Operation",
+      "type": "object",
+      "description": "This resource represents a long-running operation that is the result of a network API call.",
+      "properties": {
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
+        },
+        "done": {
+          "type": "boolean",
+          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available."
+        },
+        "response": {
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          },
+          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "type": "object"
+        },
+        "name": {
+          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+          "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          },
+          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+          "type": "object"
         }
       }
     },
     "CertificateAuthorityServiceConfig": {
-      "type": "object",
-      "id": "CertificateAuthorityServiceConfig",
       "description": "Contains information required to contact CA service.",
+      "id": "CertificateAuthorityServiceConfig",
       "properties": {
         "caPool": {
           "description": "Required. A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form \"projects/{project}/locations/{location}/caPools/{ca_pool}\".",
           "type": "string"
         }
-      }
+      },
+      "type": "object"
+    },
+    "CancelOperationRequest": {
+      "type": "object",
+      "id": "CancelOperationRequest",
+      "description": "The request message for Operations.CancelOperation.",
+      "properties": {}
     },
     "Location": {
       "description": "A resource that represents Google Cloud Platform location.",
+      "id": "Location",
       "properties": {
+        "displayName": {
+          "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+          "type": "string"
+        },
         "labels": {
+          "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
           "additionalProperties": {
             "type": "string"
           },
-          "type": "object",
-          "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}"
+          "type": "object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`"
+        },
+        "locationId": {
+          "type": "string",
+          "description": "The canonical id for this location. For example: `\"us-east1\"`."
         },
         "metadata": {
           "type": "object",
@@ -1751,30 +241,308 @@
             "description": "Properties of the object. Contains field @type with type URL."
           },
           "description": "Service-specific metadata. For example the available capacity at the given location."
-        },
-        "locationId": {
-          "description": "The canonical id for this location. For example: `\"us-east1\"`.",
-          "type": "string"
-        },
-        "name": {
-          "type": "string",
-          "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`"
-        },
-        "displayName": {
-          "type": "string",
-          "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\"."
         }
       },
-      "id": "Location",
       "type": "object"
     },
-    "CertificateMapEntry": {
-      "id": "CertificateMapEntry",
-      "description": "Defines a certificate map entry.",
+    "ListCertificatesResponse": {
+      "id": "ListCertificatesResponse",
       "properties": {
-        "name": {
-          "description": "A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.",
+        "certificates": {
+          "description": "A list of certificates for the parent resource.",
+          "items": {
+            "$ref": "Certificate"
+          },
+          "type": "array"
+        },
+        "unreachable": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "A list of locations that could not be reached."
+        },
+        "nextPageToken": {
+          "description": "If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`.",
           "type": "string"
+        }
+      },
+      "type": "object",
+      "description": "Response for the `ListCertificates` method."
+    },
+    "ListCertificateIssuanceConfigsResponse": {
+      "id": "ListCertificateIssuanceConfigsResponse",
+      "description": "Response for the `ListCertificateIssuanceConfigs` method.",
+      "properties": {
+        "nextPageToken": {
+          "description": "If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`.",
+          "type": "string"
+        },
+        "unreachable": {
+          "type": "array",
+          "description": "Locations that could not be reached.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "certificateIssuanceConfigs": {
+          "type": "array",
+          "items": {
+            "$ref": "CertificateIssuanceConfig"
+          },
+          "description": "A list of certificate configs for the parent resource."
+        }
+      },
+      "type": "object"
+    },
+    "IpConfig": {
+      "properties": {
+        "ports": {
+          "items": {
+            "format": "uint32",
+            "type": "integer"
+          },
+          "readOnly": true,
+          "type": "array",
+          "description": "Output only. Ports."
+        },
+        "ipAddress": {
+          "description": "Output only. An external IP address.",
+          "type": "string",
+          "readOnly": true
+        }
+      },
+      "type": "object",
+      "description": "Defines IP configuration where this Certificate Map is serving.",
+      "id": "IpConfig"
+    },
+    "GclbTarget": {
+      "type": "object",
+      "description": "Describes a Target Proxy that uses this Certificate Map.",
+      "properties": {
+        "targetHttpsProxy": {
+          "type": "string",
+          "description": "Output only. This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetHttpsProxies/*`.",
+          "readOnly": true
+        },
+        "ipConfigs": {
+          "readOnly": true,
+          "type": "array",
+          "description": "Output only. IP configurations for this Target Proxy where the Certificate Map is serving.",
+          "items": {
+            "$ref": "IpConfig"
+          }
+        },
+        "targetSslProxy": {
+          "readOnly": true,
+          "description": "Output only. This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetSslProxies/*`.",
+          "type": "string"
+        }
+      },
+      "id": "GclbTarget"
+    },
+    "OperationMetadata": {
+      "type": "object",
+      "id": "OperationMetadata",
+      "properties": {
+        "endTime": {
+          "format": "google-datetime",
+          "type": "string",
+          "description": "The time the operation finished running."
+        },
+        "verb": {
+          "type": "string",
+          "description": "Name of the verb executed by the operation."
+        },
+        "statusMessage": {
+          "description": "Human-readable status of the operation, if any.",
+          "type": "string"
+        },
+        "requestedCancellation": {
+          "type": "boolean",
+          "description": "Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`."
+        },
+        "apiVersion": {
+          "description": "API version used to start the operation.",
+          "type": "string"
+        },
+        "createTime": {
+          "format": "google-datetime",
+          "type": "string",
+          "description": "The time the operation was created."
+        },
+        "target": {
+          "type": "string",
+          "description": "Server-defined resource path for the target of the operation."
+        }
+      },
+      "description": "Represents the metadata of the long-running operation. Output only."
+    },
+    "ListDnsAuthorizationsResponse": {
+      "type": "object",
+      "properties": {
+        "dnsAuthorizations": {
+          "description": "A list of dns authorizations for the parent resource.",
+          "items": {
+            "$ref": "DnsAuthorization"
+          },
+          "type": "array"
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`."
+        },
+        "unreachable": {
+          "type": "array",
+          "description": "Locations that could not be reached.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "ListDnsAuthorizationsResponse",
+      "description": "Response for the `ListDnsAuthorizations` method."
+    },
+    "ManagedCertificate": {
+      "description": "Configuration and state of a Managed Certificate. Certificate Manager provisions and renews Managed Certificates automatically, for as long as it's authorized to do so.",
+      "properties": {
+        "state": {
+          "description": "Output only. State of the managed certificate resource.",
+          "enumDescriptions": [
+            "State is unspecified.",
+            "Certificate Manager attempts to provision or renew the certificate. If the process takes longer than expected, consult the `provisioning_issue` field.",
+            "Multiple certificate provisioning attempts failed and Certificate Manager gave up. To try again, delete and create a new managed Certificate resource. For details see the `provisioning_issue` field.",
+            "The certificate management is working, and a certificate has been provisioned."
+          ],
+          "type": "string",
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "PROVISIONING",
+            "FAILED",
+            "ACTIVE"
+          ],
+          "readOnly": true
+        },
+        "provisioningIssue": {
+          "description": "Output only. Information about issues with provisioning a Managed Certificate.",
+          "readOnly": true,
+          "$ref": "ProvisioningIssue"
+        },
+        "authorizationAttemptInfo": {
+          "readOnly": true,
+          "type": "array",
+          "description": "Output only. Detailed state of the latest authorization attempt for each domain specified for managed certificate resource.",
+          "items": {
+            "$ref": "AuthorizationAttemptInfo"
+          }
+        },
+        "dnsAuthorizations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Immutable. Authorizations that will be used for performing domain authorization."
+        },
+        "issuanceConfig": {
+          "description": "Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.",
+          "type": "string"
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution."
+        }
+      },
+      "type": "object",
+      "id": "ManagedCertificate"
+    },
+    "SelfManagedCertificate": {
+      "description": "Certificate data for a SelfManaged Certificate. SelfManaged Certificates are uploaded by the user. Updating such certificates before they expire remains the user's responsibility.",
+      "id": "SelfManagedCertificate",
+      "type": "object",
+      "properties": {
+        "pemCertificate": {
+          "type": "string",
+          "description": "Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by intermediate ones if any."
+        },
+        "pemPrivateKey": {
+          "type": "string",
+          "description": "Input only. The PEM-encoded private key of the leaf certificate."
+        }
+      }
+    },
+    "ListCertificateMapsResponse": {
+      "type": "object",
+      "id": "ListCertificateMapsResponse",
+      "properties": {
+        "certificateMaps": {
+          "type": "array",
+          "items": {
+            "$ref": "CertificateMap"
+          },
+          "description": "A list of certificate maps for the parent resource."
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`."
+        },
+        "unreachable": {
+          "type": "array",
+          "description": "Locations that could not be reached.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Response for the `ListCertificateMaps` method."
+    },
+    "CertificateMapEntry": {
+      "description": "Defines a certificate map entry.",
+      "type": "object",
+      "properties": {
+        "labels": {
+          "description": "Set of labels associated with a Certificate Map Entry.",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "google-datetime",
+          "description": "Output only. The creation timestamp of a Certificate Map Entry.",
+          "readOnly": true
+        },
+        "hostname": {
+          "type": "string",
+          "description": "A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate."
+        },
+        "state": {
+          "enumDescriptions": [
+            "The status is undefined.",
+            "The configuration is serving.",
+            "Update is in progress. Some frontends may serve this configuration."
+          ],
+          "enum": [
+            "SERVING_STATE_UNSPECIFIED",
+            "ACTIVE",
+            "PENDING"
+          ],
+          "type": "string",
+          "description": "Output only. A serving state of this Certificate Map Entry.",
+          "readOnly": true
+        },
+        "description": {
+          "type": "string",
+          "description": "One or more paragraphs of text description of a certificate map entry."
+        },
+        "updateTime": {
+          "format": "google-datetime",
+          "type": "string",
+          "readOnly": true,
+          "description": "Output only. The update timestamp of a Certificate Map Entry."
         },
         "matcher": {
           "enum": [
@@ -1782,107 +550,132 @@
             "PRIMARY"
           ],
           "description": "A predefined matcher for particular cases, other than SNI selection.",
-          "type": "string",
           "enumDescriptions": [
             "A matcher has't been recognized.",
             "A primary certificate that is served when SNI wasn't specified in the request or SNI couldn't be found in the map."
-          ]
-        },
-        "createTime": {
-          "type": "string",
-          "description": "Output only. The creation timestamp of a Certificate Map Entry.",
-          "readOnly": true,
-          "format": "google-datetime"
-        },
-        "hostname": {
-          "type": "string",
-          "description": "A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate."
-        },
-        "updateTime": {
-          "readOnly": true,
-          "description": "Output only. The update timestamp of a Certificate Map Entry.",
-          "format": "google-datetime",
+          ],
           "type": "string"
         },
-        "state": {
+        "name": {
           "type": "string",
-          "enum": [
-            "SERVING_STATE_UNSPECIFIED",
-            "ACTIVE",
-            "PENDING"
-          ],
-          "readOnly": true,
-          "enumDescriptions": [
-            "The status is undefined.",
-            "The configuration is serving.",
-            "Update is in progress. Some frontends may serve this configuration."
-          ],
-          "description": "Output only. A serving state of this Certificate Map Entry."
-        },
-        "labels": {
-          "description": "Set of labels associated with a Certificate Map Entry.",
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
+          "description": "A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`."
         },
         "certificates": {
+          "type": "array",
           "description": "A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "CertificateMapEntry"
+    },
+    "Status": {
+      "id": "Status",
+      "type": "object",
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "format": "int32"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
+            }
+          },
+          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use."
+        },
+        "message": {
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+          "type": "string"
+        }
+      }
+    },
+    "ListCertificateMapEntriesResponse": {
+      "id": "ListCertificateMapEntriesResponse",
+      "properties": {
+        "nextPageToken": {
+          "description": "If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`.",
+          "type": "string"
+        },
+        "unreachable": {
+          "description": "Locations that could not be reached.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
-        "description": {
-          "type": "string",
-          "description": "One or more paragraphs of text description of a certificate map entry."
+        "certificateMapEntries": {
+          "type": "array",
+          "items": {
+            "$ref": "CertificateMapEntry"
+          },
+          "description": "A list of certificate map entries for the parent resource."
         }
       },
-      "type": "object"
+      "type": "object",
+      "description": "Response for the `ListCertificateMapEntries` method."
+    },
+    "ListLocationsResponse": {
+      "properties": {
+        "locations": {
+          "items": {
+            "$ref": "Location"
+          },
+          "description": "A list of locations that matches the specified filter in the request.",
+          "type": "array"
+        },
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "id": "ListLocationsResponse",
+      "description": "The response message for Locations.ListLocations."
     },
     "CertificateIssuanceConfig": {
+      "description": "CertificateIssuanceConfig specifies how to issue and manage a certificate.",
+      "id": "CertificateIssuanceConfig",
       "type": "object",
       "properties": {
-        "labels": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Set of labels associated with a CertificateIssuanceConfig."
-        },
-        "createTime": {
-          "description": "Output only. The creation timestamp of a CertificateIssuanceConfig.",
-          "type": "string",
-          "format": "google-datetime",
-          "readOnly": true
-        },
-        "lifetime": {
-          "type": "string",
-          "format": "google-duration",
-          "description": "Required. Workload certificate lifetime requested."
-        },
         "description": {
           "description": "One or more paragraphs of text description of a CertificateIssuanceConfig.",
           "type": "string"
         },
-        "rotationWindowPercentage": {
-          "format": "int32",
-          "description": "Required. Specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate. Must be a number between 1-99, inclusive.",
-          "type": "integer"
-        },
         "keyAlgorithm": {
-          "enumDescriptions": [
-            "Unspecified key algorithm.",
-            "Specifies RSA with a 2048-bit modulus.",
-            "Specifies ECDSA with curve P256."
-          ],
+          "description": "Required. The key algorithm to use when generating the private key.",
           "enum": [
             "KEY_ALGORITHM_UNSPECIFIED",
             "RSA_2048",
             "ECDSA_P256"
           ],
           "type": "string",
-          "description": "Required. The key algorithm to use when generating the private key."
+          "enumDescriptions": [
+            "Unspecified key algorithm.",
+            "Specifies RSA with a 2048-bit modulus.",
+            "Specifies ECDSA with curve P256."
+          ]
+        },
+        "certificateAuthorityConfig": {
+          "$ref": "CertificateAuthorityConfig",
+          "description": "Required. The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc."
+        },
+        "createTime": {
+          "type": "string",
+          "format": "google-datetime",
+          "readOnly": true,
+          "description": "Output only. The creation timestamp of a CertificateIssuanceConfig."
+        },
+        "name": {
+          "description": "A user-defined name of the certificate issuance config. CertificateIssuanceConfig names must be unique globally and match pattern `projects/*/locations/*/certificateIssuanceConfigs/*`.",
+          "type": "string"
         },
         "updateTime": {
           "type": "string",
@@ -1890,53 +683,1258 @@
           "readOnly": true,
           "format": "google-datetime"
         },
-        "certificateAuthorityConfig": {
-          "description": "Required. The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.",
-          "$ref": "CertificateAuthorityConfig"
+        "rotationWindowPercentage": {
+          "format": "int32",
+          "type": "integer",
+          "description": "Required. Specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate. Must be a number between 1-99, inclusive."
         },
-        "name": {
-          "description": "A user-defined name of the certificate issuance config. CertificateIssuanceConfig names must be unique globally and match pattern `projects/*/locations/*/certificateIssuanceConfigs/*`.",
-          "type": "string"
-        }
-      },
-      "description": "CertificateIssuanceConfig specifies how to issue and manage a certificate.",
-      "id": "CertificateIssuanceConfig"
-    },
-    "ListCertificateMapEntriesResponse": {
-      "description": "Response for the `ListCertificateMapEntries` method.",
-      "type": "object",
-      "id": "ListCertificateMapEntriesResponse",
-      "properties": {
-        "unreachable": {
-          "items": {
+        "labels": {
+          "type": "object",
+          "description": "Set of labels associated with a CertificateIssuanceConfig.",
+          "additionalProperties": {
             "type": "string"
-          },
-          "type": "array",
-          "description": "Locations that could not be reached."
+          }
         },
-        "certificateMapEntries": {
-          "items": {
-            "$ref": "CertificateMapEntry"
-          },
-          "type": "array",
-          "description": "A list of certificate map entries for the parent resource."
-        },
-        "nextPageToken": {
-          "type": "string",
-          "description": "If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`."
+        "lifetime": {
+          "format": "google-duration",
+          "description": "Required. Workload certificate lifetime requested.",
+          "type": "string"
         }
       }
     },
-    "CancelOperationRequest": {
-      "properties": {},
+    "ListOperationsResponse": {
+      "description": "The response message for Operations.ListOperations.",
+      "id": "ListOperationsResponse",
       "type": "object",
-      "description": "The request message for Operations.CancelOperation.",
-      "id": "CancelOperationRequest"
+      "properties": {
+        "nextPageToken": {
+          "type": "string",
+          "description": "The standard List next-page token."
+        },
+        "operations": {
+          "type": "array",
+          "description": "A list of operations that matches the specified filter in the request.",
+          "items": {
+            "$ref": "Operation"
+          }
+        }
+      }
+    },
+    "Certificate": {
+      "properties": {
+        "createTime": {
+          "description": "Output only. The creation timestamp of a Certificate.",
+          "type": "string",
+          "format": "google-datetime",
+          "readOnly": true
+        },
+        "selfManaged": {
+          "$ref": "SelfManagedCertificate",
+          "description": "If set, defines data of a self-managed certificate."
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object",
+          "description": "Set of labels associated with a Certificate."
+        },
+        "name": {
+          "description": "A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/*/locations/*/certificates/*`.",
+          "type": "string"
+        },
+        "updateTime": {
+          "format": "google-datetime",
+          "description": "Output only. The last update timestamp of a Certificate.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "description": {
+          "description": "One or more paragraphs of text description of a certificate.",
+          "type": "string"
+        },
+        "managed": {
+          "$ref": "ManagedCertificate",
+          "description": "If set, contains configuration and state of a managed certificate."
+        },
+        "sanDnsnames": {
+          "readOnly": true,
+          "type": "array",
+          "description": "Output only. The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6). Managed certificates that haven't been provisioned yet have this field populated with a value of the managed.domains field.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scope": {
+          "enum": [
+            "DEFAULT",
+            "EDGE_CACHE"
+          ],
+          "enumDescriptions": [
+            "Certificates with default scope are served from core Google data centers. If unsure, choose this option.",
+            "Certificates with scope EDGE_CACHE are special-purposed certificates, served from non-core Google data centers."
+          ],
+          "description": "Immutable. The scope of the certificate.",
+          "type": "string"
+        },
+        "pemCertificate": {
+          "readOnly": true,
+          "description": "Output only. The PEM-encoded certificate chain.",
+          "type": "string"
+        },
+        "expireTime": {
+          "readOnly": true,
+          "description": "Output only. The expiry timestamp of a Certificate.",
+          "type": "string",
+          "format": "google-datetime"
+        }
+      },
+      "description": "Defines TLS certificate.",
+      "id": "Certificate",
+      "type": "object"
+    },
+    "DnsAuthorization": {
+      "description": "A DnsAuthorization resource describes a way to perform domain authorization for certificate issuance.",
+      "id": "DnsAuthorization",
+      "properties": {
+        "domain": {
+          "type": "string",
+          "description": "Required. Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`."
+        },
+        "description": {
+          "type": "string",
+          "description": "One or more paragraphs of text description of a DnsAuthorization."
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Set of labels associated with a DnsAuthorization."
+        },
+        "createTime": {
+          "description": "Output only. The creation timestamp of a DnsAuthorization.",
+          "type": "string",
+          "readOnly": true,
+          "format": "google-datetime"
+        },
+        "dnsResourceRecord": {
+          "$ref": "DnsResourceRecord",
+          "readOnly": true,
+          "description": "Output only. DNS Resource Record that needs to be added to DNS configuration."
+        },
+        "updateTime": {
+          "description": "Output only. The last update timestamp of a DnsAuthorization.",
+          "type": "string",
+          "readOnly": true,
+          "format": "google-datetime"
+        },
+        "name": {
+          "description": "A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "CertificateAuthorityConfig": {
+      "type": "object",
+      "description": "The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc.",
+      "id": "CertificateAuthorityConfig",
+      "properties": {
+        "certificateAuthorityServiceConfig": {
+          "$ref": "CertificateAuthorityServiceConfig",
+          "description": "Defines a CertificateAuthorityServiceConfig."
+        }
+      }
     }
   },
-  "version_module": true,
-  "batchPath": "batch",
-  "title": "Certificate Manager API",
+  "parameters": {
+    "uploadType": {
+      "type": "string",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "type": "string",
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+    },
+    "quotaUser": {
+      "type": "string",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "location": "query"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    },
+    "alt": {
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "default": "json",
+      "type": "string",
+      "description": "Data format for response.",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string",
+      "location": "query",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ]
+    },
+    "prettyPrint": {
+      "default": "true",
+      "location": "query",
+      "type": "boolean",
+      "description": "Returns response with indentations and line breaks."
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "location": "query",
+      "type": "string"
+    }
+  },
+  "protocol": "rest",
+  "servicePath": "",
+  "ownerName": "Google",
+  "rootUrl": "https://certificatemanager.googleapis.com/",
+  "resources": {
+    "projects": {
+      "resources": {
+        "locations": {
+          "resources": {
+            "operations": {
+              "methods": {
+                "list": {
+                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                  "parameters": {
+                    "pageToken": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "The standard list page token."
+                    },
+                    "name": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "type": "string",
+                      "description": "The name of the operation's parent resource.",
+                      "required": true
+                    },
+                    "filter": {
+                      "location": "query",
+                      "type": "string",
+                      "description": "The standard list filter."
+                    },
+                    "pageSize": {
+                      "format": "int32",
+                      "description": "The standard list page size.",
+                      "location": "query",
+                      "type": "integer"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "path": "v1/{+name}/operations",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
+                  "id": "certificatemanager.projects.locations.operations.list",
+                  "response": {
+                    "$ref": "ListOperationsResponse"
+                  },
+                  "httpMethod": "GET"
+                },
+                "get": {
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "path": "v1/{+name}",
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the operation resource.",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "location": "path",
+                      "required": true
+                    }
+                  },
+                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "id": "certificatemanager.projects.locations.operations.get",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}"
+                },
+                "cancel": {
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "location": "path",
+                      "description": "The name of the operation resource to be cancelled.",
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
+                    }
+                  },
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "request": {
+                    "$ref": "CancelOperationRequest"
+                  },
+                  "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "id": "certificatemanager.projects.locations.operations.cancel",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                  "path": "v1/{+name}:cancel"
+                },
+                "delete": {
+                  "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                  "httpMethod": "DELETE",
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "required": true,
+                      "description": "The name of the operation resource to be deleted.",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "id": "certificatemanager.projects.locations.operations.delete",
+                  "path": "v1/{+name}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                }
+              }
+            },
+            "certificateMaps": {
+              "methods": {
+                "list": {
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps",
+                  "description": "Lists CertificateMaps in a given project and location.",
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "pageSize": {
+                      "location": "query",
+                      "type": "integer",
+                      "description": "Maximum number of certificate maps to return per call.",
+                      "format": "int32"
+                    },
+                    "orderBy": {
+                      "description": "A list of Certificate Map field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix \" desc\".",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "pageToken": {
+                      "description": "The value returned by the last `ListCertificateMapsResponse`. Indicates that this is a continuation of a prior `ListCertificateMaps` call, and that the system should return the next page of data.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "filter": {
+                      "description": "Filter expression to restrict the Certificates Maps returned.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "parent": {
+                      "description": "Required. The project and location from which the certificate maps should be listed, specified in the format `projects/*/locations/*`.",
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "required": true
+                    }
+                  },
+                  "path": "v1/{+parent}/certificateMaps",
+                  "response": {
+                    "$ref": "ListCertificateMapsResponse"
+                  },
+                  "id": "certificatemanager.projects.locations.certificateMaps.list",
+                  "parameterOrder": [
+                    "parent"
+                  ]
+                },
+                "get": {
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "description": "Gets details of a single CertificateMap.",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "id": "certificatemanager.projects.locations.certificateMaps.get",
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "name": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+$",
+                      "type": "string",
+                      "location": "path",
+                      "description": "Required. A name of the certificate map to describe. Must be in the format `projects/*/locations/*/certificateMaps/*`.",
+                      "required": true
+                    }
+                  },
+                  "response": {
+                    "$ref": "CertificateMap"
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}",
+                  "path": "v1/{+name}"
+                },
+                "delete": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "path": "v1/{+name}",
+                  "parameters": {
+                    "name": {
+                      "description": "Required. A name of the certificate map to delete. Must be in the format `projects/*/locations/*/certificateMaps/*`.",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+$",
+                      "type": "string",
+                      "location": "path"
+                    }
+                  },
+                  "id": "certificatemanager.projects.locations.certificateMaps.delete",
+                  "httpMethod": "DELETE",
+                  "description": "Deletes a single CertificateMap. A Certificate Map can't be deleted if it contains Certificate Map Entries. Remove all the entries from the map before calling this method.",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}"
+                },
+                "patch": {
+                  "path": "v1/{+name}",
+                  "httpMethod": "PATCH",
+                  "id": "certificatemanager.projects.locations.certificateMaps.patch",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "request": {
+                    "$ref": "CertificateMap"
+                  },
+                  "description": "Updates a CertificateMap.",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}",
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+$",
+                      "type": "string",
+                      "description": "A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.",
+                      "location": "path"
+                    },
+                    "updateMask": {
+                      "type": "string",
+                      "description": "Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.",
+                      "format": "google-fieldmask",
+                      "location": "query"
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ]
+                },
+                "create": {
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps",
+                  "id": "certificatemanager.projects.locations.certificateMaps.create",
+                  "request": {
+                    "$ref": "CertificateMap"
+                  },
+                  "description": "Creates a new CertificateMap in a given project and location.",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "path": "v1/{+parent}/certificateMaps",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "httpMethod": "POST",
+                  "parameters": {
+                    "parent": {
+                      "description": "Required. The parent resource of the certificate map. Must be in the format `projects/*/locations/*`.",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "type": "string"
+                    },
+                    "certificateMapId": {
+                      "location": "query",
+                      "type": "string",
+                      "description": "Required. A user-provided name of the certificate map."
+                    }
+                  }
+                }
+              },
+              "resources": {
+                "certificateMapEntries": {
+                  "methods": {
+                    "patch": {
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries/{certificateMapEntriesId}",
+                      "id": "certificatemanager.projects.locations.certificateMaps.certificateMapEntries.patch",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "httpMethod": "PATCH",
+                      "path": "v1/{+name}",
+                      "parameters": {
+                        "name": {
+                          "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+/certificateMapEntries/[^/]+$",
+                          "type": "string",
+                          "required": true,
+                          "location": "path",
+                          "description": "A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`."
+                        },
+                        "updateMask": {
+                          "description": "Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.",
+                          "type": "string",
+                          "format": "google-fieldmask",
+                          "location": "query"
+                        }
+                      },
+                      "request": {
+                        "$ref": "CertificateMapEntry"
+                      },
+                      "response": {
+                        "$ref": "Operation"
+                      },
+                      "description": "Updates a CertificateMapEntry."
+                    },
+                    "get": {
+                      "path": "v1/{+name}",
+                      "id": "certificatemanager.projects.locations.certificateMaps.certificateMapEntries.get",
+                      "response": {
+                        "$ref": "CertificateMapEntry"
+                      },
+                      "description": "Gets details of a single CertificateMapEntry.",
+                      "httpMethod": "GET",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. A name of the certificate map entry to describe. Must be in the format `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.",
+                          "location": "path",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+/certificateMapEntries/[^/]+$",
+                          "type": "string",
+                          "required": true
+                        }
+                      },
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries/{certificateMapEntriesId}",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ]
+                    },
+                    "delete": {
+                      "path": "v1/{+name}",
+                      "id": "certificatemanager.projects.locations.certificateMaps.certificateMapEntries.delete",
+                      "httpMethod": "DELETE",
+                      "parameters": {
+                        "name": {
+                          "required": true,
+                          "location": "path",
+                          "description": "Required. A name of the certificate map entry to delete. Must be in the format `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.",
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+/certificateMapEntries/[^/]+$"
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries/{certificateMapEntriesId}",
+                      "response": {
+                        "$ref": "Operation"
+                      },
+                      "description": "Deletes a single CertificateMapEntry."
+                    },
+                    "create": {
+                      "parameters": {
+                        "parent": {
+                          "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+$",
+                          "required": true,
+                          "description": "Required. The parent resource of the certificate map entry. Must be in the format `projects/*/locations/*/certificateMaps/*`.",
+                          "location": "path",
+                          "type": "string"
+                        },
+                        "certificateMapEntryId": {
+                          "description": "Required. A user-provided name of the certificate map entry.",
+                          "type": "string",
+                          "location": "query"
+                        }
+                      },
+                      "request": {
+                        "$ref": "CertificateMapEntry"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "path": "v1/{+parent}/certificateMapEntries",
+                      "httpMethod": "POST",
+                      "description": "Creates a new CertificateMapEntry in a given project and location.",
+                      "response": {
+                        "$ref": "Operation"
+                      },
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries",
+                      "id": "certificatemanager.projects.locations.certificateMaps.certificateMapEntries.create"
+                    },
+                    "list": {
+                      "parameters": {
+                        "orderBy": {
+                          "type": "string",
+                          "location": "query",
+                          "description": "A list of Certificate Map Entry field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix \" desc\"."
+                        },
+                        "filter": {
+                          "type": "string",
+                          "location": "query",
+                          "description": "Filter expression to restrict the returned Certificate Map Entries."
+                        },
+                        "pageToken": {
+                          "description": "The value returned by the last `ListCertificateMapEntriesResponse`. Indicates that this is a continuation of a prior `ListCertificateMapEntries` call, and that the system should return the next page of data.",
+                          "type": "string",
+                          "location": "query"
+                        },
+                        "pageSize": {
+                          "type": "integer",
+                          "format": "int32",
+                          "location": "query",
+                          "description": "Maximum number of certificate map entries to return. The service may return fewer than this value. If unspecified, at most 50 certificate map entries will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000."
+                        },
+                        "parent": {
+                          "location": "path",
+                          "required": true,
+                          "description": "Required. The project, location and certificate map from which the certificate map entries should be listed, specified in the format `projects/*/locations/*/certificateMaps/*`.",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/certificateMaps/[^/]+$",
+                          "type": "string"
+                        }
+                      },
+                      "response": {
+                        "$ref": "ListCertificateMapEntriesResponse"
+                      },
+                      "path": "v1/{+parent}/certificateMapEntries",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "description": "Lists CertificateMapEntries in a given project and location.",
+                      "httpMethod": "GET",
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "id": "certificatemanager.projects.locations.certificateMaps.certificateMapEntries.list",
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries"
+                    }
+                  }
+                }
+              }
+            },
+            "dnsAuthorizations": {
+              "methods": {
+                "get": {
+                  "httpMethod": "GET",
+                  "id": "certificatemanager.projects.locations.dnsAuthorizations.get",
+                  "response": {
+                    "$ref": "DnsAuthorization"
+                  },
+                  "path": "v1/{+name}",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations/{dnsAuthorizationsId}",
+                  "description": "Gets details of a single DnsAuthorization.",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/dnsAuthorizations/[^/]+$",
+                      "required": true,
+                      "description": "Required. A name of the dns authorization to describe. Must be in the format `projects/*/locations/*/dnsAuthorizations/*`.",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "list": {
+                  "httpMethod": "GET",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations",
+                  "response": {
+                    "$ref": "ListDnsAuthorizationsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "path": "v1/{+parent}/dnsAuthorizations",
+                  "id": "certificatemanager.projects.locations.dnsAuthorizations.list",
+                  "description": "Lists DnsAuthorizations in a given project and location.",
+                  "parameters": {
+                    "pageSize": {
+                      "location": "query",
+                      "description": "Maximum number of dns authorizations to return per call.",
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "filter": {
+                      "location": "query",
+                      "description": "Filter expression to restrict the Dns Authorizations returned.",
+                      "type": "string"
+                    },
+                    "pageToken": {
+                      "description": "The value returned by the last `ListDnsAuthorizationsResponse`. Indicates that this is a continuation of a prior `ListDnsAuthorizations` call, and that the system should return the next page of data.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "orderBy": {
+                      "type": "string",
+                      "description": "A list of Dns Authorization field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix \" desc\".",
+                      "location": "query"
+                    },
+                    "parent": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "description": "Required. The project and location from which the dns authorizations should be listed, specified in the format `projects/*/locations/*`.",
+                      "required": true,
+                      "type": "string",
+                      "location": "path"
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ]
+                },
+                "create": {
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameters": {
+                    "dnsAuthorizationId": {
+                      "location": "query",
+                      "type": "string",
+                      "description": "Required. A user-provided name of the dns authorization."
+                    },
+                    "parent": {
+                      "description": "Required. The parent resource of the dns authorization. Must be in the format `projects/*/locations/*`.",
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    }
+                  },
+                  "description": "Creates a new DnsAuthorization in a given project and location.",
+                  "id": "certificatemanager.projects.locations.dnsAuthorizations.create",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "path": "v1/{+parent}/dnsAuthorizations",
+                  "httpMethod": "POST",
+                  "request": {
+                    "$ref": "DnsAuthorization"
+                  }
+                },
+                "delete": {
+                  "id": "certificatemanager.projects.locations.dnsAuthorizations.delete",
+                  "httpMethod": "DELETE",
+                  "description": "Deletes a single DnsAuthorization.",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/dnsAuthorizations/[^/]+$",
+                      "description": "Required. A name of the dns authorization to delete. Must be in the format `projects/*/locations/*/dnsAuthorizations/*`.",
+                      "location": "path",
+                      "required": true
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations/{dnsAuthorizationsId}",
+                  "path": "v1/{+name}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "patch": {
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations/{dnsAuthorizationsId}",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "description": "Updates a DnsAuthorization.",
+                  "id": "certificatemanager.projects.locations.dnsAuthorizations.patch",
+                  "httpMethod": "PATCH",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameters": {
+                    "updateMask": {
+                      "location": "query",
+                      "format": "google-fieldmask",
+                      "type": "string",
+                      "description": "Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask."
+                    },
+                    "name": {
+                      "description": "A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/dnsAuthorizations/[^/]+$",
+                      "required": true,
+                      "location": "path",
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1/{+name}",
+                  "request": {
+                    "$ref": "DnsAuthorization"
+                  }
+                }
+              }
+            },
+            "certificates": {
+              "methods": {
+                "list": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "description": "Lists Certificates in a given project and location.",
+                  "parameters": {
+                    "pageSize": {
+                      "location": "query",
+                      "type": "integer",
+                      "description": "Maximum number of certificates to return per call.",
+                      "format": "int32"
+                    },
+                    "orderBy": {
+                      "type": "string",
+                      "description": "A list of Certificate field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix \" desc\".",
+                      "location": "query"
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "description": "The value returned by the last `ListCertificatesResponse`. Indicates that this is a continuation of a prior `ListCertificates` call, and that the system should return the next page of data.",
+                      "location": "query"
+                    },
+                    "parent": {
+                      "type": "string",
+                      "location": "path",
+                      "description": "Required. The project and location from which the certificate should be listed, specified in the format `projects/*/locations/*`.",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    },
+                    "filter": {
+                      "description": "Filter expression to restrict the Certificates returned.",
+                      "location": "query",
+                      "type": "string"
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "path": "v1/{+parent}/certificates",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificates",
+                  "response": {
+                    "$ref": "ListCertificatesResponse"
+                  },
+                  "id": "certificatemanager.projects.locations.certificates.list",
+                  "httpMethod": "GET"
+                },
+                "get": {
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "Certificate"
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificates/{certificatesId}",
+                  "path": "v1/{+name}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "description": "Gets details of a single Certificate.",
+                  "id": "certificatemanager.projects.locations.certificates.get",
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "description": "Required. A name of the certificate to describe. Must be in the format `projects/*/locations/*/certificates/*`.",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/certificates/[^/]+$",
+                      "type": "string",
+                      "location": "path"
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ]
+                },
+                "delete": {
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificates/{certificatesId}",
+                  "id": "certificatemanager.projects.locations.certificates.delete",
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "description": "Required. A name of the certificate to delete. Must be in the format `projects/*/locations/*/certificates/*`.",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/certificates/[^/]+$",
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1/{+name}",
+                  "httpMethod": "DELETE",
+                  "description": "Deletes a single Certificate.",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "create": {
+                  "description": "Creates a new Certificate in a given project and location.",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "parameters": {
+                    "certificateId": {
+                      "type": "string",
+                      "description": "Required. A user-provided name of the certificate.",
+                      "location": "query"
+                    },
+                    "parent": {
+                      "location": "path",
+                      "required": true,
+                      "description": "Required. The parent resource of the certificate. Must be in the format `projects/*/locations/*`.",
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    }
+                  },
+                  "httpMethod": "POST",
+                  "id": "certificatemanager.projects.locations.certificates.create",
+                  "path": "v1/{+parent}/certificates",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "request": {
+                    "$ref": "Certificate"
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificates",
+                  "response": {
+                    "$ref": "Operation"
+                  }
+                },
+                "patch": {
+                  "parameters": {
+                    "name": {
+                      "description": "A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/*/locations/*/certificates/*`.",
+                      "required": true,
+                      "type": "string",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/certificates/[^/]+$"
+                    },
+                    "updateMask": {
+                      "format": "google-fieldmask",
+                      "type": "string",
+                      "description": "Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.",
+                      "location": "query"
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "request": {
+                    "$ref": "Certificate"
+                  },
+                  "path": "v1/{+name}",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificates/{certificatesId}",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "description": "Updates a Certificate.",
+                  "httpMethod": "PATCH",
+                  "id": "certificatemanager.projects.locations.certificates.patch"
+                }
+              }
+            },
+            "certificateIssuanceConfigs": {
+              "methods": {
+                "delete": {
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "id": "certificatemanager.projects.locations.certificateIssuanceConfigs.delete",
+                  "path": "v1/{+name}",
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/certificateIssuanceConfigs/[^/]+$",
+                      "location": "path",
+                      "description": "Required. A name of the certificate issuance config to delete. Must be in the format `projects/*/locations/*/certificateIssuanceConfigs/*`."
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateIssuanceConfigs/{certificateIssuanceConfigsId}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "description": "Deletes a single CertificateIssuanceConfig.",
+                  "httpMethod": "DELETE",
+                  "parameterOrder": [
+                    "name"
+                  ]
+                },
+                "create": {
+                  "path": "v1/{+parent}/certificateIssuanceConfigs",
+                  "parameters": {
+                    "parent": {
+                      "required": true,
+                      "type": "string",
+                      "description": "Required. The parent resource of the certificate issuance config. Must be in the format `projects/*/locations/*`.",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    },
+                    "certificateIssuanceConfigId": {
+                      "description": "Required. A user-provided name of the certificate config.",
+                      "location": "query",
+                      "type": "string"
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "description": "Creates a new CertificateIssuanceConfig in a given project and location.",
+                  "id": "certificatemanager.projects.locations.certificateIssuanceConfigs.create",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "httpMethod": "POST",
+                  "request": {
+                    "$ref": "CertificateIssuanceConfig"
+                  },
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateIssuanceConfigs"
+                },
+                "get": {
+                  "response": {
+                    "$ref": "CertificateIssuanceConfig"
+                  },
+                  "httpMethod": "GET",
+                  "path": "v1/{+name}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/certificateIssuanceConfigs/[^/]+$",
+                      "type": "string",
+                      "description": "Required. A name of the certificate issuance config to describe. Must be in the format `projects/*/locations/*/certificateIssuanceConfigs/*`."
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateIssuanceConfigs/{certificateIssuanceConfigsId}",
+                  "description": "Gets details of a single CertificateIssuanceConfig.",
+                  "id": "certificatemanager.projects.locations.certificateIssuanceConfigs.get"
+                },
+                "list": {
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "ListCertificateIssuanceConfigsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/certificateIssuanceConfigs",
+                  "parameters": {
+                    "pageSize": {
+                      "location": "query",
+                      "type": "integer",
+                      "description": "Maximum number of certificate configs to return per call.",
+                      "format": "int32"
+                    },
+                    "orderBy": {
+                      "description": "A list of Certificate Config field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix \" desc\".",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "pageToken": {
+                      "location": "query",
+                      "description": "The value returned by the last `ListCertificateIssuanceConfigsResponse`. Indicates that this is a continuation of a prior `ListCertificateIssuanceConfigs` call, and that the system should return the next page of data.",
+                      "type": "string"
+                    },
+                    "filter": {
+                      "description": "Filter expression to restrict the Certificates Configs returned.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "parent": {
+                      "description": "Required. The project and location from which the certificate should be listed, specified in the format `projects/*/locations/*`.",
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    }
+                  },
+                  "path": "v1/{+parent}/certificateIssuanceConfigs",
+                  "id": "certificatemanager.projects.locations.certificateIssuanceConfigs.list",
+                  "description": "Lists CertificateIssuanceConfigs in a given project and location.",
+                  "parameterOrder": [
+                    "parent"
+                  ]
+                }
+              }
+            }
+          },
+          "methods": {
+            "list": {
+              "description": "Lists information about the supported locations for this service.",
+              "parameterOrder": [
+                "name"
+              ],
+              "flatPath": "v1/projects/{projectsId}/locations",
+              "path": "v1/{+name}/locations",
+              "parameters": {
+                "pageToken": {
+                  "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "filter": {
+                  "type": "string",
+                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "type": "integer",
+                  "format": "int32",
+                  "location": "query",
+                  "description": "The maximum number of results to return. If not set, the service selects a default."
+                },
+                "name": {
+                  "pattern": "^projects/[^/]+$",
+                  "description": "The resource that owns the locations collection, if applicable.",
+                  "location": "path",
+                  "type": "string",
+                  "required": true
+                }
+              },
+              "id": "certificatemanager.projects.locations.list",
+              "response": {
+                "$ref": "ListLocationsResponse"
+              },
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            },
+            "get": {
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "description": "Gets information about a location.",
+              "parameters": {
+                "name": {
+                  "type": "string",
+                  "required": true,
+                  "description": "Resource name for the location.",
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "id": "certificatemanager.projects.locations.get",
+              "path": "v1/{+name}",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
+              "response": {
+                "$ref": "Location"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "description": "",
+  "revision": "20230220",
   "auth": {
     "oauth2": {
       "scopes": {
@@ -1946,9 +1944,11 @@
       }
     }
   },
+  "kind": "discovery#restDescription",
+  "basePath": "",
+  "mtlsRootUrl": "https://certificatemanager.mtls.googleapis.com/",
+  "batchPath": "batch",
   "canonicalName": "Certificate Manager",
-  "description": "",
-  "rootUrl": "https://certificatemanager.googleapis.com/",
-  "discoveryVersion": "v1",
+  "version": "v1",
   "ownerDomain": "google.com"
 }

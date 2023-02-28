@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-gsuiteaddons/versions/v1
+  annotations:
+    config: gsuiteaddons_v1.yaml
+    directory: google/cloud/gsuiteaddons/v1
+    host: gsuiteaddons.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

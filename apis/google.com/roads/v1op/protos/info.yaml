@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-roads/versions/v1op
+  annotations:
+    config: roads_v1op.yaml
+    directory: google/maps/roads/v1op
+    host: roads.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

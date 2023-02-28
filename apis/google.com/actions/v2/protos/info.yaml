@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-actions/versions/v2
+  annotations:
+    config: actions_v2.yaml
+    directory: google/actions/sdk/v2
+    host: actions.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

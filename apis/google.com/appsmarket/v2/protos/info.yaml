@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-appsmarket/versions/v2
+  annotations:
+    config: appsmarket_v2.yaml
+    directory: google/apps/market/v2
+    host: appsmarket.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

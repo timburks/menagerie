@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-datalineage/versions/v1
+  annotations:
+    config: datalineage_v1.yaml
+    directory: google/cloud/datacatalog/lineage/v1
+    host: datalineage.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

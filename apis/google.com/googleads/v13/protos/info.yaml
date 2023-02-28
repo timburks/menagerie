@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-googleads/versions/v13
+  annotations:
+    config: googleads_v13.yaml
+    directory: google/ads/googleads/v13
+    host: googleads.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

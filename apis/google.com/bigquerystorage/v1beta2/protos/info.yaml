@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-bigquerystorage/versions/v1beta2
+  annotations:
+    config: bigquerystorage_v1beta2.yaml
+    directory: google/cloud/bigquery/storage/v1beta2
+    host: bigquerystorage.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

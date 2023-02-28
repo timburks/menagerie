@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-cloudbuild/versions/v2
+  annotations:
+    config: cloudbuild_v2.yaml
+    directory: google/devtools/cloudbuild/v2
+    host: cloudbuild.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

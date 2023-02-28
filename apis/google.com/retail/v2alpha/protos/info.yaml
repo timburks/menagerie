@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-retail/versions/v2alpha
+  annotations:
+    config: retail_v2alpha.yaml
+    directory: google/cloud/retail/v2alpha
+    host: retail.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-dlp/versions/v2
+  annotations:
+    config: dlp_v2.yaml
+    directory: google/privacy/dlp/v2
+    host: dlp.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

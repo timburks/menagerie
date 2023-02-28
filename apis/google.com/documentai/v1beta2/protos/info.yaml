@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-documentai/versions/v1beta2
+  annotations:
+    config: documentai_v1beta2.yaml
+    directory: google/cloud/documentai/v1beta2
+    host: documentai.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

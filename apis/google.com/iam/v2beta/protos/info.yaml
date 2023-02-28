@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-iam/versions/v2beta
+  annotations:
+    config: iam_v2beta.yaml
+    directory: google/iam/v2beta
+    host: iam.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

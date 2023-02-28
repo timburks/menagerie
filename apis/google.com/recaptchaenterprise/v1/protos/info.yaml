@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-recaptchaenterprise/versions/v1
+  annotations:
+    config: recaptchaenterprise_v1.yaml
+    directory: google/cloud/recaptchaenterprise/v1
+    host: recaptchaenterprise.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

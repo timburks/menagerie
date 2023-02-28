@@ -1,7 +1,17 @@
 {
-  "version_module": true,
-  "documentationLink": "https://cloud.google.com/pubsub/lite/docs",
-  "id": "pubsublite:v1",
+  "servicePath": "",
+  "version": "v1",
+  "description": "",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
+  "fullyEncodeReservedExpansion": true,
+  "mtlsRootUrl": "https://pubsublite.mtls.googleapis.com/",
+  "rootUrl": "https://pubsublite.googleapis.com/",
+  "baseUrl": "https://pubsublite.googleapis.com/",
+  "ownerName": "Google",
+  "name": "pubsublite",
   "auth": {
     "oauth2": {
       "scopes": {
@@ -11,102 +21,746 @@
       }
     }
   },
-  "baseUrl": "https://pubsublite.googleapis.com/",
-  "discoveryVersion": "v1",
-  "protocol": "rest",
-  "batchPath": "batch",
   "resources": {
-    "topicStats": {
+    "admin": {
       "resources": {
         "projects": {
           "resources": {
             "locations": {
               "resources": {
-                "topics": {
-                  "methods": {
-                    "computeMessageStats": {
-                      "path": "v1/topicStats/{+topic}:computeMessageStats",
-                      "request": {
-                        "$ref": "ComputeMessageStatsRequest"
-                      },
-                      "description": "Compute statistics about a range of messages in a given topic and partition.",
-                      "flatPath": "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeMessageStats",
-                      "id": "pubsublite.topicStats.projects.locations.topics.computeMessageStats",
-                      "response": {
-                        "$ref": "ComputeMessageStatsResponse"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameterOrder": [
-                        "topic"
-                      ],
-                      "httpMethod": "POST",
-                      "parameters": {
-                        "topic": {
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
-                          "required": true,
-                          "location": "path",
-                          "description": "Required. The topic for which we should compute message stats."
+                "reservations": {
+                  "resources": {
+                    "topics": {
+                      "methods": {
+                        "list": {
+                          "id": "pubsublite.admin.projects.locations.reservations.topics.list",
+                          "parameters": {
+                            "name": {
+                              "location": "path",
+                              "description": "Required. The name of the reservation whose topics to list. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}",
+                              "pattern": "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
+                              "required": true,
+                              "type": "string"
+                            },
+                            "pageSize": {
+                              "format": "int32",
+                              "description": "The maximum number of topics to return. The service may return fewer than this value. If unset or zero, all topics for the given reservation will be returned.",
+                              "type": "integer",
+                              "location": "query"
+                            },
+                            "pageToken": {
+                              "description": "A page token, received from a previous `ListReservationTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReservationTopics` must match the call that provided the page token.",
+                              "location": "query",
+                              "type": "string"
+                            }
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ],
+                          "description": "Lists the topics attached to the specified reservation.",
+                          "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/topics",
+                          "httpMethod": "GET",
+                          "response": {
+                            "$ref": "ListReservationTopicsResponse"
+                          },
+                          "path": "v1/admin/{+name}/topics",
+                          "parameterOrder": [
+                            "name"
+                          ]
                         }
                       }
-                    },
-                    "computeTimeCursor": {
-                      "parameterOrder": [
-                        "topic"
-                      ],
-                      "id": "pubsublite.topicStats.projects.locations.topics.computeTimeCursor",
+                    }
+                  },
+                  "methods": {
+                    "patch": {
                       "response": {
-                        "$ref": "ComputeTimeCursorResponse"
+                        "$ref": "Reservation"
                       },
+                      "id": "pubsublite.admin.projects.locations.reservations.patch",
+                      "httpMethod": "PATCH",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "description": "Updates properties of the specified reservation.",
+                      "path": "v1/admin/{+name}",
                       "parameters": {
-                        "topic": {
+                        "updateMask": {
+                          "format": "google-fieldmask",
+                          "location": "query",
+                          "description": "Required. A mask specifying the reservation fields to change.",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}",
                           "location": "path",
-                          "type": "string",
-                          "description": "Required. The topic for which we should compute the cursor.",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
-                          "required": true
+                          "pattern": "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
+                          "required": true,
+                          "type": "string"
                         }
                       },
-                      "path": "v1/topicStats/{+topic}:computeTimeCursor",
-                      "flatPath": "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeTimeCursor",
-                      "description": "Compute the corresponding cursor for a publish or event time in a topic partition.",
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
                       ],
                       "request": {
-                        "$ref": "ComputeTimeCursorRequest"
-                      },
-                      "httpMethod": "POST"
+                        "$ref": "Reservation"
+                      }
                     },
-                    "computeHeadCursor": {
+                    "get": {
+                      "parameters": {
+                        "name": {
+                          "required": true,
+                          "pattern": "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
+                          "location": "path",
+                          "description": "Required. The name of the reservation whose configuration to return. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}",
+                          "type": "string"
+                        }
+                      },
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
+                      "response": {
+                        "$ref": "Reservation"
+                      },
+                      "httpMethod": "GET",
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "id": "pubsublite.admin.projects.locations.reservations.get",
+                      "path": "v1/admin/{+name}",
+                      "description": "Returns the reservation configuration.",
+                      "parameterOrder": [
+                        "name"
+                      ]
+                    },
+                    "create": {
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "path": "v1/admin/{+parent}/reservations",
+                      "response": {
+                        "$ref": "Reservation"
+                      },
+                      "id": "pubsublite.admin.projects.locations.reservations.create",
+                      "request": {
+                        "$ref": "Reservation"
+                      },
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations",
+                      "parameters": {
+                        "parent": {
+                          "description": "Required. The parent location in which to create the reservation. Structured like `projects/{project_number}/locations/{location}`.",
+                          "location": "path",
+                          "pattern": "^projects/[^/]+/locations/[^/]+$",
+                          "type": "string",
+                          "required": true
+                        },
+                        "reservationId": {
+                          "location": "query",
+                          "type": "string",
+                          "description": "Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`."
+                        }
+                      },
+                      "httpMethod": "POST",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "description": "Creates a new reservation."
+                    },
+                    "delete": {
+                      "response": {
+                        "$ref": "Empty"
+                      },
+                      "parameters": {
+                        "name": {
+                          "location": "path",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
+                          "required": true,
+                          "type": "string",
+                          "description": "Required. The name of the reservation to delete. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}"
+                        }
+                      },
+                      "path": "v1/admin/{+name}",
+                      "id": "pubsublite.admin.projects.locations.reservations.delete",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
+                      "description": "Deletes the specified reservation.",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "DELETE"
+                    },
+                    "list": {
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "description": "Returns the list of reservations for the given project.",
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "response": {
+                        "$ref": "ListReservationsResponse"
+                      },
+                      "parameters": {
+                        "pageToken": {
+                          "description": "A page token, received from a previous `ListReservations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReservations` must match the call that provided the page token.",
+                          "location": "query",
+                          "type": "string"
+                        },
+                        "pageSize": {
+                          "description": "The maximum number of reservations to return. The service may return fewer than this value. If unset or zero, all reservations for the parent will be returned.",
+                          "location": "query",
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "parent": {
+                          "required": true,
+                          "type": "string",
+                          "location": "path",
+                          "description": "Required. The parent whose reservations are to be listed. Structured like `projects/{project_number}/locations/{location}`.",
+                          "pattern": "^projects/[^/]+/locations/[^/]+$"
+                        }
+                      },
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations",
+                      "httpMethod": "GET",
+                      "path": "v1/admin/{+parent}/reservations",
+                      "id": "pubsublite.admin.projects.locations.reservations.list"
+                    }
+                  }
+                },
+                "topics": {
+                  "resources": {
+                    "subscriptions": {
+                      "methods": {
+                        "list": {
+                          "path": "v1/admin/{+name}/subscriptions",
+                          "response": {
+                            "$ref": "ListTopicSubscriptionsResponse"
+                          },
+                          "parameterOrder": [
+                            "name"
+                          ],
+                          "httpMethod": "GET",
+                          "id": "pubsublite.admin.projects.locations.topics.subscriptions.list",
+                          "parameters": {
+                            "pageSize": {
+                              "location": "query",
+                              "type": "integer",
+                              "description": "The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the given topic will be returned.",
+                              "format": "int32"
+                            },
+                            "name": {
+                              "type": "string",
+                              "location": "path",
+                              "description": "Required. The name of the topic whose subscriptions to list.",
+                              "required": true,
+                              "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$"
+                            },
+                            "pageToken": {
+                              "description": "A page token, received from a previous `ListTopicSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopicSubscriptions` must match the call that provided the page token.",
+                              "location": "query",
+                              "type": "string"
+                            }
+                          },
+                          "description": "Lists the subscriptions attached to the specified topic.",
+                          "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}/subscriptions",
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "methods": {
+                    "get": {
+                      "description": "Returns the topic configuration.",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "path": "v1/admin/{+name}",
+                      "httpMethod": "GET",
+                      "parameters": {
+                        "name": {
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
+                          "description": "Required. The name of the topic whose configuration to return."
+                        }
+                      },
+                      "id": "pubsublite.admin.projects.locations.topics.get",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
+                      "response": {
+                        "$ref": "Topic"
+                      }
+                    },
+                    "getPartitions": {
+                      "id": "pubsublite.admin.projects.locations.topics.getPartitions",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "description": "Returns the partition information for the requested topic.",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
+                          "description": "Required. The topic whose partition information to return.",
+                          "location": "path",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "httpMethod": "GET",
+                      "path": "v1/admin/{+name}/partitions",
+                      "response": {
+                        "$ref": "TopicPartitions"
+                      },
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}/partitions"
+                    },
+                    "create": {
+                      "request": {
+                        "$ref": "Topic"
+                      },
+                      "path": "v1/admin/{+parent}/topics",
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "description": "Creates a new topic.",
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "id": "pubsublite.admin.projects.locations.topics.create",
+                      "httpMethod": "POST",
+                      "parameters": {
+                        "parent": {
+                          "required": true,
+                          "location": "path",
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/locations/[^/]+$",
+                          "description": "Required. The parent location in which to create the topic. Structured like `projects/{project_number}/locations/{location}`."
+                        },
+                        "topicId": {
+                          "location": "query",
+                          "description": "Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.",
+                          "type": "string"
+                        }
+                      },
+                      "response": {
+                        "$ref": "Topic"
+                      }
+                    },
+                    "patch": {
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
+                      "request": {
+                        "$ref": "Topic"
+                      },
+                      "description": "Updates properties of the specified topic.",
+                      "parameters": {
+                        "updateMask": {
+                          "format": "google-fieldmask",
+                          "location": "query",
+                          "type": "string",
+                          "description": "Required. A mask specifying the topic fields to change."
+                        },
+                        "name": {
+                          "location": "path",
+                          "description": "The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
+                          "type": "string",
+                          "required": true
+                        }
+                      },
+                      "response": {
+                        "$ref": "Topic"
+                      },
+                      "id": "pubsublite.admin.projects.locations.topics.patch",
+                      "path": "v1/admin/{+name}",
+                      "httpMethod": "PATCH",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameterOrder": [
+                        "name"
+                      ]
+                    },
+                    "delete": {
+                      "httpMethod": "DELETE",
+                      "parameters": {
+                        "name": {
+                          "required": true,
+                          "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
+                          "location": "path",
+                          "type": "string",
+                          "description": "Required. The name of the topic to delete."
+                        }
+                      },
+                      "description": "Deletes the specified topic.",
+                      "path": "v1/admin/{+name}",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
+                      "response": {
+                        "$ref": "Empty"
+                      },
+                      "id": "pubsublite.admin.projects.locations.topics.delete"
+                    },
+                    "list": {
+                      "description": "Returns the list of topics for the given project.",
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics",
+                      "httpMethod": "GET",
+                      "response": {
+                        "$ref": "ListTopicsResponse"
+                      },
+                      "parameters": {
+                        "pageSize": {
+                          "format": "int32",
+                          "location": "query",
+                          "type": "integer",
+                          "description": "The maximum number of topics to return. The service may return fewer than this value. If unset or zero, all topics for the parent will be returned."
+                        },
+                        "pageToken": {
+                          "description": "A page token, received from a previous `ListTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopics` must match the call that provided the page token.",
+                          "type": "string",
+                          "location": "query"
+                        },
+                        "parent": {
+                          "pattern": "^projects/[^/]+/locations/[^/]+$",
+                          "description": "Required. The parent whose topics are to be listed. Structured like `projects/{project_number}/locations/{location}`.",
+                          "required": true,
+                          "type": "string",
+                          "location": "path"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "id": "pubsublite.admin.projects.locations.topics.list",
+                      "path": "v1/admin/{+parent}/topics"
+                    }
+                  }
+                },
+                "operations": {
+                  "methods": {
+                    "list": {
+                      "path": "v1/admin/{+name}/operations",
+                      "parameters": {
+                        "pageToken": {
+                          "description": "The standard list page token.",
+                          "location": "query",
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "The name of the operation's parent resource.",
+                          "pattern": "^projects/[^/]+/locations/[^/]+$",
+                          "location": "path",
+                          "required": true
+                        },
+                        "pageSize": {
+                          "location": "query",
+                          "type": "integer",
+                          "format": "int32",
+                          "description": "The standard list page size."
+                        },
+                        "filter": {
+                          "location": "query",
+                          "description": "The standard list filter.",
+                          "type": "string"
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                      "httpMethod": "GET",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/operations",
+                      "response": {
+                        "$ref": "ListOperationsResponse"
+                      },
+                      "id": "pubsublite.admin.projects.locations.operations.list"
+                    },
+                    "get": {
+                      "httpMethod": "GET",
+                      "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                      "response": {
+                        "$ref": "Operation"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                      "path": "v1/admin/{+name}",
+                      "parameters": {
+                        "name": {
+                          "description": "The name of the operation resource.",
+                          "location": "path",
+                          "required": true,
+                          "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                          "type": "string"
+                        }
+                      },
+                      "id": "pubsublite.admin.projects.locations.operations.get"
+                    },
+                    "delete": {
+                      "id": "pubsublite.admin.projects.locations.operations.delete",
+                      "httpMethod": "DELETE",
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                      "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                      "parameters": {
+                        "name": {
+                          "required": true,
+                          "type": "string",
+                          "description": "The name of the operation resource to be deleted.",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                          "location": "path"
+                        }
+                      },
+                      "path": "v1/admin/{+name}",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "response": {
+                        "$ref": "Empty"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ]
+                    },
+                    "cancel": {
+                      "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "required": true,
+                          "description": "The name of the operation resource to be cancelled.",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                          "type": "string",
+                          "location": "path"
+                        }
+                      },
+                      "response": {
+                        "$ref": "Empty"
+                      },
+                      "httpMethod": "POST",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": {
+                        "$ref": "CancelOperationRequest"
+                      },
+                      "path": "v1/admin/{+name}:cancel",
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                      "id": "pubsublite.admin.projects.locations.operations.cancel"
+                    }
+                  }
+                },
+                "subscriptions": {
+                  "methods": {
+                    "list": {
+                      "description": "Returns the list of subscriptions for the given project.",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions",
+                      "response": {
+                        "$ref": "ListSubscriptionsResponse"
+                      },
+                      "httpMethod": "GET",
+                      "parameters": {
+                        "pageSize": {
+                          "location": "query",
+                          "format": "int32",
+                          "type": "integer",
+                          "description": "The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the parent will be returned."
+                        },
+                        "parent": {
+                          "pattern": "^projects/[^/]+/locations/[^/]+$",
+                          "description": "Required. The parent whose subscriptions are to be listed. Structured like `projects/{project_number}/locations/{location}`.",
+                          "required": true,
+                          "type": "string",
+                          "location": "path"
+                        },
+                        "pageToken": {
+                          "type": "string",
+                          "description": "A page token, received from a previous `ListSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscriptions` must match the call that provided the page token.",
+                          "location": "query"
+                        }
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "id": "pubsublite.admin.projects.locations.subscriptions.list",
+                      "path": "v1/admin/{+parent}/subscriptions"
+                    },
+                    "seek": {
+                      "parameters": {
+                        "name": {
+                          "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
+                          "description": "Required. The name of the subscription to seek.",
+                          "location": "path",
+                          "type": "string",
+                          "required": true
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
                       ],
                       "httpMethod": "POST",
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}:seek",
+                      "response": {
+                        "$ref": "Operation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "description": "Performs an out-of-band seek for a subscription to a specified target, which may be timestamps or named positions within the message backlog. Seek translates these targets to cursors for each partition and orchestrates subscribers to start consuming messages from these seek cursors. If an operation is returned, the seek has been registered and subscribers will eventually receive messages from the seek cursors (i.e. eventual consistency), as long as they are using a minimum supported client library version and not a system that tracks cursors independently of Pub/Sub Lite (e.g. Apache Beam, Dataflow, Spark). The seek operation will fail for unsupported clients. If clients would like to know when subscribers react to the seek (or not), they can poll the operation. The seek operation will succeed and complete once subscribers are ready to receive messages from the seek cursors for all partitions of the topic. This means that the seek operation will not complete until all subscribers come online. If the previous seek operation has not yet completed, it will be aborted and the new invocation of seek will supersede it.",
+                      "id": "pubsublite.admin.projects.locations.subscriptions.seek",
                       "request": {
-                        "$ref": "ComputeHeadCursorRequest"
+                        "$ref": "SeekSubscriptionRequest"
+                      },
+                      "path": "v1/admin/{+name}:seek"
+                    },
+                    "patch": {
+                      "parameters": {
+                        "name": {
+                          "type": "string",
+                          "location": "path",
+                          "description": "The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
+                          "required": true
+                        },
+                        "updateMask": {
+                          "format": "google-fieldmask",
+                          "location": "query",
+                          "description": "Required. A mask specifying the subscription fields to change.",
+                          "type": "string"
+                        }
+                      },
+                      "id": "pubsublite.admin.projects.locations.subscriptions.patch",
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
+                      "request": {
+                        "$ref": "Subscription"
                       },
                       "response": {
-                        "$ref": "ComputeHeadCursorResponse"
+                        "$ref": "Subscription"
+                      },
+                      "path": "v1/admin/{+name}",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "description": "Updates properties of the specified subscription.",
+                      "httpMethod": "PATCH"
+                    },
+                    "create": {
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "response": {
+                        "$ref": "Subscription"
+                      },
+                      "httpMethod": "POST",
+                      "path": "v1/admin/{+parent}/subscriptions",
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions",
+                      "parameters": {
+                        "parent": {
+                          "required": true,
+                          "description": "Required. The parent location in which to create the subscription. Structured like `projects/{project_number}/locations/{location}`.",
+                          "pattern": "^projects/[^/]+/locations/[^/]+$",
+                          "type": "string",
+                          "location": "path"
+                        },
+                        "skipBacklog": {
+                          "location": "query",
+                          "description": "If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.",
+                          "type": "boolean"
+                        },
+                        "subscriptionId": {
+                          "type": "string",
+                          "description": "Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.",
+                          "location": "query"
+                        }
+                      },
+                      "id": "pubsublite.admin.projects.locations.subscriptions.create",
+                      "description": "Creates a new subscription.",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "request": {
+                        "$ref": "Subscription"
+                      }
+                    },
+                    "delete": {
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "response": {
+                        "$ref": "Empty"
                       },
                       "parameters": {
-                        "topic": {
-                          "location": "path",
-                          "description": "Required. The topic for which we should compute the head cursor.",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
+                        "name": {
                           "type": "string",
+                          "location": "path",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
+                          "description": "Required. The name of the subscription to delete.",
                           "required": true
                         }
                       },
-                      "path": "v1/topicStats/{+topic}:computeHeadCursor",
-                      "id": "pubsublite.topicStats.projects.locations.topics.computeHeadCursor",
-                      "description": "Compute the head cursor for the partition. The head cursor's offset is guaranteed to be less than or equal to all messages which have not yet been acknowledged as published, and greater than the offset of any message whose publish has already been acknowledged. It is zero if there have never been messages in the partition.",
-                      "flatPath": "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeHeadCursor",
+                      "path": "v1/admin/{+name}",
+                      "description": "Deletes the specified subscription.",
+                      "id": "pubsublite.admin.projects.locations.subscriptions.delete",
+                      "httpMethod": "DELETE",
                       "parameterOrder": [
-                        "topic"
-                      ]
+                        "name"
+                      ],
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}"
+                    },
+                    "get": {
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "path": "v1/admin/{+name}",
+                      "id": "pubsublite.admin.projects.locations.subscriptions.get",
+                      "httpMethod": "GET",
+                      "description": "Returns the subscription configuration.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. The name of the subscription whose configuration to return.",
+                          "type": "string",
+                          "required": true,
+                          "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
+                          "location": "path"
+                        }
+                      },
+                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "response": {
+                        "$ref": "Subscription"
+                      }
                     }
                   }
                 }
@@ -116,745 +770,97 @@
         }
       }
     },
-    "admin": {
+    "topicStats": {
       "resources": {
         "projects": {
           "resources": {
             "locations": {
               "resources": {
-                "subscriptions": {
-                  "methods": {
-                    "seek": {
-                      "parameters": {
-                        "name": {
-                          "description": "Required. The name of the subscription to seek.",
-                          "location": "path",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$"
-                        }
-                      },
-                      "path": "v1/admin/{+name}:seek",
-                      "id": "pubsublite.admin.projects.locations.subscriptions.seek",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "POST",
-                      "response": {
-                        "$ref": "Operation"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}:seek",
-                      "request": {
-                        "$ref": "SeekSubscriptionRequest"
-                      },
-                      "description": "Performs an out-of-band seek for a subscription to a specified target, which may be timestamps or named positions within the message backlog. Seek translates these targets to cursors for each partition and orchestrates subscribers to start consuming messages from these seek cursors. If an operation is returned, the seek has been registered and subscribers will eventually receive messages from the seek cursors (i.e. eventual consistency), as long as they are using a minimum supported client library version and not a system that tracks cursors independently of Pub/Sub Lite (e.g. Apache Beam, Dataflow, Spark). The seek operation will fail for unsupported clients. If clients would like to know when subscribers react to the seek (or not), they can poll the operation. The seek operation will succeed and complete once subscribers are ready to receive messages from the seek cursors for all partitions of the topic. This means that the seek operation will not complete until all subscribers come online. If the previous seek operation has not yet completed, it will be aborted and the new invocation of seek will supersede it."
-                    },
-                    "get": {
-                      "response": {
-                        "$ref": "Subscription"
-                      },
-                      "description": "Returns the subscription configuration.",
-                      "path": "v1/admin/{+name}",
-                      "httpMethod": "GET",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "type": "string",
-                          "description": "Required. The name of the subscription whose configuration to return.",
-                          "location": "path",
-                          "required": true,
-                          "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$"
-                        }
-                      },
-                      "id": "pubsublite.admin.projects.locations.subscriptions.get",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    },
-                    "create": {
-                      "parameters": {
-                        "subscriptionId": {
-                          "description": "Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.",
-                          "location": "query",
-                          "type": "string"
-                        },
-                        "skipBacklog": {
-                          "description": "If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.",
-                          "type": "boolean",
-                          "location": "query"
-                        },
-                        "parent": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+$",
-                          "location": "path",
-                          "required": true,
-                          "description": "Required. The parent location in which to create the subscription. Structured like `projects/{project_number}/locations/{location}`.",
-                          "type": "string"
-                        }
-                      },
-                      "id": "pubsublite.admin.projects.locations.subscriptions.create",
-                      "response": {
-                        "$ref": "Subscription"
-                      },
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions",
-                      "request": {
-                        "$ref": "Subscription"
-                      },
-                      "path": "v1/admin/{+parent}/subscriptions",
-                      "description": "Creates a new subscription.",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "httpMethod": "POST"
-                    },
-                    "patch": {
-                      "httpMethod": "PATCH",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "id": "pubsublite.admin.projects.locations.subscriptions.patch",
-                      "path": "v1/admin/{+name}",
-                      "parameters": {
-                        "name": {
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
-                          "type": "string",
-                          "required": true,
-                          "description": "The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}"
-                        },
-                        "updateMask": {
-                          "description": "Required. A mask specifying the subscription fields to change.",
-                          "type": "string",
-                          "format": "google-fieldmask",
-                          "location": "query"
-                        }
-                      },
-                      "description": "Updates properties of the specified subscription.",
-                      "response": {
-                        "$ref": "Subscription"
-                      },
-                      "request": {
-                        "$ref": "Subscription"
-                      },
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}"
-                    },
-                    "list": {
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions",
-                      "response": {
-                        "$ref": "ListSubscriptionsResponse"
-                      },
-                      "path": "v1/admin/{+parent}/subscriptions",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "description": "Returns the list of subscriptions for the given project.",
-                      "httpMethod": "GET",
-                      "parameters": {
-                        "pageToken": {
-                          "description": "A page token, received from a previous `ListSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscriptions` must match the call that provided the page token.",
-                          "location": "query",
-                          "type": "string"
-                        },
-                        "parent": {
-                          "location": "path",
-                          "description": "Required. The parent whose subscriptions are to be listed. Structured like `projects/{project_number}/locations/{location}`.",
-                          "pattern": "^projects/[^/]+/locations/[^/]+$",
-                          "required": true,
-                          "type": "string"
-                        },
-                        "pageSize": {
-                          "description": "The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the parent will be returned.",
-                          "format": "int32",
-                          "location": "query",
-                          "type": "integer"
-                        }
-                      },
-                      "id": "pubsublite.admin.projects.locations.subscriptions.list"
-                    },
-                    "delete": {
-                      "path": "v1/admin/{+name}",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "id": "pubsublite.admin.projects.locations.subscriptions.delete",
-                      "httpMethod": "DELETE",
-                      "parameters": {
-                        "name": {
-                          "description": "Required. The name of the subscription to delete.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
-                      "description": "Deletes the specified subscription.",
-                      "response": {
-                        "$ref": "Empty"
-                      }
-                    }
-                  }
-                },
-                "operations": {
-                  "methods": {
-                    "get": {
-                      "response": {
-                        "$ref": "Operation"
-                      },
-                      "id": "pubsublite.admin.projects.locations.operations.get",
-                      "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
-                      "parameters": {
-                        "name": {
-                          "type": "string",
-                          "required": true,
-                          "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                          "description": "The name of the operation resource.",
-                          "location": "path"
-                        }
-                      },
-                      "httpMethod": "GET",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "path": "v1/admin/{+name}"
-                    },
-                    "list": {
-                      "parameters": {
-                        "pageToken": {
-                          "description": "The standard list page token.",
-                          "type": "string",
-                          "location": "query"
-                        },
-                        "pageSize": {
-                          "location": "query",
-                          "type": "integer",
-                          "description": "The standard list page size.",
-                          "format": "int32"
-                        },
-                        "filter": {
-                          "location": "query",
-                          "type": "string",
-                          "description": "The standard list filter."
-                        },
-                        "name": {
-                          "required": true,
-                          "description": "The name of the operation's parent resource.",
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/operations",
-                      "response": {
-                        "$ref": "ListOperationsResponse"
-                      },
-                      "path": "v1/admin/{+name}/operations",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "httpMethod": "GET",
-                      "id": "pubsublite.admin.projects.locations.operations.list"
-                    },
-                    "cancel": {
-                      "httpMethod": "POST",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-                      "response": {
-                        "$ref": "Empty"
-                      },
-                      "id": "pubsublite.admin.projects.locations.operations.cancel",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "request": {
-                        "$ref": "CancelOperationRequest"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-                      "parameters": {
-                        "name": {
-                          "required": true,
-                          "location": "path",
-                          "description": "The name of the operation resource to be cancelled.",
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$"
-                        }
-                      },
-                      "path": "v1/admin/{+name}:cancel"
-                    },
-                    "delete": {
-                      "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "path": "v1/admin/{+name}",
-                      "parameters": {
-                        "name": {
-                          "location": "path",
-                          "description": "The name of the operation resource to be deleted.",
-                          "required": true,
-                          "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "httpMethod": "DELETE",
-                      "response": {
-                        "$ref": "Empty"
-                      },
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                      "id": "pubsublite.admin.projects.locations.operations.delete"
-                    }
-                  }
-                },
                 "topics": {
-                  "resources": {
-                    "subscriptions": {
-                      "methods": {
-                        "list": {
-                          "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}/subscriptions",
-                          "scopes": [
-                            "https://www.googleapis.com/auth/cloud-platform"
-                          ],
-                          "path": "v1/admin/{+name}/subscriptions",
-                          "parameters": {
-                            "pageSize": {
-                              "type": "integer",
-                              "location": "query",
-                              "description": "The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the given topic will be returned.",
-                              "format": "int32"
-                            },
-                            "pageToken": {
-                              "type": "string",
-                              "description": "A page token, received from a previous `ListTopicSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopicSubscriptions` must match the call that provided the page token.",
-                              "location": "query"
-                            },
-                            "name": {
-                              "type": "string",
-                              "description": "Required. The name of the topic whose subscriptions to list.",
-                              "required": true,
-                              "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
-                              "location": "path"
-                            }
-                          },
-                          "parameterOrder": [
-                            "name"
-                          ],
-                          "httpMethod": "GET",
-                          "description": "Lists the subscriptions attached to the specified topic.",
-                          "response": {
-                            "$ref": "ListTopicSubscriptionsResponse"
-                          },
-                          "id": "pubsublite.admin.projects.locations.topics.subscriptions.list"
-                        }
-                      }
-                    }
-                  },
                   "methods": {
-                    "create": {
-                      "path": "v1/admin/{+parent}/topics",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics",
-                      "request": {
-                        "$ref": "Topic"
-                      },
-                      "response": {
-                        "$ref": "Topic"
-                      },
+                    "computeTimeCursor": {
+                      "parameterOrder": [
+                        "topic"
+                      ],
+                      "path": "v1/topicStats/{+topic}:computeTimeCursor",
                       "httpMethod": "POST",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "id": "pubsublite.admin.projects.locations.topics.create",
+                      "request": {
+                        "$ref": "ComputeTimeCursorRequest"
+                      },
+                      "description": "Compute the corresponding cursor for a publish or event time in a topic partition.",
+                      "flatPath": "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeTimeCursor",
+                      "id": "pubsublite.topicStats.projects.locations.topics.computeTimeCursor",
+                      "response": {
+                        "$ref": "ComputeTimeCursorResponse"
+                      },
                       "parameters": {
-                        "parent": {
+                        "topic": {
                           "location": "path",
                           "required": true,
-                          "pattern": "^projects/[^/]+/locations/[^/]+$",
-                          "description": "Required. The parent location in which to create the topic. Structured like `projects/{project_number}/locations/{location}`.",
-                          "type": "string"
-                        },
-                        "topicId": {
-                          "description": "Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.",
-                          "location": "query",
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "description": "Creates a new topic."
-                    },
-                    "getPartitions": {
-                      "httpMethod": "GET",
-                      "description": "Returns the partition information for the requested topic.",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}/partitions",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "response": {
-                        "$ref": "TopicPartitions"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
-                          "location": "path",
-                          "required": true,
+                          "description": "Required. The topic for which we should compute the cursor.",
                           "type": "string",
-                          "description": "Required. The topic whose partition information to return."
-                        }
-                      },
-                      "path": "v1/admin/{+name}/partitions",
-                      "id": "pubsublite.admin.projects.locations.topics.getPartitions"
-                    },
-                    "delete": {
-                      "httpMethod": "DELETE",
-                      "id": "pubsublite.admin.projects.locations.topics.delete",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
-                      "response": {
-                        "$ref": "Empty"
-                      },
-                      "parameters": {
-                        "name": {
-                          "description": "Required. The name of the topic to delete.",
-                          "type": "string",
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
-                          "required": true
-                        }
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "description": "Deletes the specified topic.",
-                      "path": "v1/admin/{+name}",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    },
-                    "get": {
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "response": {
-                        "$ref": "Topic"
-                      },
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
-                      "path": "v1/admin/{+name}",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "httpMethod": "GET",
-                      "id": "pubsublite.admin.projects.locations.topics.get",
-                      "parameters": {
-                        "name": {
-                          "required": true,
-                          "type": "string",
-                          "location": "path",
-                          "description": "Required. The name of the topic whose configuration to return.",
                           "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$"
                         }
                       },
-                      "description": "Returns the topic configuration."
-                    },
-                    "list": {
-                      "id": "pubsublite.admin.projects.locations.topics.list",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "description": "Returns the list of topics for the given project.",
-                      "httpMethod": "GET",
-                      "path": "v1/admin/{+parent}/topics",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics",
-                      "parameters": {
-                        "pageToken": {
-                          "description": "A page token, received from a previous `ListTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopics` must match the call that provided the page token.",
-                          "location": "query",
-                          "type": "string"
-                        },
-                        "pageSize": {
-                          "location": "query",
-                          "format": "int32",
-                          "description": "The maximum number of topics to return. The service may return fewer than this value. If unset or zero, all topics for the parent will be returned.",
-                          "type": "integer"
-                        },
-                        "parent": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+$",
-                          "type": "string",
-                          "required": true,
-                          "description": "Required. The parent whose topics are to be listed. Structured like `projects/{project_number}/locations/{location}`.",
-                          "location": "path"
-                        }
-                      },
-                      "response": {
-                        "$ref": "ListTopicsResponse"
-                      },
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
                       ]
                     },
-                    "patch": {
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
-                      "id": "pubsublite.admin.projects.locations.topics.patch",
+                    "computeMessageStats": {
+                      "description": "Compute statistics about a range of messages in a given topic and partition.",
+                      "parameterOrder": [
+                        "topic"
+                      ],
+                      "request": {
+                        "$ref": "ComputeMessageStatsRequest"
+                      },
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
                       ],
-                      "request": {
-                        "$ref": "Topic"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
                       "parameters": {
-                        "updateMask": {
-                          "type": "string",
-                          "format": "google-fieldmask",
-                          "location": "query",
-                          "description": "Required. A mask specifying the topic fields to change."
-                        },
-                        "name": {
-                          "type": "string",
-                          "location": "path",
-                          "description": "The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}",
+                        "topic": {
                           "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
-                          "required": true
-                        }
-                      },
-                      "httpMethod": "PATCH",
-                      "description": "Updates properties of the specified topic.",
-                      "response": {
-                        "$ref": "Topic"
-                      },
-                      "path": "v1/admin/{+name}"
-                    }
-                  }
-                },
-                "reservations": {
-                  "resources": {
-                    "topics": {
-                      "methods": {
-                        "list": {
-                          "httpMethod": "GET",
-                          "parameters": {
-                            "pageSize": {
-                              "location": "query",
-                              "type": "integer",
-                              "format": "int32",
-                              "description": "The maximum number of topics to return. The service may return fewer than this value. If unset or zero, all topics for the given reservation will be returned."
-                            },
-                            "name": {
-                              "location": "path",
-                              "pattern": "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
-                              "description": "Required. The name of the reservation whose topics to list. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}",
-                              "required": true,
-                              "type": "string"
-                            },
-                            "pageToken": {
-                              "type": "string",
-                              "description": "A page token, received from a previous `ListReservationTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReservationTopics` must match the call that provided the page token.",
-                              "location": "query"
-                            }
-                          },
-                          "response": {
-                            "$ref": "ListReservationTopicsResponse"
-                          },
-                          "parameterOrder": [
-                            "name"
-                          ],
-                          "id": "pubsublite.admin.projects.locations.reservations.topics.list",
-                          "scopes": [
-                            "https://www.googleapis.com/auth/cloud-platform"
-                          ],
-                          "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/topics",
-                          "description": "Lists the topics attached to the specified reservation.",
-                          "path": "v1/admin/{+name}/topics"
-                        }
-                      }
-                    }
-                  },
-                  "methods": {
-                    "patch": {
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "PATCH",
-                      "request": {
-                        "$ref": "Reservation"
-                      },
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
-                      "description": "Updates properties of the specified reservation.",
-                      "response": {
-                        "$ref": "Reservation"
-                      },
-                      "parameters": {
-                        "name": {
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
+                          "description": "Required. The topic for which we should compute message stats.",
                           "location": "path",
-                          "description": "The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}"
-                        },
-                        "updateMask": {
-                          "description": "Required. A mask specifying the reservation fields to change.",
-                          "location": "query",
-                          "format": "google-fieldmask",
+                          "required": true,
                           "type": "string"
                         }
                       },
-                      "id": "pubsublite.admin.projects.locations.reservations.patch",
-                      "path": "v1/admin/{+name}",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    },
-                    "delete": {
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "id": "pubsublite.admin.projects.locations.reservations.delete",
-                      "httpMethod": "DELETE",
                       "response": {
-                        "$ref": "Empty"
+                        "$ref": "ComputeMessageStatsResponse"
                       },
-                      "path": "v1/admin/{+name}",
-                      "description": "Deletes the specified reservation.",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
-                          "location": "path",
-                          "required": true,
-                          "type": "string",
-                          "description": "Required. The name of the reservation to delete. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}"
-                        }
-                      }
+                      "flatPath": "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeMessageStats",
+                      "id": "pubsublite.topicStats.projects.locations.topics.computeMessageStats",
+                      "path": "v1/topicStats/{+topic}:computeMessageStats",
+                      "httpMethod": "POST"
                     },
-                    "get": {
-                      "description": "Returns the reservation configuration.",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
+                    "computeHeadCursor": {
+                      "path": "v1/topicStats/{+topic}:computeHeadCursor",
                       "response": {
-                        "$ref": "Reservation"
+                        "$ref": "ComputeHeadCursorResponse"
                       },
-                      "path": "v1/admin/{+name}",
-                      "httpMethod": "GET",
-                      "parameters": {
-                        "name": {
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
-                          "required": true,
-                          "description": "Required. The name of the reservation whose configuration to return. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}",
-                          "location": "path"
-                        }
-                      },
-                      "id": "pubsublite.admin.projects.locations.reservations.get"
-                    },
-                    "list": {
-                      "id": "pubsublite.admin.projects.locations.reservations.list",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "pageSize": {
-                          "location": "query",
-                          "type": "integer",
-                          "format": "int32",
-                          "description": "The maximum number of reservations to return. The service may return fewer than this value. If unset or zero, all reservations for the parent will be returned."
-                        },
-                        "pageToken": {
-                          "location": "query",
-                          "type": "string",
-                          "description": "A page token, received from a previous `ListReservations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReservations` must match the call that provided the page token."
-                        },
-                        "parent": {
-                          "description": "Required. The parent whose reservations are to be listed. Structured like `projects/{project_number}/locations/{location}`.",
-                          "required": true,
-                          "pattern": "^projects/[^/]+/locations/[^/]+$",
-                          "type": "string",
-                          "location": "path"
-                        }
-                      },
-                      "path": "v1/admin/{+parent}/reservations",
-                      "httpMethod": "GET",
-                      "response": {
-                        "$ref": "ListReservationsResponse"
-                      },
-                      "description": "Returns the list of reservations for the given project.",
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations"
-                    },
-                    "create": {
-                      "description": "Creates a new reservation.",
-                      "path": "v1/admin/{+parent}/reservations",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "response": {
-                        "$ref": "Reservation"
-                      },
-                      "httpMethod": "POST",
-                      "parameters": {
-                        "parent": {
-                          "location": "path",
-                          "description": "Required. The parent location in which to create the reservation. Structured like `projects/{project_number}/locations/{location}`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/locations/[^/]+$"
-                        },
-                        "reservationId": {
-                          "type": "string",
-                          "location": "query",
-                          "description": "Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`."
-                        }
-                      },
-                      "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations",
                       "request": {
-                        "$ref": "Reservation"
+                        "$ref": "ComputeHeadCursorRequest"
                       },
-                      "id": "pubsublite.admin.projects.locations.reservations.create",
+                      "flatPath": "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeHeadCursor",
+                      "description": "Compute the head cursor for the partition. The head cursor's offset is guaranteed to be less than or equal to all messages which have not yet been acknowledged as published, and greater than the offset of any message whose publish has already been acknowledged. It is zero if there have never been messages in the partition.",
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
-                      ]
+                      ],
+                      "parameterOrder": [
+                        "topic"
+                      ],
+                      "parameters": {
+                        "topic": {
+                          "pattern": "^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
+                          "required": true,
+                          "location": "path",
+                          "description": "Required. The topic for which we should compute the head cursor.",
+                          "type": "string"
+                        }
+                      },
+                      "id": "pubsublite.topicStats.projects.locations.topics.computeHeadCursor",
+                      "httpMethod": "POST"
                     }
                   }
                 }
@@ -875,37 +881,37 @@
                     "cursors": {
                       "methods": {
                         "list": {
-                          "path": "v1/cursor/{+parent}/cursors",
+                          "id": "pubsublite.cursor.projects.locations.subscriptions.cursors.list",
+                          "flatPath": "v1/cursor/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}/cursors",
+                          "httpMethod": "GET",
+                          "description": "Returns all committed cursor information for a subscription.",
                           "parameterOrder": [
                             "parent"
                           ],
+                          "path": "v1/cursor/{+parent}/cursors",
                           "response": {
                             "$ref": "ListPartitionCursorsResponse"
                           },
-                          "httpMethod": "GET",
-                          "flatPath": "v1/cursor/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}/cursors",
-                          "description": "Returns all committed cursor information for a subscription.",
                           "parameters": {
                             "pageToken": {
-                              "description": "A page token, received from a previous `ListPartitionCursors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPartitionCursors` must match the call that provided the page token.",
                               "location": "query",
-                              "type": "string"
-                            },
-                            "parent": {
-                              "required": true,
-                              "description": "Required. The subscription for which to retrieve cursors. Structured like `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`.",
-                              "location": "path",
                               "type": "string",
-                              "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$"
+                              "description": "A page token, received from a previous `ListPartitionCursors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPartitionCursors` must match the call that provided the page token."
                             },
                             "pageSize": {
                               "format": "int32",
+                              "type": "integer",
                               "location": "query",
-                              "description": "The maximum number of cursors to return. The service may return fewer than this value. If unset or zero, all cursors for the parent will be returned.",
-                              "type": "integer"
+                              "description": "The maximum number of cursors to return. The service may return fewer than this value. If unset or zero, all cursors for the parent will be returned."
+                            },
+                            "parent": {
+                              "location": "path",
+                              "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
+                              "description": "Required. The subscription for which to retrieve cursors. Structured like `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`.",
+                              "required": true,
+                              "type": "string"
                             }
                           },
-                          "id": "pubsublite.cursor.projects.locations.subscriptions.cursors.list",
                           "scopes": [
                             "https://www.googleapis.com/auth/cloud-platform"
                           ]
@@ -915,32 +921,32 @@
                   },
                   "methods": {
                     "commitCursor": {
-                      "description": "Updates the committed cursor.",
-                      "flatPath": "v1/cursor/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}:commitCursor",
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
                       ],
+                      "httpMethod": "POST",
+                      "path": "v1/cursor/{+subscription}:commitCursor",
+                      "description": "Updates the committed cursor.",
+                      "id": "pubsublite.cursor.projects.locations.subscriptions.commitCursor",
+                      "flatPath": "v1/cursor/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}:commitCursor",
                       "request": {
                         "$ref": "CommitCursorRequest"
+                      },
+                      "parameters": {
+                        "subscription": {
+                          "location": "path",
+                          "type": "string",
+                          "required": true,
+                          "description": "The subscription for which to update the cursor.",
+                          "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$"
+                        }
                       },
                       "parameterOrder": [
                         "subscription"
                       ],
-                      "path": "v1/cursor/{+subscription}:commitCursor",
-                      "id": "pubsublite.cursor.projects.locations.subscriptions.commitCursor",
-                      "parameters": {
-                        "subscription": {
-                          "location": "path",
-                          "pattern": "^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
-                          "required": true,
-                          "type": "string",
-                          "description": "The subscription for which to update the cursor."
-                        }
-                      },
                       "response": {
                         "$ref": "CommitCursorResponse"
-                      },
-                      "httpMethod": "POST"
+                      }
                     }
                   }
                 }
@@ -951,34 +957,62 @@
       }
     }
   },
-  "name": "pubsublite",
+  "protocol": "rest",
+  "discoveryVersion": "v1",
   "canonicalName": "PubsubLite",
+  "title": "Pub/Sub Lite API",
+  "revision": "20230210",
+  "batchPath": "batch",
+  "documentationLink": "https://cloud.google.com/pubsub/lite/docs",
   "parameters": {
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+    "fields": {
       "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "access_token": {
+      "type": "string",
+      "description": "OAuth access token.",
       "location": "query"
     },
-    "callback": {
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
       "location": "query",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
       "type": "string",
-      "description": "JSONP"
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "description": "V1 error format."
     },
     "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "location": "query",
       "type": "string",
-      "location": "query"
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
     },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+    "callback": {
+      "description": "JSONP",
       "type": "string",
       "location": "query"
     },
     "prettyPrint": {
       "description": "Returns response with indentations and line breaks.",
-      "default": "true",
       "location": "query",
+      "default": "true",
       "type": "boolean"
+    },
+    "quotaUser": {
+      "type": "string",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "location": "query"
     },
     "alt": {
       "enum": [
@@ -986,302 +1020,54 @@
         "media",
         "proto"
       ],
-      "default": "json",
+      "description": "Data format for response.",
       "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
-      "location": "query",
-      "description": "Data format for response."
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "type": "string",
-      "enum": [
-        "1",
-        "2"
-      ]
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
+      "default": "json",
       "location": "query"
     },
-    "access_token": {
+    "key": {
       "type": "string",
-      "description": "OAuth access token.",
-      "location": "query"
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
     },
     "upload_protocol": {
-      "type": "string",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
-    },
-    "oauth_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user."
+      "type": "string"
     }
   },
-  "fullyEncodeReservedExpansion": true,
-  "mtlsRootUrl": "https://pubsublite.mtls.googleapis.com/",
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
-  "version": "v1",
-  "revision": "20230210",
-  "description": "",
+  "kind": "discovery#restDescription",
+  "basePath": "",
+  "id": "pubsublite:v1",
   "schemas": {
-    "Topic": {
-      "description": "Metadata about a topic resource.",
-      "id": "Topic",
+    "ListTopicSubscriptionsResponse": {
       "properties": {
-        "name": {
+        "subscriptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The names of subscriptions attached to the topic. The order of the subscriptions is unspecified."
+        },
+        "nextPageToken": {
           "type": "string",
-          "description": "The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}"
-        },
-        "partitionConfig": {
-          "description": "The settings for this topic's partitions.",
-          "$ref": "PartitionConfig"
-        },
-        "retentionConfig": {
-          "$ref": "RetentionConfig",
-          "description": "The settings for this topic's message retention."
-        },
-        "reservationConfig": {
-          "description": "The settings for this topic's Reservation usage.",
-          "$ref": "ReservationConfig"
+          "description": "A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results."
         }
       },
-      "type": "object"
-    },
-    "ListSubscriptionsResponse": {
-      "id": "ListSubscriptionsResponse",
       "type": "object",
+      "id": "ListTopicSubscriptionsResponse",
+      "description": "Response for ListTopicSubscriptions."
+    },
+    "ListReservationTopicsResponse": {
       "properties": {
         "nextPageToken": {
           "type": "string",
           "description": "A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results."
-        },
-        "subscriptions": {
-          "items": {
-            "$ref": "Subscription"
-          },
-          "description": "The list of subscriptions in the requested parent. The order of the subscriptions is unspecified.",
-          "type": "array"
-        }
-      },
-      "description": "Response for ListSubscriptions."
-    },
-    "ComputeMessageStatsRequest": {
-      "id": "ComputeMessageStatsRequest",
-      "description": "Compute statistics about a range of messages in a given topic and partition.",
-      "properties": {
-        "startCursor": {
-          "description": "The inclusive start of the range.",
-          "$ref": "Cursor"
-        },
-        "endCursor": {
-          "$ref": "Cursor",
-          "description": "The exclusive end of the range. The range is empty if end_cursor \u003c= start_cursor. Specifying a start_cursor before the first message and an end_cursor after the last message will retrieve all messages."
-        },
-        "partition": {
-          "format": "int64",
-          "type": "string",
-          "description": "Required. The partition for which we should compute message stats."
-        }
-      },
-      "type": "object"
-    },
-    "SeekSubscriptionResponse": {
-      "description": "Response for SeekSubscription long running operation.",
-      "type": "object",
-      "properties": {},
-      "id": "SeekSubscriptionResponse"
-    },
-    "ComputeTimeCursorResponse": {
-      "description": "Response containing the cursor corresponding to a publish or event time in a topic partition.",
-      "id": "ComputeTimeCursorResponse",
-      "type": "object",
-      "properties": {
-        "cursor": {
-          "description": "If present, the cursor references the first message with time greater than or equal to the specified target time. If such a message cannot be found, the cursor will be unset (i.e. `cursor` is not present).",
-          "$ref": "Cursor"
-        }
-      }
-    },
-    "ComputeHeadCursorRequest": {
-      "description": "Compute the current head cursor for a partition.",
-      "id": "ComputeHeadCursorRequest",
-      "properties": {
-        "partition": {
-          "type": "string",
-          "description": "Required. The partition for which we should compute the head cursor.",
-          "format": "int64"
-        }
-      },
-      "type": "object"
-    },
-    "ComputeHeadCursorResponse": {
-      "description": "Response containing the head cursor for the requested topic and partition.",
-      "type": "object",
-      "properties": {
-        "headCursor": {
-          "$ref": "Cursor",
-          "description": "The head cursor."
-        }
-      },
-      "id": "ComputeHeadCursorResponse"
-    },
-    "TimeTarget": {
-      "description": "A target publish or event time. Can be used for seeking to or retrieving the corresponding cursor.",
-      "id": "TimeTarget",
-      "properties": {
-        "publishTime": {
-          "type": "string",
-          "format": "google-datetime",
-          "description": "Request the cursor of the first message with publish time greater than or equal to `publish_time`. All messages thereafter are guaranteed to have publish times \u003e= `publish_time`."
-        },
-        "eventTime": {
-          "format": "google-datetime",
-          "description": "Request the cursor of the first message with event time greater than or equal to `event_time`. If messages are missing an event time, the publish time is used as a fallback. As event times are user supplied, subsequent messages may have event times less than `event_time` and should be filtered by the client, if necessary.",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "ComputeTimeCursorRequest": {
-      "type": "object",
-      "description": "Compute the corresponding cursor for a publish or event time in a topic partition.",
-      "id": "ComputeTimeCursorRequest",
-      "properties": {
-        "target": {
-          "$ref": "TimeTarget",
-          "description": "Required. The target publish or event time. Specifying a future time will return an unset cursor."
-        },
-        "partition": {
-          "description": "Required. The partition for which we should compute the cursor.",
-          "format": "int64",
-          "type": "string"
-        }
-      }
-    },
-    "ListReservationsResponse": {
-      "description": "Response for ListReservations.",
-      "type": "object",
-      "id": "ListReservationsResponse",
-      "properties": {
-        "reservations": {
-          "description": "The list of reservation in the requested parent. The order of the reservations is unspecified.",
-          "items": {
-            "$ref": "Reservation"
-          },
-          "type": "array"
-        },
-        "nextPageToken": {
-          "description": "A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results.",
-          "type": "string"
-        }
-      }
-    },
-    "PartitionConfig": {
-      "properties": {
-        "capacity": {
-          "description": "The capacity configuration.",
-          "$ref": "Capacity"
-        },
-        "count": {
-          "type": "string",
-          "description": "The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity",
-          "format": "int64"
-        },
-        "scale": {
-          "description": "DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].",
-          "type": "integer",
-          "format": "int32"
-        }
-      },
-      "id": "PartitionConfig",
-      "description": "The settings for a topic's partitions.",
-      "type": "object"
-    },
-    "Subscription": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}"
-        },
-        "deliveryConfig": {
-          "description": "The settings for this subscription's message delivery.",
-          "$ref": "DeliveryConfig"
-        },
-        "exportConfig": {
-          "description": "If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.",
-          "$ref": "ExportConfig"
-        },
-        "topic": {
-          "type": "string",
-          "description": "The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}"
-        }
-      },
-      "id": "Subscription",
-      "description": "Metadata about a subscription resource."
-    },
-    "PubSubConfig": {
-      "description": "Configuration for exporting to a Pub/Sub topic.",
-      "properties": {
-        "topic": {
-          "description": "The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.",
-          "type": "string"
-        }
-      },
-      "id": "PubSubConfig",
-      "type": "object"
-    },
-    "ComputeMessageStatsResponse": {
-      "properties": {
-        "minimumEventTime": {
-          "description": "The minimum event timestamp across these messages. For the purposes of this computation, if a message does not have an event time, we use the publish time. The timestamp will be unset if there are no messages.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "messageCount": {
-          "format": "int64",
-          "type": "string",
-          "description": "The count of messages."
-        },
-        "minimumPublishTime": {
-          "format": "google-datetime",
-          "description": "The minimum publish timestamp across these messages. Note that publish timestamps within a partition are not guaranteed to be non-decreasing. The timestamp will be unset if there are no messages.",
-          "type": "string"
-        },
-        "messageBytes": {
-          "format": "int64",
-          "description": "The number of quota bytes accounted to these messages.",
-          "type": "string"
-        }
-      },
-      "id": "ComputeMessageStatsResponse",
-      "type": "object",
-      "description": "Response containing stats for messages in the requested topic and partition."
-    },
-    "ListReservationTopicsResponse": {
-      "id": "ListReservationTopicsResponse",
-      "description": "Response for ListReservationTopics.",
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "description": "A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results.",
-          "type": "string"
         },
         "topics": {
           "items": {
@@ -1290,130 +1076,19 @@
           "description": "The names of topics attached to the reservation. The order of the topics is unspecified.",
           "type": "array"
         }
-      }
-    },
-    "ReservationConfig": {
-      "description": "The settings for this topic's Reservation usage.",
-      "properties": {
-        "throughputReservation": {
-          "description": "The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}",
-          "type": "string"
-        }
       },
-      "id": "ReservationConfig",
-      "type": "object"
-    },
-    "Capacity": {
-      "id": "Capacity",
-      "properties": {
-        "publishMibPerSec": {
-          "format": "int32",
-          "description": "Publish throughput capacity per partition in MiB/s. Must be \u003e= 4 and \u003c= 16.",
-          "type": "integer"
-        },
-        "subscribeMibPerSec": {
-          "type": "integer",
-          "description": "Subscribe throughput capacity per partition in MiB/s. Must be \u003e= 4 and \u003c= 32.",
-          "format": "int32"
-        }
-      },
+      "description": "Response for ListReservationTopics.",
       "type": "object",
-      "description": "The throughput capacity configuration for each partition."
-    },
-    "CancelOperationRequest": {
-      "type": "object",
-      "id": "CancelOperationRequest",
-      "properties": {},
-      "description": "The request message for Operations.CancelOperation."
-    },
-    "Cursor": {
-      "properties": {
-        "offset": {
-          "description": "The offset of a message within a topic partition. Must be greater than or equal 0.",
-          "format": "int64",
-          "type": "string"
-        }
-      },
-      "description": "A cursor that describes the position of a message within a topic partition.",
-      "type": "object",
-      "id": "Cursor"
-    },
-    "ListOperationsResponse": {
-      "properties": {
-        "operations": {
-          "type": "array",
-          "description": "A list of operations that matches the specified filter in the request.",
-          "items": {
-            "$ref": "Operation"
-          }
-        },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "description": "The response message for Operations.ListOperations.",
-      "id": "ListOperationsResponse"
-    },
-    "RetentionConfig": {
-      "id": "RetentionConfig",
-      "properties": {
-        "period": {
-          "type": "string",
-          "format": "google-duration",
-          "description": "How long a published message is retained. If unset, messages will be retained as long as the bytes retained for each partition is below `per_partition_bytes`."
-        },
-        "perPartitionBytes": {
-          "type": "string",
-          "description": "The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.",
-          "format": "int64"
-        }
-      },
-      "type": "object",
-      "description": "The settings for a topic's message retention."
-    },
-    "Operation": {
-      "id": "Operation",
-      "properties": {
-        "done": {
-          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
-          "type": "boolean"
-        },
-        "metadata": {
-          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
-          "type": "object",
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          }
-        },
-        "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
-        },
-        "response": {
-          "type": "object",
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          }
-        },
-        "name": {
-          "type": "string",
-          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
-        }
-      },
-      "type": "object",
-      "description": "This resource represents a long-running operation that is the result of a network API call."
+      "id": "ListReservationTopicsResponse"
     },
     "Status": {
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+      "id": "Status",
       "properties": {
         "code": {
+          "format": "int32",
           "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "type": "integer",
-          "format": "int32"
+          "type": "integer"
         },
         "message": {
           "type": "string",
@@ -1423,29 +1098,315 @@
           "items": {
             "type": "object",
             "additionalProperties": {
-              "description": "Properties of the object. Contains field @type with type URL.",
-              "type": "any"
+              "type": "any",
+              "description": "Properties of the object. Contains field @type with type URL."
             }
           },
           "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
           "type": "array"
         }
       },
-      "id": "Status",
-      "type": "object",
-      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+      "type": "object"
     },
-    "CommitCursorResponse": {
-      "id": "CommitCursorResponse",
+    "ListPartitionCursorsResponse": {
+      "id": "ListPartitionCursorsResponse",
+      "properties": {
+        "nextPageToken": {
+          "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+          "type": "string"
+        },
+        "partitionCursors": {
+          "type": "array",
+          "items": {
+            "$ref": "PartitionCursor"
+          },
+          "description": "The partition cursors from this request."
+        }
+      },
       "type": "object",
-      "description": "Response for CommitCursor.",
+      "description": "Response for ListPartitionCursors"
+    },
+    "ComputeMessageStatsRequest": {
+      "properties": {
+        "startCursor": {
+          "$ref": "Cursor",
+          "description": "The inclusive start of the range."
+        },
+        "endCursor": {
+          "description": "The exclusive end of the range. The range is empty if end_cursor \u003c= start_cursor. Specifying a start_cursor before the first message and an end_cursor after the last message will retrieve all messages.",
+          "$ref": "Cursor"
+        },
+        "partition": {
+          "type": "string",
+          "description": "Required. The partition for which we should compute message stats.",
+          "format": "int64"
+        }
+      },
+      "id": "ComputeMessageStatsRequest",
+      "type": "object",
+      "description": "Compute statistics about a range of messages in a given topic and partition."
+    },
+    "TimeTarget": {
+      "id": "TimeTarget",
+      "description": "A target publish or event time. Can be used for seeking to or retrieving the corresponding cursor.",
+      "properties": {
+        "eventTime": {
+          "format": "google-datetime",
+          "description": "Request the cursor of the first message with event time greater than or equal to `event_time`. If messages are missing an event time, the publish time is used as a fallback. As event times are user supplied, subsequent messages may have event times less than `event_time` and should be filtered by the client, if necessary.",
+          "type": "string"
+        },
+        "publishTime": {
+          "type": "string",
+          "description": "Request the cursor of the first message with publish time greater than or equal to `publish_time`. All messages thereafter are guaranteed to have publish times \u003e= `publish_time`.",
+          "format": "google-datetime"
+        }
+      },
+      "type": "object"
+    },
+    "Operation": {
+      "type": "object",
+      "id": "Operation",
+      "properties": {
+        "response": {
+          "type": "object",
+          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          }
+        },
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
+        },
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+          "type": "boolean"
+        },
+        "metadata": {
+          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          }
+        },
+        "name": {
+          "type": "string",
+          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
+        }
+      },
+      "description": "This resource represents a long-running operation that is the result of a network API call."
+    },
+    "ComputeTimeCursorRequest": {
+      "id": "ComputeTimeCursorRequest",
+      "properties": {
+        "target": {
+          "description": "Required. The target publish or event time. Specifying a future time will return an unset cursor.",
+          "$ref": "TimeTarget"
+        },
+        "partition": {
+          "format": "int64",
+          "description": "Required. The partition for which we should compute the cursor.",
+          "type": "string"
+        }
+      },
+      "description": "Compute the corresponding cursor for a publish or event time in a topic partition.",
+      "type": "object"
+    },
+    "Empty": {
+      "properties": {},
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+      "id": "Empty",
+      "type": "object"
+    },
+    "TopicPartitions": {
+      "description": "Response for GetTopicPartitions.",
+      "id": "TopicPartitions",
+      "properties": {
+        "partitionCount": {
+          "description": "The number of partitions in the topic.",
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "type": "object"
+    },
+    "DeliveryConfig": {
+      "description": "The settings for a subscription's message delivery.",
+      "id": "DeliveryConfig",
+      "properties": {
+        "deliveryRequirement": {
+          "description": "The DeliveryRequirement for this subscription.",
+          "enum": [
+            "DELIVERY_REQUIREMENT_UNSPECIFIED",
+            "DELIVER_IMMEDIATELY",
+            "DELIVER_AFTER_STORED"
+          ],
+          "type": "string",
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "The server does not wait for a published message to be successfully written to storage before delivering it to subscribers.",
+            "The server will not deliver a published message to subscribers until the message has been successfully written to storage. This will result in higher end-to-end latency, but consistent delivery."
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "Topic": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}"
+        },
+        "retentionConfig": {
+          "description": "The settings for this topic's message retention.",
+          "$ref": "RetentionConfig"
+        },
+        "partitionConfig": {
+          "$ref": "PartitionConfig",
+          "description": "The settings for this topic's partitions."
+        },
+        "reservationConfig": {
+          "description": "The settings for this topic's Reservation usage.",
+          "$ref": "ReservationConfig"
+        }
+      },
+      "type": "object",
+      "id": "Topic",
+      "description": "Metadata about a topic resource."
+    },
+    "ListOperationsResponse": {
+      "id": "ListOperationsResponse",
+      "description": "The response message for Operations.ListOperations.",
+      "type": "object",
+      "properties": {
+        "operations": {
+          "description": "A list of operations that matches the specified filter in the request.",
+          "items": {
+            "$ref": "Operation"
+          },
+          "type": "array"
+        },
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        }
+      }
+    },
+    "PartitionConfig": {
+      "id": "PartitionConfig",
+      "type": "object",
+      "properties": {
+        "count": {
+          "format": "int64",
+          "type": "string",
+          "description": "The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity"
+        },
+        "scale": {
+          "description": "DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].",
+          "format": "int32",
+          "type": "integer"
+        },
+        "capacity": {
+          "$ref": "Capacity",
+          "description": "The capacity configuration."
+        }
+      },
+      "description": "The settings for a topic's partitions."
+    },
+    "PubSubConfig": {
+      "properties": {
+        "topic": {
+          "description": "The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.",
+          "type": "string"
+        }
+      },
+      "id": "PubSubConfig",
+      "type": "object",
+      "description": "Configuration for exporting to a Pub/Sub topic."
+    },
+    "CancelOperationRequest": {
+      "type": "object",
+      "id": "CancelOperationRequest",
+      "description": "The request message for Operations.CancelOperation.",
       "properties": {}
     },
-    "SeekSubscriptionRequest": {
-      "id": "SeekSubscriptionRequest",
+    "ComputeHeadCursorResponse": {
+      "id": "ComputeHeadCursorResponse",
+      "type": "object",
+      "description": "Response containing the head cursor for the requested topic and partition.",
       "properties": {
+        "headCursor": {
+          "description": "The head cursor.",
+          "$ref": "Cursor"
+        }
+      }
+    },
+    "ListTopicsResponse": {
+      "properties": {
+        "nextPageToken": {
+          "description": "A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results.",
+          "type": "string"
+        },
+        "topics": {
+          "type": "array",
+          "items": {
+            "$ref": "Topic"
+          },
+          "description": "The list of topic in the requested parent. The order of the topics is unspecified."
+        }
+      },
+      "description": "Response for ListTopics.",
+      "id": "ListTopicsResponse",
+      "type": "object"
+    },
+    "CommitCursorResponse": {
+      "properties": {},
+      "description": "Response for CommitCursor.",
+      "id": "CommitCursorResponse",
+      "type": "object"
+    },
+    "Reservation": {
+      "id": "Reservation",
+      "properties": {
+        "throughputCapacity": {
+          "description": "The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually.",
+          "format": "int64",
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}"
+        }
+      },
+      "description": "Metadata about a reservation resource.",
+      "type": "object"
+    },
+    "RetentionConfig": {
+      "id": "RetentionConfig",
+      "properties": {
+        "perPartitionBytes": {
+          "type": "string",
+          "format": "int64",
+          "description": "The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`."
+        },
+        "period": {
+          "description": "How long a published message is retained. If unset, messages will be retained as long as the bytes retained for each partition is below `per_partition_bytes`.",
+          "type": "string",
+          "format": "google-duration"
+        }
+      },
+      "description": "The settings for a topic's message retention.",
+      "type": "object"
+    },
+    "SeekSubscriptionRequest": {
+      "properties": {
+        "timeTarget": {
+          "$ref": "TimeTarget",
+          "description": "Seek to the first message whose publish or event time is greater than or equal to the specified query time. If no such message can be located, will seek to the end of the message backlog."
+        },
         "namedTarget": {
-          "description": "Seek to a named position with respect to the message backlog.",
           "type": "string",
           "enum": [
             "NAMED_TARGET_UNSPECIFIED",
@@ -1456,186 +1417,159 @@
             "Unspecified named target. Do not use.",
             "Seek to the oldest retained message.",
             "Seek past all recently published messages, skipping the entire message backlog."
-          ]
-        },
-        "timeTarget": {
-          "$ref": "TimeTarget",
-          "description": "Seek to the first message whose publish or event time is greater than or equal to the specified query time. If no such message can be located, will seek to the end of the message backlog."
+          ],
+          "description": "Seek to a named position with respect to the message backlog."
         }
       },
-      "type": "object",
-      "description": "Request for SeekSubscription."
-    },
-    "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
-      "type": "object",
-      "id": "Empty",
-      "properties": {}
-    },
-    "CommitCursorRequest": {
-      "id": "CommitCursorRequest",
-      "properties": {
-        "cursor": {
-          "$ref": "Cursor",
-          "description": "The new value for the committed cursor."
-        },
-        "partition": {
-          "format": "int64",
-          "description": "The partition for which to update the cursor. Partitions are zero indexed, so `partition` must be in the range [0, topic.num_partitions).",
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "description": "Request for CommitCursor."
-    },
-    "TopicPartitions": {
-      "description": "Response for GetTopicPartitions.",
-      "properties": {
-        "partitionCount": {
-          "format": "int64",
-          "description": "The number of partitions in the topic.",
-          "type": "string"
-        }
-      },
-      "id": "TopicPartitions",
+      "id": "SeekSubscriptionRequest",
+      "description": "Request for SeekSubscription.",
       "type": "object"
     },
-    "DeliveryConfig": {
-      "description": "The settings for a subscription's message delivery.",
-      "id": "DeliveryConfig",
+    "PartitionCursor": {
+      "description": "A pair of a Cursor and the partition it is for.",
+      "id": "PartitionCursor",
       "type": "object",
       "properties": {
-        "deliveryRequirement": {
-          "enum": [
-            "DELIVERY_REQUIREMENT_UNSPECIFIED",
-            "DELIVER_IMMEDIATELY",
-            "DELIVER_AFTER_STORED"
-          ],
+        "partition": {
+          "description": "The partition this is for.",
           "type": "string",
-          "description": "The DeliveryRequirement for this subscription.",
-          "enumDescriptions": [
-            "Default value. This value is unused.",
-            "The server does not wait for a published message to be successfully written to storage before delivering it to subscribers.",
-            "The server will not deliver a published message to subscribers until the message has been successfully written to storage. This will result in higher end-to-end latency, but consistent delivery."
-          ]
+          "format": "int64"
+        },
+        "cursor": {
+          "description": "The value of the cursor.",
+          "$ref": "Cursor"
         }
       }
     },
-    "Reservation": {
-      "description": "Metadata about a reservation resource.",
-      "type": "object",
+    "ComputeHeadCursorRequest": {
       "properties": {
-        "name": {
-          "description": "The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}",
-          "type": "string"
-        },
-        "throughputCapacity": {
-          "description": "The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually.",
-          "type": "string",
-          "format": "int64"
-        }
-      },
-      "id": "Reservation"
-    },
-    "ListTopicSubscriptionsResponse": {
-      "id": "ListTopicSubscriptionsResponse",
-      "description": "Response for ListTopicSubscriptions.",
-      "properties": {
-        "subscriptions": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array",
-          "description": "The names of subscriptions attached to the topic. The order of the subscriptions is unspecified."
-        },
-        "nextPageToken": {
-          "type": "string",
-          "description": "A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results."
-        }
-      },
-      "type": "object"
-    },
-    "ListPartitionCursorsResponse": {
-      "properties": {
-        "partitionCursors": {
-          "type": "array",
-          "items": {
-            "$ref": "PartitionCursor"
-          },
-          "description": "The partition cursors from this request."
-        },
-        "nextPageToken": {
-          "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+        "partition": {
+          "format": "int64",
+          "description": "Required. The partition for which we should compute the head cursor.",
           "type": "string"
         }
       },
+      "description": "Compute the current head cursor for a partition.",
       "type": "object",
-      "id": "ListPartitionCursorsResponse",
-      "description": "Response for ListPartitionCursors"
+      "id": "ComputeHeadCursorRequest"
     },
     "OperationMetadata": {
-      "description": "Metadata for long running operations.",
       "id": "OperationMetadata",
       "properties": {
         "endTime": {
+          "type": "string",
           "description": "The time the operation finished running. Not set if the operation has not completed.",
-          "format": "google-datetime",
+          "format": "google-datetime"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "The time the operation was created.",
+          "format": "google-datetime"
+        },
+        "target": {
+          "description": "Resource path for the target of the operation. For example, targets of seeks are subscription resources, structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}",
           "type": "string"
         },
         "verb": {
           "description": "Name of the verb executed by the operation.",
           "type": "string"
-        },
-        "createTime": {
+        }
+      },
+      "type": "object",
+      "description": "Metadata for long running operations."
+    },
+    "Subscription": {
+      "properties": {
+        "topic": {
           "type": "string",
-          "format": "google-datetime",
-          "description": "The time the operation was created."
+          "description": "The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}"
         },
-        "target": {
-          "description": "Resource path for the target of the operation. For example, targets of seeks are subscription resources, structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}",
+        "exportConfig": {
+          "description": "If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.",
+          "$ref": "ExportConfig"
+        },
+        "deliveryConfig": {
+          "$ref": "DeliveryConfig",
+          "description": "The settings for this subscription's message delivery."
+        },
+        "name": {
+          "description": "The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}",
           "type": "string"
         }
       },
+      "description": "Metadata about a subscription resource.",
+      "id": "Subscription",
       "type": "object"
     },
-    "PartitionCursor": {
-      "properties": {
-        "cursor": {
-          "description": "The value of the cursor.",
-          "$ref": "Cursor"
-        },
-        "partition": {
-          "description": "The partition this is for.",
-          "type": "string",
-          "format": "int64"
-        }
-      },
-      "id": "PartitionCursor",
-      "description": "A pair of a Cursor and the partition it is for.",
-      "type": "object"
-    },
-    "ListTopicsResponse": {
-      "properties": {
-        "topics": {
-          "description": "The list of topic in the requested parent. The order of the topics is unspecified.",
-          "type": "array",
-          "items": {
-            "$ref": "Topic"
-          }
-        },
-        "nextPageToken": {
-          "type": "string",
-          "description": "A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results."
-        }
-      },
-      "id": "ListTopicsResponse",
+    "ListReservationsResponse": {
+      "id": "ListReservationsResponse",
+      "description": "Response for ListReservations.",
       "type": "object",
-      "description": "Response for ListTopics."
+      "properties": {
+        "nextPageToken": {
+          "description": "A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results.",
+          "type": "string"
+        },
+        "reservations": {
+          "type": "array",
+          "description": "The list of reservation in the requested parent. The order of the reservations is unspecified.",
+          "items": {
+            "$ref": "Reservation"
+          }
+        }
+      }
+    },
+    "ReservationConfig": {
+      "type": "object",
+      "id": "ReservationConfig",
+      "description": "The settings for this topic's Reservation usage.",
+      "properties": {
+        "throughputReservation": {
+          "type": "string",
+          "description": "The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}"
+        }
+      }
+    },
+    "CommitCursorRequest": {
+      "id": "CommitCursorRequest",
+      "type": "object",
+      "properties": {
+        "partition": {
+          "type": "string",
+          "format": "int64",
+          "description": "The partition for which to update the cursor. Partitions are zero indexed, so `partition` must be in the range [0, topic.num_partitions)."
+        },
+        "cursor": {
+          "description": "The new value for the committed cursor.",
+          "$ref": "Cursor"
+        }
+      },
+      "description": "Request for CommitCursor."
+    },
+    "Cursor": {
+      "id": "Cursor",
+      "type": "object",
+      "description": "A cursor that describes the position of a message within a topic partition.",
+      "properties": {
+        "offset": {
+          "format": "int64",
+          "type": "string",
+          "description": "The offset of a message within a topic partition. Must be greater than or equal 0."
+        }
+      }
+    },
+    "SeekSubscriptionResponse": {
+      "description": "Response for SeekSubscription long running operation.",
+      "properties": {},
+      "type": "object",
+      "id": "SeekSubscriptionResponse"
     },
     "ExportConfig": {
+      "type": "object",
+      "description": "Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription.",
+      "id": "ExportConfig",
       "properties": {
         "currentState": {
-          "readOnly": true,
           "enum": [
             "STATE_UNSPECIFIED",
             "ACTIVE",
@@ -1643,7 +1577,6 @@
             "PERMISSION_DENIED",
             "NOT_FOUND"
           ],
-          "type": "string",
           "enumDescriptions": [
             "Default value. This value is unused.",
             "Messages are being exported.",
@@ -1651,6 +1584,8 @@
             "Messages cannot be exported due to permission denied errors. Output only.",
             "Messages cannot be exported due to missing resources. Output only."
           ],
+          "type": "string",
+          "readOnly": true,
           "description": "Output only. The current state of the export, which may be different to the desired state due to errors. This field is output only."
         },
         "deadLetterTopic": {
@@ -1658,14 +1593,7 @@
           "type": "string"
         },
         "desiredState": {
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "ACTIVE",
-            "PAUSED",
-            "PERMISSION_DENIED",
-            "NOT_FOUND"
-          ],
-          "description": "The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.",
+          "type": "string",
           "enumDescriptions": [
             "Default value. This value is unused.",
             "Messages are being exported.",
@@ -1673,23 +1601,95 @@
             "Messages cannot be exported due to permission denied errors. Output only.",
             "Messages cannot be exported due to missing resources. Output only."
           ],
-          "type": "string"
+          "description": "The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.",
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "ACTIVE",
+            "PAUSED",
+            "PERMISSION_DENIED",
+            "NOT_FOUND"
+          ]
         },
         "pubsubConfig": {
-          "$ref": "PubSubConfig",
-          "description": "Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic."
+          "description": "Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic.",
+          "$ref": "PubSubConfig"
+        }
+      }
+    },
+    "ComputeTimeCursorResponse": {
+      "properties": {
+        "cursor": {
+          "$ref": "Cursor",
+          "description": "If present, the cursor references the first message with time greater than or equal to the specified target time. If such a message cannot be found, the cursor will be unset (i.e. `cursor` is not present)."
         }
       },
-      "description": "Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription.",
-      "id": "ExportConfig",
+      "description": "Response containing the cursor corresponding to a publish or event time in a topic partition.",
+      "id": "ComputeTimeCursorResponse",
       "type": "object"
+    },
+    "Capacity": {
+      "type": "object",
+      "properties": {
+        "subscribeMibPerSec": {
+          "description": "Subscribe throughput capacity per partition in MiB/s. Must be \u003e= 4 and \u003c= 32.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "publishMibPerSec": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Publish throughput capacity per partition in MiB/s. Must be \u003e= 4 and \u003c= 16."
+        }
+      },
+      "id": "Capacity",
+      "description": "The throughput capacity configuration for each partition."
+    },
+    "ListSubscriptionsResponse": {
+      "id": "ListSubscriptionsResponse",
+      "type": "object",
+      "description": "Response for ListSubscriptions.",
+      "properties": {
+        "subscriptions": {
+          "type": "array",
+          "items": {
+            "$ref": "Subscription"
+          },
+          "description": "The list of subscriptions in the requested parent. The order of the subscriptions is unspecified."
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results."
+        }
+      }
+    },
+    "ComputeMessageStatsResponse": {
+      "id": "ComputeMessageStatsResponse",
+      "description": "Response containing stats for messages in the requested topic and partition.",
+      "type": "object",
+      "properties": {
+        "messageCount": {
+          "format": "int64",
+          "type": "string",
+          "description": "The count of messages."
+        },
+        "minimumEventTime": {
+          "type": "string",
+          "description": "The minimum event timestamp across these messages. For the purposes of this computation, if a message does not have an event time, we use the publish time. The timestamp will be unset if there are no messages.",
+          "format": "google-datetime"
+        },
+        "messageBytes": {
+          "type": "string",
+          "format": "int64",
+          "description": "The number of quota bytes accounted to these messages."
+        },
+        "minimumPublishTime": {
+          "description": "The minimum publish timestamp across these messages. Note that publish timestamps within a partition are not guaranteed to be non-decreasing. The timestamp will be unset if there are no messages.",
+          "type": "string",
+          "format": "google-datetime"
+        }
+      }
     }
   },
-  "basePath": "",
-  "rootUrl": "https://pubsublite.googleapis.com/",
-  "servicePath": "",
-  "kind": "discovery#restDescription",
-  "title": "Pub/Sub Lite API",
   "ownerDomain": "google.com",
-  "ownerName": "Google"
+  "version_module": true
 }

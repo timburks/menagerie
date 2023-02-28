@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-storage/versions/v2
+  annotations:
+    config: storage_v2.yaml
+    directory: google/storage/v2
+    host: storage.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

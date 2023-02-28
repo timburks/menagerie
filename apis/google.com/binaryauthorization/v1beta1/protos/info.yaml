@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-binaryauthorization/versions/v1beta1
+  annotations:
+    config: binaryauthorization_v1beta1.yaml
+    directory: google/cloud/binaryauthorization/v1beta1
+    host: binaryauthorization.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

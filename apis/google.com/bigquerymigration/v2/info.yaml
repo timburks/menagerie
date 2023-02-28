@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v2
+  parent: apis/google.com-bigquerymigration
+data:
+  displayName: v2

@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-routespreferred/versions/v1
+  annotations:
+    config: routespreferred.yaml
+    directory: google/maps/routes/v1
+    host: routespreferred.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

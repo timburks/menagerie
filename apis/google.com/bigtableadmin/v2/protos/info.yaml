@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-bigtableadmin/versions/v2
+  annotations:
+    config: bigtableadmin_v2.yaml
+    directory: google/bigtable/admin/v2
+    host: bigtableadmin.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

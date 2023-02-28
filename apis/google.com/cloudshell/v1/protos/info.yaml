@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-cloudshell/versions/v1
+  annotations:
+    config: cloudshell_v1.yaml
+    directory: google/cloud/shell/v1
+    host: cloudshell.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

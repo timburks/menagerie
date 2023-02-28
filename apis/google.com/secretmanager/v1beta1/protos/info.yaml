@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-secretmanager/versions/v1beta1
+  annotations:
+    config: secretmanager_v1beta1.yaml
+    directory: google/cloud/secrets/v1beta1
+    host: secretmanager.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

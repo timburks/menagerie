@@ -1,740 +1,341 @@
 {
-  "resources": {
-    "projects": {
-      "resources": {
-        "locations": {
-          "resources": {
-            "evaluations": {
-              "methods": {
-                "get": {
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/evaluations/{evaluationsId}",
-                  "httpMethod": "GET",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "Required. Name of the resource",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/evaluations/[^/]+$",
-                      "type": "string",
-                      "required": true
-                    }
-                  },
-                  "path": "v1/{+name}",
-                  "description": "Gets details of a single Evaluation.",
-                  "id": "workloadmanager.projects.locations.evaluations.get",
-                  "response": {
-                    "$ref": "Evaluation"
-                  }
-                },
-                "list": {
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "response": {
-                    "$ref": "ListEvaluationsResponse"
-                  },
-                  "id": "workloadmanager.projects.locations.evaluations.list",
-                  "path": "v1/{+parent}/evaluations",
-                  "parameters": {
-                    "pageSize": {
-                      "location": "query",
-                      "format": "int32",
-                      "type": "integer",
-                      "description": "Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default."
-                    },
-                    "orderBy": {
-                      "type": "string",
-                      "location": "query",
-                      "description": "Hint for how to order the results"
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "type": "string",
-                      "description": "A token identifying a page of results the server should return."
-                    },
-                    "parent": {
-                      "description": "Required. Parent value for ListEvaluationsRequest",
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "required": true,
-                      "location": "path"
-                    },
-                    "filter": {
-                      "location": "query",
-                      "type": "string",
-                      "description": "Filtering results"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/evaluations",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "GET",
-                  "description": "Lists Evaluations in a given project and location."
-                },
-                "create": {
-                  "description": "Creates a new Evaluation in a given project and location.",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "httpMethod": "POST",
-                  "path": "v1/{+parent}/evaluations",
-                  "id": "workloadmanager.projects.locations.evaluations.create",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "parameters": {
-                    "requestId": {
-                      "location": "query",
-                      "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-                      "type": "string"
-                    },
-                    "parent": {
-                      "required": true,
-                      "description": "Required. The resource name of the evaluation location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "type": "string"
-                    },
-                    "evaluationId": {
-                      "location": "query",
-                      "description": "Required. Id of the requesting object If auto-generating Id server-side, remove this field and evaluation_id from the method_signature of Create RPC",
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/evaluations",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "request": {
-                    "$ref": "Evaluation"
-                  }
-                }
-              }
-            },
-            "insights": {
-              "methods": {
-                "writeInsight": {
-                  "id": "workloadmanager.projects.locations.insights.writeInsight",
-                  "parameters": {
-                    "location": {
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "required": true,
-                      "type": "string",
-                      "description": "Required. The GCP location. The format is: projects/{project}/locations/{location}."
-                    }
-                  },
-                  "path": "v1/{+location}/insights:writeInsight",
-                  "response": {
-                    "$ref": "WriteInsightResponse"
-                  },
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "location"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/insights:writeInsight",
-                  "description": "Write the data insights to workload manager data warehouse.",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "request": {
-                    "$ref": "WriteInsightRequest"
-                  }
-                }
-              }
-            },
-            "operations": {
-              "methods": {
-                "delete": {
-                  "path": "v1/{+name}",
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "type": "string",
-                      "required": true,
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "description": "The name of the operation resource to be deleted."
-                    }
-                  },
-                  "id": "workloadmanager.projects.locations.operations.delete",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "httpMethod": "DELETE",
-                  "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`."
-                },
-                "get": {
-                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "id": "workloadmanager.projects.locations.operations.get",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "The name of the operation resource.",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "path": "v1/{+name}",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}"
-                },
-                "list": {
-                  "id": "workloadmanager.projects.locations.operations.list",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "httpMethod": "GET",
-                  "path": "v1/{+name}/operations",
-                  "parameters": {
-                    "pageToken": {
-                      "location": "query",
-                      "type": "string",
-                      "description": "The standard list page token."
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "type": "integer",
-                      "description": "The standard list page size.",
-                      "format": "int32"
-                    },
-                    "filter": {
-                      "description": "The standard list filter.",
-                      "location": "query",
-                      "type": "string"
-                    },
-                    "name": {
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "description": "The name of the operation's parent resource.",
-                      "type": "string",
-                      "location": "path"
-                    }
-                  },
-                  "response": {
-                    "$ref": "ListOperationsResponse"
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
-                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id."
-                },
-                "cancel": {
-                  "path": "v1/{+name}:cancel",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the operation resource to be cancelled.",
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "id": "workloadmanager.projects.locations.operations.cancel",
-                  "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-                  "request": {
-                    "$ref": "CancelOperationRequest"
-                  },
-                  "httpMethod": "POST"
-                }
-              }
-            }
-          },
-          "methods": {
-            "get": {
-              "response": {
-                "$ref": "Location"
-              },
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "required": true,
-                  "description": "Resource name for the location.",
-                  "type": "string"
-                }
-              },
-              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "httpMethod": "GET",
-              "id": "workloadmanager.projects.locations.get",
-              "parameterOrder": [
-                "name"
-              ],
-              "description": "Gets information about a location.",
-              "path": "v1/{+name}"
-            },
-            "list": {
-              "httpMethod": "GET",
-              "response": {
-                "$ref": "ListLocationsResponse"
-              },
-              "description": "Lists information about the supported locations for this service.",
-              "parameterOrder": [
-                "name"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "The resource that owns the locations collection, if applicable.",
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
-                  "required": true,
-                  "type": "string"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "type": "integer",
-                  "format": "int32",
-                  "description": "The maximum number of results to return. If not set, the service selects a default."
-                },
-                "filter": {
-                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
-                  "location": "query",
-                  "type": "string"
-                },
-                "pageToken": {
-                  "type": "string",
-                  "location": "query",
-                  "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page."
-                }
-              },
-              "flatPath": "v1/projects/{projectsId}/locations",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "path": "v1/{+name}/locations",
-              "id": "workloadmanager.projects.locations.list"
-            }
-          }
-        }
-      }
-    }
-  },
-  "version_module": true,
-  "kind": "discovery#restDescription",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
-        }
-      }
-    }
-  },
-  "title": "Workload Manager API",
-  "discoveryVersion": "v1",
-  "revision": "20230125",
-  "documentationLink": "https://cloud.google.com/workload-manager/docs",
-  "parameters": {
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "type": "string",
-      "location": "query",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
-    },
-    "uploadType": {
-      "location": "query",
-      "type": "string",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "location": "query",
-      "type": "string"
-    },
-    "callback": {
-      "location": "query",
-      "type": "string",
-      "description": "JSONP"
-    },
-    "alt": {
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "description": "Data format for response.",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "default": "json",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "type": "string",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
-    },
-    "access_token": {
-      "type": "string",
-      "description": "OAuth access token.",
-      "location": "query"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "location": "query",
-      "type": "string"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "location": "query",
-      "default": "true"
-    }
-  },
-  "ownerDomain": "google.com",
-  "canonicalName": "Workload Manager",
-  "fullyEncodeReservedExpansion": true,
-  "batchPath": "batch",
-  "description": "",
-  "servicePath": "",
+  "protocol": "rest",
   "schemas": {
-    "WriteInsightRequest": {
-      "description": "Request for sending the data insights.",
+    "SapValidation": {
+      "id": "SapValidation",
+      "properties": {
+        "validationDetails": {
+          "items": {
+            "$ref": "SapValidationValidationDetail"
+          },
+          "description": "A list of SAP validation metrics data.",
+          "type": "array"
+        }
+      },
       "type": "object",
-      "properties": {
-        "requestId": {
-          "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-          "type": "string"
-        },
-        "insight": {
-          "$ref": "Insight",
-          "description": "Required. The metrics data details."
-        }
-      },
-      "id": "WriteInsightRequest"
-    },
-    "ResourceFilter": {
-      "id": "ResourceFilter",
-      "description": "Message describing resource filters",
-      "properties": {
-        "gceInstanceFilter": {
-          "$ref": "GceInstanceFilter",
-          "description": "Filter compute engine resource"
-        },
-        "inclusionLabels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "type": "object",
-          "description": "The label used for filter resource"
-        },
-        "scopes": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array",
-          "description": "The scopes of evaluation resource"
-        },
-        "resourceIdPatterns": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The id pattern for filter resource"
-        }
-      },
-      "type": "object"
+      "description": "A presentation of SAP workload insight. The schema of SAP workloads validation related data."
     },
     "OperationMetadata": {
-      "description": "Represents the metadata of the long-running operation.",
       "properties": {
-        "createTime": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. The time the operation was created.",
-          "format": "google-datetime"
-        },
         "verb": {
           "type": "string",
+          "description": "Output only. Name of the verb executed by the operation.",
+          "readOnly": true
+        },
+        "endTime": {
           "readOnly": true,
-          "description": "Output only. Name of the verb executed by the operation."
+          "description": "Output only. The time the operation finished running.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "statusMessage": {
+          "readOnly": true,
+          "description": "Output only. Human-readable status of the operation, if any.",
+          "type": "string"
+        },
+        "createTime": {
+          "description": "Output only. The time the operation was created.",
+          "readOnly": true,
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "apiVersion": {
+          "description": "Output only. API version used to start the operation.",
+          "type": "string",
+          "readOnly": true
+        },
+        "requestedCancellation": {
+          "type": "boolean",
+          "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+          "readOnly": true
         },
         "target": {
           "type": "string",
           "description": "Output only. Server-defined resource path for the target of the operation.",
           "readOnly": true
-        },
-        "apiVersion": {
-          "readOnly": true,
-          "description": "Output only. API version used to start the operation.",
-          "type": "string"
-        },
-        "requestedCancellation": {
-          "type": "boolean",
-          "readOnly": true,
-          "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`."
-        },
-        "statusMessage": {
-          "readOnly": true,
-          "type": "string",
-          "description": "Output only. Human-readable status of the operation, if any."
-        },
-        "endTime": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. The time the operation finished running.",
-          "format": "google-datetime"
         }
       },
       "type": "object",
+      "description": "Represents the metadata of the long-running operation.",
       "id": "OperationMetadata"
     },
-    "ListOperationsResponse": {
-      "type": "object",
-      "id": "ListOperationsResponse",
-      "description": "The response message for Operations.ListOperations.",
+    "WriteInsightRequest": {
+      "description": "Request for sending the data insights.",
       "properties": {
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
+        "insight": {
+          "description": "Required. The metrics data details.",
+          "$ref": "Insight"
         },
-        "operations": {
-          "type": "array",
-          "description": "A list of operations that matches the specified filter in the request.",
-          "items": {
-            "$ref": "Operation"
-          }
-        }
-      }
-    },
-    "SapDiscoveryComponent": {
-      "type": "object",
-      "id": "SapDiscoveryComponent",
-      "description": "Message describing the system component.",
-      "properties": {
-        "resources": {
-          "type": "array",
-          "items": {
-            "$ref": "SapDiscoveryResource"
-          },
-          "description": "The resources in a component."
-        },
-        "hostProject": {
-          "description": "Pantheon Project in which the resources reside.",
-          "type": "string"
-        },
-        "sid": {
+        "requestId": {
           "type": "string",
-          "description": "The sap identifier, used by the SAP software and helps differentiate systems for customers."
-        },
-        "applicationType": {
-          "description": "The component is a SAP application.",
-          "type": "string"
-        },
-        "databaseType": {
-          "description": "The component is a SAP database.",
-          "type": "string"
+          "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000)."
         }
-      }
+      },
+      "type": "object",
+      "id": "WriteInsightRequest"
     },
-    "SapDiscoveryResource": {
+    "SapValidationValidationDetail": {
       "properties": {
-        "updateTime": {
-          "format": "google-datetime",
-          "description": "Unix timestamp of when this resource last had its discovery data updated.",
-          "type": "string"
-        },
-        "resourceType": {
-          "description": "The type of this resource.",
-          "type": "string",
+        "sapValidationType": {
+          "description": "The SAP system that the validation data is from.",
           "enumDescriptions": [
-            "Undefined resource type.",
-            "This is a compute resource.",
-            "This a storage resource.",
-            "This is a network resource."
+            "Unspecified type.",
+            "The SAP system named SYSTEM.",
+            "The SAP system named COROSYNC.",
+            "The SAP system named PACEMAKER.",
+            "The SAP system named HANA.",
+            "The SAP system named NETWEAVER."
           ],
           "enum": [
-            "RESOURCE_TYPE_UNSPECIFIED",
-            "COMPUTE",
-            "STORAGE",
-            "NETWORK"
-          ]
+            "SAP_VALIDATION_TYPE_UNSPECIFIED",
+            "SYSTEM",
+            "COROSYNC",
+            "PACEMAKER",
+            "HANA",
+            "NETWEAVER"
+          ],
+          "type": "string"
         },
-        "resourceKind": {
-          "type": "string",
-          "description": "ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc."
+        "details": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object",
+          "description": "The pairs of metrics data: field name & field value."
+        }
+      },
+      "id": "SapValidationValidationDetail",
+      "type": "object",
+      "description": "Message describing the SAP validation metrics."
+    },
+    "Evaluation": {
+      "id": "Evaluation",
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "readOnly": true,
+          "description": "Output only. [Output only] Create time stamp",
+          "format": "google-datetime",
+          "type": "string"
         },
-        "relatedResources": {
+        "ruleNames": {
           "type": "array",
-          "description": "A list of resource URIs related to this resource.",
+          "items": {
+            "type": "string"
+          },
+          "description": "the name of the rule"
+        },
+        "ruleVersions": {
+          "readOnly": true,
+          "description": "Output only. [Output only] The updated rule ids if exist.",
+          "type": "array",
           "items": {
             "type": "string"
           }
         },
-        "resourceUri": {
-          "description": "URI of the resource, includes project, location, and name.",
+        "description": {
+          "description": "Description of the Evaluation",
           "type": "string"
-        }
-      },
-      "description": "Message describing a resource.",
-      "id": "SapDiscoveryResource",
-      "type": "object"
-    },
-    "WriteInsightResponse": {
-      "type": "object",
-      "id": "WriteInsightResponse",
-      "description": "The response for write insights request.",
-      "properties": {}
-    },
-    "ListLocationsResponse": {
-      "type": "object",
-      "properties": {
-        "locations": {
-          "description": "A list of locations that matches the specified filter in the request.",
-          "type": "array",
-          "items": {
-            "$ref": "Location"
-          }
         },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
-        }
-      },
-      "id": "ListLocationsResponse",
-      "description": "The response message for Locations.ListLocations."
-    },
-    "Operation": {
-      "id": "Operation",
-      "type": "object",
-      "properties": {
-        "done": {
-          "type": "boolean",
-          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available."
+        "resourceStatus": {
+          "$ref": "ResourceStatus",
+          "description": "Output only. [Output only] The updated rule ids if exist.",
+          "readOnly": true
         },
-        "response": {
+        "updateTime": {
+          "type": "string",
+          "format": "google-datetime",
+          "description": "Output only. [Output only] Update time stamp",
+          "readOnly": true
+        },
+        "labels": {
           "type": "object",
           "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
+            "type": "string"
           },
-          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`."
+          "description": "Labels as key value pairs"
         },
-        "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
-        },
-        "metadata": {
-          "type": "object",
-          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          }
+        "resourceFilter": {
+          "$ref": "ResourceFilter",
+          "description": "annotations as key value pairs"
         },
         "name": {
           "type": "string",
-          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."
+          "description": "name of resource names have the form 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'"
         }
       },
-      "description": "This resource represents a long-running operation that is the result of a network API call."
+      "description": "Message describing Evaluation object"
+    },
+    "Location": {
+      "properties": {
+        "metadata": {
+          "type": "object",
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "Service-specific metadata. For example the available capacity at the given location."
+        },
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object",
+          "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}"
+        },
+        "displayName": {
+          "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
+          "type": "string"
+        },
+        "name": {
+          "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
+          "type": "string"
+        },
+        "locationId": {
+          "type": "string",
+          "description": "The canonical id for this location. For example: `\"us-east1\"`."
+        }
+      },
+      "description": "A resource that represents Google Cloud Platform location.",
+      "id": "Location",
+      "type": "object"
     },
     "Insight": {
       "id": "Insight",
-      "type": "object",
       "description": "A presentation of host resource usage where the workload runs.",
+      "type": "object",
       "properties": {
-        "sentTime": {
-          "readOnly": true,
-          "format": "google-datetime",
-          "type": "string",
-          "description": "Output only. [Output only] Create time stamp"
+        "sapDiscovery": {
+          "description": "The insights data for sap system discovery. This is a copy of SAP System proto and should get updated whenever that one changes.",
+          "$ref": "SapDiscovery"
         },
         "sapValidation": {
           "$ref": "SapValidation",
           "description": "The insights data for the sap workload validation."
         },
-        "sapDiscovery": {
-          "$ref": "SapDiscovery",
-          "description": "The insights data for sap system discovery. This is a copy of SAP System proto and should get updated whenever that one changes."
+        "sentTime": {
+          "type": "string",
+          "description": "Output only. [Output only] Create time stamp",
+          "readOnly": true,
+          "format": "google-datetime"
         }
       }
     },
-    "ListEvaluationsResponse": {
-      "id": "ListEvaluationsResponse",
+    "SapDiscoveryMetadata": {
+      "description": "Message describing SAP discovery system metadata",
       "type": "object",
       "properties": {
-        "evaluations": {
-          "type": "array",
-          "items": {
-            "$ref": "Evaluation"
-          },
-          "description": "The list of Evaluation"
+        "sapProduct": {
+          "type": "string",
+          "description": "This sap product name"
         },
-        "unreachable": {
-          "description": "Locations that could not be reached.",
+        "environmentType": {
+          "type": "string",
+          "description": "Should be \"prod\", \"QA\", \"dev\", \"staging\", etc."
+        },
+        "customerRegion": {
+          "type": "string",
+          "description": "Customer region string for customer's use. Does not represent GCP region."
+        },
+        "definedSystem": {
+          "type": "string",
+          "description": "Customer defined, something like \"E-commerce pre prod\""
+        }
+      },
+      "id": "SapDiscoveryMetadata"
+    },
+    "Operation": {
+      "id": "Operation",
+      "description": "This resource represents a long-running operation that is the result of a network API call.",
+      "type": "object",
+      "properties": {
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
+        },
+        "name": {
+          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+          "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          },
+          "type": "object",
+          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."
+        },
+        "response": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "type": "object"
+        },
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+          "type": "boolean"
+        }
+      }
+    },
+    "CancelOperationRequest": {
+      "type": "object",
+      "description": "The request message for Operations.CancelOperation.",
+      "id": "CancelOperationRequest",
+      "properties": {}
+    },
+    "SapDiscovery": {
+      "id": "SapDiscovery",
+      "type": "object",
+      "properties": {
+        "systemId": {
+          "type": "string",
+          "description": "A combination of database SID, database instance URI and tenant DB name to make a unique identifier per-system."
+        },
+        "updateTime": {
+          "format": "google-datetime",
+          "type": "string",
+          "description": "Unix timestamp this system has been updated last."
+        },
+        "metadata": {
+          "description": "The metadata for SAP system discovery data.",
+          "$ref": "SapDiscoveryMetadata"
+        },
+        "applicationLayer": {
+          "description": "An SAP system may run without an application layer.",
+          "$ref": "SapDiscoveryComponent"
+        },
+        "databaseLayer": {
+          "$ref": "SapDiscoveryComponent",
+          "description": "An SAP System must have a database."
+        }
+      },
+      "description": "The schema of SAP system discovery data."
+    },
+    "GceInstanceFilter": {
+      "id": "GceInstanceFilter",
+      "properties": {
+        "serviceAccounts": {
+          "type": "array",
+          "description": "Service account of compute engine",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "type": "object",
+      "description": "Message describing compute engine instance filter"
+    },
+    "ResourceStatus": {
+      "properties": {
+        "rulesNewerVersions": {
           "items": {
             "type": "string"
           },
-          "type": "array"
+          "type": "array",
+          "description": "the new version of rule id if exists"
         },
-        "nextPageToken": {
-          "description": "A token identifying a page of results the server should return.",
-          "type": "string"
-        }
-      },
-      "description": "Message for response to listing Evaluations"
-    },
-    "ResourceStatus": {
-      "description": "Message describing resource status",
-      "id": "ResourceStatus",
-      "properties": {
         "state": {
           "type": "string",
           "enum": [
@@ -750,273 +351,672 @@
             "Resource has no outstanding operations on it or has active Update operations.",
             "Resource has an active Delete operation."
           ]
-        },
-        "rulesNewerVersions": {
-          "description": "the new version of rule id if exists",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         }
       },
-      "type": "object"
-    },
-    "SapValidationValidationDetail": {
+      "id": "ResourceStatus",
       "type": "object",
+      "description": "Message describing resource status"
+    },
+    "WriteInsightResponse": {
+      "id": "WriteInsightResponse",
+      "type": "object",
+      "properties": {},
+      "description": "The response for write insights request."
+    },
+    "ResourceFilter": {
+      "description": "Message describing resource filters",
+      "type": "object",
+      "id": "ResourceFilter",
       "properties": {
-        "sapValidationType": {
-          "enumDescriptions": [
-            "Unspecified type.",
-            "The SAP system named SYSTEM.",
-            "The SAP system named COROSYNC.",
-            "The SAP system named PACEMAKER.",
-            "The SAP system named HANA.",
-            "The SAP system named NETWEAVER."
-          ],
-          "type": "string",
-          "description": "The SAP system that the validation data is from.",
-          "enum": [
-            "SAP_VALIDATION_TYPE_UNSPECIFIED",
-            "SYSTEM",
-            "COROSYNC",
-            "PACEMAKER",
-            "HANA",
-            "NETWEAVER"
-          ]
+        "gceInstanceFilter": {
+          "$ref": "GceInstanceFilter",
+          "description": "Filter compute engine resource"
         },
-        "details": {
-          "description": "The pairs of metrics data: field name & field value.",
+        "inclusionLabels": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
-          }
-        }
-      },
-      "description": "Message describing the SAP validation metrics.",
-      "id": "SapValidationValidationDetail"
-    },
-    "Empty": {
-      "id": "Empty",
-      "properties": {},
-      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
-      "type": "object"
-    },
-    "Evaluation": {
-      "properties": {
-        "updateTime": {
-          "type": "string",
-          "readOnly": true,
-          "format": "google-datetime",
-          "description": "Output only. [Output only] Update time stamp"
+          },
+          "description": "The label used for filter resource"
         },
-        "ruleNames": {
-          "description": "the name of the rule",
+        "scopes": {
+          "description": "The scopes of evaluation resource",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
-        "description": {
-          "description": "Description of the Evaluation",
-          "type": "string"
-        },
-        "resourceStatus": {
-          "$ref": "ResourceStatus",
-          "readOnly": true,
-          "description": "Output only. [Output only] The updated rule ids if exist."
-        },
-        "ruleVersions": {
+        "resourceIdPatterns": {
           "items": {
             "type": "string"
           },
-          "description": "Output only. [Output only] The updated rule ids if exist.",
           "type": "array",
-          "readOnly": true
+          "description": "The id pattern for filter resource"
+        }
+      }
+    },
+    "ListEvaluationsResponse": {
+      "properties": {
+        "unreachable": {
+          "description": "Locations that could not be reached.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
-        "name": {
-          "description": "name of resource names have the form 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'",
+        "nextPageToken": {
+          "type": "string",
+          "description": "A token identifying a page of results the server should return."
+        },
+        "evaluations": {
+          "items": {
+            "$ref": "Evaluation"
+          },
+          "type": "array",
+          "description": "The list of Evaluation"
+        }
+      },
+      "id": "ListEvaluationsResponse",
+      "type": "object",
+      "description": "Message for response to listing Evaluations"
+    },
+    "SapDiscoveryResource": {
+      "id": "SapDiscoveryResource",
+      "description": "Message describing a resource.",
+      "type": "object",
+      "properties": {
+        "resourceType": {
+          "description": "The type of this resource.",
+          "enum": [
+            "RESOURCE_TYPE_UNSPECIFIED",
+            "COMPUTE",
+            "STORAGE",
+            "NETWORK"
+          ],
+          "enumDescriptions": [
+            "Undefined resource type.",
+            "This is a compute resource.",
+            "This a storage resource.",
+            "This is a network resource."
+          ],
           "type": "string"
         },
-        "labels": {
-          "type": "object",
-          "additionalProperties": {
+        "resourceUri": {
+          "type": "string",
+          "description": "URI of the resource, includes project, location, and name."
+        },
+        "relatedResources": {
+          "items": {
             "type": "string"
           },
-          "description": "Labels as key value pairs"
+          "description": "A list of resource URIs related to this resource.",
+          "type": "array"
         },
-        "resourceFilter": {
-          "description": "annotations as key value pairs",
-          "$ref": "ResourceFilter"
+        "resourceKind": {
+          "description": "ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.",
+          "type": "string"
         },
-        "createTime": {
-          "description": "Output only. [Output only] Create time stamp",
-          "readOnly": true,
+        "updateTime": {
+          "description": "Unix timestamp of when this resource last had its discovery data updated.",
           "type": "string",
           "format": "google-datetime"
         }
-      },
-      "id": "Evaluation",
-      "type": "object",
-      "description": "Message describing Evaluation object"
+      }
     },
-    "GceInstanceFilter": {
-      "description": "Message describing compute engine instance filter",
+    "SapDiscoveryComponent": {
+      "id": "SapDiscoveryComponent",
+      "type": "object",
+      "description": "Message describing the system component.",
       "properties": {
-        "serviceAccounts": {
-          "items": {
-            "type": "string"
-          },
+        "sid": {
+          "description": "The sap identifier, used by the SAP software and helps differentiate systems for customers.",
+          "type": "string"
+        },
+        "resources": {
           "type": "array",
-          "description": "Service account of compute engine"
-        }
-      },
-      "type": "object",
-      "id": "GceInstanceFilter"
-    },
-    "Location": {
-      "type": "object",
-      "properties": {
-        "labels": {
-          "type": "object",
-          "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "displayName": {
-          "description": "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\".",
-          "type": "string"
-        },
-        "metadata": {
-          "type": "object",
-          "description": "Service-specific metadata. For example the available capacity at the given location.",
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
-          }
-        },
-        "locationId": {
-          "type": "string",
-          "description": "The canonical id for this location. For example: `\"us-east1\"`."
-        },
-        "name": {
-          "description": "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`",
-          "type": "string"
-        }
-      },
-      "description": "A resource that represents Google Cloud Platform location.",
-      "id": "Location"
-    },
-    "CancelOperationRequest": {
-      "description": "The request message for Operations.CancelOperation.",
-      "type": "object",
-      "properties": {},
-      "id": "CancelOperationRequest"
-    },
-    "SapDiscoveryMetadata": {
-      "type": "object",
-      "description": "Message describing SAP discovery system metadata",
-      "id": "SapDiscoveryMetadata",
-      "properties": {
-        "customerRegion": {
-          "description": "Customer region string for customer's use. Does not represent GCP region.",
-          "type": "string"
-        },
-        "environmentType": {
-          "type": "string",
-          "description": "Should be \"prod\", \"QA\", \"dev\", \"staging\", etc."
-        },
-        "sapProduct": {
-          "type": "string",
-          "description": "This sap product name"
-        },
-        "definedSystem": {
-          "description": "Customer defined, something like \"E-commerce pre prod\"",
-          "type": "string"
-        }
-      }
-    },
-    "SapValidation": {
-      "type": "object",
-      "properties": {
-        "validationDetails": {
-          "description": "A list of SAP validation metrics data.",
+          "description": "The resources in a component.",
           "items": {
-            "$ref": "SapValidationValidationDetail"
-          },
-          "type": "array"
-        }
-      },
-      "id": "SapValidation",
-      "description": "A presentation of SAP workload insight. The schema of SAP workloads validation related data."
-    },
-    "SapDiscovery": {
-      "description": "The schema of SAP system discovery data.",
-      "type": "object",
-      "id": "SapDiscovery",
-      "properties": {
-        "databaseLayer": {
-          "description": "An SAP System must have a database.",
-          "$ref": "SapDiscoveryComponent"
+            "$ref": "SapDiscoveryResource"
+          }
         },
-        "systemId": {
+        "databaseType": {
           "type": "string",
-          "description": "A combination of database SID, database instance URI and tenant DB name to make a unique identifier per-system."
+          "description": "The component is a SAP database."
         },
-        "metadata": {
-          "description": "The metadata for SAP system discovery data.",
-          "$ref": "SapDiscoveryMetadata"
+        "applicationType": {
+          "description": "The component is a SAP application.",
+          "type": "string"
         },
-        "applicationLayer": {
-          "$ref": "SapDiscoveryComponent",
-          "description": "An SAP system may run without an application layer."
-        },
-        "updateTime": {
+        "hostProject": {
           "type": "string",
-          "format": "google-datetime",
-          "description": "Unix timestamp this system has been updated last."
+          "description": "Pantheon Project in which the resources reside."
         }
       }
+    },
+    "ListLocationsResponse": {
+      "type": "object",
+      "description": "The response message for Locations.ListLocations.",
+      "properties": {
+        "locations": {
+          "type": "array",
+          "items": {
+            "$ref": "Location"
+          },
+          "description": "A list of locations that matches the specified filter in the request."
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "The standard List next-page token."
+        }
+      },
+      "id": "ListLocationsResponse"
     },
     "Status": {
       "type": "object",
-      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
       "id": "Status",
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
       "properties": {
-        "message": {
-          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
-          "type": "string"
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The status code, which should be an enum value of google.rpc.Code."
         },
         "details": {
+          "type": "array",
+          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
           "items": {
+            "type": "object",
             "additionalProperties": {
               "type": "any",
               "description": "Properties of the object. Contains field @type with type URL."
-            },
-            "type": "object"
-          },
-          "type": "array",
-          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use."
+            }
+          }
         },
-        "code": {
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
-          "format": "int32",
-          "type": "integer"
+        "message": {
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+          "type": "string"
         }
       }
+    },
+    "Empty": {
+      "id": "Empty",
+      "type": "object",
+      "properties": {},
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }"
+    },
+    "ListOperationsResponse": {
+      "description": "The response message for Operations.ListOperations.",
+      "id": "ListOperationsResponse",
+      "properties": {
+        "operations": {
+          "items": {
+            "$ref": "Operation"
+          },
+          "type": "array",
+          "description": "A list of operations that matches the specified filter in the request."
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "The standard List next-page token."
+        }
+      },
+      "type": "object"
     }
   },
-  "mtlsRootUrl": "https://workloadmanager.mtls.googleapis.com/",
-  "basePath": "",
-  "baseUrl": "https://workloadmanager.googleapis.com/",
+  "name": "workloadmanager",
+  "version_module": true,
   "ownerName": "Google",
-  "rootUrl": "https://workloadmanager.googleapis.com/",
+  "revision": "20230125",
+  "discoveryVersion": "v1",
+  "canonicalName": "Workload Manager",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "protocol": "rest",
-  "name": "workloadmanager",
+  "mtlsRootUrl": "https://workloadmanager.mtls.googleapis.com/",
+  "resources": {
+    "projects": {
+      "resources": {
+        "locations": {
+          "methods": {
+            "get": {
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "name"
+              ],
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
+              "description": "Gets information about a location.",
+              "parameters": {
+                "name": {
+                  "location": "path",
+                  "description": "Resource name for the location.",
+                  "type": "string",
+                  "required": true,
+                  "pattern": "^projects/[^/]+/locations/[^/]+$"
+                }
+              },
+              "response": {
+                "$ref": "Location"
+              },
+              "id": "workloadmanager.projects.locations.get",
+              "path": "v1/{+name}"
+            },
+            "list": {
+              "id": "workloadmanager.projects.locations.list",
+              "description": "Lists information about the supported locations for this service.",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/locations",
+              "parameterOrder": [
+                "name"
+              ],
+              "path": "v1/{+name}/locations",
+              "parameters": {
+                "filter": {
+                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
+                  "type": "string",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "type": "integer",
+                  "format": "int32",
+                  "location": "query",
+                  "description": "The maximum number of results to return. If not set, the service selects a default."
+                },
+                "name": {
+                  "required": true,
+                  "description": "The resource that owns the locations collection, if applicable.",
+                  "location": "path",
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$"
+                },
+                "pageToken": {
+                  "type": "string",
+                  "description": "A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.",
+                  "location": "query"
+                }
+              },
+              "response": {
+                "$ref": "ListLocationsResponse"
+              },
+              "httpMethod": "GET"
+            }
+          },
+          "resources": {
+            "evaluations": {
+              "methods": {
+                "list": {
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/evaluations",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "response": {
+                    "$ref": "ListEvaluationsResponse"
+                  },
+                  "id": "workloadmanager.projects.locations.evaluations.list",
+                  "description": "Lists Evaluations in a given project and location.",
+                  "parameters": {
+                    "orderBy": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "Hint for how to order the results"
+                    },
+                    "filter": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "Filtering results"
+                    },
+                    "pageSize": {
+                      "type": "integer",
+                      "location": "query",
+                      "format": "int32",
+                      "description": "Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default."
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "A token identifying a page of results the server should return."
+                    },
+                    "parent": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "description": "Required. Parent value for ListEvaluationsRequest"
+                    }
+                  },
+                  "httpMethod": "GET",
+                  "path": "v1/{+parent}/evaluations"
+                },
+                "create": {
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "path": "v1/{+parent}/evaluations",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/evaluations",
+                  "id": "workloadmanager.projects.locations.evaluations.create",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "POST",
+                  "parameters": {
+                    "evaluationId": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "Required. Id of the requesting object If auto-generating Id server-side, remove this field and evaluation_id from the method_signature of Create RPC"
+                    },
+                    "parent": {
+                      "required": true,
+                      "location": "path",
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "description": "Required. The resource name of the evaluation location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region."
+                    },
+                    "requestId": {
+                      "location": "query",
+                      "type": "string",
+                      "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000)."
+                    }
+                  },
+                  "description": "Creates a new Evaluation in a given project and location.",
+                  "request": {
+                    "$ref": "Evaluation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "get": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "Evaluation"
+                  },
+                  "id": "workloadmanager.projects.locations.evaluations.get",
+                  "description": "Gets details of a single Evaluation.",
+                  "httpMethod": "GET",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/evaluations/{evaluationsId}",
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "description": "Required. Name of the resource",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/evaluations/[^/]+$",
+                      "type": "string",
+                      "location": "path"
+                    }
+                  },
+                  "path": "v1/{+name}"
+                }
+              }
+            },
+            "insights": {
+              "methods": {
+                "writeInsight": {
+                  "response": {
+                    "$ref": "WriteInsightResponse"
+                  },
+                  "parameters": {
+                    "location": {
+                      "description": "Required. The GCP location. The format is: projects/{project}/locations/{location}.",
+                      "location": "path",
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "required": true
+                    }
+                  },
+                  "parameterOrder": [
+                    "location"
+                  ],
+                  "description": "Write the data insights to workload manager data warehouse.",
+                  "httpMethod": "POST",
+                  "request": {
+                    "$ref": "WriteInsightRequest"
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/insights:writeInsight",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "id": "workloadmanager.projects.locations.insights.writeInsight",
+                  "path": "v1/{+location}/insights:writeInsight"
+                }
+              }
+            },
+            "operations": {
+              "methods": {
+                "cancel": {
+                  "httpMethod": "POST",
+                  "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
+                  "request": {
+                    "$ref": "CancelOperationRequest"
+                  },
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "id": "workloadmanager.projects.locations.operations.cancel",
+                  "parameters": {
+                    "name": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "location": "path",
+                      "required": true,
+                      "description": "The name of the operation resource to be cancelled.",
+                      "type": "string"
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "path": "v1/{+name}:cancel"
+                },
+                "delete": {
+                  "path": "v1/{+name}",
+                  "httpMethod": "DELETE",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "id": "workloadmanager.projects.locations.operations.delete",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the operation resource to be deleted.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "location": "path"
+                    }
+                  }
+                },
+                "get": {
+                  "id": "workloadmanager.projects.locations.operations.get",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                  "httpMethod": "GET",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "type": "string",
+                      "location": "path",
+                      "required": true,
+                      "description": "The name of the operation resource."
+                    }
+                  },
+                  "path": "v1/{+name}",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}"
+                },
+                "list": {
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path",
+                      "description": "The name of the operation's parent resource.",
+                      "type": "string"
+                    },
+                    "filter": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "The standard list filter."
+                    },
+                    "pageToken": {
+                      "location": "query",
+                      "description": "The standard list page token.",
+                      "type": "string"
+                    },
+                    "pageSize": {
+                      "type": "integer",
+                      "description": "The standard list page size.",
+                      "location": "query",
+                      "format": "int32"
+                    }
+                  },
+                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                  "response": {
+                    "$ref": "ListOperationsResponse"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "path": "v1/{+name}/operations",
+                  "id": "workloadmanager.projects.locations.operations.list",
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "httpMethod": "GET"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "fullyEncodeReservedExpansion": true,
+  "parameters": {
+    "alt": {
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "location": "query",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "description": "Data format for response.",
+      "type": "string"
+    },
+    "fields": {
+      "location": "query",
+      "type": "string",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "prettyPrint": {
+      "location": "query",
+      "default": "true",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "type": "string",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "location": "query",
+      "type": "string"
+    },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "callback": {
+      "type": "string",
+      "location": "query",
+      "description": "JSONP"
+    },
+    "access_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth access token."
+    },
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "location": "query",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ]
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    }
+  },
+  "documentationLink": "https://cloud.google.com/workload-manager/docs",
+  "description": "",
+  "basePath": "",
+  "ownerDomain": "google.com",
   "version": "v1",
-  "id": "workloadmanager:v1"
+  "id": "workloadmanager:v1",
+  "kind": "discovery#restDescription",
+  "batchPath": "batch",
+  "rootUrl": "https://workloadmanager.googleapis.com/",
+  "servicePath": "",
+  "baseUrl": "https://workloadmanager.googleapis.com/",
+  "title": "Workload Manager API",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
+        }
+      }
+    }
+  }
 }

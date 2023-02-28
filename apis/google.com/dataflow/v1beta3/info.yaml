@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: v1beta3
+  parent: apis/google.com-dataflow
+data:
+  displayName: v1beta3

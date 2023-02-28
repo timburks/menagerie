@@ -1,49 +1,766 @@
 {
-  "ownerName": "Google",
+  "parameters": {
+    "fields": {
+      "location": "query",
+      "type": "string",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "type": "boolean",
+      "default": "true",
+      "description": "Returns response with indentations and line breaks.",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "location": "query",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "enum": [
+        "1",
+        "2"
+      ],
+      "type": "string",
+      "description": "V1 error format."
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "location": "query",
+      "type": "string",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "access_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth access token."
+    },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "alt": {
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "description": "Data format for response.",
+      "type": "string"
+    }
+  },
+  "ownerDomain": "google.com",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
+  "discoveryVersion": "v1",
+  "description": "The Chrome Policy API is a suite of services that allows Chrome administrators to control the policies applied to their managed Chrome OS devices and Chrome browsers.",
+  "kind": "discovery#restDescription",
+  "resources": {
+    "media": {
+      "methods": {
+        "upload": {
+          "path": "v1/{+customer}/policies/files:uploadPolicyFile",
+          "parameters": {
+            "customer": {
+              "required": true,
+              "pattern": "^customers/[^/]+$",
+              "type": "string",
+              "description": "Required. The customer for which the file upload will apply.",
+              "location": "path"
+            }
+          },
+          "flatPath": "v1/customers/{customersId}/policies/files:uploadPolicyFile",
+          "response": {
+            "$ref": "GoogleChromePolicyVersionsV1UploadPolicyFileResponse"
+          },
+          "parameterOrder": [
+            "customer"
+          ],
+          "id": "chromepolicy.media.upload",
+          "description": "Creates an enterprise file from the content provided by user. Returns a public download url for end user.",
+          "supportsMediaUpload": true,
+          "request": {
+            "$ref": "GoogleChromePolicyVersionsV1UploadPolicyFileRequest"
+          },
+          "mediaUpload": {
+            "accept": [
+              "*/*"
+            ],
+            "protocols": {
+              "simple": {
+                "path": "/upload/v1/{+customer}/policies/files:uploadPolicyFile",
+                "multipart": true
+              }
+            }
+          },
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/chrome.management.policy"
+          ]
+        }
+      }
+    },
+    "customers": {
+      "resources": {
+        "policySchemas": {
+          "methods": {
+            "get": {
+              "id": "chromepolicy.customers.policySchemas.get",
+              "response": {
+                "$ref": "GoogleChromePolicyVersionsV1PolicySchema"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/chrome.management.policy",
+                "https://www.googleapis.com/auth/chrome.management.policy.readonly"
+              ],
+              "flatPath": "v1/customers/{customersId}/policySchemas/{policySchemasId}",
+              "parameters": {
+                "name": {
+                  "pattern": "^customers/[^/]+/policySchemas/.*$",
+                  "description": "Required. The policy schema resource name to query.",
+                  "location": "path",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "path": "v1/{+name}",
+              "description": "Get a specific policy schema for a customer by its resource name.",
+              "httpMethod": "GET"
+            },
+            "list": {
+              "parameters": {
+                "pageToken": {
+                  "description": "The page token used to retrieve a specific page of the listing request.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "parent": {
+                  "type": "string",
+                  "description": "Required. The customer for which the listing request will apply.",
+                  "required": true,
+                  "pattern": "^customers/[^/]+$",
+                  "location": "path"
+                },
+                "pageSize": {
+                  "description": "The maximum number of policy schemas to return, defaults to 100 and has a maximum of 1000.",
+                  "type": "integer",
+                  "format": "int32",
+                  "location": "query"
+                },
+                "filter": {
+                  "location": "query",
+                  "description": "The schema filter used to find a particular schema based on fields like its resource name, description and `additionalTargetKeyNames`.",
+                  "type": "string"
+                }
+              },
+              "path": "v1/{+parent}/policySchemas",
+              "flatPath": "v1/customers/{customersId}/policySchemas",
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "GoogleChromePolicyVersionsV1ListPolicySchemasResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/chrome.management.policy",
+                "https://www.googleapis.com/auth/chrome.management.policy.readonly"
+              ],
+              "id": "chromepolicy.customers.policySchemas.list",
+              "parameterOrder": [
+                "parent"
+              ],
+              "description": "Gets a list of policy schemas that match a specified filter value for a given customer."
+            }
+          }
+        },
+        "policies": {
+          "methods": {
+            "resolve": {
+              "parameterOrder": [
+                "customer"
+              ],
+              "response": {
+                "$ref": "GoogleChromePolicyVersionsV1ResolveResponse"
+              },
+              "id": "chromepolicy.customers.policies.resolve",
+              "scopes": [
+                "https://www.googleapis.com/auth/chrome.management.policy",
+                "https://www.googleapis.com/auth/chrome.management.policy.readonly"
+              ],
+              "request": {
+                "$ref": "GoogleChromePolicyVersionsV1ResolveRequest"
+              },
+              "description": "Gets the resolved policy values for a list of policies that match a search query.",
+              "parameters": {
+                "customer": {
+                  "required": true,
+                  "type": "string",
+                  "location": "path",
+                  "description": "ID of the G Suite account or literal \"my_customer\" for the customer associated to the request.",
+                  "pattern": "^customers/[^/]+$"
+                }
+              },
+              "path": "v1/{+customer}/policies:resolve",
+              "flatPath": "v1/customers/{customersId}/policies:resolve",
+              "httpMethod": "POST"
+            }
+          },
+          "resources": {
+            "networks": {
+              "methods": {
+                "removeNetwork": {
+                  "response": {
+                    "$ref": "GoogleChromePolicyVersionsV1RemoveNetworkResponse"
+                  },
+                  "flatPath": "v1/customers/{customersId}/policies/networks:removeNetwork",
+                  "path": "v1/{+customer}/policies/networks:removeNetwork",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/chrome.management.policy"
+                  ],
+                  "description": "Remove an existing network by guid.",
+                  "parameterOrder": [
+                    "customer"
+                  ],
+                  "parameters": {
+                    "customer": {
+                      "location": "path",
+                      "description": "Required. The customer whose network will be removed.",
+                      "type": "string",
+                      "pattern": "^customers/[^/]+$",
+                      "required": true
+                    }
+                  },
+                  "id": "chromepolicy.customers.policies.networks.removeNetwork",
+                  "httpMethod": "POST",
+                  "request": {
+                    "$ref": "GoogleChromePolicyVersionsV1RemoveNetworkRequest"
+                  }
+                },
+                "defineNetwork": {
+                  "parameters": {
+                    "customer": {
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "description": "Required. The customer who will own this new network.",
+                      "pattern": "^customers/[^/]+$"
+                    }
+                  },
+                  "response": {
+                    "$ref": "GoogleChromePolicyVersionsV1DefineNetworkResponse"
+                  },
+                  "description": "Define a new network.",
+                  "parameterOrder": [
+                    "customer"
+                  ],
+                  "path": "v1/{+customer}/policies/networks:defineNetwork",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/chrome.management.policy"
+                  ],
+                  "flatPath": "v1/customers/{customersId}/policies/networks:defineNetwork",
+                  "httpMethod": "POST",
+                  "id": "chromepolicy.customers.policies.networks.defineNetwork",
+                  "request": {
+                    "$ref": "GoogleChromePolicyVersionsV1DefineNetworkRequest"
+                  }
+                },
+                "removeCertificate": {
+                  "parameters": {
+                    "customer": {
+                      "location": "path",
+                      "type": "string",
+                      "description": "Required. The customer whose certificate will be removed.",
+                      "required": true,
+                      "pattern": "^customers/[^/]+$"
+                    }
+                  },
+                  "parameterOrder": [
+                    "customer"
+                  ],
+                  "description": "Remove an existing certificate by guid.",
+                  "path": "v1/{+customer}/policies/networks:removeCertificate",
+                  "flatPath": "v1/customers/{customersId}/policies/networks:removeCertificate",
+                  "request": {
+                    "$ref": "GoogleChromePolicyVersionsV1RemoveCertificateRequest"
+                  },
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/chrome.management.policy"
+                  ],
+                  "id": "chromepolicy.customers.policies.networks.removeCertificate",
+                  "response": {
+                    "$ref": "GoogleChromePolicyVersionsV1RemoveCertificateResponse"
+                  }
+                },
+                "defineCertificate": {
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/chrome.management.policy"
+                  ],
+                  "parameters": {
+                    "customer": {
+                      "required": true,
+                      "location": "path",
+                      "description": "Required. The customer for which the certificate will apply.",
+                      "pattern": "^customers/[^/]+$",
+                      "type": "string"
+                    }
+                  },
+                  "id": "chromepolicy.customers.policies.networks.defineCertificate",
+                  "request": {
+                    "$ref": "GoogleChromePolicyVersionsV1DefineCertificateRequest"
+                  },
+                  "path": "v1/{+customer}/policies/networks:defineCertificate",
+                  "parameterOrder": [
+                    "customer"
+                  ],
+                  "flatPath": "v1/customers/{customersId}/policies/networks:defineCertificate",
+                  "description": "Creates a certificate at a specified OU for a customer.",
+                  "response": {
+                    "$ref": "GoogleChromePolicyVersionsV1DefineCertificateResponse"
+                  }
+                }
+              }
+            },
+            "groups": {
+              "methods": {
+                "listGroupPriorityOrdering": {
+                  "description": "Retrieve a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.",
+                  "parameters": {
+                    "customer": {
+                      "location": "path",
+                      "description": "Required. ID of the Google Workspace account or literal \"my_customer\" for the customer associated to the request.",
+                      "pattern": "^customers/[^/]+$",
+                      "type": "string",
+                      "required": true
+                    }
+                  },
+                  "parameterOrder": [
+                    "customer"
+                  ],
+                  "id": "chromepolicy.customers.policies.groups.listGroupPriorityOrdering",
+                  "path": "v1/{+customer}/policies/groups:listGroupPriorityOrdering",
+                  "request": {
+                    "$ref": "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest"
+                  },
+                  "flatPath": "v1/customers/{customersId}/policies/groups:listGroupPriorityOrdering",
+                  "response": {
+                    "$ref": "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/chrome.management.policy",
+                    "https://www.googleapis.com/auth/chrome.management.policy.readonly"
+                  ],
+                  "httpMethod": "POST"
+                },
+                "batchDelete": {
+                  "flatPath": "v1/customers/{customersId}/policies/groups:batchDelete",
+                  "description": "Delete multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.",
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "customer"
+                  ],
+                  "parameters": {
+                    "customer": {
+                      "location": "path",
+                      "required": true,
+                      "description": "ID of the Google Workspace account or literal \"my_customer\" for the customer associated to the request.",
+                      "type": "string",
+                      "pattern": "^customers/[^/]+$"
+                    }
+                  },
+                  "id": "chromepolicy.customers.policies.groups.batchDelete",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/chrome.management.policy"
+                  ],
+                  "response": {
+                    "$ref": "GoogleProtobufEmpty"
+                  },
+                  "request": {
+                    "$ref": "GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest"
+                  },
+                  "path": "v1/{+customer}/policies/groups:batchDelete"
+                },
+                "updateGroupPriorityOrdering": {
+                  "parameterOrder": [
+                    "customer"
+                  ],
+                  "flatPath": "v1/customers/{customersId}/policies/groups:updateGroupPriorityOrdering",
+                  "path": "v1/{+customer}/policies/groups:updateGroupPriorityOrdering",
+                  "httpMethod": "POST",
+                  "parameters": {
+                    "customer": {
+                      "required": true,
+                      "type": "string",
+                      "description": "Required. ID of the Google Workspace account or literal \"my_customer\" for the customer associated to the request.",
+                      "pattern": "^customers/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "description": "Update a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.",
+                  "id": "chromepolicy.customers.policies.groups.updateGroupPriorityOrdering",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/chrome.management.policy"
+                  ],
+                  "request": {
+                    "$ref": "GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest"
+                  },
+                  "response": {
+                    "$ref": "GoogleProtobufEmpty"
+                  }
+                },
+                "batchModify": {
+                  "path": "v1/{+customer}/policies/groups:batchModify",
+                  "request": {
+                    "$ref": "GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest"
+                  },
+                  "response": {
+                    "$ref": "GoogleProtobufEmpty"
+                  },
+                  "parameters": {
+                    "customer": {
+                      "required": true,
+                      "description": "ID of the Google Workspace account or literal \"my_customer\" for the customer associated to the request.",
+                      "pattern": "^customers/[^/]+$",
+                      "location": "path",
+                      "type": "string"
+                    }
+                  },
+                  "parameterOrder": [
+                    "customer"
+                  ],
+                  "httpMethod": "POST",
+                  "id": "chromepolicy.customers.policies.groups.batchModify",
+                  "description": "Modify multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.",
+                  "flatPath": "v1/customers/{customersId}/policies/groups:batchModify",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/chrome.management.policy"
+                  ]
+                }
+              }
+            },
+            "orgunits": {
+              "methods": {
+                "batchInherit": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/chrome.management.policy"
+                  ],
+                  "description": "Modify multiple policy values that are applied to a specific org unit so that they now inherit the value from a parent (if applicable). All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.",
+                  "path": "v1/{+customer}/policies/orgunits:batchInherit",
+                  "parameterOrder": [
+                    "customer"
+                  ],
+                  "parameters": {
+                    "customer": {
+                      "type": "string",
+                      "required": true,
+                      "description": "ID of the G Suite account or literal \"my_customer\" for the customer associated to the request.",
+                      "pattern": "^customers/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "v1/customers/{customersId}/policies/orgunits:batchInherit",
+                  "id": "chromepolicy.customers.policies.orgunits.batchInherit",
+                  "httpMethod": "POST",
+                  "response": {
+                    "$ref": "GoogleProtobufEmpty"
+                  },
+                  "request": {
+                    "$ref": "GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest"
+                  }
+                },
+                "batchModify": {
+                  "flatPath": "v1/customers/{customersId}/policies/orgunits:batchModify",
+                  "parameters": {
+                    "customer": {
+                      "description": "ID of the G Suite account or literal \"my_customer\" for the customer associated to the request.",
+                      "pattern": "^customers/[^/]+$",
+                      "location": "path",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1/{+customer}/policies/orgunits:batchModify",
+                  "id": "chromepolicy.customers.policies.orgunits.batchModify",
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/chrome.management.policy"
+                  ],
+                  "response": {
+                    "$ref": "GoogleProtobufEmpty"
+                  },
+                  "description": "Modify multiple policy values that are applied to a specific org unit. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.",
+                  "request": {
+                    "$ref": "GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest"
+                  },
+                  "parameterOrder": [
+                    "customer"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "basePath": "",
+  "version": "v1",
   "version_module": true,
   "name": "chromepolicy",
-  "fullyEncodeReservedExpansion": true,
-  "id": "chromepolicy:v1",
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
   "schemas": {
-    "Proto2DescriptorProto": {
+    "GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription": {
+      "id": "GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription",
       "type": "object",
-      "description": "Describes a message type.",
       "properties": {
-        "field": {
-          "type": "array",
-          "items": {
-            "$ref": "Proto2FieldDescriptorProto"
-          }
-        },
-        "name": {
+        "description": {
+          "readOnly": true,
+          "description": "Output only. Additional description for this value.",
           "type": "string"
         },
-        "oneofDecl": {
-          "items": {
-            "$ref": "Proto2OneofDescriptorProto"
-          },
-          "type": "array"
-        },
-        "nestedType": {
-          "type": "array",
-          "items": {
-            "$ref": "Proto2DescriptorProto"
-          }
-        },
-        "enumType": {
-          "items": {
-            "$ref": "Proto2EnumDescriptorProto"
-          },
-          "type": "array"
+        "value": {
+          "description": "Output only. The string represenstation of the value that can be set for the field.",
+          "type": "string",
+          "readOnly": true
         }
       },
-      "id": "Proto2DescriptorProto"
+      "description": "Provides detailed information about a known value that is allowed for a particular field in a PolicySchema."
+    },
+    "GoogleChromePolicyVersionsV1ResolvedPolicy": {
+      "description": "The resolved value of a policy for a given target.",
+      "id": "GoogleChromePolicyVersionsV1ResolvedPolicy",
+      "properties": {
+        "addedSourceKey": {
+          "readOnly": true,
+          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey",
+          "description": "Output only. The added source key establishes at which level an entity was explicitly added for management. This is useful for certain type of policies that are only applied if they are explicitly added for management. For example: apps and networks. An entity can only be deleted from management in an Organizational Unit that it was explicitly added to. If this is not present it means that the policy is managed without the need to explicitly add an entity, for example: standard user or device policies."
+        },
+        "value": {
+          "$ref": "GoogleChromePolicyVersionsV1PolicyValue",
+          "description": "Output only. The resolved value of the policy.",
+          "readOnly": true
+        },
+        "targetKey": {
+          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey",
+          "description": "Output only. The target resource for which the resolved policy value applies.",
+          "readOnly": true
+        },
+        "sourceKey": {
+          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey",
+          "readOnly": true,
+          "description": "Output only. The source resource from which this policy value is obtained. May be the same as `targetKey` if the policy is directly modified on the target, otherwise it would be another resource from which the policy gets its value (if applicable). If not present, the source is the default value for the customer."
+        }
+      },
+      "type": "object"
+    },
+    "ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle": {
+      "properties": {
+        "policyApiLifecycleStage": {
+          "description": "Indicate current life cycle stage of the policy API.",
+          "enumDescriptions": [
+            "unspecified.",
+            "Policy is not working yet, but giving developers heads up on format. This stage can transfer to API_DEVELOPEMNT or API_CURRENT.",
+            "Policy can change format in backward incompatible way (breaking change). This stage can transfer to API_CURRENT or API_DEPRECATED. This could be used for policies launched only to TTs or launched to selected customers for emergency usage.",
+            "Policy in official format. Policy can change format in backward compatible way (non-breaking change). Example: this policy can introduce a new field, which is considered non-breaking change, when field masks are properly utilized. This stage can transfer to API_DEPRECATED.",
+            "Please stop using this policy. This policy is deprecated and may/will be removed in the future. Most likely a new policy was introduced to replace this one."
+          ],
+          "type": "string",
+          "enum": [
+            "API_UNSPECIFIED",
+            "API_PREVIEW",
+            "API_DEVELOPMENT",
+            "API_CURRENT",
+            "API_DEPRECATED"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "Description about current life cycle."
+        },
+        "endSupport": {
+          "description": "End supporting date for current policy.",
+          "$ref": "GoogleTypeDate"
+        },
+        "deprecatedInFavorOf": {
+          "type": "array",
+          "description": "In the event that this policy was deprecated in favor of another policy, the fully qualified namespace(s) of the new policies as they will show in PolicyAPI.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "type": "object",
+      "id": "ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle"
+    },
+    "GoogleTypeDate": {
+      "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
+      "properties": {
+        "year": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."
+        },
+        "month": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."
+        },
+        "day": {
+          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "type": "object",
+      "id": "GoogleTypeDate"
+    },
+    "GoogleChromePolicyVersionsV1NetworkSetting": {
+      "id": "GoogleChromePolicyVersionsV1NetworkSetting",
+      "type": "object",
+      "description": "A network setting contains network configurations.",
+      "properties": {
+        "policySchema": {
+          "description": "The fully qualified name of the network setting.",
+          "type": "string"
+        },
+        "value": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object."
+          },
+          "description": "The value of the network setting."
+        }
+      }
+    },
+    "GoogleChromePolicyVersionsV1PolicySchemaRequiredItems": {
+      "description": "The fields that will become required based on the value of this field.",
+      "id": "GoogleChromePolicyVersionsV1PolicySchemaRequiredItems",
+      "type": "object",
+      "properties": {
+        "fieldConditions": {
+          "description": "The value(s) of the field that provoke required field enforcement. An empty field_conditions implies that any value assigned to this field will provoke required field enforcement.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "requiredFields": {
+          "type": "array",
+          "description": "The fields that are required as a consequence of the field conditions.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "GoogleChromePolicyVersionsV1RemoveNetworkResponse": {
+      "properties": {},
+      "description": "Response object for removing a network.",
+      "type": "object",
+      "id": "GoogleChromePolicyVersionsV1RemoveNetworkResponse"
+    },
+    "GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest": {
+      "id": "GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest",
+      "type": "object",
+      "description": "Request parameters for modifying a policy value for a specific group target.",
+      "properties": {
+        "updateMask": {
+          "description": "Required. Policy fields to update. Only fields in this mask will be updated; other fields in `policy_value` will be ignored (even if they have values). If a field is in this list it must have a value in 'policy_value'.",
+          "format": "google-fieldmask",
+          "type": "string"
+        },
+        "policyValue": {
+          "description": "The new value for the policy.",
+          "$ref": "GoogleChromePolicyVersionsV1PolicyValue"
+        },
+        "policyTargetKey": {
+          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey",
+          "description": "Required. The key of the target for which we want to modify a policy. The target resource must point to a Group."
+        }
+      }
+    },
+    "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest": {
+      "properties": {
+        "policyTargetKey": {
+          "description": "Required. The key of the target for which we want to retrieve the group priority ordering. The target resource must point to an app.",
+          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey"
+        },
+        "policyNamespace": {
+          "description": "Required. The namespace of the policy type for the request.",
+          "type": "string"
+        }
+      },
+      "description": "Request message for listing the group priority ordering of an app.",
+      "id": "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest",
+      "type": "object"
+    },
+    "GoogleChromePolicyVersionsV1PolicyModificationError": {
+      "properties": {
+        "policySchema": {
+          "description": "Output only. The specific policy schema modification that had an error.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "fieldErrors": {
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1PolicyModificationFieldError"
+          },
+          "description": "Output only. The error messages related to the modification.",
+          "type": "array",
+          "readOnly": true
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Output only. The non-field errors related to the modification.",
+          "readOnly": true
+        },
+        "policyTargetKey": {
+          "readOnly": true,
+          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey",
+          "description": "Output only. The specific policy target modification that had error."
+        }
+      },
+      "description": "Error information for a modification request of a specific policy on a specific target.",
+      "type": "object",
+      "id": "GoogleChromePolicyVersionsV1PolicyModificationError"
     },
     "GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest": {
+      "id": "GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest",
+      "type": "object",
       "properties": {
         "requests": {
           "items": {
@@ -53,14 +770,336 @@
           "type": "array"
         }
       },
-      "description": "Request message for modifying multiple policy values for a specific target.",
+      "description": "Request message for modifying multiple policy values for a specific target."
+    },
+    "GoogleChromePolicyVersionsV1RemoveNetworkRequest": {
       "type": "object",
-      "id": "GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest"
+      "properties": {
+        "targetResource": {
+          "description": "Required. The target resource on which this network will be removed. The following resources are supported: * Organizational Unit (\"orgunits/{orgunit_id}\")",
+          "type": "string"
+        },
+        "networkId": {
+          "type": "string",
+          "description": "Required. The GUID of the network to remove."
+        }
+      },
+      "description": "Request object for removing a network",
+      "id": "GoogleChromePolicyVersionsV1RemoveNetworkRequest"
+    },
+    "GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest": {
+      "description": "Request message for specifying that multiple policy values will be deleted.",
+      "id": "GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest",
+      "type": "object",
+      "properties": {
+        "requests": {
+          "description": "List of policies that will be deleted as defined by the `requests`. All requests in the list must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference the same `policySchema` + ` policyTargetKey` pair. ",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest"
+          }
+        }
+      }
+    },
+    "GoogleChromePolicyVersionsV1CertificateReference": {
+      "properties": {
+        "orgUnitId": {
+          "type": "string",
+          "description": "Output only. The obfuscated id of the org unit the referencing network is in.",
+          "readOnly": true
+        },
+        "network": {
+          "description": "Output only. The name of the referencing network.",
+          "type": "string",
+          "readOnly": true
+        }
+      },
+      "type": "object",
+      "description": "Error information for removing of a specific certificate on a specific target. A reference to a certificate.",
+      "id": "GoogleChromePolicyVersionsV1CertificateReference"
+    },
+    "GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest": {
+      "id": "GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest",
+      "type": "object",
+      "properties": {
+        "updateMask": {
+          "description": "Required. Policy fields to update. Only fields in this mask will be updated; other fields in `policy_value` will be ignored (even if they have values). If a field is in this list it must have a value in 'policy_value'.",
+          "format": "google-fieldmask",
+          "type": "string"
+        },
+        "policyTargetKey": {
+          "description": "Required. The key of the target for which we want to modify a policy. The target resource must point to an Org Unit.",
+          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey"
+        },
+        "policyValue": {
+          "$ref": "GoogleChromePolicyVersionsV1PolicyValue",
+          "description": "The new value for the policy."
+        }
+      },
+      "description": "Request parameters for modifying a policy value for a specific org unit target."
+    },
+    "Proto2EnumDescriptorProto": {
+      "description": "Describes an enum type.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "Proto2EnumValueDescriptorProto"
+          }
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "id": "Proto2EnumDescriptorProto"
+    },
+    "GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest": {
+      "id": "GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest",
+      "description": "Request message for updating the group priority ordering of an app.",
+      "properties": {
+        "groupIds": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "description": "Required. The group IDs, in desired priority ordering."
+        },
+        "policyNamespace": {
+          "type": "string",
+          "description": "Required. The namespace of the policy type for the request."
+        },
+        "policyTargetKey": {
+          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey",
+          "description": "Required. The key of the target for which we want to update the group priority ordering. The target resource must point to an app."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleChromePolicyVersionsV1PolicyTargetKey": {
+      "id": "GoogleChromePolicyVersionsV1PolicyTargetKey",
+      "properties": {
+        "additionalTargetKeys": {
+          "description": "Map containing the additional target key name and value pairs used to further identify the target of the policy.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "targetResource": {
+          "description": "The target resource on which this policy is applied. The following resources are supported: * Organizational Unit (\"orgunits/{orgunit_id}\") * Group (\"groups/{group_id}\")",
+          "type": "string"
+        }
+      },
+      "description": "The key used to identify the target on which the policy will be applied.",
+      "type": "object"
+    },
+    "GoogleChromePolicyVersionsV1FieldConstraints": {
+      "id": "GoogleChromePolicyVersionsV1FieldConstraints",
+      "description": "Information about any range constraints.",
+      "properties": {
+        "numericRangeConstraint": {
+          "$ref": "GoogleChromePolicyVersionsV1NumericRangeConstraint",
+          "description": "The allowed range for numeric fields."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleChromePolicyVersionsV1DefineCertificateRequest": {
+      "description": "Request object for creating a certificate.",
+      "id": "GoogleChromePolicyVersionsV1DefineCertificateRequest",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Optional. Certificate settings within the chrome.networks.certificates namespace.",
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1NetworkSetting"
+          },
+          "type": "array"
+        },
+        "certificate": {
+          "type": "string",
+          "description": "Required. The raw contents of the .PEM, .CRT, or .CER file."
+        },
+        "ceritificateName": {
+          "type": "string",
+          "description": "Optional. The optional name of the certificate. If not specified, the certificate issuer will be used as the name."
+        },
+        "targetResource": {
+          "description": "Required. The target resource on which this certificate is applied. The following resources are supported: * Organizational Unit (\"orgunits/{orgunit_id}\")",
+          "type": "string"
+        }
+      }
+    },
+    "GoogleChromePolicyVersionsV1PolicyModificationFieldError": {
+      "description": "Error information for a modification request of a specific field on a specific policy.",
+      "properties": {
+        "error": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Output only. The error message related to the field."
+        },
+        "field": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Output only. The name of the field with the error."
+        }
+      },
+      "type": "object",
+      "id": "GoogleChromePolicyVersionsV1PolicyModificationFieldError"
+    },
+    "GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest": {
+      "properties": {
+        "requests": {
+          "description": "List of policies to modify as defined by the `requests`. All requests in the list must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference the same `policySchema` + ` policyTargetKey` pair. ",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest"
+          }
+        }
+      },
+      "type": "object",
+      "id": "GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest",
+      "description": "Request message for modifying multiple policy values for a specific group-based target."
+    },
+    "GoogleChromePolicyVersionsV1ResolveRequest": {
+      "id": "GoogleChromePolicyVersionsV1ResolveRequest",
+      "type": "object",
+      "description": "Request message for getting the resolved policy value for a specific target.",
+      "properties": {
+        "policySchemaFilter": {
+          "description": "The schema filter to apply to the resolve request. Specify a schema name to view a particular schema, for example: chrome.users.ShowLogoutButton Wildcards are supported, but only in the leaf portion of the schema name. Wildcards cannot be used in namespace directly. Please read https://developers.google.com/chrome/policy/guides/policy-schemas for details on schema namespaces. For example: Valid: \"chrome.users.*\", \"chrome.users.apps.*\", \"chrome.printers.*\" Invalid: \"*\", \"*.users\", \"chrome.*\", \"chrome.*.apps.*\"",
+          "type": "string"
+        },
+        "policyTargetKey": {
+          "description": "Required. The key of the target resource on which the policies should be resolved.",
+          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey"
+        },
+        "pageSize": {
+          "description": "The maximum number of policies to return, defaults to 100 and has a maximum of 1000.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "pageToken": {
+          "description": "The page token used to retrieve a specific page of the request.",
+          "type": "string"
+        }
+      }
+    },
+    "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse": {
+      "properties": {
+        "groupIds": {
+          "readOnly": true,
+          "description": "Output only. The group IDs, in priority ordering.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "policyNamespace": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Output only. The namespace of the policy type of the group IDs."
+        },
+        "policyTargetKey": {
+          "description": "Output only. The target resource for which the group priority ordering has been retrieved.",
+          "readOnly": true,
+          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey"
+        }
+      },
+      "id": "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse",
+      "type": "object",
+      "description": "Response message for listing the group priority ordering of an app."
+    },
+    "GoogleChromePolicyVersionsV1PolicySchemaFieldDescription": {
+      "id": "GoogleChromePolicyVersionsV1PolicySchemaFieldDescription",
+      "properties": {
+        "fieldConstraints": {
+          "description": "Output only. Information on any input constraints associated on the values for the field.",
+          "$ref": "GoogleChromePolicyVersionsV1FieldConstraints",
+          "readOnly": true
+        },
+        "description": {
+          "description": "Deprecated. Use name and field_description instead. The description for the field.",
+          "type": "string"
+        },
+        "fieldDependencies": {
+          "description": "Output only. Provides a list of fields and values. At least one of the fields must have the corresponding value in order for this field to be allowed to be set.",
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies"
+          },
+          "type": "array",
+          "readOnly": true
+        },
+        "field": {
+          "type": "string",
+          "description": "Output only. The name of the field for associated with this description.",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Output only. The name of the field.",
+          "readOnly": true
+        },
+        "fieldDescription": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Output only. The description of the field."
+        },
+        "nestedFieldDescriptions": {
+          "description": "Output only. Provides the description of the fields nested in this field, if the field is a message type that defines multiple fields.",
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1PolicySchemaFieldDescription"
+          }
+        },
+        "knownValueDescriptions": {
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription"
+          },
+          "description": "Output only. If the field has a set of known values, this field will provide a description for these values.",
+          "readOnly": true,
+          "type": "array"
+        },
+        "inputConstraint": {
+          "readOnly": true,
+          "description": "Output only. Any input constraints associated on the values for the field.",
+          "type": "string"
+        },
+        "defaultValue": {
+          "description": "Output only. Client default if the policy is unset.",
+          "type": "any",
+          "readOnly": true
+        },
+        "requiredItems": {
+          "type": "array",
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1PolicySchemaRequiredItems"
+          },
+          "readOnly": true,
+          "description": "Output only. Provides a list of fields that are required to be set if this field has a certain value."
+        }
+      },
+      "type": "object",
+      "description": "Provides detailed information for a particular field that is part of a PolicySchema."
+    },
+    "GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest": {
+      "properties": {
+        "policySchema": {
+          "type": "string",
+          "description": "The fully qualified name of the policy schema that is being inherited."
+        },
+        "policyTargetKey": {
+          "description": "Required. The key of the target for which we want to modify a policy. The target resource must point to a Group.",
+          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey"
+        }
+      },
+      "id": "GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest",
+      "type": "object",
+      "description": "Request parameters for deleting the policy value of a specific group target."
     },
     "GoogleChromePolicyVersionsV1DefineNetworkResponse": {
-      "type": "object",
-      "id": "GoogleChromePolicyVersionsV1DefineNetworkResponse",
-      "description": "Response object for creating a network.",
       "properties": {
         "settings": {
           "items": {
@@ -70,51 +1109,336 @@
           "description": "Detailed network settings of the new created network"
         },
         "targetResource": {
-          "description": "The target resource on which this new network will be defined. The following resources are supported: * Organizational Unit (\"orgunits/{orgunit_id}\")",
-          "type": "string"
+          "type": "string",
+          "description": "The target resource on which this new network will be defined. The following resources are supported: * Organizational Unit (\"orgunits/{orgunit_id}\")"
         },
         "networkId": {
+          "description": "Network ID of the new created network.",
+          "type": "string"
+        }
+      },
+      "description": "Response object for creating a network.",
+      "id": "GoogleChromePolicyVersionsV1DefineNetworkResponse",
+      "type": "object"
+    },
+    "GoogleChromePolicyVersionsV1UploadPolicyFileResponse": {
+      "id": "GoogleChromePolicyVersionsV1UploadPolicyFileResponse",
+      "description": "Response message for downloading an uploaded file.",
+      "type": "object",
+      "properties": {
+        "downloadUri": {
           "type": "string",
-          "description": "Network ID of the new created network."
+          "description": "The uri for end user to download the file."
+        }
+      }
+    },
+    "Proto2OneofDescriptorProto": {
+      "type": "object",
+      "id": "Proto2OneofDescriptorProto",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "description": "Describes a oneof."
+    },
+    "GoogleProtobufEmpty": {
+      "type": "object",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+      "properties": {},
+      "id": "GoogleProtobufEmpty"
+    },
+    "Proto2EnumValueDescriptorProto": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "description": "Describes a value within an enum.",
+      "id": "Proto2EnumValueDescriptorProto"
+    },
+    "GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails": {
+      "id": "GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails",
+      "properties": {
+        "certificateReferences": {
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1CertificateReference"
+          },
+          "description": "Output only. If the certificate was not removed, a list of references to the certificate that prevented it from being removed. Only unreferenced certificates can be removed.",
+          "readOnly": true,
+          "type": "array"
+        }
+      },
+      "description": "Details of the errors encountered during a remove certificate request. This message will be returned as part of the details of a google.rpc.Status returned to the user when there is an error in their request.",
+      "type": "object"
+    },
+    "GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies": {
+      "id": "GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies",
+      "description": "The field and the value it must have for another field to be allowed to be set.",
+      "properties": {
+        "sourceField": {
+          "description": "The source field which this field depends on.",
+          "type": "string"
+        },
+        "sourceFieldValue": {
+          "description": "The value which the source field must have for this field to be allowed to be set.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleChromePolicyVersionsV1ResolveResponse": {
+      "id": "GoogleChromePolicyVersionsV1ResolveResponse",
+      "description": "Response message for getting the resolved policy value for a specific target.",
+      "properties": {
+        "nextPageToken": {
+          "description": "The page token used to get the next set of resolved policies found by the request.",
+          "type": "string"
+        },
+        "resolvedPolicies": {
+          "type": "array",
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1ResolvedPolicy"
+          },
+          "description": "The list of resolved policies found by the resolve request."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleChromePolicyVersionsV1RemoveCertificateResponse": {
+      "description": "Response object for removing a certificate.",
+      "type": "object",
+      "properties": {},
+      "id": "GoogleChromePolicyVersionsV1RemoveCertificateResponse"
+    },
+    "GoogleChromePolicyVersionsV1UploadPolicyFileRequest": {
+      "type": "object",
+      "id": "GoogleChromePolicyVersionsV1UploadPolicyFileRequest",
+      "description": "Request message for uploading a file for a policy.",
+      "properties": {
+        "policyField": {
+          "type": "string",
+          "description": "Required. The fully qualified policy schema and field name this file is uploaded for. This information will be used to validate the content type of the file."
+        }
+      }
+    },
+    "GoogleChromePolicyVersionsV1PolicyValue": {
+      "id": "GoogleChromePolicyVersionsV1PolicyValue",
+      "properties": {
+        "policySchema": {
+          "description": "The fully qualified name of the policy schema associated with this policy.",
+          "type": "string"
+        },
+        "value": {
+          "type": "object",
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any"
+          },
+          "description": "The value of the policy that is compatible with the schema that it is associated with."
+        }
+      },
+      "description": "A particular value for a policy managed by the service.",
+      "type": "object"
+    },
+    "GoogleChromePolicyVersionsV1DefineCertificateResponse": {
+      "id": "GoogleChromePolicyVersionsV1DefineCertificateResponse",
+      "description": "Response object for creating a certificate.",
+      "type": "object",
+      "properties": {
+        "networkId": {
+          "description": "The guid of the certificate created by the action.",
+          "type": "string"
+        },
+        "targetResource": {
+          "type": "string",
+          "description": "the resource at which the certificate is defined."
+        },
+        "settings": {
+          "description": "the affiliated settings of the certificate (NOT IMPLEMENTED)",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1NetworkSetting"
+          }
+        }
+      }
+    },
+    "GoogleChromePolicyVersionsV1PolicyModificationErrorDetails": {
+      "type": "object",
+      "properties": {
+        "modificationErrors": {
+          "description": "Output only. List of specific policy modifications errors that may have occurred during a modifying request.",
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1PolicyModificationError"
+          }
+        }
+      },
+      "id": "GoogleChromePolicyVersionsV1PolicyModificationErrorDetails",
+      "description": "Details of the errors encountered during a policy modification request. This message will be returned as part of the details of a google.rpc.Status returned to the user when there is an error in their request."
+    },
+    "GoogleChromePolicyVersionsV1PolicySchema": {
+      "properties": {
+        "categoryTitle": {
+          "type": "string",
+          "description": "Title of the category in which a setting belongs."
+        },
+        "notices": {
+          "readOnly": true,
+          "description": "Output only. Special notice messages related to setting certain values in certain fields in the schema.",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription"
+          }
+        },
+        "schemaName": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Output only. The fully qualified name of the policy schema. This value is used to fill the field `policy_schema` in PolicyValue when calling BatchInheritOrgUnitPolicies BatchModifyOrgUnitPolicies BatchModifyGroupPolicies or BatchDeleteGroupPolicies."
+        },
+        "supportUri": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Output only. URI to related support article for this schema."
+        },
+        "validTargetResources": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "type": "string",
+            "enumDescriptions": [
+              "Unspecified target resource.",
+              "Organizational Unit target resource.",
+              "Group target resource."
+            ],
+            "enum": [
+              "TARGET_RESOURCE_UNSPECIFIED",
+              "ORG_UNIT",
+              "GROUP"
+            ]
+          },
+          "description": "Output only. Information about applicable target resources for the policy."
+        },
+        "policyApiLifecycle": {
+          "readOnly": true,
+          "$ref": "ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle",
+          "description": "Output only. Current lifecycle information."
+        },
+        "name": {
+          "description": "Format: name=customers/{customer}/policySchemas/{schema_namespace}",
+          "type": "string"
+        },
+        "accessRestrictions": {
+          "type": "array",
+          "description": "Output only. Specific access restrictions related to this policy.",
+          "readOnly": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "additionalTargetKeyNames": {
+          "description": "Output only. Additional key names that will be used to identify the target of the policy value. When specifying a `policyTargetKey`, each of the additional keys specified here will have to be included in the `additionalTargetKeys` map.",
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1AdditionalTargetKeyName"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "definition": {
+          "description": "Schema definition using proto descriptor.",
+          "$ref": "Proto2FileDescriptorProto"
+        },
+        "fieldDescriptions": {
+          "items": {
+            "$ref": "GoogleChromePolicyVersionsV1PolicySchemaFieldDescription"
+          },
+          "type": "array",
+          "description": "Output only. Detailed description of each field that is part of the schema.",
+          "readOnly": true
+        },
+        "policyDescription": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Output only. Description about the policy schema for user consumption."
+        },
+        "policyApiLifeycle": {
+          "$ref": "ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle",
+          "description": "Deprecated field because of typo."
+        }
+      },
+      "description": "Resource representing a policy schema.",
+      "type": "object",
+      "id": "GoogleChromePolicyVersionsV1PolicySchema"
+    },
+    "GoogleChromePolicyVersionsV1AdditionalTargetKeyName": {
+      "type": "object",
+      "properties": {
+        "keyDescription": {
+          "description": "Key description.",
+          "type": "string"
+        },
+        "key": {
+          "type": "string",
+          "description": "Key name."
+        }
+      },
+      "id": "GoogleChromePolicyVersionsV1AdditionalTargetKeyName",
+      "description": "Additional key names that will be used to identify the target of the policy value."
+    },
+    "GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest": {
+      "id": "GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest",
+      "type": "object",
+      "description": "Request parameters for inheriting policy value of a specific org unit target from the policy value of its parent org unit.",
+      "properties": {
+        "policySchema": {
+          "description": "The fully qualified name of the policy schema that is being inherited.",
+          "type": "string"
+        },
+        "policyTargetKey": {
+          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey",
+          "description": "Required. The key of the target for which we want to modify a policy. The target resource must point to an Org Unit."
         }
       }
     },
     "Proto2FieldDescriptorProto": {
+      "description": "Describes a field within a message.",
       "properties": {
-        "proto3Optional": {
-          "description": "If true, this is a proto3 \"optional\". When a proto3 field is optional, it tracks presence regardless of field type. When proto3_optional is true, this field must be belong to a oneof to signal to old proto3 clients that presence is tracked for this field. This oneof is known as a \"synthetic\" oneof, and this field must be its sole member (each proto3 optional field gets its own synthetic oneof). Synthetic oneofs exist in the descriptor only, and do not generate any API. Synthetic oneofs must be ordered after all \"real\" oneofs. For message fields, proto3_optional doesn't create any semantic change, since non-repeated message fields always track presence. However it still indicates the semantic detail of whether the user wrote \"optional\" or not. This can be useful for round-tripping the .proto file. For consistency we give message fields a synthetic oneof also, even though it is not required to track presence. This is especially important because the parser can't tell if a field is a message or an enum, so it must always create a synthetic oneof. Proto2 optional fields do not set this flag, because they already indicate optional with `LABEL_OPTIONAL`.",
-          "type": "boolean"
+        "jsonName": {
+          "type": "string",
+          "description": "JSON name of this field. The value is set by protocol compiler. If the user has set a \"json_name\" option on this field, that option's value will be used. Otherwise, it's deduced from the field's name by converting it to camelCase."
+        },
+        "name": {
+          "type": "string"
+        },
+        "oneofIndex": {
+          "type": "integer",
+          "format": "int32",
+          "description": "If set, gives the index of a oneof in the containing type's oneof_decl list. This field is a member of that oneof."
+        },
+        "number": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "typeName": {
+          "description": "For message and enum types, this is the name of the type. If the name starts with a '.', it is fully-qualified. Otherwise, C++-like scoping rules are used to find the type (i.e. first the nested types within this message are searched, then within the parent, on up to the root namespace).",
+          "type": "string"
         },
         "defaultValue": {
           "description": "For numeric types, contains the original text representation of the value. For booleans, \"true\" or \"false\". For strings, contains the default text contents (not escaped in any way). For bytes, contains the C escaped value. All bytes \u003e= 128 are escaped.",
           "type": "string"
         },
-        "oneofIndex": {
-          "format": "int32",
-          "type": "integer",
-          "description": "If set, gives the index of a oneof in the containing type's oneof_decl list. This field is a member of that oneof."
-        },
-        "jsonName": {
-          "description": "JSON name of this field. The value is set by protocol compiler. If the user has set a \"json_name\" option on this field, that option's value will be used. Otherwise, it's deduced from the field's name by converting it to camelCase.",
-          "type": "string"
-        },
-        "label": {
-          "type": "string",
-          "enumDescriptions": [
-            "0 is reserved for errors",
-            "",
-            ""
-          ],
-          "enum": [
-            "LABEL_OPTIONAL",
-            "LABEL_REQUIRED",
-            "LABEL_REPEATED"
-          ]
-        },
-        "name": {
-          "type": "string"
+        "proto3Optional": {
+          "description": "If true, this is a proto3 \"optional\". When a proto3 field is optional, it tracks presence regardless of field type. When proto3_optional is true, this field must be belong to a oneof to signal to old proto3 clients that presence is tracked for this field. This oneof is known as a \"synthetic\" oneof, and this field must be its sole member (each proto3 optional field gets its own synthetic oneof). Synthetic oneofs exist in the descriptor only, and do not generate any API. Synthetic oneofs must be ordered after all \"real\" oneofs. For message fields, proto3_optional doesn't create any semantic change, since non-repeated message fields always track presence. However it still indicates the semantic detail of whether the user wrote \"optional\" or not. This can be useful for round-tripping the .proto file. For consistency we give message fields a synthetic oneof also, even though it is not required to track presence. This is especially important because the parser can't tell if a field is a message or an enum, so it must always create a synthetic oneof. Proto2 optional fields do not set this flag, because they already indicate optional with `LABEL_OPTIONAL`.",
+          "type": "boolean"
         },
         "type": {
+          "description": "If type_name is set, this need not be set. If both this and type_name are set, this must be one of TYPE_ENUM, TYPE_MESSAGE or TYPE_GROUP.",
           "enum": [
             "TYPE_DOUBLE",
             "TYPE_FLOAT",
@@ -155,1003 +1479,207 @@
             "Uses ZigZag encoding.",
             "Uses ZigZag encoding."
           ],
-          "type": "string",
-          "description": "If type_name is set, this need not be set. If both this and type_name are set, this must be one of TYPE_ENUM, TYPE_MESSAGE or TYPE_GROUP."
-        },
-        "typeName": {
-          "description": "For message and enum types, this is the name of the type. If the name starts with a '.', it is fully-qualified. Otherwise, C++-like scoping rules are used to find the type (i.e. first the nested types within this message are searched, then within the parent, on up to the root namespace).",
           "type": "string"
         },
-        "number": {
-          "type": "integer",
-          "format": "int32"
+        "label": {
+          "enumDescriptions": [
+            "0 is reserved for errors",
+            "",
+            ""
+          ],
+          "enum": [
+            "LABEL_OPTIONAL",
+            "LABEL_REQUIRED",
+            "LABEL_REPEATED"
+          ],
+          "type": "string"
         }
       },
       "id": "Proto2FieldDescriptorProto",
-      "type": "object",
-      "description": "Describes a field within a message."
+      "type": "object"
     },
-    "GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest": {
+    "Proto2DescriptorProto": {
       "type": "object",
-      "id": "GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest",
       "properties": {
-        "requests": {
-          "type": "array",
-          "description": "List of policies that have to inherit their values as defined by the `requests`. All requests in the list must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All `policyTargetKey.targetResource` values must point to an org unit resource. 3. All `policyTargetKey` values must have the same key names in the ` additionalTargetKeys`. This also means if one of the targets has an empty `additionalTargetKeys` map, all of the targets must have an empty `additionalTargetKeys` map. 4. No two modification requests can reference the same `policySchema` + ` policyTargetKey` pair. ",
+        "enumType": {
           "items": {
-            "$ref": "GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest"
+            "$ref": "Proto2EnumDescriptorProto"
+          },
+          "type": "array"
+        },
+        "oneofDecl": {
+          "items": {
+            "$ref": "Proto2OneofDescriptorProto"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "field": {
+          "type": "array",
+          "items": {
+            "$ref": "Proto2FieldDescriptorProto"
+          }
+        },
+        "nestedType": {
+          "type": "array",
+          "items": {
+            "$ref": "Proto2DescriptorProto"
           }
         }
       },
-      "description": "Request message for specifying that multiple policy values inherit their value from their parents."
+      "description": "Describes a message type.",
+      "id": "Proto2DescriptorProto"
     },
-    "GoogleChromePolicyVersionsV1ResolveResponse": {
+    "GoogleChromePolicyVersionsV1RemoveCertificateRequest": {
+      "id": "GoogleChromePolicyVersionsV1RemoveCertificateRequest",
+      "properties": {
+        "networkId": {
+          "type": "string",
+          "description": "Required. The GUID of the certificate to remove."
+        },
+        "targetResource": {
+          "type": "string",
+          "description": "Required. The target resource on which this certificate will be removed. The following resources are supported: * Organizational Unit (\"orgunits/{orgunit_id}\")"
+        }
+      },
+      "description": "Request object for removing a certificate.",
+      "type": "object"
+    },
+    "GoogleChromePolicyVersionsV1ListPolicySchemasResponse": {
+      "id": "GoogleChromePolicyVersionsV1ListPolicySchemasResponse",
       "type": "object",
       "properties": {
         "nextPageToken": {
-          "description": "The page token used to get the next set of resolved policies found by the request.",
-          "type": "string"
+          "type": "string",
+          "description": "The page token used to get the next page of policy schemas."
         },
-        "resolvedPolicies": {
+        "policySchemas": {
           "items": {
-            "$ref": "GoogleChromePolicyVersionsV1ResolvedPolicy"
+            "$ref": "GoogleChromePolicyVersionsV1PolicySchema"
           },
           "type": "array",
-          "description": "The list of resolved policies found by the resolve request."
+          "description": "The list of policy schemas that match the query."
         }
       },
-      "id": "GoogleChromePolicyVersionsV1ResolveResponse",
-      "description": "Response message for getting the resolved policy value for a specific target."
+      "description": "Response message for listing policy schemas that match a filter."
     },
-    "GoogleChromePolicyVersionsV1DefineNetworkRequest": {
+    "GoogleChromePolicyVersionsV1NumericRangeConstraint": {
+      "id": "GoogleChromePolicyVersionsV1NumericRangeConstraint",
+      "type": "object",
+      "description": "A constraint on upper and/or lower bounds, with at least one being set.",
       "properties": {
-        "targetResource": {
-          "description": "Required. The target resource on which this new network will be defined. The following resources are supported: * Organizational Unit (\"orgunits/{orgunit_id}\")",
+        "maximum": {
+          "format": "int64",
+          "description": "Maximum value.",
           "type": "string"
         },
-        "name": {
+        "minimum": {
+          "format": "int64",
           "type": "string",
-          "description": "Required. Name of the new created network."
-        },
-        "settings": {
-          "type": "array",
-          "description": "Required. Detailed network settings.",
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1NetworkSetting"
-          }
-        }
-      },
-      "id": "GoogleChromePolicyVersionsV1DefineNetworkRequest",
-      "type": "object",
-      "description": "Request object for creating a new network."
-    },
-    "GoogleTypeDate": {
-      "type": "object",
-      "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp",
-      "id": "GoogleTypeDate",
-      "properties": {
-        "day": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant."
-        },
-        "year": {
-          "format": "int32",
-          "type": "integer",
-          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."
-        },
-        "month": {
-          "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
-          "format": "int32",
-          "type": "integer"
+          "description": "Minimum value."
         }
       }
     },
-    "GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest": {
-      "type": "object",
+    "GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription": {
+      "description": "Provides special notice messages related to a particular value in a field that is part of a PolicySchema.",
       "properties": {
-        "policySchema": {
-          "type": "string",
-          "description": "The fully qualified name of the policy schema that is being inherited."
+        "acknowledgementRequired": {
+          "readOnly": true,
+          "type": "boolean",
+          "description": "Output only. Whether the user needs to acknowledge the notice message before the value can be set."
         },
-        "policyTargetKey": {
-          "description": "Required. The key of the target for which we want to modify a policy. The target resource must point to a Group.",
-          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey"
-        }
-      },
-      "id": "GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest",
-      "description": "Request parameters for deleting the policy value of a specific group target."
-    },
-    "GoogleChromePolicyVersionsV1PolicyModificationFieldError": {
-      "id": "GoogleChromePolicyVersionsV1PolicyModificationFieldError",
-      "properties": {
+        "noticeValue": {
+          "readOnly": true,
+          "description": "Output only. The value of the field that has a notice. When setting the field to this value, the user may be required to acknowledge the notice message in order for the value to be set.",
+          "type": "string"
+        },
+        "noticeMessage": {
+          "description": "Output only. The notice message associate with the value of the field.",
+          "readOnly": true,
+          "type": "string"
+        },
         "field": {
-          "readOnly": true,
-          "description": "Output only. The name of the field with the error.",
-          "type": "string"
-        },
-        "error": {
-          "description": "Output only. The error message related to the field.",
+          "description": "Output only. The field name associated with the notice.",
           "readOnly": true,
           "type": "string"
         }
       },
-      "description": "Error information for a modification request of a specific field on a specific policy.",
-      "type": "object"
-    },
-    "GoogleChromePolicyVersionsV1ResolvedPolicy": {
-      "id": "GoogleChromePolicyVersionsV1ResolvedPolicy",
       "type": "object",
-      "properties": {
-        "sourceKey": {
-          "readOnly": true,
-          "description": "Output only. The source resource from which this policy value is obtained. May be the same as `targetKey` if the policy is directly modified on the target, otherwise it would be another resource from which the policy gets its value (if applicable). If not present, the source is the default value for the customer.",
-          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey"
-        },
-        "addedSourceKey": {
-          "readOnly": true,
-          "description": "Output only. The added source key establishes at which level an entity was explicitly added for management. This is useful for certain type of policies that are only applied if they are explicitly added for management. For example: apps and networks. An entity can only be deleted from management in an Organizational Unit that it was explicitly added to. If this is not present it means that the policy is managed without the need to explicitly add an entity, for example: standard user or device policies.",
-          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey"
-        },
-        "value": {
-          "description": "Output only. The resolved value of the policy.",
-          "$ref": "GoogleChromePolicyVersionsV1PolicyValue",
-          "readOnly": true
-        },
-        "targetKey": {
-          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey",
-          "readOnly": true,
-          "description": "Output only. The target resource for which the resolved policy value applies."
-        }
-      },
-      "description": "The resolved value of a policy for a given target."
+      "id": "GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription"
     },
-    "GoogleChromePolicyVersionsV1PolicyModificationErrorDetails": {
+    "GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest": {
       "properties": {
-        "modificationErrors": {
-          "description": "Output only. List of specific policy modifications errors that may have occurred during a modifying request.",
-          "type": "array",
+        "requests": {
+          "description": "List of policies that have to inherit their values as defined by the `requests`. All requests in the list must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All `policyTargetKey.targetResource` values must point to an org unit resource. 3. All `policyTargetKey` values must have the same key names in the ` additionalTargetKeys`. This also means if one of the targets has an empty `additionalTargetKeys` map, all of the targets must have an empty `additionalTargetKeys` map. 4. No two modification requests can reference the same `policySchema` + ` policyTargetKey` pair. ",
           "items": {
-            "$ref": "GoogleChromePolicyVersionsV1PolicyModificationError"
-          },
-          "readOnly": true
-        }
-      },
-      "id": "GoogleChromePolicyVersionsV1PolicyModificationErrorDetails",
-      "type": "object",
-      "description": "Details of the errors encountered during a policy modification request. This message will be returned as part of the details of a google.rpc.Status returned to the user when there is an error in their request."
-    },
-    "Proto2EnumDescriptorProto": {
-      "type": "object",
-      "id": "Proto2EnumDescriptorProto",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "value": {
-          "items": {
-            "$ref": "Proto2EnumValueDescriptorProto"
+            "$ref": "GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest"
           },
           "type": "array"
         }
       },
-      "description": "Describes an enum type."
-    },
-    "GoogleChromePolicyVersionsV1AdditionalTargetKeyName": {
-      "description": "Additional key names that will be used to identify the target of the policy value.",
-      "id": "GoogleChromePolicyVersionsV1AdditionalTargetKeyName",
-      "properties": {
-        "key": {
-          "description": "Key name.",
-          "type": "string"
-        },
-        "keyDescription": {
-          "type": "string",
-          "description": "Key description."
-        }
-      },
-      "type": "object"
-    },
-    "GoogleChromePolicyVersionsV1UploadPolicyFileRequest": {
-      "id": "GoogleChromePolicyVersionsV1UploadPolicyFileRequest",
-      "description": "Request message for uploading a file for a policy.",
-      "properties": {
-        "policyField": {
-          "type": "string",
-          "description": "Required. The fully qualified policy schema and field name this file is uploaded for. This information will be used to validate the content type of the file."
-        }
-      },
-      "type": "object"
-    },
-    "GoogleChromePolicyVersionsV1DefineCertificateRequest": {
-      "description": "Request object for creating a certificate.",
-      "properties": {
-        "ceritificateName": {
-          "description": "Optional. The optional name of the certificate. If not specified, the certificate issuer will be used as the name.",
-          "type": "string"
-        },
-        "targetResource": {
-          "type": "string",
-          "description": "Required. The target resource on which this certificate is applied. The following resources are supported: * Organizational Unit (\"orgunits/{orgunit_id}\")"
-        },
-        "certificate": {
-          "type": "string",
-          "description": "Required. The raw contents of the .PEM, .CRT, or .CER file."
-        },
-        "settings": {
-          "type": "array",
-          "description": "Optional. Certificate settings within the chrome.networks.certificates namespace.",
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1NetworkSetting"
-          }
-        }
-      },
-      "id": "GoogleChromePolicyVersionsV1DefineCertificateRequest",
-      "type": "object"
-    },
-    "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse": {
-      "description": "Response message for listing the group priority ordering of an app.",
-      "properties": {
-        "groupIds": {
-          "readOnly": true,
-          "type": "array",
-          "description": "Output only. The group IDs, in priority ordering.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "policyTargetKey": {
-          "readOnly": true,
-          "description": "Output only. The target resource for which the group priority ordering has been retrieved.",
-          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey"
-        },
-        "policyNamespace": {
-          "description": "Output only. The namespace of the policy type of the group IDs.",
-          "readOnly": true,
-          "type": "string"
-        }
-      },
+      "id": "GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest",
       "type": "object",
-      "id": "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse"
-    },
-    "GoogleChromePolicyVersionsV1PolicySchema": {
-      "id": "GoogleChromePolicyVersionsV1PolicySchema",
-      "description": "Resource representing a policy schema.",
-      "properties": {
-        "policyDescription": {
-          "readOnly": true,
-          "type": "string",
-          "description": "Output only. Description about the policy schema for user consumption."
-        },
-        "policyApiLifeycle": {
-          "description": "Deprecated field because of typo.",
-          "$ref": "ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle"
-        },
-        "fieldDescriptions": {
-          "type": "array",
-          "description": "Output only. Detailed description of each field that is part of the schema.",
-          "readOnly": true,
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1PolicySchemaFieldDescription"
-          }
-        },
-        "additionalTargetKeyNames": {
-          "description": "Output only. Additional key names that will be used to identify the target of the policy value. When specifying a `policyTargetKey`, each of the additional keys specified here will have to be included in the `additionalTargetKeys` map.",
-          "readOnly": true,
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1AdditionalTargetKeyName"
-          },
-          "type": "array"
-        },
-        "definition": {
-          "$ref": "Proto2FileDescriptorProto",
-          "description": "Schema definition using proto descriptor."
-        },
-        "name": {
-          "type": "string",
-          "description": "Format: name=customers/{customer}/policySchemas/{schema_namespace}"
-        },
-        "policyApiLifecycle": {
-          "readOnly": true,
-          "$ref": "ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle",
-          "description": "Output only. Current lifecycle information."
-        },
-        "notices": {
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription"
-          },
-          "readOnly": true,
-          "type": "array",
-          "description": "Output only. Special notice messages related to setting certain values in certain fields in the schema."
-        },
-        "validTargetResources": {
-          "items": {
-            "type": "string",
-            "enum": [
-              "TARGET_RESOURCE_UNSPECIFIED",
-              "ORG_UNIT",
-              "GROUP"
-            ],
-            "enumDescriptions": [
-              "Unspecified target resource.",
-              "Organizational Unit target resource.",
-              "Group target resource."
-            ]
-          },
-          "type": "array",
-          "description": "Output only. Information about applicable target resources for the policy.",
-          "readOnly": true
-        },
-        "accessRestrictions": {
-          "type": "array",
-          "readOnly": true,
-          "description": "Output only. Specific access restrictions related to this policy.",
-          "items": {
-            "type": "string"
-          }
-        },
-        "schemaName": {
-          "description": "Output only. The fully qualified name of the policy schema. This value is used to fill the field `policy_schema` in PolicyValue when calling BatchInheritOrgUnitPolicies BatchModifyOrgUnitPolicies BatchModifyGroupPolicies or BatchDeleteGroupPolicies.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "categoryTitle": {
-          "description": "Title of the category in which a setting belongs.",
-          "type": "string"
-        },
-        "supportUri": {
-          "type": "string",
-          "description": "Output only. URI to related support article for this schema.",
-          "readOnly": true
-        }
-      },
-      "type": "object"
-    },
-    "GoogleChromePolicyVersionsV1CertificateReference": {
-      "properties": {
-        "network": {
-          "description": "Output only. The name of the referencing network.",
-          "type": "string",
-          "readOnly": true
-        },
-        "orgUnitId": {
-          "readOnly": true,
-          "description": "Output only. The obfuscated id of the org unit the referencing network is in.",
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "description": "Error information for removing of a specific certificate on a specific target. A reference to a certificate.",
-      "id": "GoogleChromePolicyVersionsV1CertificateReference"
-    },
-    "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest": {
-      "id": "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest",
-      "properties": {
-        "policyTargetKey": {
-          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey",
-          "description": "Required. The key of the target for which we want to retrieve the group priority ordering. The target resource must point to an app."
-        },
-        "policyNamespace": {
-          "type": "string",
-          "description": "Required. The namespace of the policy type for the request."
-        }
-      },
-      "description": "Request message for listing the group priority ordering of an app.",
-      "type": "object"
-    },
-    "GoogleChromePolicyVersionsV1FieldConstraints": {
-      "type": "object",
-      "properties": {
-        "numericRangeConstraint": {
-          "$ref": "GoogleChromePolicyVersionsV1NumericRangeConstraint",
-          "description": "The allowed range for numeric fields."
-        }
-      },
-      "description": "Information about any range constraints.",
-      "id": "GoogleChromePolicyVersionsV1FieldConstraints"
+      "description": "Request message for specifying that multiple policy values inherit their value from their parents."
     },
     "Proto2FileDescriptorProto": {
-      "type": "object",
       "description": "Describes a complete .proto file.",
+      "type": "object",
+      "id": "Proto2FileDescriptorProto",
       "properties": {
         "syntax": {
-          "type": "string",
-          "description": "The syntax of the proto file. The supported values are \"proto2\", \"proto3\", and \"editions\". If `edition` is present, this value must be \"editions\"."
+          "description": "The syntax of the proto file. The supported values are \"proto2\", \"proto3\", and \"editions\". If `edition` is present, this value must be \"editions\".",
+          "type": "string"
         },
         "package": {
+          "description": "e.g. \"foo\", \"foo.bar\", etc.",
+          "type": "string"
+        },
+        "messageType": {
+          "items": {
+            "$ref": "Proto2DescriptorProto"
+          },
+          "type": "array",
+          "description": "All top-level definitions in this file."
+        },
+        "name": {
           "type": "string",
-          "description": "e.g. \"foo\", \"foo.bar\", etc."
+          "description": "file name, relative to root of source tree"
         },
         "enumType": {
           "type": "array",
           "items": {
             "$ref": "Proto2EnumDescriptorProto"
           }
-        },
-        "messageType": {
-          "items": {
-            "$ref": "Proto2DescriptorProto"
-          },
-          "description": "All top-level definitions in this file.",
-          "type": "array"
-        },
-        "name": {
-          "description": "file name, relative to root of source tree",
-          "type": "string"
-        }
-      },
-      "id": "Proto2FileDescriptorProto"
-    },
-    "GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest": {
-      "id": "GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest",
-      "description": "Request parameters for modifying a policy value for a specific group target.",
-      "type": "object",
-      "properties": {
-        "updateMask": {
-          "type": "string",
-          "description": "Required. Policy fields to update. Only fields in this mask will be updated; other fields in `policy_value` will be ignored (even if they have values). If a field is in this list it must have a value in 'policy_value'.",
-          "format": "google-fieldmask"
-        },
-        "policyValue": {
-          "$ref": "GoogleChromePolicyVersionsV1PolicyValue",
-          "description": "The new value for the policy."
-        },
-        "policyTargetKey": {
-          "description": "Required. The key of the target for which we want to modify a policy. The target resource must point to a Group.",
-          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey"
         }
       }
     },
-    "GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest": {
-      "type": "object",
-      "id": "GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest",
-      "properties": {
-        "policySchema": {
-          "type": "string",
-          "description": "The fully qualified name of the policy schema that is being inherited."
-        },
-        "policyTargetKey": {
-          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey",
-          "description": "Required. The key of the target for which we want to modify a policy. The target resource must point to an Org Unit."
-        }
-      },
-      "description": "Request parameters for inheriting policy value of a specific org unit target from the policy value of its parent org unit."
-    },
-    "Proto2OneofDescriptorProto": {
-      "properties": {
-        "name": {
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "description": "Describes a oneof.",
-      "id": "Proto2OneofDescriptorProto"
-    },
-    "GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest": {
-      "id": "GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest",
-      "type": "object",
-      "properties": {
-        "requests": {
-          "description": "List of policies that will be deleted as defined by the `requests`. All requests in the list must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference the same `policySchema` + ` policyTargetKey` pair. ",
-          "type": "array",
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest"
-          }
-        }
-      },
-      "description": "Request message for specifying that multiple policy values will be deleted."
-    },
-    "GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription": {
-      "properties": {
-        "value": {
-          "type": "string",
-          "description": "Output only. The string represenstation of the value that can be set for the field.",
-          "readOnly": true
-        },
-        "description": {
-          "description": "Output only. Additional description for this value.",
-          "readOnly": true,
-          "type": "string"
-        }
-      },
-      "description": "Provides detailed information about a known value that is allowed for a particular field in a PolicySchema.",
-      "id": "GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription",
-      "type": "object"
-    },
-    "GoogleChromePolicyVersionsV1NetworkSetting": {
-      "id": "GoogleChromePolicyVersionsV1NetworkSetting",
-      "description": "A network setting contains network configurations.",
-      "properties": {
-        "policySchema": {
-          "type": "string",
-          "description": "The fully qualified name of the network setting."
-        },
-        "value": {
-          "description": "The value of the network setting.",
-          "type": "object",
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object."
-          }
-        }
-      },
-      "type": "object"
-    },
-    "GoogleChromePolicyVersionsV1PolicySchemaFieldDescription": {
-      "type": "object",
-      "id": "GoogleChromePolicyVersionsV1PolicySchemaFieldDescription",
-      "description": "Provides detailed information for a particular field that is part of a PolicySchema.",
-      "properties": {
-        "requiredItems": {
-          "readOnly": true,
-          "type": "array",
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1PolicySchemaRequiredItems"
-          },
-          "description": "Output only. Provides a list of fields that are required to be set if this field has a certain value."
-        },
-        "fieldDescription": {
-          "description": "Output only. The description of the field.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "fieldDependencies": {
-          "description": "Output only. Provides a list of fields and values. At least one of the fields must have the corresponding value in order for this field to be allowed to be set.",
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies"
-          },
-          "readOnly": true,
-          "type": "array"
-        },
-        "description": {
-          "description": "Deprecated. Use name and field_description instead. The description for the field.",
-          "type": "string"
-        },
-        "inputConstraint": {
-          "description": "Output only. Any input constraints associated on the values for the field.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "name": {
-          "description": "Output only. The name of the field.",
-          "type": "string",
-          "readOnly": true
-        },
-        "field": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. The name of the field for associated with this description."
-        },
-        "knownValueDescriptions": {
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription"
-          },
-          "readOnly": true,
-          "type": "array",
-          "description": "Output only. If the field has a set of known values, this field will provide a description for these values."
-        },
-        "defaultValue": {
-          "description": "Output only. Client default if the policy is unset.",
-          "readOnly": true,
-          "type": "any"
-        },
-        "nestedFieldDescriptions": {
-          "readOnly": true,
-          "type": "array",
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1PolicySchemaFieldDescription"
-          },
-          "description": "Output only. Provides the description of the fields nested in this field, if the field is a message type that defines multiple fields."
-        },
-        "fieldConstraints": {
-          "$ref": "GoogleChromePolicyVersionsV1FieldConstraints",
-          "description": "Output only. Information on any input constraints associated on the values for the field.",
-          "readOnly": true
-        }
-      }
-    },
-    "GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies": {
-      "properties": {
-        "sourceFieldValue": {
-          "description": "The value which the source field must have for this field to be allowed to be set.",
-          "type": "string"
-        },
-        "sourceField": {
-          "description": "The source field which this field depends on.",
-          "type": "string"
-        }
-      },
-      "description": "The field and the value it must have for another field to be allowed to be set.",
-      "type": "object",
-      "id": "GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies"
-    },
-    "GoogleChromePolicyVersionsV1PolicySchemaRequiredItems": {
-      "properties": {
-        "requiredFields": {
-          "description": "The fields that are required as a consequence of the field conditions.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "fieldConditions": {
-          "description": "The value(s) of the field that provoke required field enforcement. An empty field_conditions implies that any value assigned to this field will provoke required field enforcement.",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "id": "GoogleChromePolicyVersionsV1PolicySchemaRequiredItems",
-      "type": "object",
-      "description": "The fields that will become required based on the value of this field."
-    },
-    "GoogleChromePolicyVersionsV1RemoveCertificateRequest": {
-      "type": "object",
-      "properties": {
-        "networkId": {
-          "description": "Required. The GUID of the certificate to remove.",
-          "type": "string"
-        },
-        "targetResource": {
-          "description": "Required. The target resource on which this certificate will be removed. The following resources are supported: * Organizational Unit (\"orgunits/{orgunit_id}\")",
-          "type": "string"
-        }
-      },
-      "description": "Request object for removing a certificate.",
-      "id": "GoogleChromePolicyVersionsV1RemoveCertificateRequest"
-    },
-    "GoogleChromePolicyVersionsV1RemoveNetworkResponse": {
-      "description": "Response object for removing a network.",
-      "properties": {},
-      "id": "GoogleChromePolicyVersionsV1RemoveNetworkResponse",
-      "type": "object"
-    },
-    "GoogleChromePolicyVersionsV1RemoveNetworkRequest": {
-      "description": "Request object for removing a network",
+    "GoogleChromePolicyVersionsV1DefineNetworkRequest": {
+      "id": "GoogleChromePolicyVersionsV1DefineNetworkRequest",
       "properties": {
         "targetResource": {
-          "description": "Required. The target resource on which this network will be removed. The following resources are supported: * Organizational Unit (\"orgunits/{orgunit_id}\")",
-          "type": "string"
-        },
-        "networkId": {
           "type": "string",
-          "description": "Required. The GUID of the network to remove."
-        }
-      },
-      "id": "GoogleChromePolicyVersionsV1RemoveNetworkRequest",
-      "type": "object"
-    },
-    "GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest": {
-      "type": "object",
-      "id": "GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest",
-      "description": "Request message for modifying multiple policy values for a specific group-based target.",
-      "properties": {
-        "requests": {
-          "description": "List of policies to modify as defined by the `requests`. All requests in the list must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference the same `policySchema` + ` policyTargetKey` pair. ",
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest"
-          },
-          "type": "array"
-        }
-      }
-    },
-    "GoogleChromePolicyVersionsV1PolicyValue": {
-      "description": "A particular value for a policy managed by the service.",
-      "type": "object",
-      "id": "GoogleChromePolicyVersionsV1PolicyValue",
-      "properties": {
-        "policySchema": {
-          "type": "string",
-          "description": "The fully qualified name of the policy schema associated with this policy."
+          "description": "Required. The target resource on which this new network will be defined. The following resources are supported: * Organizational Unit (\"orgunits/{orgunit_id}\")"
         },
-        "value": {
-          "description": "The value of the policy that is compatible with the schema that it is associated with.",
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object."
-          },
-          "type": "object"
-        }
-      }
-    },
-    "GoogleChromePolicyVersionsV1ListPolicySchemasResponse": {
-      "type": "object",
-      "id": "GoogleChromePolicyVersionsV1ListPolicySchemasResponse",
-      "description": "Response message for listing policy schemas that match a filter.",
-      "properties": {
-        "policySchemas": {
-          "description": "The list of policy schemas that match the query.",
-          "type": "array",
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1PolicySchema"
-          }
-        },
-        "nextPageToken": {
-          "description": "The page token used to get the next page of policy schemas.",
-          "type": "string"
-        }
-      }
-    },
-    "GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest": {
-      "id": "GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest",
-      "description": "Request message for updating the group priority ordering of an app.",
-      "properties": {
-        "policyTargetKey": {
-          "description": "Required. The key of the target for which we want to update the group priority ordering. The target resource must point to an app.",
-          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey"
-        },
-        "policyNamespace": {
-          "type": "string",
-          "description": "Required. The namespace of the policy type for the request."
-        },
-        "groupIds": {
-          "items": {
-            "type": "string"
-          },
-          "description": "Required. The group IDs, in desired priority ordering.",
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "Proto2EnumValueDescriptorProto": {
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "number": {
-          "type": "integer",
-          "format": "int32"
-        }
-      },
-      "id": "Proto2EnumValueDescriptorProto",
-      "type": "object",
-      "description": "Describes a value within an enum."
-    },
-    "GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails": {
-      "properties": {
-        "certificateReferences": {
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1CertificateReference"
-          },
-          "description": "Output only. If the certificate was not removed, a list of references to the certificate that prevented it from being removed. Only unreferenced certificates can be removed.",
-          "readOnly": true,
-          "type": "array"
-        }
-      },
-      "type": "object",
-      "description": "Details of the errors encountered during a remove certificate request. This message will be returned as part of the details of a google.rpc.Status returned to the user when there is an error in their request.",
-      "id": "GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails"
-    },
-    "GoogleChromePolicyVersionsV1ResolveRequest": {
-      "properties": {
-        "policySchemaFilter": {
-          "description": "The schema filter to apply to the resolve request. Specify a schema name to view a particular schema, for example: chrome.users.ShowLogoutButton Wildcards are supported, but only in the leaf portion of the schema name. Wildcards cannot be used in namespace directly. Please read https://developers.google.com/chrome/policy/guides/policy-schemas for details on schema namespaces. For example: Valid: \"chrome.users.*\", \"chrome.users.apps.*\", \"chrome.printers.*\" Invalid: \"*\", \"*.users\", \"chrome.*\", \"chrome.*.apps.*\"",
-          "type": "string"
-        },
-        "pageToken": {
-          "type": "string",
-          "description": "The page token used to retrieve a specific page of the request."
-        },
-        "pageSize": {
-          "description": "The maximum number of policies to return, defaults to 100 and has a maximum of 1000.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "policyTargetKey": {
-          "description": "Required. The key of the target resource on which the policies should be resolved.",
-          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey"
-        }
-      },
-      "type": "object",
-      "description": "Request message for getting the resolved policy value for a specific target.",
-      "id": "GoogleChromePolicyVersionsV1ResolveRequest"
-    },
-    "GoogleChromePolicyVersionsV1PolicyModificationError": {
-      "id": "GoogleChromePolicyVersionsV1PolicyModificationError",
-      "description": "Error information for a modification request of a specific policy on a specific target.",
-      "type": "object",
-      "properties": {
-        "policySchema": {
-          "description": "Output only. The specific policy schema modification that had an error.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "fieldErrors": {
-          "items": {
-            "$ref": "GoogleChromePolicyVersionsV1PolicyModificationFieldError"
-          },
-          "type": "array",
-          "description": "Output only. The error messages related to the modification.",
-          "readOnly": true
-        },
-        "policyTargetKey": {
-          "readOnly": true,
-          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey",
-          "description": "Output only. The specific policy target modification that had error."
-        },
-        "errors": {
-          "readOnly": true,
-          "type": "array",
-          "description": "Output only. The non-field errors related to the modification.",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "GoogleChromePolicyVersionsV1UploadPolicyFileResponse": {
-      "description": "Response message for downloading an uploaded file.",
-      "id": "GoogleChromePolicyVersionsV1UploadPolicyFileResponse",
-      "properties": {
-        "downloadUri": {
-          "description": "The uri for end user to download the file.",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle": {
-      "type": "object",
-      "id": "ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle",
-      "properties": {
-        "deprecatedInFavorOf": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "In the event that this policy was deprecated in favor of another policy, the fully qualified namespace(s) of the new policies as they will show in PolicyAPI."
-        },
-        "endSupport": {
-          "$ref": "GoogleTypeDate",
-          "description": "End supporting date for current policy."
-        },
-        "description": {
-          "type": "string",
-          "description": "Description about current life cycle."
-        },
-        "policyApiLifecycleStage": {
-          "type": "string",
-          "enumDescriptions": [
-            "unspecified.",
-            "Policy is not working yet, but giving developers heads up on format. This stage can transfer to API_DEVELOPEMNT or API_CURRENT.",
-            "Policy can change format in backward incompatible way (breaking change). This stage can transfer to API_CURRENT or API_DEPRECATED. This could be used for policies launched only to TTs or launched to selected customers for emergency usage.",
-            "Policy in official format. Policy can change format in backward compatible way (non-breaking change). Example: this policy can introduce a new field, which is considered non-breaking change, when field masks are properly utilized. This stage can transfer to API_DEPRECATED.",
-            "Please stop using this policy. This policy is deprecated and may/will be removed in the future. Most likely a new policy was introduced to replace this one."
-          ],
-          "enum": [
-            "API_UNSPECIFIED",
-            "API_PREVIEW",
-            "API_DEVELOPMENT",
-            "API_CURRENT",
-            "API_DEPRECATED"
-          ],
-          "description": "Indicate current life cycle stage of the policy API."
-        }
-      }
-    },
-    "GoogleChromePolicyVersionsV1DefineCertificateResponse": {
-      "properties": {
         "settings": {
-          "type": "array",
-          "description": "the affiliated settings of the certificate (NOT IMPLEMENTED)",
           "items": {
             "$ref": "GoogleChromePolicyVersionsV1NetworkSetting"
-          }
-        },
-        "networkId": {
-          "description": "The guid of the certificate created by the action.",
-          "type": "string"
-        },
-        "targetResource": {
-          "description": "the resource at which the certificate is defined.",
-          "type": "string"
-        }
-      },
-      "description": "Response object for creating a certificate.",
-      "id": "GoogleChromePolicyVersionsV1DefineCertificateResponse",
-      "type": "object"
-    },
-    "GoogleProtobufEmpty": {
-      "id": "GoogleProtobufEmpty",
-      "properties": {},
-      "type": "object",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }"
-    },
-    "GoogleChromePolicyVersionsV1RemoveCertificateResponse": {
-      "description": "Response object for removing a certificate.",
-      "properties": {},
-      "id": "GoogleChromePolicyVersionsV1RemoveCertificateResponse",
-      "type": "object"
-    },
-    "GoogleChromePolicyVersionsV1PolicyTargetKey": {
-      "properties": {
-        "targetResource": {
-          "type": "string",
-          "description": "The target resource on which this policy is applied. The following resources are supported: * Organizational Unit (\"orgunits/{orgunit_id}\") * Group (\"groups/{group_id}\")"
-        },
-        "additionalTargetKeys": {
-          "additionalProperties": {
-            "type": "string"
           },
-          "type": "object",
-          "description": "Map containing the additional target key name and value pairs used to further identify the target of the policy."
-        }
-      },
-      "description": "The key used to identify the target on which the policy will be applied.",
-      "id": "GoogleChromePolicyVersionsV1PolicyTargetKey",
-      "type": "object"
-    },
-    "GoogleChromePolicyVersionsV1NumericRangeConstraint": {
-      "properties": {
-        "maximum": {
-          "description": "Maximum value.",
-          "format": "int64",
-          "type": "string"
+          "type": "array",
+          "description": "Required. Detailed network settings."
         },
-        "minimum": {
-          "description": "Minimum value.",
-          "format": "int64",
+        "name": {
+          "description": "Required. Name of the new created network.",
           "type": "string"
         }
       },
-      "description": "A constraint on upper and/or lower bounds, with at least one being set.",
-      "id": "GoogleChromePolicyVersionsV1NumericRangeConstraint",
-      "type": "object"
-    },
-    "GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest": {
       "type": "object",
-      "properties": {
-        "policyTargetKey": {
-          "$ref": "GoogleChromePolicyVersionsV1PolicyTargetKey",
-          "description": "Required. The key of the target for which we want to modify a policy. The target resource must point to an Org Unit."
-        },
-        "updateMask": {
-          "type": "string",
-          "format": "google-fieldmask",
-          "description": "Required. Policy fields to update. Only fields in this mask will be updated; other fields in `policy_value` will be ignored (even if they have values). If a field is in this list it must have a value in 'policy_value'."
-        },
-        "policyValue": {
-          "description": "The new value for the policy.",
-          "$ref": "GoogleChromePolicyVersionsV1PolicyValue"
-        }
-      },
-      "description": "Request parameters for modifying a policy value for a specific org unit target.",
-      "id": "GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest"
-    },
-    "GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription": {
-      "properties": {
-        "noticeValue": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Output only. The value of the field that has a notice. When setting the field to this value, the user may be required to acknowledge the notice message in order for the value to be set."
-        },
-        "acknowledgementRequired": {
-          "readOnly": true,
-          "description": "Output only. Whether the user needs to acknowledge the notice message before the value can be set.",
-          "type": "boolean"
-        },
-        "field": {
-          "type": "string",
-          "description": "Output only. The field name associated with the notice.",
-          "readOnly": true
-        },
-        "noticeMessage": {
-          "type": "string",
-          "description": "Output only. The notice message associate with the value of the field.",
-          "readOnly": true
-        }
-      },
-      "id": "GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription",
-      "description": "Provides special notice messages related to a particular value in a field that is part of a PolicySchema.",
-      "type": "object"
+      "description": "Request object for creating a new network."
     }
   },
-  "batchPath": "batch",
-  "protocol": "rest",
-  "ownerDomain": "google.com",
-  "basePath": "",
+  "fullyEncodeReservedExpansion": true,
+  "servicePath": "",
   "auth": {
     "oauth2": {
       "scopes": {
@@ -1164,543 +1692,15 @@
       }
     }
   },
-  "revision": "20230226",
-  "mtlsRootUrl": "https://chromepolicy.mtls.googleapis.com/",
-  "parameters": {
-    "quotaUser": {
-      "type": "string",
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "default": "true",
-      "location": "query",
-      "type": "boolean"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "callback": {
-      "type": "string",
-      "description": "JSONP",
-      "location": "query"
-    },
-    "access_token": {
-      "type": "string",
-      "description": "OAuth access token.",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "type": "string",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "location": "query"
-    },
-    "uploadType": {
-      "location": "query",
-      "type": "string",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query"
-    },
-    "alt": {
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "type": "string",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "description": "Data format for response."
-    }
-  },
-  "kind": "discovery#restDescription",
   "title": "Chrome Policy API",
-  "resources": {
-    "customers": {
-      "resources": {
-        "policySchemas": {
-          "methods": {
-            "list": {
-              "parameters": {
-                "filter": {
-                  "description": "The schema filter used to find a particular schema based on fields like its resource name, description and `additionalTargetKeyNames`.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "description": "The maximum number of policy schemas to return, defaults to 100 and has a maximum of 1000.",
-                  "type": "integer",
-                  "location": "query",
-                  "format": "int32"
-                },
-                "parent": {
-                  "pattern": "^customers/[^/]+$",
-                  "description": "Required. The customer for which the listing request will apply.",
-                  "location": "path",
-                  "required": true,
-                  "type": "string"
-                },
-                "pageToken": {
-                  "type": "string",
-                  "description": "The page token used to retrieve a specific page of the listing request.",
-                  "location": "query"
-                }
-              },
-              "response": {
-                "$ref": "GoogleChromePolicyVersionsV1ListPolicySchemasResponse"
-              },
-              "id": "chromepolicy.customers.policySchemas.list",
-              "flatPath": "v1/customers/{customersId}/policySchemas",
-              "description": "Gets a list of policy schemas that match a specified filter value for a given customer.",
-              "scopes": [
-                "https://www.googleapis.com/auth/chrome.management.policy",
-                "https://www.googleapis.com/auth/chrome.management.policy.readonly"
-              ],
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "parent"
-              ],
-              "path": "v1/{+parent}/policySchemas"
-            },
-            "get": {
-              "response": {
-                "$ref": "GoogleChromePolicyVersionsV1PolicySchema"
-              },
-              "path": "v1/{+name}",
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "Required. The policy schema resource name to query.",
-                  "required": true,
-                  "pattern": "^customers/[^/]+/policySchemas/.*$",
-                  "type": "string"
-                }
-              },
-              "flatPath": "v1/customers/{customersId}/policySchemas/{policySchemasId}",
-              "scopes": [
-                "https://www.googleapis.com/auth/chrome.management.policy",
-                "https://www.googleapis.com/auth/chrome.management.policy.readonly"
-              ],
-              "id": "chromepolicy.customers.policySchemas.get",
-              "description": "Get a specific policy schema for a customer by its resource name."
-            }
-          }
-        },
-        "policies": {
-          "methods": {
-            "resolve": {
-              "flatPath": "v1/customers/{customersId}/policies:resolve",
-              "path": "v1/{+customer}/policies:resolve",
-              "response": {
-                "$ref": "GoogleChromePolicyVersionsV1ResolveResponse"
-              },
-              "description": "Gets the resolved policy values for a list of policies that match a search query.",
-              "scopes": [
-                "https://www.googleapis.com/auth/chrome.management.policy",
-                "https://www.googleapis.com/auth/chrome.management.policy.readonly"
-              ],
-              "request": {
-                "$ref": "GoogleChromePolicyVersionsV1ResolveRequest"
-              },
-              "parameters": {
-                "customer": {
-                  "location": "path",
-                  "type": "string",
-                  "pattern": "^customers/[^/]+$",
-                  "required": true,
-                  "description": "ID of the G Suite account or literal \"my_customer\" for the customer associated to the request."
-                }
-              },
-              "id": "chromepolicy.customers.policies.resolve",
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "customer"
-              ]
-            }
-          },
-          "resources": {
-            "groups": {
-              "methods": {
-                "listGroupPriorityOrdering": {
-                  "parameters": {
-                    "customer": {
-                      "location": "path",
-                      "type": "string",
-                      "description": "Required. ID of the Google Workspace account or literal \"my_customer\" for the customer associated to the request.",
-                      "pattern": "^customers/[^/]+$",
-                      "required": true
-                    }
-                  },
-                  "description": "Retrieve a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.",
-                  "response": {
-                    "$ref": "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/chrome.management.policy",
-                    "https://www.googleapis.com/auth/chrome.management.policy.readonly"
-                  ],
-                  "parameterOrder": [
-                    "customer"
-                  ],
-                  "id": "chromepolicy.customers.policies.groups.listGroupPriorityOrdering",
-                  "httpMethod": "POST",
-                  "flatPath": "v1/customers/{customersId}/policies/groups:listGroupPriorityOrdering",
-                  "request": {
-                    "$ref": "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest"
-                  },
-                  "path": "v1/{+customer}/policies/groups:listGroupPriorityOrdering"
-                },
-                "batchModify": {
-                  "request": {
-                    "$ref": "GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest"
-                  },
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "customer"
-                  ],
-                  "scopes": [
-                    "https://www.googleapis.com/auth/chrome.management.policy"
-                  ],
-                  "path": "v1/{+customer}/policies/groups:batchModify",
-                  "parameters": {
-                    "customer": {
-                      "pattern": "^customers/[^/]+$",
-                      "description": "ID of the Google Workspace account or literal \"my_customer\" for the customer associated to the request.",
-                      "required": true,
-                      "location": "path",
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1/customers/{customersId}/policies/groups:batchModify",
-                  "id": "chromepolicy.customers.policies.groups.batchModify",
-                  "response": {
-                    "$ref": "GoogleProtobufEmpty"
-                  },
-                  "description": "Modify multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status."
-                },
-                "batchDelete": {
-                  "parameterOrder": [
-                    "customer"
-                  ],
-                  "path": "v1/{+customer}/policies/groups:batchDelete",
-                  "id": "chromepolicy.customers.policies.groups.batchDelete",
-                  "parameters": {
-                    "customer": {
-                      "location": "path",
-                      "pattern": "^customers/[^/]+$",
-                      "type": "string",
-                      "required": true,
-                      "description": "ID of the Google Workspace account or literal \"my_customer\" for the customer associated to the request."
-                    }
-                  },
-                  "description": "Delete multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.",
-                  "request": {
-                    "$ref": "GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest"
-                  },
-                  "flatPath": "v1/customers/{customersId}/policies/groups:batchDelete",
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/chrome.management.policy"
-                  ],
-                  "response": {
-                    "$ref": "GoogleProtobufEmpty"
-                  }
-                },
-                "updateGroupPriorityOrdering": {
-                  "path": "v1/{+customer}/policies/groups:updateGroupPriorityOrdering",
-                  "parameterOrder": [
-                    "customer"
-                  ],
-                  "httpMethod": "POST",
-                  "response": {
-                    "$ref": "GoogleProtobufEmpty"
-                  },
-                  "id": "chromepolicy.customers.policies.groups.updateGroupPriorityOrdering",
-                  "request": {
-                    "$ref": "GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest"
-                  },
-                  "flatPath": "v1/customers/{customersId}/policies/groups:updateGroupPriorityOrdering",
-                  "description": "Update a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/chrome.management.policy"
-                  ],
-                  "parameters": {
-                    "customer": {
-                      "required": true,
-                      "pattern": "^customers/[^/]+$",
-                      "description": "Required. ID of the Google Workspace account or literal \"my_customer\" for the customer associated to the request.",
-                      "location": "path",
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            },
-            "networks": {
-              "methods": {
-                "defineNetwork": {
-                  "httpMethod": "POST",
-                  "request": {
-                    "$ref": "GoogleChromePolicyVersionsV1DefineNetworkRequest"
-                  },
-                  "flatPath": "v1/customers/{customersId}/policies/networks:defineNetwork",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/chrome.management.policy"
-                  ],
-                  "id": "chromepolicy.customers.policies.networks.defineNetwork",
-                  "parameterOrder": [
-                    "customer"
-                  ],
-                  "path": "v1/{+customer}/policies/networks:defineNetwork",
-                  "description": "Define a new network.",
-                  "response": {
-                    "$ref": "GoogleChromePolicyVersionsV1DefineNetworkResponse"
-                  },
-                  "parameters": {
-                    "customer": {
-                      "required": true,
-                      "pattern": "^customers/[^/]+$",
-                      "description": "Required. The customer who will own this new network.",
-                      "type": "string",
-                      "location": "path"
-                    }
-                  }
-                },
-                "removeNetwork": {
-                  "flatPath": "v1/customers/{customersId}/policies/networks:removeNetwork",
-                  "httpMethod": "POST",
-                  "response": {
-                    "$ref": "GoogleChromePolicyVersionsV1RemoveNetworkResponse"
-                  },
-                  "description": "Remove an existing network by guid.",
-                  "path": "v1/{+customer}/policies/networks:removeNetwork",
-                  "id": "chromepolicy.customers.policies.networks.removeNetwork",
-                  "parameters": {
-                    "customer": {
-                      "type": "string",
-                      "location": "path",
-                      "pattern": "^customers/[^/]+$",
-                      "required": true,
-                      "description": "Required. The customer whose network will be removed."
-                    }
-                  },
-                  "parameterOrder": [
-                    "customer"
-                  ],
-                  "scopes": [
-                    "https://www.googleapis.com/auth/chrome.management.policy"
-                  ],
-                  "request": {
-                    "$ref": "GoogleChromePolicyVersionsV1RemoveNetworkRequest"
-                  }
-                },
-                "removeCertificate": {
-                  "request": {
-                    "$ref": "GoogleChromePolicyVersionsV1RemoveCertificateRequest"
-                  },
-                  "response": {
-                    "$ref": "GoogleChromePolicyVersionsV1RemoveCertificateResponse"
-                  },
-                  "flatPath": "v1/customers/{customersId}/policies/networks:removeCertificate",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/chrome.management.policy"
-                  ],
-                  "id": "chromepolicy.customers.policies.networks.removeCertificate",
-                  "description": "Remove an existing certificate by guid.",
-                  "path": "v1/{+customer}/policies/networks:removeCertificate",
-                  "parameters": {
-                    "customer": {
-                      "pattern": "^customers/[^/]+$",
-                      "location": "path",
-                      "description": "Required. The customer whose certificate will be removed.",
-                      "type": "string",
-                      "required": true
-                    }
-                  },
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "customer"
-                  ]
-                },
-                "defineCertificate": {
-                  "request": {
-                    "$ref": "GoogleChromePolicyVersionsV1DefineCertificateRequest"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/chrome.management.policy"
-                  ],
-                  "description": "Creates a certificate at a specified OU for a customer.",
-                  "parameters": {
-                    "customer": {
-                      "required": true,
-                      "type": "string",
-                      "location": "path",
-                      "description": "Required. The customer for which the certificate will apply.",
-                      "pattern": "^customers/[^/]+$"
-                    }
-                  },
-                  "path": "v1/{+customer}/policies/networks:defineCertificate",
-                  "httpMethod": "POST",
-                  "id": "chromepolicy.customers.policies.networks.defineCertificate",
-                  "flatPath": "v1/customers/{customersId}/policies/networks:defineCertificate",
-                  "parameterOrder": [
-                    "customer"
-                  ],
-                  "response": {
-                    "$ref": "GoogleChromePolicyVersionsV1DefineCertificateResponse"
-                  }
-                }
-              }
-            },
-            "orgunits": {
-              "methods": {
-                "batchModify": {
-                  "description": "Modify multiple policy values that are applied to a specific org unit. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.",
-                  "flatPath": "v1/customers/{customersId}/policies/orgunits:batchModify",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/chrome.management.policy"
-                  ],
-                  "request": {
-                    "$ref": "GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest"
-                  },
-                  "parameterOrder": [
-                    "customer"
-                  ],
-                  "id": "chromepolicy.customers.policies.orgunits.batchModify",
-                  "response": {
-                    "$ref": "GoogleProtobufEmpty"
-                  },
-                  "parameters": {
-                    "customer": {
-                      "pattern": "^customers/[^/]+$",
-                      "required": true,
-                      "description": "ID of the G Suite account or literal \"my_customer\" for the customer associated to the request.",
-                      "location": "path",
-                      "type": "string"
-                    }
-                  },
-                  "httpMethod": "POST",
-                  "path": "v1/{+customer}/policies/orgunits:batchModify"
-                },
-                "batchInherit": {
-                  "request": {
-                    "$ref": "GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/chrome.management.policy"
-                  ],
-                  "httpMethod": "POST",
-                  "path": "v1/{+customer}/policies/orgunits:batchInherit",
-                  "description": "Modify multiple policy values that are applied to a specific org unit so that they now inherit the value from a parent (if applicable). All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.",
-                  "parameterOrder": [
-                    "customer"
-                  ],
-                  "id": "chromepolicy.customers.policies.orgunits.batchInherit",
-                  "flatPath": "v1/customers/{customersId}/policies/orgunits:batchInherit",
-                  "parameters": {
-                    "customer": {
-                      "pattern": "^customers/[^/]+$",
-                      "required": true,
-                      "type": "string",
-                      "description": "ID of the G Suite account or literal \"my_customer\" for the customer associated to the request.",
-                      "location": "path"
-                    }
-                  },
-                  "response": {
-                    "$ref": "GoogleProtobufEmpty"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "media": {
-      "methods": {
-        "upload": {
-          "request": {
-            "$ref": "GoogleChromePolicyVersionsV1UploadPolicyFileRequest"
-          },
-          "path": "v1/{+customer}/policies/files:uploadPolicyFile",
-          "httpMethod": "POST",
-          "description": "Creates an enterprise file from the content provided by user. Returns a public download url for end user.",
-          "scopes": [
-            "https://www.googleapis.com/auth/chrome.management.policy"
-          ],
-          "id": "chromepolicy.media.upload",
-          "supportsMediaUpload": true,
-          "parameters": {
-            "customer": {
-              "pattern": "^customers/[^/]+$",
-              "description": "Required. The customer for which the file upload will apply.",
-              "type": "string",
-              "location": "path",
-              "required": true
-            }
-          },
-          "flatPath": "v1/customers/{customersId}/policies/files:uploadPolicyFile",
-          "parameterOrder": [
-            "customer"
-          ],
-          "response": {
-            "$ref": "GoogleChromePolicyVersionsV1UploadPolicyFileResponse"
-          },
-          "mediaUpload": {
-            "protocols": {
-              "simple": {
-                "path": "/upload/v1/{+customer}/policies/files:uploadPolicyFile",
-                "multipart": true
-              }
-            },
-            "accept": [
-              "*/*"
-            ]
-          }
-        }
-      }
-    }
-  },
-  "version": "v1",
-  "discoveryVersion": "v1",
-  "canonicalName": "Chrome Policy",
-  "documentationLink": "http://developers.google.com/chrome/policy",
-  "baseUrl": "https://chromepolicy.googleapis.com/",
-  "servicePath": "",
+  "id": "chromepolicy:v1",
   "rootUrl": "https://chromepolicy.googleapis.com/",
-  "description": "The Chrome Policy API is a suite of services that allows Chrome administrators to control the policies applied to their managed Chrome OS devices and Chrome browsers."
+  "documentationLink": "http://developers.google.com/chrome/policy",
+  "mtlsRootUrl": "https://chromepolicy.mtls.googleapis.com/",
+  "baseUrl": "https://chromepolicy.googleapis.com/",
+  "protocol": "rest",
+  "revision": "20230227",
+  "batchPath": "batch",
+  "ownerName": "Google",
+  "canonicalName": "Chrome Policy"
 }

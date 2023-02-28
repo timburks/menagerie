@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-baremetalsolution/versions/v2
+  annotations:
+    config: baremetalsolution_v2.yaml
+    directory: google/cloud/baremetalsolution/v2
+    host: baremetalsolution.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

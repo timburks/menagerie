@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-chromeosuidetection/versions/v1
+  annotations:
+    config: chromeosuidetection_v1.yaml
+    directory: google/chromeos/uidetection/v1
+    host: chromeosuidetection.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

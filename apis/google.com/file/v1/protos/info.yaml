@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-file/versions/v1
+  annotations:
+    config: file_v1.yaml
+    directory: google/cloud/filestore/v1
+    host: file.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

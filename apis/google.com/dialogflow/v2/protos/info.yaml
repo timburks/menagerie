@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-dialogflow/versions/v2
+  annotations:
+    config: dialogflow_v2.yaml
+    directory: google/cloud/dialogflow/v2
+    host: dialogflow.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip

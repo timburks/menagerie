@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: protos
+  parent: apis/google.com-accesscontextmanager/versions/v1
+  annotations:
+    config: accesscontextmanager_v1.yaml
+    directory: google/identity/accesscontextmanager/v1
+    host: accesscontextmanager.googleapis.com
+data:
+  filename: protos.zip
+  mimeType: application/x.proto+zip
