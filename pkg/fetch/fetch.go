@@ -36,3 +36,14 @@ func exists(path string) bool {
 	_, err := os.Stat(path)
 	return err == nil
 }
+
+// Get the commit hash of a cloned directory.
+func CommitHash(path string) (string, error) {
+	cmd := exec.Command("git", "rev-parse", "HEAD")
+	cmd.Dir = path
+	if b, err := cmd.CombinedOutput(); err != nil {
+		return "", err
+	} else {
+		return strings.TrimSpace(string(b)), nil
+	}
+}

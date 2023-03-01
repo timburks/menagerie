@@ -5,18 +5,24 @@ metadata:
   labels:
     categories: telecom
     provider: twilio-com
+    updated: "2023-03-01"
 data:
   displayName: Twilio Conversations API
   description: This is the public Twilio REST API.
   versions:
     - metadata:
         name: v1
+        labels:
+          updated: "2023-03-01"
       data:
         displayName: v1
         state: production
         specs:
           - metadata:
               name: openapi
+              labels:
+                updated: "2023-03-01"
             data:
               filename: twilio_conversations_v1.yaml
               mimeType: application/x.openapi+gzip;version=3.0.1
+              sourceURI: https://github.com/twilio/twilio-oai/blob/5a3336751d58de5b9fde95f4cc22a0eebc0de920/spec/yaml/twilio_conversations_v1.yaml
