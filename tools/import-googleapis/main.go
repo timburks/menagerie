@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"github.com/apigee/registry/pkg/encoding"
+	"github.com/timburks/menage/pkg/fetch"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/descriptorpb"
 	yaml "gopkg.in/yaml.v3"
@@ -26,7 +27,7 @@ var deps = []string{
 var out = "google.com"
 
 func main() {
-	err := fetchDependencies(dir, deps)
+	err := fetch.FetchDependencies(dir, deps)
 	if err != nil {
 		panic(err)
 	}
@@ -94,35 +95,6 @@ func listAllProtos(dir string) ([]string, error) {
 		return nil
 	})
 	return protos, err
-}
-
-// Use git clone to fetch a list of repo dependencies.
-func fetchDependencies(dir string, deps []string) error {
-	err := os.MkdirAll(dir, 0777)
-	if err != nil {
-		return err
-	}
-	for _, d := range deps {
-		parts := strings.Split(d, ";") // the second part is the path to the protos
-		d = parts[0]
-		target := filepath.Join(dir, filepath.Base(d))
-		if exists(target) {
-			continue
-		}
-		cmd := exec.Command("git", "clone", d)
-		cmd.Dir = dir
-		if out, err := cmd.CombinedOutput(); err != nil {
-			fmt.Printf("%s", string(out))
-			return err
-		}
-	}
-	return nil
-}
-
-// Return true if a file exists.
-func exists(path string) bool {
-	_, err := os.Stat(path)
-	return err == nil
 }
 
 // Compile an API description and create Registry YAML.
