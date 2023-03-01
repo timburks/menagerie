@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-kafka
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Managed Streaming for Kafka
+  description: The operations for managing an Amazon MSK cluster.

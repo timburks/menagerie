@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-sagemaker-edge
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Sagemaker Edge Manager
+  description: SageMaker Edge Manager dataplane service for communicating with active agents.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-textract
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Textract
+  description: Amazon Textract detects and analyzes text in documents and converts it into machine-readable text. This is the API reference documentation for Amazon Textract.

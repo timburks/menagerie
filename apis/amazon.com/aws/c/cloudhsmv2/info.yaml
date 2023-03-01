@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-cloudhsmv2
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS CloudHSM V2
+  description: For more information about AWS CloudHSM, see [AWS CloudHSM](http://aws.amazon.com/cloudhsm/) and the [AWS CloudHSM User Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/).

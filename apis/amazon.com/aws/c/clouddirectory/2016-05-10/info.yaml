@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2016-05-10"
+  parent: apis/amazon.com-clouddirectory
+data:
+  displayName: "2016-05-10"

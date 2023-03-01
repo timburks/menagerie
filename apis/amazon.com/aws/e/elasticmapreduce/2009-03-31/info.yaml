@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2009-03-31"
+  parent: apis/amazon.com-elasticmapreduce
+data:
+  displayName: "2009-03-31"

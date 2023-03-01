@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2012-11-05"
+  parent: apis/amazon.com-sqs
+data:
+  displayName: "2012-11-05"

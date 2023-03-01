@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2017-05-18"
+  parent: apis/amazon.com-athena
+data:
+  displayName: "2017-05-18"

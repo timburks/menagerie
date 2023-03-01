@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-runtime.sagemaker
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon SageMaker Runtime
+  description: The Amazon SageMaker runtime API.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-translate
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Translate
+  description: Provides translation of the input content from the source language to the target language.

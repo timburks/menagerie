@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2021-04-28"
+  parent: apis/amazon.com-m2
+data:
+  displayName: "2021-04-28"

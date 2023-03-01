@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-09-18"
+  parent: apis/amazon.com-iotdeviceadvisor
+data:
+  displayName: "2020-09-18"

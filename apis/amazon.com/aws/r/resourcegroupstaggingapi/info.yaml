@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-resourcegroupstaggingapi
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS Resource Groups Tagging API
+  description: Resource Groups Tagging API

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2022-07-28"
+  parent: apis/amazon.com-resource-explorer-2
+data:
+  displayName: "2022-07-28"

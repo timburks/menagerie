@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-mediaconnect
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS MediaConnect
+  description: API for AWS Elemental MediaConnect

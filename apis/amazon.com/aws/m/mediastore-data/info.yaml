@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-mediastore-data
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS Elemental MediaStore Data Plane
+  description: An AWS Elemental MediaStore asset is an object, similar to an object in the Amazon S3 service. Objects are the fundamental entities that are stored in AWS Elemental MediaStore.

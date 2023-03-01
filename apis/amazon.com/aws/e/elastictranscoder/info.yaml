@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-elastictranscoder
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Elastic Transcoder
+  description: |-
+    AWS Elastic Transcoder Service
+
+    The AWS Elastic Transcoder Service.

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2021-07-15"
+  parent: apis/amazon.com-chime-sdk-meetings
+data:
+  displayName: "2021-07-15"

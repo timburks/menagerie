@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-01-12"
+  parent: apis/amazon.com-dlm
+data:
+  displayName: "2018-01-12"

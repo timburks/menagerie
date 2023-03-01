@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-elastic-inference
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Elastic  Inference
+  description: Elastic Inference public APIs.

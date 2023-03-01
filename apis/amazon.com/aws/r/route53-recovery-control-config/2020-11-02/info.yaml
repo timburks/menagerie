@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-11-02"
+  parent: apis/amazon.com-route53-recovery-control-config
+data:
+  displayName: "2020-11-02"

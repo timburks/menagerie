@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-07-26"
+  parent: apis/amazon.com-pinpoint-email
+data:
+  displayName: "2018-07-26"

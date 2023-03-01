@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2012-09-25"
+  parent: apis/amazon.com-elastictranscoder
+data:
+  displayName: "2012-09-25"

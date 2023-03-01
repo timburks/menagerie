@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2015-03-31"
+  parent: apis/amazon.com-lambda
+data:
+  displayName: "2015-03-31"

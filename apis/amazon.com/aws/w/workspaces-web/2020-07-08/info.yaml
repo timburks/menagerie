@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-07-08"
+  parent: apis/amazon.com-workspaces-web
+data:
+  displayName: "2020-07-08"

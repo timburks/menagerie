@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-connectcampaigns
+  labels:
+    provider: amazon-com
+data:
+  displayName: AmazonConnectCampaignService
+  description: Provide APIs to create and manage Amazon Connect Campaigns.

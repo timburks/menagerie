@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-robomaker
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS RoboMaker
+  description: This section provides documentation for the AWS RoboMaker API operations.

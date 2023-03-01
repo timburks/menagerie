@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2022-08-03"
+  parent: apis/amazon.com-chime-sdk-voice
+data:
+  displayName: "2022-08-03"

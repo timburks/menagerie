@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2021-08-11"
+  parent: apis/amazon.com-cloudtrail-data
+data:
+  displayName: "2021-08-11"

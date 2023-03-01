@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-09-05"
+  parent: apis/amazon.com-sms-voice
+data:
+  displayName: "2018-09-05"

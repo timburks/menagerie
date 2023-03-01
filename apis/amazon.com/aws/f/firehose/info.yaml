@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-firehose
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Kinesis Firehose
+  description: |-
+    Amazon Kinesis Data Firehose API Reference
+
+    Amazon Kinesis Data Firehose is a fully managed service that delivers real-time streaming data to destinations such as Amazon Simple Storage Service (Amazon S3), Amazon OpenSearch Service, Amazon Redshift, Splunk, and various other supportd destinations.

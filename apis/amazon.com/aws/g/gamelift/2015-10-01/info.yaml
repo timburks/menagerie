@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2015-10-01"
+  parent: apis/amazon.com-gamelift
+data:
+  displayName: "2015-10-01"

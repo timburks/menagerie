@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-11-20"
+  parent: apis/amazon.com-lookoutvision
+data:
+  displayName: "2020-11-20"

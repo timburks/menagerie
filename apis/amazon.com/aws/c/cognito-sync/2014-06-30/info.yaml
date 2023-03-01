@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2014-06-30"
+  parent: apis/amazon.com-cognito-sync
+data:
+  displayName: "2014-06-30"

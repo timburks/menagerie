@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2017-06-07"
+  parent: apis/amazon.com-greengrass
+data:
+  displayName: "2017-06-07"

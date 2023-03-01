@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-05-14"
+  parent: apis/amazon.com-iot1click-projects
+data:
+  displayName: "2018-05-14"

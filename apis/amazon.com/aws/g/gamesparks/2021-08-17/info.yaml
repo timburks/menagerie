@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2021-08-17"
+  parent: apis/amazon.com-gamesparks
+data:
+  displayName: "2021-08-17"

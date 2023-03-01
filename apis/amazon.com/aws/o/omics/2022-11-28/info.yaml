@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2022-11-28"
+  parent: apis/amazon.com-omics
+data:
+  displayName: "2022-11-28"

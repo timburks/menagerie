@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2012-12-01"
+  parent: apis/amazon.com-redshift
+data:
+  displayName: "2012-12-01"

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-macie2
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Macie 2
+  description: Amazon Macie

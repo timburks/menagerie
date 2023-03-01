@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-runtime.lex.v2
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Lex Runtime V2
+  description: This section contains documentation for the Amazon Lex V2 Runtime V2 API operations.

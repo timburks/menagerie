@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-05-27"
+  parent: apis/amazon.com-sagemaker-geospatial
+data:
+  displayName: "2020-05-27"

@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-iot1click-devices
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS IoT 1-Click Devices Service
+  description: |-
+    Describes all of the AWS IoT 1-Click device-related API operations for the service.
+    Also provides sample requests, responses, and errors for the supported web services
+    protocols.

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-pinpoint
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Pinpoint
+  description: Doc Engage API - Amazon Pinpoint API

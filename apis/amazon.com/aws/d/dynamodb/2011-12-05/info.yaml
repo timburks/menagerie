@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2011-12-05"
+  parent: apis/amazon.com-dynamodb
+data:
+  displayName: "2011-12-05"

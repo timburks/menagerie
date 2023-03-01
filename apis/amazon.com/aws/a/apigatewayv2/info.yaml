@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-apigatewayv2
+  labels:
+    provider: amazon-com
+data:
+  displayName: AmazonApiGatewayV2
+  description: Amazon API Gateway V2

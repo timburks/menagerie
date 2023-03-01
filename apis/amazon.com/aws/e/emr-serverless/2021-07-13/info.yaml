@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2021-07-13"
+  parent: apis/amazon.com-emr-serverless
+data:
+  displayName: "2021-07-13"

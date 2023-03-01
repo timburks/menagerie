@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-s3control
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS S3 Control
+  description: Amazon Web Services S3 Control provides access to Amazon S3 control plane actions.

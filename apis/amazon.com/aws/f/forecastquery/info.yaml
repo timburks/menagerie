@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-forecastquery
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Forecast Query Service
+  description: Provides APIs for creating and managing Amazon Forecast resources.

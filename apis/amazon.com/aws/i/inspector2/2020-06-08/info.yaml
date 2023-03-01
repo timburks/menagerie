@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-06-08"
+  parent: apis/amazon.com-inspector2
+data:
+  displayName: "2020-06-08"

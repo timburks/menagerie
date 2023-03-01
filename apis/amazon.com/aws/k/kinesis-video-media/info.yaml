@@ -1,0 +1,8 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-kinesis-video-media
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Kinesis Video Streams Media

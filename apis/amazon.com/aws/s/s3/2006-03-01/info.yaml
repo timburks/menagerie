@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2006-03-01"
+  parent: apis/amazon.com-s3
+data:
+  displayName: "2006-03-01"

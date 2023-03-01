@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-09-22"
+  parent: apis/amazon.com-codeartifact
+data:
+  displayName: "2018-09-22"

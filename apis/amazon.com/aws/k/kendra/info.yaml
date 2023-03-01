@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-kendra
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWSKendraFrontendService
+  description: Amazon Kendra is a service for indexing large document sets.

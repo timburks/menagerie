@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-schemas
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Schemas
+  description: Amazon EventBridge Schema Registry

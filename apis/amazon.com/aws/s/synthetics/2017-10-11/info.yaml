@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2017-10-11"
+  parent: apis/amazon.com-synthetics
+data:
+  displayName: "2017-10-11"

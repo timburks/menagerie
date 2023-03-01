@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2017-03-31"
+  parent: apis/amazon.com-lakeformation
+data:
+  displayName: "2017-03-31"

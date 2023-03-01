@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-09-07"
+  parent: apis/amazon.com-connectparticipant
+data:
+  displayName: "2018-09-07"

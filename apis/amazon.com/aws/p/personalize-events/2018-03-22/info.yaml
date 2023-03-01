@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-03-22"
+  parent: apis/amazon.com-personalize-events
+data:
+  displayName: "2018-03-22"

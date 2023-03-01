@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-lex-models
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Lex Model Building Service
+  description: |-
+    Amazon Lex Build-Time Actions
+
+    Amazon Lex is an AWS service for building conversational voice and text interfaces. Use these actions to create, update, and delete conversational bots for new and existing client applications.

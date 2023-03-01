@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-marketplacecommerceanalytics
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS Marketplace Commerce Analytics
+  description: Provides AWS Marketplace business intelligence data on-demand.

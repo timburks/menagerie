@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2021-01-01"
+  parent: apis/amazon.com-memorydb
+data:
+  displayName: "2021-01-01"

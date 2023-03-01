@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2010-05-15"
+  parent: apis/amazon.com-cloudformation
+data:
+  displayName: "2010-05-15"

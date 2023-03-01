@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-ec2-instance-connect
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS EC2 Instance Connect
+  description: Amazon EC2 Instance Connect enables system administrators to publish one-time use SSH public keys to EC2, providing users a simple and secure way to connect to their instances.

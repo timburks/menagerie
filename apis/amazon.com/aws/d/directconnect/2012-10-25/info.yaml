@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2012-10-25"
+  parent: apis/amazon.com-directconnect
+data:
+  displayName: "2012-10-25"

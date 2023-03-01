@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2015-02-02"
+  parent: apis/amazon.com-elasticache
+data:
+  displayName: "2015-02-02"

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-05-22"
+  parent: apis/amazon.com-personalize-runtime
+data:
+  displayName: "2018-05-22"

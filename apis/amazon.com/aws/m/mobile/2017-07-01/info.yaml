@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2017-07-01"
+  parent: apis/amazon.com-mobile
+data:
+  displayName: "2017-07-01"

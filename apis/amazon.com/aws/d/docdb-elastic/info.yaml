@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-docdb-elastic
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon DocumentDB Elastic Clusters
+  description: The new Amazon Elastic DocumentDB service endpoint.

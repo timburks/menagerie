@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-amplifybackend
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AmplifyBackend
+  description: AWS Amplify Admin API

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-comprehendmedical
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS Comprehend Medical
+  description: Comprehend Medical; extracts structured information from unstructured clinical text. Use these actions to gain insight in your documents.

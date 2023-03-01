@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-mturk-requester
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Mechanical Turk
+  description: Amazon Mechanical Turk API Reference

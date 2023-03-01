@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-xray
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS X-Ray
+  description: Amazon Web Services X-Ray provides APIs for managing debug traces and retrieving service maps and other data created by processing those traces.

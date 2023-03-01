@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2022-09-30"
+  parent: apis/amazon.com-sagemaker-metrics
+data:
+  displayName: "2022-09-30"

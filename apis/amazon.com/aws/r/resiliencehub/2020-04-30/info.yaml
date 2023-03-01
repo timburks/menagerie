@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-04-30"
+  parent: apis/amazon.com-resiliencehub
+data:
+  displayName: "2020-04-30"

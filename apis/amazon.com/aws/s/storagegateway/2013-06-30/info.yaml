@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2013-06-30"
+  parent: apis/amazon.com-storagegateway
+data:
+  displayName: "2013-06-30"

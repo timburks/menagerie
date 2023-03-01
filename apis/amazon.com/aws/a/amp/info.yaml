@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-amp
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Prometheus Service
+  description: Amazon Managed Service for Prometheus

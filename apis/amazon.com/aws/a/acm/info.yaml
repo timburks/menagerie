@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-acm
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS Certificate Manager
+  description: |-
+    Certificate Manager
+
+    You can use Certificate Manager (ACM) to manage SSL/TLS certificates for your Amazon Web Services-based websites and applications. For more information about using ACM, see the [Certificate Manager User Guide](https://docs.aws.amazon.com/acm/latest/userguide/).

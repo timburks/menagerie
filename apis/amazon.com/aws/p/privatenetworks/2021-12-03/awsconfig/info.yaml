@@ -1,0 +1,8 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: awsconfig
+  parent: apis/amazon.com-privatenetworks/versions/2021-12-03
+data:
+  filename: awsconfig.zip
+  mimeType: application/x.awsconfig+zip

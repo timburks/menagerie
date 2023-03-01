@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2015-06-23"
+  parent: apis/amazon.com-devicefarm
+data:
+  displayName: "2015-06-23"

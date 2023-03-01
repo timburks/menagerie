@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-08-11"
+  parent: apis/amazon.com-amplifybackend
+data:
+  displayName: "2020-08-11"

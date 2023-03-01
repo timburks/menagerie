@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-iot1click-projects
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS IoT 1-Click Projects Service
+  description: The AWS IoT 1-Click Projects API Reference

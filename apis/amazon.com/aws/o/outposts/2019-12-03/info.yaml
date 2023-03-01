@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2019-12-03"
+  parent: apis/amazon.com-outposts
+data:
+  displayName: "2019-12-03"

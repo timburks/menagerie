@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2015-08-04"
+  parent: apis/amazon.com-firehose
+data:
+  displayName: "2015-08-04"

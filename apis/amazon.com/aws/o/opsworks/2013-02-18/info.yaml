@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2013-02-18"
+  parent: apis/amazon.com-opsworks
+data:
+  displayName: "2013-02-18"

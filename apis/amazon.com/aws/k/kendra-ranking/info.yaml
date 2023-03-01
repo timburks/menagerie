@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-kendra-ranking
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Kendra Intelligent Ranking
+  description: Amazon Kendra Intelligent Ranking uses Amazon Kendra semantic search capabilities to intelligently re-rank a search service's results.

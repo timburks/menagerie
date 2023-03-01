@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-02-19"
+  parent: apis/amazon.com-migrationhubstrategy
+data:
+  displayName: "2020-02-19"

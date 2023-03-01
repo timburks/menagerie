@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-sagemaker-geospatial
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon SageMaker geospatial capabilities
+  description: Provides APIs for creating and managing SageMaker geospatial resources.

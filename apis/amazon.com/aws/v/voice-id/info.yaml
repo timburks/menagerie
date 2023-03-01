@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-voice-id
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Voice ID
+  description: Amazon Connect Voice ID provides real-time caller authentication and fraud screening. This guide describes the APIs used for this service.

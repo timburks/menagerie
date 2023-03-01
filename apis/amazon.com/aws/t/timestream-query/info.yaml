@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-timestream-query
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Timestream Query
+  description: Amazon Timestream Query

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2014-12-12"
+  parent: apis/amazon.com-machinelearning
+data:
+  displayName: "2014-12-12"

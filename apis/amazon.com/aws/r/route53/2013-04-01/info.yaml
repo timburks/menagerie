@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2013-04-01"
+  parent: apis/amazon.com-route53
+data:
+  displayName: "2013-04-01"

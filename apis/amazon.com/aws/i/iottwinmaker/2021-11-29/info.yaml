@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2021-11-29"
+  parent: apis/amazon.com-iottwinmaker
+data:
+  displayName: "2021-11-29"

@@ -1,0 +1,8 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: awsconfig
+  parent: apis/amazon.com-worklink/versions/2018-09-25
+data:
+  filename: awsconfig.zip
+  mimeType: application/x.awsconfig+zip

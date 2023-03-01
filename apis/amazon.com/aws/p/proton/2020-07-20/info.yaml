@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-07-20"
+  parent: apis/amazon.com-proton
+data:
+  displayName: "2020-07-20"

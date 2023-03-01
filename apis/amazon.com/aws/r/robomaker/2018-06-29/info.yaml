@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-06-29"
+  parent: apis/amazon.com-robomaker
+data:
+  displayName: "2018-06-29"

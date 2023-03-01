@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2019-06-28"
+  parent: apis/amazon.com-savingsplans
+data:
+  displayName: "2019-06-28"

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-qldb
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon QLDB
+  description: The control plane for Amazon QLDB

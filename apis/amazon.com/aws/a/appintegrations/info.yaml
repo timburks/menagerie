@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-appintegrations
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AppIntegrations Service
+  description: |-
+    The Amazon AppIntegrations service enables you to configure and reuse connections to external applications.
+
+    For information about how you can use external applications with Amazon Connect, see [Set up pre-built integrations](https://docs.aws.amazon.com/connect/latest/adminguide/crm.html) and [Deliver information to agents using Amazon Connect Wisdom](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-wisdom.html) in the _Amazon Connect Administrator Guide_.

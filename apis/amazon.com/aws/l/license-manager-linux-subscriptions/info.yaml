@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-license-manager-linux-subscriptions
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS License Manager Linux Subscriptions
+  description: With License Manager, you can discover and track your commercial Linux subscriptions on running Amazon EC2 instances.

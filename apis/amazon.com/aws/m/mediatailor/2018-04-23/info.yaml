@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-04-23"
+  parent: apis/amazon.com-mediatailor
+data:
+  displayName: "2018-04-23"

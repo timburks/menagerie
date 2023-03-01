@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2021-06-15"
+  parent: apis/amazon.com-rbin
+data:
+  displayName: "2021-06-15"

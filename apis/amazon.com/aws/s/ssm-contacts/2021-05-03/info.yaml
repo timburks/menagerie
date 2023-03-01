@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2021-05-03"
+  parent: apis/amazon.com-ssm-contacts
+data:
+  displayName: "2021-05-03"

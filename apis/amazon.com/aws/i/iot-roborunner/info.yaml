@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-iot-roborunner
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS IoT RoboRunner
+  description: An example service, deployed with the Octane Service creator, which will echo the string

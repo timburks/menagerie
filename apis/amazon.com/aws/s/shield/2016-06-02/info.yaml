@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2016-06-02"
+  parent: apis/amazon.com-shield
+data:
+  displayName: "2016-06-02"

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2015-10-07"
+  parent: apis/amazon.com-events
+data:
+  displayName: "2015-10-07"

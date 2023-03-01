@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2008-10-21"
+  parent: apis/amazon.com-tnb
+data:
+  displayName: "2008-10-21"

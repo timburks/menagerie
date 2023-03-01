@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2015-05-28"
+  parent: apis/amazon.com-iot-data
+data:
+  displayName: "2015-05-28"

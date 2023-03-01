@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-10-01"
+  parent: apis/amazon.com-emr-containers
+data:
+  displayName: "2020-10-01"

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-snow-device-management
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS Snow Device Management
+  description: Amazon Web Services Snow Device Management documentation.

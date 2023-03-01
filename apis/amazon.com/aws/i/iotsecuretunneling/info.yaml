@@ -1,0 +1,14 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-iotsecuretunneling
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS IoT Secure Tunneling
+  description: |-
+    IoT Secure Tunneling
+
+    IoT Secure Tunneling creates remote connections to devices deployed in the field.
+
+    For more information about how IoT Secure Tunneling works, see [IoT Secure Tunneling](https://docs.aws.amazon.com/iot/latest/developerguide/secure-tunneling.html).

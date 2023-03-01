@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2022-10-19"
+  parent: apis/amazon.com-kendra-ranking
+data:
+  displayName: "2022-10-19"

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2015-10-07"
+  parent: apis/amazon.com-eventbridge
+data:
+  displayName: "2015-10-07"

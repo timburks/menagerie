@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-s3outposts
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon S3 on Outposts
+  description: Amazon S3 on Outposts provides access to S3 on Outposts operations.

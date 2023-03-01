@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2010-12-01"
+  parent: apis/amazon.com-email
+data:
+  displayName: "2010-12-01"

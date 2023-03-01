@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-location
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Location Service
+  description: '"Suite of geospatial services including Maps, Places, Routes, Tracking, and Geofencing"'

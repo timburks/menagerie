@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2017-10-30"
+  parent: apis/amazon.com-cloudfront
+data:
+  displayName: "2017-10-30"

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-kinesis-video-signaling
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Kinesis Video Signaling Channels
+  description: Kinesis Video Streams Signaling Service is a intermediate service that establishes a communication channel for discovering peers, transmitting offers and answers in order to establish peer-to-peer connection in webRTC technology.

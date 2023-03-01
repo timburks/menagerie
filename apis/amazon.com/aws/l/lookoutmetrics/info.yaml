@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-lookoutmetrics
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Lookout for Metrics
+  description: This is the _Amazon Lookout for Metrics API Reference_. For an introduction to the service with tutorials for getting started, visit [Amazon Lookout for Metrics Developer Guide](https://docs.aws.amazon.com/lookoutmetrics/latest/dev).

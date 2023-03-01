@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-lookoutequipment
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Lookout for Equipment
+  description: Amazon Lookout for Equipment is a machine learning service that uses advanced analytics to identify anomalies in machines from sensor data for use in predictive maintenance.

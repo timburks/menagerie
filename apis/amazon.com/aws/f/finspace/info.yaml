@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-finspace
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon FinSpace User Environment Management service
+  description: The FinSpace management service provides the APIs for managing FinSpace environments.

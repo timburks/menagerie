@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2021-10-26"
+  parent: apis/amazon.com-migration-hub-refactor-spaces
+data:
+  displayName: "2021-10-26"

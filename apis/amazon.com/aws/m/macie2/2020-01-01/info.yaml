@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-01-01"
+  parent: apis/amazon.com-macie2
+data:
+  displayName: "2020-01-01"

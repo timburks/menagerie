@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-11-09"
+  parent: apis/amazon.com-datasync
+data:
+  displayName: "2018-11-09"

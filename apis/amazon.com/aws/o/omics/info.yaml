@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-omics
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Omics
+  description: This is the _Amazon Omics API Reference_. For an introduction to the service, see [What is Amazon Omics?](https://docs.aws.amazon.com/omics/latest/dev/) in the _Amazon Omics Developer Guide_.

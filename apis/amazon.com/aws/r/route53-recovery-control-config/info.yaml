@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-route53-recovery-control-config
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS Route53 Recovery Control Config
+  description: Recovery Control Configuration API Reference for Amazon Route 53 Application Recovery Controller

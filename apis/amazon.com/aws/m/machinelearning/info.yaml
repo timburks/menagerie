@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-machinelearning
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Machine Learning
+  description: Definition of the public APIs exposed by Amazon Machine Learning

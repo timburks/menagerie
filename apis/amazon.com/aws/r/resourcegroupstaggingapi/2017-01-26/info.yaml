@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2017-01-26"
+  parent: apis/amazon.com-resourcegroupstaggingapi
+data:
+  displayName: "2017-01-26"

@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-route53-recovery-readiness
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS Route53 Recovery Readiness
+  description: Recovery readiness

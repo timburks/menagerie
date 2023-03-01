@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2013-02-12"
+  parent: apis/amazon.com-rds
+data:
+  displayName: "2013-02-12"

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2017-11-27"
+  parent: apis/amazon.com-resource-groups
+data:
+  displayName: "2017-11-27"

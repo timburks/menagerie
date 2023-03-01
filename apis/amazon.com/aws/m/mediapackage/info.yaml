@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-mediapackage
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS Elemental MediaPackage
+  description: AWS Elemental MediaPackage

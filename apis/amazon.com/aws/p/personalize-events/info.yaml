@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-personalize-events
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Personalize Events
+  description: Amazon Personalize can consume real-time user event data, such as _stream_ or _click_ data, and use it for model training either alone or combined with historical data. For more information see [Recording Events](https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html).

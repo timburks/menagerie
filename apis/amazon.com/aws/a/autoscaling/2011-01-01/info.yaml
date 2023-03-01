@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2011-01-01"
+  parent: apis/amazon.com-autoscaling
+data:
+  displayName: "2011-01-01"

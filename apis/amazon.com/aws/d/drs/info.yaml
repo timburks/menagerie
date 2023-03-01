@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-drs
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Elastic Disaster Recovery Service
+  description: AWS Elastic Disaster Recovery Service.

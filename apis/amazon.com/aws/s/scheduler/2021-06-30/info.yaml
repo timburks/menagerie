@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2021-06-30"
+  parent: apis/amazon.com-scheduler
+data:
+  displayName: "2021-06-30"

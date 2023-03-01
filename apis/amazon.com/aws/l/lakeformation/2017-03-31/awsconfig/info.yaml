@@ -1,0 +1,8 @@
+apiVersion: apigeeregistry/v1
+kind: Spec
+metadata:
+  name: awsconfig
+  parent: apis/amazon.com-lakeformation/versions/2017-03-31
+data:
+  filename: awsconfig.zip
+  mimeType: application/x.awsconfig+zip

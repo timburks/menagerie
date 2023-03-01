@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-05-10"
+  parent: apis/amazon.com-controltower
+data:
+  displayName: "2018-05-10"

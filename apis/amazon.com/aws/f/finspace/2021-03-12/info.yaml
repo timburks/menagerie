@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2021-03-12"
+  parent: apis/amazon.com-finspace
+data:
+  displayName: "2021-03-12"

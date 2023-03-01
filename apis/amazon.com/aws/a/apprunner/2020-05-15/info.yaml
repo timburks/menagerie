@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-05-15"
+  parent: apis/amazon.com-apprunner
+data:
+  displayName: "2020-05-15"

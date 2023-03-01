@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-appsync
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS AppSync
+  description: AppSync provides API actions for creating and interacting with data sources using GraphQL from your application.

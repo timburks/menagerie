@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2012-01-25"
+  parent: apis/amazon.com-swf
+data:
+  displayName: "2012-01-25"

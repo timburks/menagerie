@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-account
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS Account
+  description: Operations for Amazon Web Services Account Management

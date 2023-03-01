@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2022-03-31"
+  parent: apis/amazon.com-pinpoint-sms-voice-v2
+data:
+  displayName: "2022-03-31"

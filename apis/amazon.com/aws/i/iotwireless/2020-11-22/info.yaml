@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-11-22"
+  parent: apis/amazon.com-iotwireless
+data:
+  displayName: "2020-11-22"

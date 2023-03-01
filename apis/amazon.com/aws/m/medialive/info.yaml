@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-medialive
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS Elemental MediaLive
+  description: API for AWS Elemental MediaLive

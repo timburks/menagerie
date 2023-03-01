@@ -1,0 +1,12 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-shield
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS Shield
+  description: |-
+    Shield Advanced
+
+    This is the _Shield Advanced API Reference_. This guide is for developers who need detailed information about the Shield Advanced API actions, data types, and errors. For detailed information about WAF and Shield Advanced features and an overview of how to use the WAF and Shield Advanced APIs, see the [WAF and Shield Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/).

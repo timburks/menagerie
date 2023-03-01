@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2016-08-04"
+  parent: apis/amazon.com-health
+data:
+  displayName: "2016-08-04"

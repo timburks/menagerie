@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2017-09-08"
+  parent: apis/amazon.com-serverlessrepo
+data:
+  displayName: "2017-09-08"

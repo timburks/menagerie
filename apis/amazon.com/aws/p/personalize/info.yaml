@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-personalize
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Personalize
+  description: Amazon Personalize is a machine learning service that makes it easy to add individualized recommendations to customers.

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-11-01"
+  parent: apis/amazon.com-timestream-write
+data:
+  displayName: "2018-11-01"

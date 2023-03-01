@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2022-02-17"
+  parent: apis/amazon.com-cleanrooms
+data:
+  displayName: "2022-02-17"

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2011-02-01"
+  parent: apis/amazon.com-cloudsearch
+data:
+  displayName: "2011-02-01"

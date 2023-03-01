@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2012-06-01"
+  parent: apis/amazon.com-elasticloadbalancing
+data:
+  displayName: "2012-06-01"

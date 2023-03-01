@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-10-05"
+  parent: apis/amazon.com-iotsecuretunneling
+data:
+  displayName: "2018-10-05"

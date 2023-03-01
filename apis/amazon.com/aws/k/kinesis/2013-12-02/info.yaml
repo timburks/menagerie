@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2013-12-02"
+  parent: apis/amazon.com-kinesis
+data:
+  displayName: "2013-12-02"

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-04-02"
+  parent: apis/amazon.com-ec2-instance-connect
+data:
+  displayName: "2018-04-02"

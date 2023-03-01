@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-mobileanalytics
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon Mobile Analytics
+  description: Amazon Mobile Analytics is a service for collecting, visualizing, and understanding app usage data at scale.

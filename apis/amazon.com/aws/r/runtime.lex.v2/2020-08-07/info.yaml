@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-08-07"
+  parent: apis/amazon.com-runtime.lex.v2
+data:
+  displayName: "2020-08-07"

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2021-11-01"
+  parent: apis/amazon.com-opensearchserverless
+data:
+  displayName: "2021-11-01"

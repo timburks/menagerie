@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-backupstorage
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS Backup Storage
+  description: The frontend service for Cryo Storage.

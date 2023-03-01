@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-09-23"
+  parent: apis/amazon.com-sagemaker-edge
+data:
+  displayName: "2020-09-23"

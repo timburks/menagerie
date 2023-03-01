@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2017-04-19"
+  parent: apis/amazon.com-dax
+data:
+  displayName: "2017-04-19"

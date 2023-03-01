@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2020-07-14"
+  parent: apis/amazon.com-ivschat
+data:
+  displayName: "2020-07-14"

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-11-14"
+  parent: apis/amazon.com-mediaconnect
+data:
+  displayName: "2018-11-14"

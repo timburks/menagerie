@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-fsx
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon FSx
+  description: Amazon FSx is a fully managed service that makes it easy for storage and application administrators to launch and use shared file storage.

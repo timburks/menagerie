@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-docdb
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon DocumentDB with MongoDB compatibility
+  description: Amazon DocumentDB API documentation

@@ -1,0 +1,7 @@
+apiVersion: apigeeregistry/v1
+kind: Version
+metadata:
+  name: "2018-09-17"
+  parent: apis/amazon.com-marketplace-catalog
+data:
+  displayName: "2018-09-17"

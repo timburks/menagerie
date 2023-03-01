@@ -1,0 +1,9 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-license-manager-user-subscriptions
+  labels:
+    provider: amazon-com
+data:
+  displayName: Amazon AWS License Manager User Subscriptions
+  description: With License Manager, you can create user-based subscriptions to utilize licensed software with a per user subscription fee on Amazon EC2 instances.
