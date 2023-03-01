@@ -1,4 +1,4 @@
-# amazon.com
+# Amazon APIs
 
 ## Sources
 
