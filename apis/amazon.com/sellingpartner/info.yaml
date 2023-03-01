@@ -1,0 +1,21 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: amazon.com-sellingpartner
+  labels:
+    categories: commerce
+    provider: amazon-com
+    updated: 2023-02-28
+data:
+  displayName: Amazon Selling Partner API
+  description: The Selling Partner API (SP-API) is a REST-based API that helps Amazon selling partners programmatically access their data on orders, shipments, payments, and much more. Applications using the SP-API can increase selling efficiency, reduce labor requirements, and improve response time to customers, helping selling partners grow their businesses.
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: docs
+            displayName: Developer Documentation
+            uri: https://developer-docs.amazon.com/sp-api
