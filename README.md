@@ -33,13 +33,14 @@ as possible.
 ## Getting this into a registry
 
 - Get set up with the [Registry API](https://github.com/apigee/registry).
-- Run `source tools/CREATE.sh` to create the "menagerie" project and
-  configure the `registry` tool to use it. If you're using a Google-hosted
-  instance of the Registry API, you can point the `registry` tool at it with
+- Run `source tools/CREATE.sh` to create the "menagerie" project and configure
+  the `registry` tool to use it. If you're using a Google-hosted instance of
+  the Registry API, you can point the `registry` tool at it with
   `registry config set registry.project $PROJECTID`.
-- Run `registry apply -f . -R` to load the contents of this repository.
-  As the number of APIs grows, you might want to load specific subdirectories.
-  For example, to just import the Google APIs, run `registry apply -f apis/google.com -R`.
+- Run `registry apply -f . -R` to load the contents of this repository. As the
+  number of APIs grows, you might want to load specific subdirectories. For
+  example, to just import the Google APIs, run
+  `registry apply -f apis/google.com -R`.
 
 ## The importers
 
