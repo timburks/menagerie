@@ -1,0 +1,17 @@
+apiVersion: apigeeregistry/v1
+kind: FieldSetDefinition
+metadata:
+  name: support
+data:
+  displayName: Support
+  description: Look here to find support for this API.
+  fields:
+    - id: portal
+      displayName: Developer Portal
+      description: API documentation and access to developer tokens
+    - id: email
+      displayName: Support Email
+      description: Contact the API support team
+    - id: postman
+      displayName: Postman
+      description: Try this API with Postman!

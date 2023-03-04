@@ -7,7 +7,7 @@ metadata:
     provider: starbucks-com
 data:
   displayName: Starbucks API
-  description: Starbucks currently does not have any public APIs.
+  description: Starbucks currently does not have any public APIs, but APIs are available to registered developers.
   artifacts:
     - kind: ReferenceList
       metadata:
@@ -21,3 +21,13 @@ data:
           - id: blog-samcurry
             displayName: Hacking Starbucks and Accessing Nearly 100 Million Customer Records
             uri: https://samcurry.net/hacking-starbucks/
+    - kind: FieldSet
+      metadata:
+        name: support
+      data:
+        definitionName: projects/menagerie/locations/global/artifacts/support
+        values:
+          email: "APIGatewaySupport@starbucks.com"
+          portal: "[Starbucks Developer Portal](https://developer.starbucks.com/)"
+          postman: "[Starbucks APIs on Postman](https://www.postman.com/dwizard/workspace/starbucks/documentation/10913961-bc3d5490-3007-40e9-8db6-74e03bc089ed)"
+
