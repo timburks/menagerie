@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 
 	"github.com/apigee/registry/pkg/encoding"
 	"github.com/timburks/menage/pkg/extract"
@@ -70,9 +71,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
+	updated := time.Now().Format("2006-01-02")
 	apis := NewCollection()
-
 	err = filepath.Walk(filepath.Join(dir, top, "apis"),
 		func(p string, info os.FileInfo, err error) error {
 			if err != nil {
@@ -124,6 +124,7 @@ func main() {
 						Name: provider + "-" + apiID,
 						Labels: map[string]string{
 							"provider": strings.ReplaceAll(provider, ".", "-"),
+							"updated":  updated,
 						},
 					},
 				},
@@ -154,6 +155,9 @@ func main() {
 					Metadata: encoding.Metadata{
 						Parent: "apis/" + provider + "-" + apiID,
 						Name:   versionID,
+						Labels: map[string]string{
+							"updated": updated,
+						},
 					},
 				},
 				Data: encoding.ApiVersionData{
@@ -178,6 +182,9 @@ func main() {
 						Parent:      "apis/" + provider + "-" + apiID + "/versions/" + versionID,
 						Name:        specID,
 						Annotations: map[string]string{},
+						Labels: map[string]string{
+							"updated": updated,
+						},
 					},
 				},
 				Data: encoding.ApiSpecData{
