@@ -29,3 +29,12 @@ registry upload protos googleapis \
 
 # Upload all of the APIs listed by Google's API Discovery Service.
 registry upload discovery
+
+# Apply common artifacts
+registry apply -R -f artifacts
+
+# Compute some metadata
+registry-experimental extract apis/-/versions/-/specs
+registry-experimental compute summary apis/-
+registry-experimental compute summary projects/googleapis
+registry-experimental count versions apis/-

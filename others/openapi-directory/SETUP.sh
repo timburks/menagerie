@@ -26,3 +26,12 @@ export COMMIT=`(cd openapi-directory; git rev-parse HEAD)`
 registry upload openapi \
 	openapi-directory/APIs \
 	--base-uri https://github.com/APIs-guru/openapi-directory/blob/$COMMIT/APIs 
+
+# Apply common artifacts
+registry apply -R -f artifacts
+
+# Compute some metadata
+registry-experimental extract apis/-/versions/-/specs
+registry-experimental compute summary apis/-
+registry-experimental compute summary projects/openapi-directory
+registry-experimental count versions apis/-
