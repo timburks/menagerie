@@ -1,0 +1,13 @@
+apiVersion: apigeeregistry/v1
+kind: ReferenceList
+metadata:
+  name: related
+data:
+  displayName: Related Links
+  references:
+    - id: repo
+      displayName: Google APIs Git Repository
+      uri: https://github.com/googleapis/googleapis
+    - id: discovery
+      displayName: Google API Discovery Service
+      uri: https://developers.google.com/discovery
