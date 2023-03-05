@@ -1,7 +1,8 @@
 #!/bin/sh
 
-registry rpc admin update-project --project.name projects/menagerie \
-	--project.display_name "Menagerie of APIs" \
+registry rpc admin update-project \
+	--project.name projects/menagerie \
+	--project.display_name "Menagerie" \
 	--project.description "APIs collected from a variety of sources." \
 	--allow_missing \
 	>& /dev/null

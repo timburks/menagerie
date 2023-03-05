@@ -37,10 +37,10 @@ as possible.
   the `registry` tool to use it. If you're using a Google-hosted instance of
   the Registry API, you can point the `registry` tool at it with
   `registry config set registry.project $PROJECTID`.
-- Run `registry apply -f . -R` to load the contents of this repository. As the
+- Run `registry apply -f menagerie -R` to load the menagerie project. As the
   number of APIs grows, you might want to load specific subdirectories. For
   example, to just import the Google APIs, run
-  `registry apply -f apis/google.com -R`.
+  `registry apply -f menagerie/apis/google.com -R`.
 
 ## The importers
 
