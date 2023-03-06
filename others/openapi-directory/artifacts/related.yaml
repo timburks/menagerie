@@ -8,3 +8,6 @@ data:
     - id: repo
       displayName: OpenAPI Directory Git Repository
       uri: https://github.com/apis-guru/openapi-directory
+    - id: setup
+      displayName: SETUP.sh
+      uri: https://github.com/timburks/menagerie/blob/main/others/openapi-directory/SETUP.sh

@@ -11,3 +11,6 @@ data:
     - id: discovery
       displayName: Google API Discovery Service
       uri: https://developers.google.com/discovery
+    - id: setup
+      displayName: SETUP.sh
+      uri: https://github.com/timburks/menagerie/blob/main/others/googleapis/SETUP.sh
