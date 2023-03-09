@@ -1,0 +1,32 @@
+apiVersion: apigeeregistry/v1
+kind: API
+metadata:
+  name: timburks.me-akita
+  labels:
+    provider: timburks-me
+    categories: akita
+data:
+  displayName: An API that I observed with Akita
+  description: This API was observed with Akita. It's everything that Akita saw while running on a machine on my home network and includes test calls to the sample server at the bottom of [this page](https://go.dev/doc/tutorial/web-service-gin). To see these calls, look for "albums" in the spec.
+  versions:
+    - metadata:
+        name: v1
+      data:
+        displayName: v1
+        state: exploration
+        specs:
+          - metadata:
+              name: openapi
+            data:
+              filename: openapi.yaml
+              mimeType: application/x.openapi+gzip;version=3.0.0
+  artifacts:
+    - kind: ReferenceList
+      metadata:
+        name: related
+      data:
+        displayName: Related Links
+        references:
+          - id: blog
+            displayName: Launching Akita's Open Beta
+            uri: https://www.akitasoftware.com/blog-posts/launching-akitas-open-beta
